@@ -325,7 +325,7 @@ export const Header: React.FC<HeaderProps> = ({
       {mobileMenuOpen && (
         <div
           id="mobile-drawer-menu"
-          className="fixed inset-x-0 top-[57px] bottom-0 z-50 flex flex-col justify-between overflow-y-auto bg-white px-4 pb-6 pt-2 lg:hidden"
+          className="absolute inset-x-0 top-full z-50 flex h-[calc(100dvh-65px)] max-h-[calc(100dvh-65px)] flex-col justify-between overflow-y-auto border-t border-slate-100 bg-white px-4 pb-6 pt-2 shadow-xl lg:hidden"
         >
           <div className="space-y-4">
             {/* Mobile Practice Badge */}
