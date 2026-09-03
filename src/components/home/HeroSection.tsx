@@ -7,7 +7,7 @@ interface HeroMediaItem {
   src: string;
   alt?: string;
   poster?: string;
-  /** Controls where the media focal point is positioned (e.g., 'object-top', 'object-center') */
+  /** Controls where the media focal point is positioned. */
   position?: string;
 }
 
@@ -20,21 +20,21 @@ const DEFAULT_MEDIA: HeroMediaItem[] = [
   {
     id: '1',
     type: 'video',
-    src: 'https://assets.mixkit.co/videos/preview/mixkit-surgeons-performing-an-operation-in-an-operating-room-42823-large.mp4',
-    poster: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1600&q=82',
-    position: 'object-top' // Prevents top cropping
+    src: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
+    poster: '/hero.png',
+    position: 'object-center'
   },
   {
     id: '2',
     type: 'image',
-    src: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1920&q=85',
+    src: '/hero.png',
     alt: 'SIPS Hospital Clinic Room',
     position: 'object-center'
   },
   {
     id: '3',
     type: 'image',
-    src: 'https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=1920&q=85',
+    src: '/hero.png',
     alt: 'Advanced Surgical Equipment',
     position: 'object-center'
   }
@@ -44,6 +44,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ items = DEFAULT_MEDIA 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [failedVideos, setFailedVideos] = useState<Record<string, boolean>>({});
   const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
 
   const currentMedia = items[currentIndex];
@@ -90,7 +91,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ items = DEFAULT_MEDIA 
   return (
     <section 
       id="homepage-hero" 
-      className="relative h-[100svh] w-full overflow-hidden bg-slate-950 text-white"
+      className="relative mt-[65px] aspect-[2/1] w-full overflow-hidden bg-slate-950 text-white md:mt-[106px]"
       aria-label="Visual Showcase"
     >
       {/* Full-screen Media Slider */}
@@ -102,11 +103,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ items = DEFAULT_MEDIA 
           return (
             <div
               key={item.id}
-              className={`absolute inset-0 h-full w-full transition-opacity duration-1000 ease-in-out ${
+              className={`absolute inset-0 h-full w-full bg-slate-950 transition-opacity duration-1000 ease-in-out ${
                 isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
               }`}
             >
-              {item.type === 'video' ? (
+              {item.type === 'video' && !failedVideos[item.id] ? (
                 <video
                   ref={(el) => (videoRefs.current[item.id] = el)}
                   src={item.src}
@@ -115,13 +116,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ items = DEFAULT_MEDIA 
                   loop
                   muted={isMuted}
                   onEnded={handleNext}
-                  className={`h-full w-full object-cover ${objectPos}`}
+                  onError={() => setFailedVideos((previous) => ({ ...previous, [item.id]: true }))}
+                  className={`h-full w-full object-contain ${objectPos}`}
                 />
               ) : (
                 <img
                   src={item.src}
                   alt={item.alt || ''}
-                  className={`h-full w-full object-cover ${objectPos}`}
+                  className={`h-full w-full object-contain ${objectPos}`}
                 />
               )}
             </div>
