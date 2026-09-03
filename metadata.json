@@ -1,0 +1,6 @@
+{
+  "name": "My Cosmetic Surgery - Dr. R. K. Mishra",
+  "description": "Advanced Plastic & Cosmetic Surgery platform by Dr. R. K. Mishra (25+ Yrs Exp, 30,000+ Surgeries) at SIPS Hospital Lucknow. Explore procedures, patient results, stories, and book consultations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
