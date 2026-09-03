@@ -82,11 +82,11 @@ export const ProcedureExplorer: React.FC<ProcedureExplorerProps> = ({ onNavigate
               role="button"
               tabIndex={0}
               aria-label={`Explore ${proc.title}`}
-              className="interactive-lift group flex h-full cursor-pointer flex-col justify-between overflow-hidden rounded-[20px] border border-[#DCE7F0]/80 bg-[#FCFDFD] shadow-xs hover:border-[#1769AA]/40"
+              className="interactive-lift group flex h-full cursor-pointer flex-col justify-between overflow-hidden rounded-lg border border-[#DCE7F0] bg-white shadow-[0_8px_24px_rgba(11,42,91,0.05)] hover:border-[#1769AA]/50 hover:shadow-[0_16px_34px_rgba(11,42,91,0.10)]"
             >
               <div>
                 {/* Large Visual Image Area (240px - 280px) */}
-                <div className="h-60 sm:h-64 overflow-hidden relative bg-gray-100">
+                <div className="relative h-56 overflow-hidden bg-[#EAF3F8] sm:h-60">
                   <SafeImage
                     src={proc.image}
                     alt={proc.title}
@@ -95,19 +95,19 @@ export const ProcedureExplorer: React.FC<ProcedureExplorerProps> = ({ onNavigate
                   />
                   
                   {/* Category Pill Over Image */}
-                  <div className="absolute top-3.5 left-3.5 px-3 py-1 bg-white/90 backdrop-blur-md text-[#0B2A5B] text-[10px] font-bold uppercase rounded-lg tracking-wider shadow-xs border border-white/60">
+                  <div className="absolute left-4 top-4 rounded-md border border-white/70 bg-white/95 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#0B2A5B] shadow-sm">
                     {proc.category}
                   </div>
 
                   {/* Downtime / Duration Pill */}
-                  <div className="absolute bottom-3.5 left-3.5 px-3 py-1 bg-[#071D3B]/80 backdrop-blur-md text-white text-[11px] font-medium rounded-lg flex items-center gap-1.5">
+                  <div className="absolute bottom-4 left-4 flex items-center gap-1.5 rounded-md bg-[#071D3B]/90 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur-md">
                     <Clock className="w-3 h-3 text-[#93C5FD]" />
                     <span>{proc.duration}</span>
                   </div>
                 </div>
 
                 {/* Content Area with Generous Spacing & Refined Typography */}
-                <div className="p-6">
+                <div className="p-5 sm:p-6">
                   <h3 className="card-readable mb-2 text-lg font-serif font-bold leading-snug text-[#102A43] transition-colors group-hover:text-[#1769AA] sm:text-xl">
                     {proc.title}
                   </h3>
@@ -116,11 +116,11 @@ export const ProcedureExplorer: React.FC<ProcedureExplorerProps> = ({ onNavigate
                     {proc.shortDesc}
                   </p>
 
-                  <div className="flex flex-wrap gap-1.5 mt-4">
+                  <div className="mt-4 flex flex-wrap gap-1.5">
                     {proc.tags.slice(0, 3).map((tag, idx) => (
                       <span 
                         key={idx} 
-                        className="text-[10px] font-medium text-[#1769AA] bg-[#EEF7FC] px-2 py-0.5 rounded-md"
+                        className="rounded-sm bg-[#EEF7FC] px-2 py-0.5 text-[10px] font-semibold text-[#1769AA]"
                       >
                         #{tag}
                       </span>
@@ -130,7 +130,7 @@ export const ProcedureExplorer: React.FC<ProcedureExplorerProps> = ({ onNavigate
               </div>
 
               {/* Minimal Circular Action & Price Indication */}
-              <div className="px-6 pb-6 pt-2 flex items-center justify-between border-t border-[#EEF2F6] mt-2">
+              <div className="mt-1 flex items-center justify-between border-t border-[#E8EFF4] px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
                 <div>
                   <span className="text-[10px] text-[#718096] uppercase tracking-wider block">Estimated Fee</span>
                   <span className="text-xs font-bold text-[#102A43]">{proc.costRange}</span>

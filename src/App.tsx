@@ -33,16 +33,40 @@ import { BookConsultationView } from './components/views/BookConsultationView';
 import { LocalLucknowView } from './components/views/LocalLucknowView';
 import { AdminDashboardView } from './components/views/AdminDashboardView';
 
+const routeFromPathname = (pathname: string): string => {
+  const path = pathname.replace(/^\/+|\/+$/g, '');
+  return path ? decodeURIComponent(path) : 'home';
+};
+
+const pathnameFromRoute = (route: string): string => {
+  return route === 'home' ? '/' : `/${route}`;
+};
+
 export default function App() {
-  const [currentRoute, setCurrentRoute] = useState<string>('home');
+  const [currentRoute, setCurrentRoute] = useState<string>(() => routeFromPathname(window.location.pathname));
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [lang, setLang] = useState<'EN' | 'HI'>('EN');
 
-  // Handle route change and scroll to top
+  // Keep the single-page views synchronized with the browser history.
   const handleNavigate = (route: string) => {
+    if (route === currentRoute) {
+      return;
+    }
+
+    window.history.pushState({}, '', pathnameFromRoute(route));
     setCurrentRoute(route);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentRoute(routeFromPathname(window.location.pathname));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   // Keyboard shortcut for search (Ctrl+K / Cmd+K)
   useEffect(() => {

@@ -38,49 +38,56 @@ export const HomeFaqSection: React.FC = () => {
 
   return (
     <section id="homepage-faq-section" className="py-16 sm:py-24 bg-[#F5FAFD] relative">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#1769AA] mb-2">
+        <div className="mb-10 max-w-md sm:mb-12 lg:mb-0">
+          <div className="mb-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#1769AA]">
             <HelpCircle className="w-3.5 h-3.5" />
             <span>Common Questions</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#102A43] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-serif font-bold leading-tight text-[#102A43] tracking-tight">
             Frequently Asked Questions
           </h2>
-          <p className="text-sm sm:text-base text-[#52677D] mt-2 max-w-xl mx-auto">
+          <p className="mt-3 text-sm leading-relaxed text-[#52677D] sm:text-base">
             Clear, transparent answers to help you make informed choices about your cosmetic and reconstructive surgery.
           </p>
         </div>
 
         {/* Accordion List */}
-        <div className="space-y-4">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-start lg:gap-16">
+          <div className="hidden lg:block" aria-hidden="true">
+            <div className="mt-8 border-l-2 border-[#C89448] pl-5 text-sm leading-relaxed text-[#52677D]">
+              Every consultation is grounded in clear expectations, honest guidance, and a plan tailored to your anatomy.
+            </div>
+          </div>
+          <div className="space-y-3">
           {faqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
               <div
                 key={idx}
-                className="bg-white rounded-2xl border border-[#DCE7F0] overflow-hidden shadow-xs transition-all duration-200"
+                className={`overflow-hidden rounded-lg border bg-white transition-all duration-200 ${isOpen ? 'border-[#1769AA]/50 shadow-[0_10px_24px_rgba(11,42,91,0.08)]' : 'border-[#DCE7F0] shadow-xs hover:border-[#1769AA]/35'}`}
               >
                 <button
                   onClick={() => toggleFaq(idx)}
-                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-serif font-semibold text-[#102A43] hover:text-[#1769AA] transition-colors cursor-pointer"
+                  className="flex w-full cursor-pointer items-center justify-between gap-4 p-5 text-left font-serif font-semibold text-[#102A43] transition-colors hover:text-[#1769AA] sm:p-6"
                 >
                   <span className="text-base sm:text-lg">{faq.question}</span>
-                  <div className={`w-8 h-8 rounded-full bg-[#EEF7FC] text-[#1769AA] flex items-center justify-center shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 bg-[#0B2A5B] text-white' : ''}`}>
+                  <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-[#EEF7FC] text-[#1769AA] transition-transform duration-200 ${isOpen ? 'rotate-180 bg-[#0B2A5B] text-white' : ''}`}>
                     <ChevronDown className="w-4 h-4" />
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 sm:px-6 pb-6 text-xs sm:text-sm text-[#52677D] leading-relaxed border-t border-[#EEF2F6] pt-4 animate-in fade-in duration-200">
+                  <div className="animate-in border-t border-[#EEF2F6] px-5 pb-6 pt-4 text-xs leading-relaxed text-[#52677D] fade-in duration-200 sm:px-6 sm:text-sm">
                     {faq.answer}
                   </div>
                 )}
               </div>
             );
           })}
+          </div>
         </div>
 
       </div>

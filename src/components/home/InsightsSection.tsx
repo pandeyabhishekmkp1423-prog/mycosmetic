@@ -43,22 +43,22 @@ export const InsightsSection: React.FC<InsightsSectionProps> = ({ onNavigate }) 
               key={art.slug}
               id={`insight-card-${art.slug}`}
               onClick={() => onNavigate(`insight-${art.slug}`)}
-              className="bg-[#FCFDFD] rounded-[22px] border border-[#DCE7F0] overflow-hidden shadow-xs hover:shadow-[0_12px_30px_rgba(11,42,91,0.06)] hover:border-[#1769AA]/40 transition-all duration-300 flex flex-col justify-between cursor-pointer group"
+              className="interactive-lift group flex cursor-pointer flex-col justify-between overflow-hidden rounded-lg border border-[#DCE7F0] bg-white shadow-[0_8px_24px_rgba(11,42,91,0.05)] hover:border-[#1769AA]/50 hover:shadow-[0_16px_34px_rgba(11,42,91,0.10)]"
             >
               <div>
-                <div className="aspect-[16/10] overflow-hidden relative bg-gray-100">
+                <div className="relative aspect-[16/10] overflow-hidden bg-[#EAF3F8]">
                   <SafeImage
                     src={art.image}
                     alt={art.title}
                     fallbackCategory="Clinical Guide"
                     className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
                   />
-                  <div className="absolute top-3.5 left-3.5 px-3 py-1 bg-white/95 backdrop-blur-md text-[#0B2A5B] text-[10px] font-bold uppercase rounded-lg tracking-wider border border-[#DCE7F0]">
+                  <div className="absolute left-4 top-4 rounded-md border border-white/70 bg-white/95 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#0B2A5B] shadow-sm">
                     {art.category}
                   </div>
                 </div>
 
-                <div className="p-6">
+                <div className="p-5 sm:p-6">
                   <div className="flex items-center gap-3 text-xs text-[#718096] mb-2">
                     <span>{art.date}</span>
                     <span>•</span>
@@ -77,7 +77,7 @@ export const InsightsSection: React.FC<InsightsSectionProps> = ({ onNavigate }) 
                 </div>
               </div>
 
-              <div className="p-6 pt-0 flex items-center justify-between text-xs border-t border-[#EEF2F6] mt-2 pt-4">
+              <div className="mt-1 flex items-center justify-between border-t border-[#E8EFF4] px-5 pb-5 pt-4 text-xs sm:px-6 sm:pb-6">
                 <span className="text-[#718096] font-medium">{art.author}</span>
                 <span className="font-semibold text-[#1769AA] group-hover:text-[#0B2A5B] flex items-center gap-1 transition-colors">
                   Read Guide <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
