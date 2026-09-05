@@ -82,22 +82,21 @@ export const DoctorCredentialsTimeline: React.FC<DoctorCredentialsTimelineProps>
   const active = milestones[selectedMilestone];
 
   return (
-    <section id="doctor-credentials-timeline" className="py-20 sm:py-28 bg-[#F8FAFC] relative overflow-hidden border-b border-[#E2E8F0]">
+    <section id="doctor-credentials-timeline" className="py-12 sm:py-16 bg-[#F8FAFC] relative overflow-hidden border-b border-[#E2E8F0]">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#00A3E0]/10 border border-[#00A3E0]/20 text-[#00A3E0] text-xs font-semibold tracking-wide uppercase">
-            <GraduationCap className="w-3.5 h-3.5" />
-            <span>Surgical Heritage & Milestones</span>
-          </div>
+        {/* Header with Rich Editorial Typography */}
+        <div className="text-center max-w-3xl mx-auto space-y-2 mb-8 sm:mb-10">
+          <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block">
+            Surgical Heritage & Milestones
+          </span>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#003366] tracking-tight">
-            25+ Years of Surgical Mastery
+          <h2 className="font-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-[#003366] tracking-tight">
+            25+ Years of <span className="italic text-[#00A3E0] font-normal">Surgical Mastery.</span>
           </h2>
 
-          <p className="text-sm sm:text-base text-[#475569] leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
             Dr. R. K. Mishra’s clinical philosophy combines rigorous academic qualification from KGMC Lucknow with international fellowships from the United States and Asia.
           </p>
         </div>
@@ -116,13 +115,13 @@ export const DoctorCredentialsTimeline: React.FC<DoctorCredentialsTimelineProps>
                     : 'bg-white text-[#475569] border-[#E2E8F0] hover:border-[#00A3E0] hover:text-[#003366]'
                 }`}
               >
-                <span className={`text-lg font-bold font-serif ${isSelected ? 'text-[#00A3E0]' : 'text-[#003366]'}`}>
+                <span className={`text-lg font-bold font-editorial ${isSelected ? 'text-[#00A3E0]' : 'text-[#003366]'}`}>
                   {m.year}
                 </span>
                 <span className="text-xs font-bold mt-1 line-clamp-1">
                   {m.highlight}
                 </span>
-                <span className={`text-[10px] mt-1 ${isSelected ? 'text-white/80' : 'text-slate-400'}`}>
+                <span className={`text-xs mt-1 ${isSelected ? 'text-white/80' : 'text-slate-500'}`}>
                   {m.location}
                 </span>
               </button>
@@ -135,13 +134,13 @@ export const DoctorCredentialsTimeline: React.FC<DoctorCredentialsTimelineProps>
           
           <div className="lg:col-span-8 space-y-4">
             <div className="flex items-center gap-2 text-xs">
-              <span className="px-3 py-1 bg-[#00A3E0]/10 text-[#003366] font-bold uppercase rounded-md border border-[#00A3E0]/20 text-[10px]">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#00A3E0]">
                 {active.year} • {active.highlight}
               </span>
-              <span className="text-[#64748B]">• {active.location}</span>
+              <span className="text-[#64748B] font-medium">• {active.location}</span>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#003366]">
+            <h3 className="text-2xl sm:text-3xl font-editorial font-bold text-[#003366]">
               {active.title}
             </h3>
 
@@ -149,7 +148,7 @@ export const DoctorCredentialsTimeline: React.FC<DoctorCredentialsTimelineProps>
               {active.institution}
             </p>
 
-            <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
+            <p className="text-sm sm:text-base text-[#475569] leading-relaxed">
               {active.details}
             </p>
 
@@ -164,9 +163,9 @@ export const DoctorCredentialsTimeline: React.FC<DoctorCredentialsTimelineProps>
 
               <button
                 onClick={() => onNavigate('book-consultation')}
-                className="btn-crimson py-2.5 px-4 text-xs"
+                className="btn-outline-navy py-2.5 px-4 text-xs flex items-center gap-1.5"
               >
-                <Calendar className="w-3.5 h-3.5" />
+                <Calendar className="w-3.5 h-3.5 text-[#00A3E0]" />
                 <span>Consult with Dr. Mishra</span>
               </button>
             </div>
@@ -183,8 +182,8 @@ export const DoctorCredentialsTimeline: React.FC<DoctorCredentialsTimelineProps>
               </div>
               <div>
                 <h4 className="font-bold text-sm text-[#003366]">Dr. R. K. Mishra</h4>
-                <p className="text-[11px] text-[#00A3E0] font-medium">M.Ch Plastic Surgery (KGMC)</p>
-                <p className="text-[10px] text-slate-400">25+ Yrs Exp • 30,000+ Surgeries</p>
+                <p className="text-xs text-[#00A3E0] font-medium">M.Ch Plastic Surgery (KGMC)</p>
+                <p className="text-xs text-slate-500">25+ Yrs Exp • 30,000+ Surgeries</p>
               </div>
             </div>
 

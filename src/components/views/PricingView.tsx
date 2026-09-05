@@ -39,12 +39,11 @@ export const PricingView: React.FC<PricingViewProps> = ({ onNavigate }) => {
       {/* Hero Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-12">
         <div className="max-w-3xl space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00A3E0]/10 border border-[#00A3E0]/20 text-[#00A3E0] text-xs font-semibold tracking-wide uppercase">
-            <CreditCard className="w-3.5 h-3.5" />
-            <span>Honest & Transparent Financial Policy</span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#003366] tracking-tight">
-            Surgery Pricing & Inclusions
+          <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block mb-1">
+            Honest & Transparent Financial Policy
+          </span>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-editorial font-bold text-[#003366] tracking-tight">
+            Surgery Pricing & <span className="italic text-[#00A3E0] font-normal">Inclusions</span>
           </h1>
           <p className="text-sm sm:text-base text-[#475569] font-normal leading-relaxed pt-1">
             Upfront, comprehensive estimates for all cosmetic procedures at SIPS Hospital Lucknow under Senior Surgeon Dr. R. K. Mishra. We offer transparent itemized pricing with zero-interest EMI options.
@@ -54,37 +53,37 @@ export const PricingView: React.FC<PricingViewProps> = ({ onNavigate }) => {
         {/* 3 Pillars */}
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
           <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs space-y-2 hover:border-[#00A3E0]/40 transition-all">
-            <span className="text-[11px] font-bold text-[#00A3E0] uppercase tracking-wider block">
+            <span className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider block">
               Pillar 01
             </span>
             <h3 className="text-base font-bold text-[#003366]">
               Surgical Precision
             </h3>
-            <p className="text-xs text-[#64748B] leading-relaxed">
+            <p className="text-sm text-[#64748B] leading-relaxed font-normal">
               Tailored techniques, micro-cartilage grafting needs, and individual anatomical complexity guide surgery time.
             </p>
           </div>
 
           <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs space-y-2 hover:border-[#00A3E0]/40 transition-all">
-            <span className="text-[11px] font-bold text-[#00A3E0] uppercase tracking-wider block">
+            <span className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider block">
               Pillar 02
             </span>
             <h3 className="text-base font-bold text-[#003366]">
               NABH Operating Suites
             </h3>
-            <p className="text-xs text-[#64748B] leading-relaxed">
+            <p className="text-sm text-[#64748B] leading-relaxed font-normal">
               Performed exclusively in Class 100 laminar airflow sterile theaters with dedicated senior cardiac anesthetists.
             </p>
           </div>
 
           <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs space-y-2 hover:border-[#00A3E0]/40 transition-all">
-            <span className="text-[11px] font-bold text-[#00A3E0] uppercase tracking-wider block">
+            <span className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider block">
               Pillar 03
             </span>
             <h3 className="text-base font-bold text-[#003366]">
               FDA-Approved Implants
             </h3>
-            <p className="text-xs text-[#64748B] leading-relaxed">
+            <p className="text-sm text-[#64748B] leading-relaxed font-normal">
               US-FDA approved cohesive medical silicone, suture materials, and medical-grade compression garments included.
             </p>
           </div>
@@ -148,10 +147,10 @@ export const PricingView: React.FC<PricingViewProps> = ({ onNavigate }) => {
                         <td className="py-4 px-4 text-right">
                           <button
                             onClick={() => onNavigate('book-consultation')}
-                            className="btn-crimson py-1.5 px-3 text-xs inline-flex items-center gap-1"
+                            className="py-2 px-3.5 rounded-lg bg-[#003366] hover:bg-[#002244] text-white font-bold text-xs inline-flex items-center gap-1.5 transition-all cursor-pointer shadow-xs"
                           >
                             <span>Consult</span>
-                            <ArrowRight className="w-3 h-3" />
+                            <ArrowRight className="w-3.5 h-3.5 text-[#00A3E0]" />
                           </button>
                         </td>
                       </tr>
@@ -164,14 +163,14 @@ export const PricingView: React.FC<PricingViewProps> = ({ onNavigate }) => {
         })}
 
         {/* Package Inclusions */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-[#002244] to-[#003366] text-white space-y-5 shadow-xl border border-white/10">
+        <div className="p-8 sm:p-10 rounded-3xl bg-[#003366] text-white space-y-5 shadow-xl border border-[#00A3E0]/30">
           <div className="space-y-1">
             <span className="text-xs font-semibold uppercase tracking-widest text-[#00A3E0]">All-Inclusive Guarantee</span>
-            <h3 className="text-2xl font-serif font-bold text-white">
+            <h3 className="text-2xl font-editorial font-bold text-white">
               What is Included in Your Surgical Package?
             </h3>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 text-xs text-slate-300">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 text-sm text-slate-200">
             <div className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-[#00A3E0] shrink-0 mt-0.5" />
               <span>Surgeon fee for Senior Surgeon Dr. R. K. Mishra and specialized team</span>
@@ -192,7 +191,7 @@ export const PricingView: React.FC<PricingViewProps> = ({ onNavigate }) => {
         </div>
 
         {/* Disclaimer */}
-        <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] text-xs text-[#64748B] flex items-start gap-3 shadow-xs">
+        <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] text-sm text-[#64748B] flex items-start gap-3 shadow-xs">
           <Info className="w-4 h-4 text-[#00A3E0] shrink-0 mt-0.5" />
           <p>
             * Prices are indicative starting estimates in INR and subject to formal anatomical evaluation and clinical diagnosis during your confidential consultation with Dr. R. K. Mishra at SIPS Hospital.

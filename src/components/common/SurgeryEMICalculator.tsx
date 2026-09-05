@@ -30,25 +30,24 @@ export const SurgeryEMICalculator: React.FC<SurgeryEMICalculatorProps> = ({ onNa
   const monthlyEMI = Math.round(amount / tenure);
 
   return (
-    <div className="bg-white rounded-3xl border border-[#E2E8F0] p-6 sm:p-10 shadow-sm space-y-8">
+    <div id="surgery-emi-calculator" className="bg-white rounded-3xl border border-[#E2E8F0] p-6 sm:p-10 shadow-sm space-y-8">
       
-      {/* Header */}
+      {/* Header with Rich Editorial Typography */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E2E8F0]">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00A3E0]/10 border border-[#00A3E0]/20 text-[#00A3E0] text-xs font-semibold tracking-wide uppercase mb-2">
-            <Percent className="w-3.5 h-3.5" />
-            <span>0% Interest Medical Financing</span>
-          </div>
-          <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#003366]">
-            Surgery EMI & Payment Calculator
+          <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block mb-1">
+            0% Interest Medical Financing
+          </span>
+          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-editorial font-bold text-[#003366]">
+            Surgery EMI & <span className="italic text-[#00A3E0] font-normal">Payment Calculator.</span>
           </h3>
-          <p className="text-xs sm:text-sm text-[#475569] mt-1">
+          <p className="text-base text-slate-600 mt-2">
             Achieve your desired aesthetic transformation without financial compromise through flexible monthly plans.
           </p>
         </div>
 
-        <div className="p-3 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] text-center self-start sm:self-center">
-          <span className="text-[10px] uppercase font-bold text-[#64748B] block">Financing Rate</span>
+        <div className="p-3.5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] text-center self-start sm:self-center">
+          <span className="text-xs uppercase font-bold text-[#64748B] block">Financing Rate</span>
           <span className="text-base font-bold text-[#00A3E0]">0% Interest Available</span>
         </div>
       </div>
@@ -80,7 +79,7 @@ export const SurgeryEMICalculator: React.FC<SurgeryEMICalculatorProps> = ({ onNa
               className="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#003366]"
             />
 
-            <div className="flex justify-between text-[11px] text-[#64748B]">
+            <div className="flex justify-between text-xs text-[#64748B]">
               <span>₹35,000 (Minor Revision)</span>
               <span>₹1,50,000 (Advanced Surgery)</span>
               <span>₹3,00,000 (Composite Full Body)</span>
@@ -104,7 +103,7 @@ export const SurgeryEMICalculator: React.FC<SurgeryEMICalculatorProps> = ({ onNa
                   }`}
                 >
                   <span className="block font-bold text-sm">{t.months} Months</span>
-                  <span className={`text-[10px] ${tenure === t.months ? 'text-[#00A3E0]' : 'text-[#64748B]'}`}>
+                  <span className={`text-xs ${tenure === t.months ? 'text-[#00A3E0]' : 'text-[#64748B]'}`}>
                     {t.months <= 12 ? '0% Interest' : 'Low Interest'}
                   </span>
                 </button>
@@ -113,7 +112,7 @@ export const SurgeryEMICalculator: React.FC<SurgeryEMICalculatorProps> = ({ onNa
           </div>
 
           {/* Key Finance Perks */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs text-[#475569]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-sm text-[#475569]">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-[#00A3E0] shrink-0" />
               <span>Zero down-payment options</span>
@@ -141,12 +140,12 @@ export const SurgeryEMICalculator: React.FC<SurgeryEMICalculatorProps> = ({ onNa
               Estimated Monthly Outlay
             </span>
             <div className="flex items-baseline gap-2 mt-1">
-              <span className="text-3xl sm:text-4xl font-bold font-serif text-white">
+              <span className="text-3xl sm:text-4xl font-bold font-heading text-white">
                 ₹{monthlyEMI.toLocaleString('en-IN')}
               </span>
               <span className="text-xs text-slate-300">/ month</span>
             </div>
-            <p className="text-[11px] text-slate-300 mt-1">
+            <p className="text-xs text-slate-300 mt-1">
               For a total procedure investment of ₹{amount.toLocaleString('en-IN')} spread over {tenure} months.
             </p>
           </div>
@@ -173,13 +172,13 @@ export const SurgeryEMICalculator: React.FC<SurgeryEMICalculatorProps> = ({ onNa
           <div className="space-y-2.5 pt-2">
             <button
               onClick={() => onNavigate('book-consultation')}
-              className="btn-crimson w-full justify-center py-3 text-xs shadow-md"
+              className="w-full py-3.5 px-4 rounded-xl bg-white hover:bg-slate-100 text-[#003366] text-sm font-bold uppercase tracking-wider shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all"
             >
-              <Calendar className="w-4 h-4" />
+              <Calendar className="w-4 h-4 text-[#003366]" />
               <span>Check Pre-Approval & Book</span>
             </button>
 
-            <p className="text-[10px] text-center text-slate-400 leading-relaxed">
+            <p className="text-xs text-center text-slate-400 leading-relaxed">
               * Official approval is subject to partner lender verification (Bajaj Finserv, LiquiLoans, Arogya Finance).
             </p>
           </div>

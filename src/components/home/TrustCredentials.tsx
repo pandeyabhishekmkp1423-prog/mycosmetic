@@ -38,10 +38,10 @@ export const TrustCredentials: React.FC = () => {
                   <Icon className="w-5 h-5 stroke-[1.8]" />
                 </div>
                 <div>
-                  <h3 className="text-xs font-bold tracking-[0.1em] uppercase text-white mb-1">
+                  <h3 className="text-sm font-bold tracking-wider uppercase text-white mb-1.5">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                  <p className="text-sm text-slate-300 leading-relaxed font-normal">
                     {item.desc}
                   </p>
                 </div>

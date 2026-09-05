@@ -16,7 +16,7 @@ export const DoctorStorySection: React.FC<DoctorStorySectionProps> = ({ onNaviga
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-white border-b border-[#E2E8F0]">
+    <section className="py-12 sm:py-16 bg-white border-b border-[#E2E8F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
@@ -41,34 +41,35 @@ export const DoctorStorySection: React.FC<DoctorStorySectionProps> = ({ onNaviga
             </div>
           </div>
 
-          {/* Right: Editorial Story & Feature Badges (6 cols) */}
+          {/* Right: Editorial Story & Clinical Precision (6 cols) */}
           <div className="lg:col-span-6 space-y-6">
             
-            <div className="text-xs font-semibold tracking-[0.2em] text-[#00A3E0] uppercase">
+            <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block">
               About Dr. R. K. Mishra & SIPS Hospital
-            </div>
+            </span>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-heading font-bold text-[#003366] tracking-tight leading-tight">
-              Where Surgical Precision Meets Aesthetic Artistry
+            <h2 className="font-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-[#003366] tracking-tight leading-[1.12]">
+              Where Surgical Precision Meets <br />
+              <span className="italic text-[#00A3E0] font-normal">Aesthetic Artistry.</span>
             </h2>
 
-            <p className="text-base text-slate-600 leading-relaxed font-normal">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
               At <strong>My Cosmetic Surgery</strong>, we combine advanced surgical precision with high aesthetic harmony to deliver refined, natural results that enhance your self-confidence and quality of life. Led by Senior Plastic Surgeon <strong>Dr. R. K. Mishra</strong> (M.Ch Plastic Surgery, KGMC; Fellowships at Dallas & NYU), with over 25 years of specialized surgical excellence.
             </p>
 
-            {/* 4 Clean Feature Badges in 2x2 Grid */}
+            {/* 4 Clean Clinical Feature Cards in 2x2 Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               {features.map((item) => {
                 const Icon = item.icon;
                 return (
                   <div 
                     key={item.title}
-                    className="p-3.5 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] flex items-center gap-3"
+                    className="p-4 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] flex items-center gap-3.5"
                   >
-                    <div className="w-9 h-9 rounded-lg bg-[#E0F2FE] border border-[#00A3E0]/30 flex items-center justify-center shrink-0 text-[#003366]">
-                      <Icon className="w-4 h-4 stroke-[1.8]" />
+                    <div className="w-10 h-10 rounded-lg bg-[#E0F2FE] border border-[#00A3E0]/30 flex items-center justify-center shrink-0 text-[#003366]">
+                      <Icon className="w-5 h-5 stroke-[1.8]" />
                     </div>
-                    <span className="text-xs font-semibold text-[#0F172A]">
+                    <span className="text-sm sm:text-base font-semibold text-[#0F172A]">
                       {item.title}
                     </span>
                   </div>

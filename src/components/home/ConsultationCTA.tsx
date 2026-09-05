@@ -19,31 +19,31 @@ export const ConsultationCTA: React.FC<ConsultationCTAProps> = ({ onNavigate }) 
             </div>
 
             <div>
-              <h3 className="text-base sm:text-xl font-heading font-bold text-white tracking-tight">
-                Ready to Revamp Your Looks?
+              <h3 className="text-2xl sm:text-3xl font-editorial font-bold text-white tracking-tight">
+                Ready to Begin Your <span className="italic text-[#00A3E0] font-normal">Transformation?</span>
               </h3>
-              <p className="text-xs sm:text-sm text-slate-300 mt-0.5 font-normal">
+              <p className="text-sm sm:text-base text-slate-300 mt-1 font-normal">
                 Schedule your private, confidential clinical consultation with Dr. R. K. Mishra at SIPS Hospital today.
               </p>
             </div>
           </div>
 
           {/* Right: Buttons */}
-          <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto justify-center md:justify-end">
+          <div className="flex flex-wrap items-center gap-3.5 w-full sm:w-auto justify-center md:justify-end">
             <a
               href="tel:+919415023675"
-              className="px-5 py-3 rounded-lg border border-white/20 text-xs font-semibold uppercase tracking-wider text-white hover:bg-white/10 transition-colors inline-flex items-center gap-2"
+              className="px-6 py-3.5 rounded-xl border border-white/20 text-sm font-semibold text-white hover:bg-white/10 transition-colors inline-flex items-center gap-2"
             >
-              <PhoneCall className="w-3.5 h-3.5 text-[#00A3E0]" />
-              <span>Call 24/7 Helpline</span>
+              <PhoneCall className="w-4 h-4 text-[#00A3E0]" />
+              <span>Call Helpline</span>
             </a>
 
             <button
               onClick={() => onNavigate('book-consultation')}
-              className="px-7 py-3 rounded-lg bg-[#003366] hover:bg-[#002244] border border-[#00A3E0]/40 text-white text-xs font-semibold tracking-wider shrink-0 w-full sm:w-auto shadow-md transition-all inline-flex items-center justify-center gap-2 cursor-pointer"
+              className="px-7 py-3.5 rounded-xl bg-[#003366] hover:bg-[#002244] border border-[#00A3E0]/40 text-white text-sm sm:text-base font-semibold shrink-0 w-full sm:w-auto shadow-md transition-all inline-flex items-center justify-center gap-2 cursor-pointer"
             >
-              <Calendar className="w-3.5 h-3.5 text-[#00A3E0]" />
-              <span>BOOK CONSULTATION</span>
+              <Calendar className="w-4 h-4 text-[#00A3E0]" />
+              <span>Book Consultation</span>
             </button>
           </div>
 

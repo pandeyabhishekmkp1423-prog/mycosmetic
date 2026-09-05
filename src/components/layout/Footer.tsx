@@ -157,7 +157,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
       </div>
 
       {/* Bottom Legal Bar */}
-      <div className="border-t border-[#003366] py-4 px-4 sm:px-8 text-slate-400 text-[11px]">
+      <div className="border-t border-[#003366] py-4 px-4 sm:px-8 text-slate-400 text-xs">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div>
             © 2026 My Cosmetic Surgery • Dr. R. K. Mishra • SIPS Hospital Lucknow. All rights reserved.

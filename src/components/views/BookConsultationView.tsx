@@ -77,21 +77,22 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
       <div className="max-w-4xl mx-auto px-4 sm:px-8">
         
         {/* Header */}
+        {/* Header */}
         <div className="text-center max-w-xl mx-auto mb-10 space-y-2">
-          <span className="text-xs font-semibold tracking-[0.2em] text-[#00A3E0] uppercase block">
+          <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block">
             Private Consultation
           </span>
-          <h1 className="text-3xl sm:text-4xl font-heading font-bold text-[#003366] tracking-tight">
-            Schedule Your Visit
+          <h1 className="text-3xl sm:text-4xl font-editorial font-bold text-[#003366] tracking-tight">
+            Schedule Your <span className="italic text-[#00A3E0] font-normal">Visit</span>
           </h1>
-          <p className="text-xs sm:text-sm text-slate-600">
+          <p className="text-sm sm:text-base text-slate-600 font-normal">
             Meet with Senior Plastic Surgeon Dr. R. K. Mishra at SIPS Super Specialty Hospital Lucknow.
           </p>
         </div>
 
         {/* Step Indicator */}
         {step < 4 && (
-          <div className="mb-8 grid grid-cols-3 gap-3 text-xs">
+          <div className="mb-8 grid grid-cols-3 gap-3 text-xs sm:text-sm">
             {[
               ['1', 'Procedure & Mode'],
               ['2', 'Date & Time'],
@@ -110,8 +111,8 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
                         : 'border-[#E2E8F0] bg-white text-slate-500'
                   }`}
                 >
-                  <span className="text-[10px] block opacity-80 uppercase">Step {number}</span>
-                  <span className="text-xs">{label}</span>
+                  <span className="text-xs block opacity-80 uppercase font-semibold">Step {number}</span>
+                  <span className="text-xs sm:text-sm font-bold">{label}</span>
                 </div>
               );
             })}
@@ -143,7 +144,7 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
                   }`}
                 >
                   <p className="truncate font-bold">{proc.title}</p>
-                  <span className={`text-[10px] block mt-0.5 ${procedure === proc.title ? 'text-[#00A3E0]' : 'text-slate-500'}`}>
+                  <span className={`text-xs block mt-0.5 ${procedure === proc.title ? 'text-[#00A3E0]' : 'text-slate-500'}`}>
                     {proc.category}
                   </span>
                 </button>
@@ -167,7 +168,7 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
                     <Building2 className={`w-4 h-4 ${consultationType === 'IN_PERSON' ? 'text-[#00A3E0]' : 'text-[#003366]'}`} />
                     <span className="text-xs font-bold">In-Person Clinical OPD</span>
                   </div>
-                  <p className={`text-[11px] ${consultationType === 'IN_PERSON' ? 'text-slate-200' : 'text-slate-500'}`}>
+                  <p className={`text-xs ${consultationType === 'IN_PERSON' ? 'text-slate-200' : 'text-slate-500'}`}>
                     At SIPS Hospital, Chowk, Lucknow. Full anatomical evaluation.
                   </p>
                 </div>
@@ -184,7 +185,7 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
                     <Video className={`w-4 h-4 ${consultationType === 'VIRTUAL' ? 'text-[#00A3E0]' : 'text-[#003366]'}`} />
                     <span className="text-xs font-bold">Virtual Video Consultation</span>
                   </div>
-                  <p className={`text-[11px] ${consultationType === 'VIRTUAL' ? 'text-slate-200' : 'text-slate-500'}`}>
+                  <p className={`text-xs ${consultationType === 'VIRTUAL' ? 'text-slate-200' : 'text-slate-500'}`}>
                     For outstation or international patients prior to Lucknow travel.
                   </p>
                 </div>
@@ -376,10 +377,10 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
               <button
                 type="submit"
                 disabled={!canSubmit}
-                className={`btn-crimson ${!canSubmit ? 'opacity-50 cursor-not-allowed' : ''}`}
+                className={`py-3.5 px-7 rounded-xl bg-[#003366] hover:bg-[#002244] text-white font-bold text-sm shadow-sm transition-all cursor-pointer inline-flex items-center gap-2 ${!canSubmit ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 <span>Confirm & Request Appointment</span>
-                <CheckCircle2 className="w-4 h-4 ml-1" />
+                <CheckCircle2 className="w-4 h-4 ml-1 text-[#00A3E0]" />
               </button>
             </div>
           </form>
@@ -393,10 +394,10 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
             </div>
 
             <div className="space-y-2">
-              <h2 className="text-2xl font-heading font-bold text-[#003366]">
+              <h2 className="text-2xl sm:text-3xl font-editorial font-bold text-[#003366]">
                 Consultation Request Registered
               </h2>
-              <p className="text-sm text-slate-600 max-w-md mx-auto">
+              <p className="text-sm sm:text-base text-slate-600 max-w-md mx-auto">
                 Thank you, <strong>{name}</strong>. Your consultation request for <strong>{procedure}</strong> has been received. Reference: <strong className="text-[#003366]">#{bookingReference}</strong>.
               </p>
             </div>

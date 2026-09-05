@@ -23,19 +23,19 @@ export const InteractiveBeforeAfter: React.FC<InteractiveBeforeAfterProps> = ({ 
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#F8FAFC] border-b border-[#E2E8F0]">
+    <section id="before-after-gallery" className="py-12 sm:py-16 bg-[#F8FAFC] border-b border-[#E2E8F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
-          <div className="max-w-2xl space-y-2">
-            <span className="text-xs font-semibold tracking-[0.2em] text-[#00A3E0] uppercase block">
-              Real Transformations
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+          <div className="max-w-2xl space-y-1.5">
+            <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block">
+              Verified Transformations
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-heading font-bold text-[#003366] tracking-tight">
-              Before & After Gallery
+            <h2 className="font-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-[#003366] tracking-tight">
+              Before & After <span className="italic text-[#00A3E0] font-normal">Gallery.</span>
             </h2>
-            <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed pt-1">
+            <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed pt-1">
               Standardized clinical photography from Dr. R. K. Mishra's surgical cases. Drag slider to compare natural tissue contours.
             </p>
           </div>
@@ -50,14 +50,14 @@ export const InteractiveBeforeAfter: React.FC<InteractiveBeforeAfterProps> = ({ 
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-10 scrollbar-none">
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 mb-6 scrollbar-none">
           {categories.map((cat) => {
             const isActive = activeCategory === cat.id;
             return (
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-4 py-2 rounded-lg text-xs font-semibold tracking-wide uppercase transition-colors cursor-pointer ${
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold tracking-wide transition-colors cursor-pointer ${
                   isActive
                     ? 'bg-[#003366] text-white shadow-sm'
                     : 'bg-white text-slate-600 border border-[#E2E8F0] hover:bg-[#F0F7FD] hover:text-[#003366]'
@@ -78,16 +78,13 @@ export const InteractiveBeforeAfter: React.FC<InteractiveBeforeAfterProps> = ({ 
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-base font-heading font-bold text-[#003366]">
+                  <h3 className="text-lg font-bold text-[#003366]">
                     {item.procedureName}
                   </h3>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-sm text-slate-500">
                     {item.patientInfo} • {item.timeline}
                   </p>
                 </div>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-[#E0F2FE] text-[#0284C7] border border-[#00A3E0]/20">
-                  Verified Outcome
-                </span>
               </div>
 
               <div className="rounded-xl overflow-hidden shadow-xs">

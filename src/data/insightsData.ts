@@ -18,7 +18,7 @@ export const insightsData: InsightArticle[] = [
       '### Months 6 to 12: Final Tip Definition\nThe delicate skin over the nasal tip takes the longest to shrink-wrap over the newly sculpted cartilage framework. Final refined contours stabilize around the 12-month mark.'
     ],
     tags: ['Rhinoplasty', 'Recovery', 'Nose Surgery', 'Post-Op Care'],
-    image: 'https://images.unsplash.com/photo-1512290900672-1f4a47a1ff1e?auto=format&fit=crop&w=800&q=80',
+    image: 'https://www.perfectdrs.com/wp-content/uploads/2025/12/What-are-the-different-rhinoplasty-procedures.webp',
     faqs: [
       {
         question: 'When can I wear heavy eyeglasses after rhinoplasty?',

@@ -62,12 +62,12 @@ export const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onNaviga
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#E2E8F0]">
           <div>
             <div className="flex items-center gap-2">
-              <span className="px-2.5 py-0.5 bg-[#003366] text-white text-[10px] font-bold uppercase rounded-md">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#00A3E0]">
                 Clinic Admin Desk
               </span>
-              <span className="text-xs text-[#64748B]">SIPS Super Specialty Hospital, Lucknow</span>
+              <span className="text-xs text-[#64748B]">• SIPS Super Specialty Hospital, Lucknow</span>
             </div>
-            <h1 className="text-2xl font-serif font-bold text-[#003366] mt-1">
+            <h1 className="text-2xl sm:text-3xl font-editorial font-bold text-[#003366] mt-1">
               Clinic Operations & Patient Portal
             </h1>
           </div>
@@ -170,12 +170,12 @@ export const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onNaviga
                       <tr key={lead.id} className="hover:bg-[#F8FAFC] transition-colors">
                         <td className="py-3.5 px-4">
                           <p className="font-bold text-[#003366]">{lead.name}</p>
-                          <div className="flex items-center gap-2 text-[#64748B] text-[11px] mt-0.5">
-                            <span className="flex items-center gap-1 font-medium"><Phone className="w-3 h-3 text-[#003366]" /> {lead.phone}</span>
+                          <div className="flex items-center gap-2 text-[#64748B] text-xs mt-0.5">
+                            <span className="flex items-center gap-1 font-medium"><Phone className="w-3.5 h-3.5 text-[#003366]" /> {lead.phone}</span>
                             <span>•</span>
-                            <span className="flex items-center gap-1"><Mail className="w-3 h-3 text-[#64748B]" /> {lead.email}</span>
+                            <span className="flex items-center gap-1"><Mail className="w-3.5 h-3.5 text-[#64748B]" /> {lead.email}</span>
                           </div>
-                          {lead.city && <p className="text-[10px] text-[#64748B]">City: {lead.city}</p>}
+                          {lead.city && <p className="text-xs text-[#64748B] mt-0.5">City: {lead.city}</p>}
                         </td>
 
                         <td className="py-3.5 px-4 font-semibold text-[#003366]">
@@ -183,11 +183,11 @@ export const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onNaviga
                         </td>
 
                         <td className="py-3.5 px-4 text-[#475569]">
-                          <span className="px-2 py-0.5 bg-[#00A3E0]/10 text-[#003366] rounded-md text-[10px] font-bold uppercase border border-[#00A3E0]/20">
+                          <span className="text-xs font-bold uppercase tracking-wider text-[#003366] block">
                             {lead.consultationType === 'IN_PERSON' ? 'In-Person' : 'Virtual'}
                           </span>
-                          <p className="text-[11px] text-[#64748B] mt-1">{lead.preferredDate}</p>
-                          <p className="text-[10px] text-[#64748B]">{lead.timeSlot}</p>
+                          <p className="text-xs text-[#64748B] mt-1">{lead.preferredDate}</p>
+                          <p className="text-xs text-[#64748B]">{lead.timeSlot}</p>
                         </td>
 
                         <td className="py-3.5 px-4">
@@ -208,7 +208,7 @@ export const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onNaviga
                           </select>
                         </td>
 
-                        <td className="py-3.5 px-4 text-[#64748B] text-[11px]">
+                        <td className="py-3.5 px-4 text-[#64748B] text-xs">
                           {new Date(lead.createdAt).toLocaleDateString()}
                         </td>
 
@@ -277,7 +277,7 @@ export const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onNaviga
                         <div className="flex items-center gap-2">
                           <button
                             onClick={() => handleAnswerSubmit(q.id)}
-                            className="btn-crimson text-xs py-1.5 px-3"
+                            className="py-2 px-3.5 rounded-lg bg-[#003366] hover:bg-[#002244] text-white text-xs font-bold shadow-xs cursor-pointer"
                           >
                             Publish Answer
                           </button>

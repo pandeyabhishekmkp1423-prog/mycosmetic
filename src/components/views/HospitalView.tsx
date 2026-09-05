@@ -35,12 +35,11 @@ export const HospitalView: React.FC<HospitalViewProps> = ({ onNavigate }) => {
         <div className="bg-white rounded-3xl border border-[#E2E8F0] p-8 sm:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00A3E0]/10 border border-[#00A3E0]/20 text-[#00A3E0] text-xs font-semibold tracking-wide uppercase">
-              <ShieldCheck className="w-3.5 h-3.5" />
-              <span>NABH Accredited Super Specialty Center</span>
-            </div>
+            <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block mb-1">
+              NABH Accredited Super Specialty Center
+            </span>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#003366] tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-editorial font-bold text-[#003366] tracking-tight leading-tight">
               {hospitalData.name}
             </h1>
 
@@ -49,31 +48,31 @@ export const HospitalView: React.FC<HospitalViewProps> = ({ onNavigate }) => {
             </p>
 
             <div className="grid grid-cols-3 gap-4 pt-2">
-              <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-center">
-                <p className="text-xs font-bold text-[#003366]">NABH</p>
-                <p className="text-[10px] text-[#64748B] uppercase font-medium mt-0.5">Accredited Quality</p>
+              <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-center">
+                <p className="text-base font-bold text-[#003366]">NABH</p>
+                <p className="text-xs text-[#64748B] uppercase font-semibold mt-1">Accredited Quality</p>
               </div>
-              <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-center">
-                <p className="text-xs font-bold text-[#003366]">Class 100</p>
-                <p className="text-[10px] text-[#64748B] uppercase font-medium mt-0.5">Laminar OTs</p>
+              <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-center">
+                <p className="text-base font-bold text-[#003366]">Class 100</p>
+                <p className="text-xs text-[#64748B] uppercase font-semibold mt-1">Laminar OTs</p>
               </div>
-              <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-center">
-                <p className="text-xs font-bold text-[#003366]">24/7 ICU</p>
-                <p className="text-[10px] text-[#64748B] uppercase font-medium mt-0.5">Critical Care</p>
+              <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-center">
+                <p className="text-base font-bold text-[#003366]">24/7 ICU</p>
+                <p className="text-xs text-[#64748B] uppercase font-semibold mt-1">Critical Care</p>
               </div>
             </div>
 
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <button
                 onClick={() => onNavigate('book-consultation')}
-                className="btn-crimson"
+                className="btn-navy text-sm sm:text-base py-3.5 px-6 rounded-xl font-semibold cursor-pointer flex items-center gap-2"
               >
-                <Calendar className="w-4 h-4" />
+                <Calendar className="w-4 h-4 text-[#00A3E0]" />
                 <span>Book Consultation at SIPS</span>
               </button>
               <button
                 onClick={() => onNavigate('contact')}
-                className="btn-outline-navy"
+                className="py-3.5 px-6 rounded-xl border border-[#003366] text-[#003366] hover:bg-[#003366] hover:text-white font-bold text-sm sm:text-base transition-colors cursor-pointer"
               >
                 <span>Hospital Map & Travel</span>
               </button>
@@ -201,20 +200,20 @@ export const HospitalView: React.FC<HospitalViewProps> = ({ onNavigate }) => {
               <MapPin className="w-4 h-4 text-[#00A3E0] shrink-0" />
               <span>{hospitalData.address}</span>
             </p>
-            <p className="text-xs text-slate-300 flex items-center gap-2">
+            <p className="text-sm text-slate-300 flex items-center gap-2">
               <Clock className="w-4 h-4 text-[#00A3E0] shrink-0" />
               <span>{hospitalData.timings}</span>
             </p>
           </div>
 
           <div className="space-y-4">
-            <p className="text-xs text-slate-300 leading-relaxed">
+            <p className="text-sm text-slate-300 leading-relaxed">
               Prior appointment booking is strictly recommended to ensure in-depth confidential evaluation with Dr. R. K. Mishra.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <button
                 onClick={() => onNavigate('book-consultation')}
-                className="btn-crimson"
+                className="py-3 px-6 rounded-xl bg-white hover:bg-slate-100 text-[#003366] font-bold text-sm shadow-md transition-all cursor-pointer inline-flex items-center gap-2"
               >
                 Schedule Consultation
               </button>

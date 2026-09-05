@@ -124,12 +124,12 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
           </div>
         )}
 
-        {/* Floating Badges */}
-        <div className="absolute top-3 left-3 z-10 px-2.5 py-1 bg-black/60 backdrop-blur-md text-white text-[10px] tracking-wider uppercase font-semibold rounded shadow-xs">
+        {/* Image Orientation Labels */}
+        <div className="absolute top-3 left-3 z-10 px-3 py-1 bg-black/70 backdrop-blur-md text-white text-xs tracking-wider uppercase font-bold rounded-md shadow-xs">
           {beforeLabel}
         </div>
         
-        <div className="absolute top-3 right-3 z-10 px-2.5 py-1 bg-[#003366]/90 backdrop-blur-md text-white text-[10px] tracking-wider uppercase font-semibold rounded shadow-xs border border-[#00A3E0]/40">
+        <div className="absolute top-3 right-3 z-10 px-3 py-1 bg-[#003366]/90 backdrop-blur-md text-white text-xs tracking-wider uppercase font-bold rounded-md shadow-xs border border-[#00A3E0]/40">
           {afterLabel}
         </div>
 
@@ -166,28 +166,28 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
           <div className="flex items-start justify-between gap-4">
             <div>
               {caseData.category && (
-                <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded bg-[#E0F2FE] text-[10px] font-bold uppercase tracking-wider text-[#0284C7] mb-1.5 border border-[#00A3E0]/20">
-                  <Sparkles className="w-3 h-3 text-[#00A3E0]" />
-                  <span>{caseData.category} Procedure</span>
-                </div>
+                <span className="text-xs font-bold uppercase tracking-wider text-[#00A3E0] mb-1 block">
+                  {caseData.category} Procedure
+                </span>
               )}
-              <h4 className="text-lg font-heading font-bold text-[#003366]">
+              <h4 className="text-xl font-heading font-bold text-[#003366]">
                 {caseData.procedureName}
               </h4>
               {(caseData.patientInfo || caseData.timeline) && (
-                <p className="text-xs text-slate-500 font-medium mt-0.5">
+                <p className="text-sm text-slate-500 font-medium mt-1">
                   {[caseData.patientInfo, caseData.timeline].filter(Boolean).join(' • ')}
                 </p>
               )}
             </div>
             
-            <div className="px-2.5 py-1 rounded-md bg-[#F0F7FD] border border-[#003366]/20 text-[10px] font-bold text-[#003366] uppercase tracking-wider shrink-0">
-              Verified Case
+            <div className="flex items-center gap-1.5 text-xs font-bold text-[#003366] uppercase tracking-wider shrink-0">
+              <CheckCircle2 className="w-4 h-4 text-[#00A3E0]" />
+              <span>Verified Case</span>
             </div>
           </div>
 
           {caseData.description && (
-            <p className="text-xs text-slate-600 leading-relaxed italic">
+            <p className="text-sm text-slate-600 leading-relaxed italic">
               "{caseData.description}"
             </p>
           )}
@@ -195,13 +195,13 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
           {/* Key Improvements */}
           {caseData.keyImprovements && caseData.keyImprovements.length > 0 && (
             <div className="pt-3 border-t border-[#E2E8F0] space-y-2">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#0F172A] block">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#003366] block">
                 Surgical Accomplishments:
               </span>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {caseData.keyImprovements.map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-2 text-xs text-slate-600">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#003366] shrink-0 mt-0.5" />
+                  <div key={idx} className="flex items-start gap-2 text-sm text-slate-700">
+                    <CheckCircle2 className="w-4 h-4 text-[#00A3E0] shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </div>
                 ))}

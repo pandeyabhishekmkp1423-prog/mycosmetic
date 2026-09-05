@@ -19,12 +19,16 @@ import { ConsultationCTA } from './components/home/ConsultationCTA';
 import { ProcedureCostCalculator } from './components/common/ProcedureCostCalculator';
 
 // World-Class Interactive Medical Tools
+import { FindSurgeonSection } from './components/home/FindSurgeonSection';
 import { ProcedureMatcherQuiz } from './components/home/ProcedureMatcherQuiz';
 import { RecoveryTimelineSimulator } from './components/home/RecoveryTimelineSimulator';
 import { ProcedureComparisonMatrix } from './components/home/ProcedureComparisonMatrix';
 import { MedicalTourismConcierge } from './components/home/MedicalTourismConcierge';
 import { DoctorCredentialsTimeline } from './components/home/DoctorCredentialsTimeline';
 import { SurgeryEMICalculator } from './components/common/SurgeryEMICalculator';
+import { InteractiveExperienceDock } from './components/common/InteractiveExperienceDock';
+import { SkinStorySection } from './components/home/SkinStorySection';
+import { DeepAnatomySection } from './components/home/DeepAnatomySection';
 
 // Dedicated Views
 import { DoctorView } from './components/views/DoctorView';
@@ -136,9 +140,12 @@ export default function App() {
             <HeroSection onNavigate={handleNavigate} />
             <TrustCredentials />
             <ProcedureExplorer onNavigate={handleNavigate} />
+            <FindSurgeonSection onNavigate={handleNavigate} />
             <ProcedureMatcherQuiz onNavigate={handleNavigate} />
             <DoctorStorySection onNavigate={handleNavigate} />
             <DoctorCredentialsTimeline onNavigate={handleNavigate} />
+            <DeepAnatomySection onNavigate={handleNavigate} />
+            <SkinStorySection onNavigate={handleNavigate} />
             <RecoveryTimelineSimulator onNavigate={handleNavigate} />
             <InteractiveBeforeAfter onNavigate={handleNavigate} />
             <ProcedureComparisonMatrix onNavigate={handleNavigate} />
@@ -147,7 +154,7 @@ export default function App() {
             <PatientStoriesSection onNavigate={handleNavigate} />
             
             {/* Surgery Financing & Transparent Inclusions */}
-            <section className="py-20 sm:py-28 bg-[#F8FAFC] border-b border-[#E2E8F0]">
+            <section className="py-10 sm:py-14 bg-[#F8FAFC] border-b border-[#E2E8F0]">
               <div className="max-w-7xl mx-auto px-4 sm:px-8">
                 <SurgeryEMICalculator onNavigate={handleNavigate} />
               </div>
@@ -188,6 +195,12 @@ export default function App() {
 
       {/* Mobile Floating Quick Action Bar (Call / WhatsApp / Book) */}
       <MobileBottomBar onNavigate={handleNavigate} />
+
+      {/* Floating Interactive Experience Suite Dock (Next-Level UI Hub) */}
+      <InteractiveExperienceDock
+        currentRoute={currentRoute}
+        onNavigate={handleNavigate}
+      />
 
       {/* Global Search Modal */}
       <GlobalSearchModal

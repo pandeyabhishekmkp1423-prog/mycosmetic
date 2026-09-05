@@ -10,22 +10,21 @@ interface HospitalSectionProps {
 
 export const HospitalSection: React.FC<HospitalSectionProps> = ({ onNavigate }) => {
   return (
-    <section id="homepage-hospital-section" className="py-20 sm:py-28 bg-[#F8FAFC] relative overflow-hidden border-b border-[#E2E8F0]">
+    <section id="hospital-section" className="py-12 sm:py-16 bg-[#F8FAFC] relative overflow-hidden border-b border-[#E2E8F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
           
           {/* Left Column: Hospital Narrative & Facilities */}
-          <div className="lg:col-span-6 space-y-6">
+          <div className="lg:col-span-6 space-y-5">
             <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#00A3E0]/10 border border-[#00A3E0]/20 text-[#00A3E0] text-xs font-semibold tracking-wide uppercase mb-3">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#00A3E0]" />
-                <span>NABH Accredited Super-Specialty Infrastructure</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#003366] tracking-tight leading-[1.14]">
-                Operating at SIPS Hospital, Lucknow
+              <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block mb-1.5">
+                NABH Super-Specialty Infrastructure
+              </span>
+              <h2 className="font-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-[#003366] tracking-tight leading-[1.12]">
+                Operating at SIPS Hospital, <span className="italic text-[#00A3E0] font-normal">Lucknow.</span>
               </h2>
-              <p className="text-sm sm:text-base text-[#475569] mt-3 leading-relaxed font-normal">
+              <p className="text-base sm:text-lg text-slate-600 mt-3 leading-relaxed font-normal">
                 Sushrut Institute of Plastic Surgery (SIPS) is North India’s premier super-specialty hospital dedicated exclusively to plastic, cosmetic, and reconstructive surgical artistry.
               </p>
             </div>
@@ -36,10 +35,10 @@ export const HospitalSection: React.FC<HospitalSectionProps> = ({ onNavigate }) 
                 <div className="w-10 h-10 rounded-xl bg-[#00A3E0]/10 text-[#003366] flex items-center justify-center mb-3">
                   <Activity className="w-5 h-5 text-[#00A3E0]" />
                 </div>
-                <h4 className="text-xs font-bold text-[#003366] uppercase tracking-wider mb-1">
+                <h4 className="text-sm font-bold text-[#003366] uppercase tracking-wider mb-1">
                   Class 100 Laminar OTs
                 </h4>
-                <p className="text-xs text-[#64748B] leading-relaxed">
+                <p className="text-sm text-[#64748B] leading-relaxed">
                   HEPA-filtered positive pressure surgical suites strictly minimizing any microbial infection risks.
                 </p>
               </div>
@@ -48,10 +47,10 @@ export const HospitalSection: React.FC<HospitalSectionProps> = ({ onNavigate }) 
                 <div className="w-10 h-10 rounded-xl bg-[#00A3E0]/10 text-[#003366] flex items-center justify-center mb-3">
                   <BedDouble className="w-5 h-5 text-[#00A3E0]" />
                 </div>
-                <h4 className="text-xs font-bold text-[#003366] uppercase tracking-wider mb-1">
+                <h4 className="text-sm font-bold text-[#003366] uppercase tracking-wider mb-1">
                   VIP Inpatient Suites
                 </h4>
-                <p className="text-xs text-[#64748B] leading-relaxed">
+                <p className="text-sm text-[#64748B] leading-relaxed">
                   Discreet, comfortable inpatient recovery rooms with 24/7 specialized nursing and attendant space.
                 </p>
               </div>
@@ -60,10 +59,10 @@ export const HospitalSection: React.FC<HospitalSectionProps> = ({ onNavigate }) 
                 <div className="w-10 h-10 rounded-xl bg-[#00A3E0]/10 text-[#003366] flex items-center justify-center mb-3">
                   <Stethoscope className="w-5 h-5 text-[#00A3E0]" />
                 </div>
-                <h4 className="text-xs font-bold text-[#003366] uppercase tracking-wider mb-1">
+                <h4 className="text-sm font-bold text-[#003366] uppercase tracking-wider mb-1">
                   Cardiac Anesthesia
                 </h4>
-                <p className="text-xs text-[#64748B] leading-relaxed">
+                <p className="text-sm text-[#64748B] leading-relaxed">
                   Full-time board-certified cardiac anesthetists on-site throughout preoperative, surgical, and post-op care.
                 </p>
               </div>
@@ -72,10 +71,10 @@ export const HospitalSection: React.FC<HospitalSectionProps> = ({ onNavigate }) 
                 <div className="w-10 h-10 rounded-xl bg-[#00A3E0]/10 text-[#003366] flex items-center justify-center mb-3">
                   <Building2 className="w-5 h-5 text-[#00A3E0]" />
                 </div>
-                <h4 className="text-xs font-bold text-[#003366] uppercase tracking-wider mb-1">
+                <h4 className="text-sm font-bold text-[#003366] uppercase tracking-wider mb-1">
                   VASER Ultrasound Tech
                 </h4>
-                <p className="text-xs text-[#64748B] leading-relaxed">
+                <p className="text-sm text-[#64748B] leading-relaxed">
                   High-definition ultrasound body sculpting & Karl Storz endoscopy for precise, bloodless incisions.
                 </p>
               </div>
@@ -83,11 +82,11 @@ export const HospitalSection: React.FC<HospitalSectionProps> = ({ onNavigate }) 
 
             {/* Address & Actions */}
             <div className="p-5 rounded-2xl bg-white border border-[#E2E8F0] space-y-1.5 shadow-xs">
-              <p className="text-xs text-[#003366] flex items-start gap-2.5 font-bold">
+              <p className="text-sm text-[#003366] flex items-start gap-2.5 font-bold">
                 <MapPin className="w-4 h-4 text-[#00A3E0] shrink-0 mt-0.5" />
                 <span>{hospitalData.address}</span>
               </p>
-              <p className="text-[11px] text-[#64748B] pl-6.5">
+              <p className="text-xs text-[#64748B] pl-6.5">
                 <strong>Landmark:</strong> Near King George’s Medical University (KGMU), Chowk, Lucknow
               </p>
             </div>

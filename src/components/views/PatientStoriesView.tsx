@@ -24,12 +24,11 @@ export const PatientStoriesView: React.FC<PatientStoriesViewProps> = ({ onNaviga
       {/* Hero */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-12">
         <div className="max-w-3xl space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00A3E0]/10 border border-[#00A3E0]/20 text-[#00A3E0] text-xs font-semibold tracking-wide uppercase">
-            <Heart className="w-3.5 h-3.5 fill-current" />
-            <span>Real Patient Experiences</span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#003366] tracking-tight">
-            Patient Stories & Journeys
+          <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block mb-1">
+            Real Patient Experiences
+          </span>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-editorial font-bold text-[#003366] tracking-tight">
+            Patient Stories & <span className="italic text-[#00A3E0] font-normal">Journeys</span>
           </h1>
           <p className="text-sm sm:text-base text-[#475569] font-normal leading-relaxed pt-1">
             Behind every surgical procedure is a deeply personal transformation. Read candid reflections from patients treated by Senior Plastic Surgeon Dr. R. K. Mishra at SIPS Hospital, Lucknow.
@@ -49,14 +48,14 @@ export const PatientStoriesView: React.FC<PatientStoriesViewProps> = ({ onNaviga
               }`}
             >
               <div className="flex items-center justify-between text-xs mb-1.5">
-                <span className={`font-bold uppercase tracking-wider text-[11px] ${selectedStory === story.id ? 'text-[#00A3E0]' : 'text-[#003366]'}`}>
+                <span className={`font-bold uppercase tracking-wider text-xs ${selectedStory === story.id ? 'text-[#00A3E0]' : 'text-[#003366]'}`}>
                   {story.procedure}
                 </span>
-                <span className={`text-[11px] font-medium ${selectedStory === story.id ? 'text-white/80' : 'text-[#64748B]'}`}>
+                <span className={`text-xs font-medium ${selectedStory === story.id ? 'text-white/80' : 'text-[#64748B]'}`}>
                   {story.patientName}
                 </span>
               </div>
-              <p className={`text-xs font-serif font-bold line-clamp-1 ${selectedStory === story.id ? 'text-white' : 'text-[#003366]'}`}>
+              <p className={`text-sm font-editorial font-bold line-clamp-1 ${selectedStory === story.id ? 'text-white' : 'text-[#003366]'}`}>
                 {story.headline}
               </p>
             </button>
@@ -76,10 +75,10 @@ export const PatientStoriesView: React.FC<PatientStoriesViewProps> = ({ onNaviga
                   <Star key={i} className="w-4 h-4 fill-current" />
                 ))}
               </div>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#003366] leading-snug">
+              <h2 className="text-2xl sm:text-3xl font-editorial font-bold text-[#003366] leading-snug">
                 "{activeStory.headline}"
               </h2>
-              <div className="flex flex-wrap items-center gap-2.5 text-xs text-[#64748B] mt-2">
+              <div className="flex flex-wrap items-center gap-2.5 text-xs sm:text-sm text-[#64748B] mt-2 font-medium">
                 <span className="font-bold text-[#003366]">{activeStory.patientName}</span>
                 <span>•</span>
                 <span>{activeStory.location}</span>
@@ -90,12 +89,12 @@ export const PatientStoriesView: React.FC<PatientStoriesViewProps> = ({ onNaviga
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#F8FAFC] border-l-4 border-[#00A3E0] text-sm sm:text-base italic text-[#1E293B] leading-relaxed font-serif shadow-xs">
+            <div className="p-6 rounded-2xl bg-[#F8FAFC] border-l-4 border-[#00A3E0] text-base sm:text-lg italic text-[#1E293B] leading-relaxed font-editorial shadow-xs">
               "{activeStory.quote}"
             </div>
 
-            <div className="space-y-3 text-xs sm:text-sm text-[#475569] leading-relaxed">
-              <h3 className="text-base font-bold text-[#003366]">The Surgical Journey</h3>
+            <div className="space-y-3 text-sm sm:text-base text-[#475569] leading-relaxed font-normal">
+              <h3 className="text-lg font-editorial font-bold text-[#003366]">The Surgical Journey</h3>
               <p>{activeStory.story}</p>
             </div>
 
@@ -104,7 +103,7 @@ export const PatientStoriesView: React.FC<PatientStoriesViewProps> = ({ onNaviga
               <span className="text-xs font-semibold uppercase tracking-widest text-[#00A3E0]">
                 Surgeon Note • Dr. R. K. Mishra
               </span>
-              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed italic">
+              <p className="text-sm text-slate-200 leading-relaxed italic font-normal">
                 "{activeStory.doctorNote}"
               </p>
             </div>
@@ -119,7 +118,7 @@ export const PatientStoriesView: React.FC<PatientStoriesViewProps> = ({ onNaviga
                 Case Summary
               </h4>
               
-              <div className="space-y-3 text-xs">
+              <div className="space-y-3 text-xs sm:text-sm">
                 <div className="flex justify-between pb-2 border-b border-[#E2E8F0]">
                   <span className="text-[#64748B]">Procedure</span>
                   <span className="font-bold text-[#003366]">{activeStory.procedure}</span>
@@ -140,23 +139,23 @@ export const PatientStoriesView: React.FC<PatientStoriesViewProps> = ({ onNaviga
 
               <button
                 onClick={() => onNavigate('book-consultation')}
-                className="btn-crimson w-full justify-center"
+                className="btn-navy w-full justify-center py-3.5 px-4 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider"
               >
-                <Calendar className="w-4 h-4" />
+                <Calendar className="w-4 h-4 text-[#00A3E0]" />
                 <span>Book Similar Consultation</span>
               </button>
             </div>
 
             <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] text-center space-y-2 shadow-xs">
-              <h4 className="text-sm font-serif font-bold text-[#003366]">
+              <h4 className="text-base font-editorial font-bold text-[#003366]">
                 Explore All 500+ Reviews
               </h4>
-              <p className="text-xs text-[#64748B]">
+              <p className="text-xs sm:text-sm text-[#64748B] font-normal">
                 Verified patient feedback from Lucknow, UP, and international visitors.
               </p>
               <button
                 onClick={() => onNavigate('reviews')}
-                className="mt-2 text-xs font-bold text-[#00A3E0] hover:underline cursor-pointer"
+                className="mt-2 text-xs sm:text-sm font-bold text-[#00A3E0] hover:underline cursor-pointer"
               >
                 View Reviews Directory →
               </button>

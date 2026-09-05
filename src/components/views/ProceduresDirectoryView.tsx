@@ -46,12 +46,11 @@ export const ProceduresDirectoryView: React.FC<ProceduresDirectoryViewProps> = (
       {/* Hero Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-12">
         <div className="max-w-3xl space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00A3E0]/10 border border-[#00A3E0]/20 text-[#00A3E0] text-xs font-semibold tracking-wide uppercase">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Comprehensive Clinical Portfolio</span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#003366] tracking-tight">
-            Surgical & Non-Surgical Procedures
+          <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block mb-1">
+            Comprehensive Clinical Portfolio
+          </span>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-editorial font-bold text-[#003366] tracking-tight">
+            Surgical & Non-Surgical <span className="italic text-[#00A3E0] font-normal">Procedures</span>
           </h1>
           <p className="text-sm sm:text-base text-[#475569] font-normal leading-relaxed pt-1">
             Personalized cosmetic and reconstructive procedures performed with artistic precision by Senior Plastic Surgeon Dr. R. K. Mishra (25+ Yrs Experience) at SIPS Hospital, Lucknow.
@@ -67,7 +66,7 @@ export const ProceduresDirectoryView: React.FC<ProceduresDirectoryViewProps> = (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wide uppercase transition-all cursor-pointer whitespace-nowrap ${
+                className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold tracking-wide uppercase transition-all cursor-pointer whitespace-nowrap ${
                   selectedCategory === cat.id
                     ? 'bg-[#003366] text-white shadow-sm'
                     : 'bg-white text-[#475569] border border-[#E2E8F0] hover:bg-[#F8FAFC] hover:text-[#003366]'
@@ -86,13 +85,13 @@ export const ProceduresDirectoryView: React.FC<ProceduresDirectoryViewProps> = (
               placeholder="Search procedures by name or concern..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full rounded-xl border border-[#E2E8F0] bg-white py-2.5 pl-10 pr-4 text-xs text-[#1E293B] focus:border-[#003366] focus:ring-1 focus:ring-[#003366] focus:outline-none transition-all shadow-xs"
+              className="w-full rounded-xl border border-[#E2E8F0] bg-white py-2.5 pl-10 pr-4 text-xs sm:text-sm text-[#1E293B] focus:border-[#003366] focus:ring-1 focus:ring-[#003366] focus:outline-none transition-all shadow-xs"
             />
           </div>
 
         </div>
 
-        <div className="mt-4 text-xs text-[#64748B]">
+        <div className="mt-4 text-xs sm:text-sm text-[#64748B]">
           Showing <strong className="text-[#003366]">{filteredProcedures.length}</strong> specialized procedures
         </div>
       </div>
@@ -115,26 +114,26 @@ export const ProceduresDirectoryView: React.FC<ProceduresDirectoryViewProps> = (
                       fallbackCategory={proc.category}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-white/95 text-[#003366] text-[10px] font-bold uppercase tracking-wider rounded-md shadow-xs border border-[#E2E8F0]">
-                      {proc.category}
-                    </div>
                   </div>
 
                   <div className="p-6 space-y-2">
-                    <h3 className="text-lg font-serif font-bold text-[#003366] group-hover:text-[#00A3E0] transition-colors">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#00A3E0] block">
+                      {proc.category} Surgery
+                    </span>
+                    <h3 className="text-xl font-editorial font-bold text-[#003366] group-hover:text-[#00A3E0] transition-colors leading-snug">
                       {proc.title}
                     </h3>
-                    <p className="text-xs text-[#00A3E0] font-semibold">
+                    <p className="text-xs sm:text-sm text-[#00A3E0] font-semibold">
                       {proc.subtitle}
                     </p>
-                    <p className="text-xs text-[#475569] line-clamp-2 leading-relaxed pt-1">
+                    <p className="text-xs sm:text-sm text-[#475569] line-clamp-2 leading-relaxed pt-1 font-normal">
                       {proc.shortDesc}
                     </p>
                   </div>
                 </div>
 
-                <div className="p-6 pt-3 border-t border-[#E2E8F0] flex items-center justify-between text-xs">
-                  <span className="text-[#64748B] flex items-center gap-1 font-medium">
+                <div className="p-6 pt-3 border-t border-[#E2E8F0] flex items-center justify-between text-xs sm:text-sm">
+                  <span className="text-[#64748B] flex items-center gap-1.5 font-medium">
                     <Clock className="w-3.5 h-3.5 text-[#00A3E0]" /> {proc.duration}
                   </span>
                   <span className="font-bold text-[#003366] flex items-center gap-1 group-hover:text-[#00A3E0] transition-colors">

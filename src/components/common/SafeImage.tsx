@@ -27,7 +27,7 @@ export const SafeImage: React.FC<SafeImageProps> = ({
           <ImageIcon className="w-5 h-5 text-[#1769AA]" />
         </div>
         <p className="text-xs font-bold text-[#102A43] line-clamp-1">{alt || 'Clinical Reference'}</p>
-        <span className="text-[10px] text-[#52677D] font-medium mt-0.5 uppercase tracking-wider">
+        <span className="text-xs text-[#52677D] font-semibold mt-0.5 uppercase tracking-wider">
           {fallbackCategory}
         </span>
       </div>

@@ -32,13 +32,13 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
       {/* Hero */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-12">
         <div className="max-w-2xl space-y-3">
-          <span className="text-xs font-semibold tracking-[0.2em] text-[#00A3E0] uppercase block">
+          <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block">
             Hospital Desk & Location
           </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-[#003366] tracking-tight">
-            Contact & Find Us
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-editorial font-bold text-[#003366] tracking-tight">
+            Contact & <span className="italic font-normal">Find Us</span>
           </h1>
-          <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed pt-1">
+          <p className="text-base text-slate-600 font-normal leading-relaxed pt-1">
             Located at Sushrut Institute of Plastic Surgery (SIPS Super Specialty Hospital) in historic Chowk, Lucknow. Welcoming patients across Uttar Pradesh, India, and overseas.
           </p>
         </div>
@@ -104,7 +104,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
               <div className="pt-2">
                 <button
                   onClick={() => onNavigate('book-consultation')}
-                  className="w-full btn-crimson justify-center py-3.5 rounded-lg shadow-sm"
+                  className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-[#003366] hover:bg-[#002244] text-white text-sm font-bold shadow-sm transition-all cursor-pointer"
                 >
                   <Calendar className="w-4 h-4 mr-1.5" />
                   <span>Schedule Consultation</span>
@@ -117,11 +117,11 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
               <h2 className="text-xl font-heading font-bold text-[#003366]">
                 Travel Guide for Outstation Patients
               </h2>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-sm text-slate-600 leading-relaxed">
                 Patients regularly travel from across Uttar Pradesh, Bihar, Delhi NCR, and internationally for specialized plastic surgery with Dr. Mishra.
               </p>
 
-              <div className="space-y-3 text-xs">
+              <div className="space-y-3.5 text-sm">
                 <div className="flex items-start gap-3">
                   <Plane className="w-4 h-4 text-[#00A3E0] shrink-0 mt-0.5" />
                   <div>
@@ -159,9 +159,9 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
                   <h3 className="text-lg font-heading font-bold text-[#003366]">
                     Hospital Location
                   </h3>
-                  <p className="text-xs text-slate-500">29 Shah Mina Road, Chowk, Lucknow</p>
+                  <p className="text-sm text-slate-500">29 Shah Mina Road, Chowk, Lucknow</p>
                 </div>
-                <span className="px-2.5 py-1 bg-[#E0F2FE] text-[#0284C7] text-[10px] font-bold uppercase rounded-md border border-[#00A3E0]/20">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#003366]">
                   Mon – Sat OPD
                 </span>
               </div>

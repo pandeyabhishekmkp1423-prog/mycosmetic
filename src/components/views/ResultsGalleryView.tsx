@@ -35,11 +35,11 @@ export const ResultsGalleryView: React.FC<ResultsGalleryViewProps> = ({ onNaviga
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-12">
         <div className="max-w-2xl space-y-3">
-          <span className="text-xs font-semibold tracking-[0.2em] text-[#00A3E0] uppercase block">
+          <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block">
             Clinical Outcomes
           </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-[#003366] tracking-tight">
-            Before & After Gallery
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-editorial font-bold text-[#003366] tracking-tight">
+            Before & After <span className="italic text-[#00A3E0] font-normal">Gallery</span>
           </h1>
           <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed pt-1">
             Standardized medical records illustrating natural aesthetic balance, symmetry, and scar refinement under Dr. R. K. Mishra's surgical care at SIPS Super Specialty Hospital.
@@ -52,7 +52,7 @@ export const ResultsGalleryView: React.FC<ResultsGalleryViewProps> = ({ onNaviga
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className={`px-4 py-2 rounded-lg text-xs font-semibold tracking-wide uppercase transition-colors cursor-pointer whitespace-nowrap ${
+              className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold tracking-wide uppercase transition-colors cursor-pointer whitespace-nowrap ${
                 selectedCategory === cat.id
                   ? 'bg-[#003366] text-white shadow-sm'
                   : 'bg-white text-slate-600 border border-[#E2E8F0] hover:bg-[#F0F7FD] hover:text-[#003366]'
@@ -74,14 +74,14 @@ export const ResultsGalleryView: React.FC<ResultsGalleryViewProps> = ({ onNaviga
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-lg font-heading font-bold text-[#003366]">
+                  <h3 className="text-xl font-editorial font-bold text-[#003366]">
                     {item.procedureName}
                   </h3>
-                  <p className="text-xs text-slate-500 mt-0.5">
+                  <p className="text-xs sm:text-sm text-slate-500 mt-0.5 font-medium">
                     {item.patientInfo} • {item.timeline}
                   </p>
                 </div>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-[#E0F2FE] text-[#0284C7] border border-[#00A3E0]/20">
+                <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
                   Standardized Record
                 </span>
               </div>
@@ -97,18 +97,18 @@ export const ResultsGalleryView: React.FC<ResultsGalleryViewProps> = ({ onNaviga
                 />
               </div>
 
-              <p className="text-xs text-slate-600 leading-relaxed italic">
+              <p className="text-sm text-slate-600 leading-relaxed italic font-normal">
                 "{item.description}"
               </p>
 
-              <div className="pt-2 flex items-center justify-between border-t border-[#E2E8F0] text-xs">
+              <div className="pt-2 flex items-center justify-between border-t border-[#E2E8F0] text-xs sm:text-sm">
                 <span className="text-slate-500 flex items-center gap-1.5 font-medium">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#003366]" />
+                  <CheckCircle2 className="w-4 h-4 text-[#003366]" />
                   <span>Unfiltered & Verified</span>
                 </span>
                 <button
                   onClick={() => onNavigate('book-consultation')}
-                  className="font-bold text-[#003366] hover:text-[#00A3E0] hover:underline"
+                  className="font-bold text-[#003366] hover:text-[#00A3E0] hover:underline cursor-pointer"
                 >
                   Consult on this procedure →
                 </button>
@@ -119,19 +119,18 @@ export const ResultsGalleryView: React.FC<ResultsGalleryViewProps> = ({ onNaviga
 
         {/* Bottom CTA */}
         <div className="mt-16 text-center bg-white rounded-2xl border border-[#E2E8F0] p-10 space-y-4 max-w-2xl mx-auto shadow-xs">
-          <h2 className="text-2xl font-heading font-bold text-[#003366]">
-            Ready to Revamp Your Looks?
+          <h2 className="text-2xl sm:text-3xl font-editorial font-bold text-[#003366]">
+            Ready to <span className="italic text-[#00A3E0] font-normal">Revamp Your Looks?</span>
           </h2>
-          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
             During your confidential consultation, Dr. Mishra will perform an anatomical assessment and review customized treatment options tailored to your facial structure and body contours.
           </p>
           <div className="pt-2">
             <button
               onClick={() => onNavigate('book-consultation')}
-              className="btn-crimson"
+              className="btn-navy text-sm sm:text-base py-3.5 px-6 rounded-xl font-semibold cursor-pointer"
             >
-              <Calendar className="w-4 h-4 mr-1.5" />
-              <span>Schedule Your Private Consultation</span>
+              Book In-Person Consultation
             </button>
           </div>
         </div>

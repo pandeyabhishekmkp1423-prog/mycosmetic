@@ -67,18 +67,18 @@ export const DoctorView: React.FC<DoctorViewProps> = ({ onNavigate }) => {
           {/* Right: Bio & Highlights */}
           <div className="lg:col-span-7 space-y-6">
             <div className="space-y-2">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E0F2FE] border border-[#00A3E0]/20 text-xs font-semibold text-[#0284C7] tracking-wider uppercase">
+              <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block">
                 Senior Plastic & Cosmetic Surgeon
-              </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-[#003366] tracking-tight">
+              </span>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-editorial font-bold text-[#003366] tracking-tight">
                 {doctorData.name}
               </h1>
-              <p className="text-sm font-medium text-[#0284C7]">
+              <p className="text-base font-semibold text-[#0284C7]">
                 {doctorData.qualifications}
               </p>
             </div>
 
-            <div className="space-y-4 text-sm text-slate-600 leading-relaxed font-normal">
+            <div className="space-y-4 text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
               {doctorData.aboutBio.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
@@ -87,16 +87,16 @@ export const DoctorView: React.FC<DoctorViewProps> = ({ onNavigate }) => {
             {/* Statistics */}
             <div className="grid grid-cols-3 gap-4 pt-4 border-t border-[#E2E8F0]">
               <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-center">
-                <div className="text-2xl font-heading font-bold text-[#003366]">25+</div>
-                <div className="text-[11px] text-slate-500 uppercase tracking-wider font-medium mt-1">Years Practice</div>
+                <div className="text-2xl sm:text-3xl font-editorial font-bold text-[#003366]">25+</div>
+                <div className="text-xs text-slate-500 uppercase tracking-wider font-semibold mt-1">Years Practice</div>
               </div>
               <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-center">
-                <div className="text-2xl font-heading font-bold text-[#003366]">30,000+</div>
-                <div className="text-[11px] text-slate-500 uppercase tracking-wider font-medium mt-1">Surgeries</div>
+                <div className="text-2xl sm:text-3xl font-editorial font-bold text-[#003366]">30,000+</div>
+                <div className="text-xs text-slate-500 uppercase tracking-wider font-semibold mt-1">Surgeries</div>
               </div>
               <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-center">
-                <div className="text-2xl font-heading font-bold text-[#003366]">NABH</div>
-                <div className="text-[11px] text-slate-500 uppercase tracking-wider font-medium mt-1">Accredited OT</div>
+                <div className="text-2xl sm:text-3xl font-editorial font-bold text-[#003366]">NABH</div>
+                <div className="text-xs text-slate-500 uppercase tracking-wider font-semibold mt-1">Accredited OT</div>
               </div>
             </div>
 
@@ -104,14 +104,14 @@ export const DoctorView: React.FC<DoctorViewProps> = ({ onNavigate }) => {
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <button
                 onClick={() => onNavigate('book-consultation')}
-                className="btn-crimson"
+                className="btn-navy text-sm sm:text-base py-3.5 px-6 rounded-xl font-semibold cursor-pointer flex items-center gap-2"
               >
-                <Calendar className="w-4 h-4 mr-1.5" />
+                <Calendar className="w-4 h-4 text-[#00A3E0]" />
                 <span>Book Consultation</span>
               </button>
               <button
                 onClick={() => onNavigate('contact')}
-                className="btn-outline-navy"
+                className="py-3.5 px-6 rounded-xl border border-[#003366] text-[#003366] hover:bg-[#003366] hover:text-white font-bold text-sm sm:text-base transition-colors cursor-pointer"
               >
                 <span>Contact Hospital</span>
               </button>
@@ -129,11 +129,11 @@ export const DoctorView: React.FC<DoctorViewProps> = ({ onNavigate }) => {
               <div className="w-10 h-10 rounded-xl bg-[#E0F2FE] border border-[#00A3E0]/20 flex items-center justify-center text-[#003366]">
                 <GraduationCap className="w-5 h-5" />
               </div>
-              <h2 className="text-xl font-heading font-bold text-[#003366]">Professional Affiliations</h2>
+              <h2 className="text-xl font-editorial font-bold text-[#003366]">Professional Affiliations</h2>
             </div>
             <div className="space-y-3">
               {doctorData.affiliations.map((d, i) => (
-                <div key={i} className="p-3.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-xs font-semibold text-[#0F172A] flex items-center gap-2">
+                <div key={i} className="p-3.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-sm font-semibold text-[#0F172A] flex items-center gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-[#003366] shrink-0" />
                   <span>{d}</span>
                 </div>
@@ -146,11 +146,11 @@ export const DoctorView: React.FC<DoctorViewProps> = ({ onNavigate }) => {
               <div className="w-10 h-10 rounded-xl bg-[#E0F2FE] border border-[#00A3E0]/20 flex items-center justify-center text-[#003366]">
                 <Globe2 className="w-5 h-5" />
               </div>
-              <h2 className="text-xl font-heading font-bold text-[#003366]">International Fellowships</h2>
+              <h2 className="text-xl font-editorial font-bold text-[#003366]">International Fellowships</h2>
             </div>
             <div className="space-y-3">
               {doctorData.internationalTraining.map((t, i) => (
-                <div key={i} className="p-3.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-xs font-semibold text-[#0F172A] flex items-center gap-2">
+                <div key={i} className="p-3.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-sm font-semibold text-[#0F172A] flex items-center gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-[#00A3E0] shrink-0" />
                   <span>{t}</span>
                 </div>

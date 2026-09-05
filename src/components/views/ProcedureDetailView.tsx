@@ -55,16 +55,15 @@ export const ProcedureDetailView: React.FC<ProcedureDetailViewProps> = ({
         <div className="bg-white rounded-3xl border border-[#E2E8F0] p-8 sm:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
           <div className="lg:col-span-7 space-y-5">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00A3E0]/10 border border-[#00A3E0]/20 text-[#00A3E0] text-xs font-semibold tracking-wide uppercase">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>{procedure.category} • Surgical Excellence</span>
-            </div>
+            <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block">
+              {procedure.category} • Surgical Excellence
+            </span>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#003366] tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-editorial font-bold text-[#003366] tracking-tight leading-tight">
               {procedure.title}
             </h1>
 
-            <p className="text-base text-[#00A3E0] font-semibold">
+            <p className="text-base sm:text-lg text-[#00A3E0] font-semibold">
               {procedure.subtitle}
             </p>
 
@@ -75,15 +74,15 @@ export const ProcedureDetailView: React.FC<ProcedureDetailViewProps> = ({
             <div className="pt-3 flex flex-wrap items-center gap-4">
               <button
                 onClick={() => onNavigate('book-consultation')}
-                className="btn-crimson"
+                className="btn-navy text-sm sm:text-base py-3.5 px-6 rounded-xl font-semibold cursor-pointer flex items-center gap-2"
               >
-                <Calendar className="w-4 h-4" />
+                <Calendar className="w-4 h-4 text-[#00A3E0]" />
                 <span>Schedule Confidential Consultation</span>
               </button>
 
               <button
                 onClick={() => onNavigate('ask-question')}
-                className="btn-outline-navy"
+                className="py-3.5 px-6 rounded-xl border border-[#003366] text-[#003366] hover:bg-[#003366] hover:text-white font-bold text-sm sm:text-base transition-colors cursor-pointer"
               >
                 <span>Ask a Doctor</span>
               </button>
@@ -173,16 +172,16 @@ export const ProcedureDetailView: React.FC<ProcedureDetailViewProps> = ({
 
           {/* Steps */}
           <div className="bg-white rounded-2xl border border-[#E2E8F0] p-8 shadow-xs space-y-4">
-            <h2 className="text-xl font-serif font-bold text-[#003366]">
+            <h2 className="text-xl font-editorial font-bold text-[#003366]">
               Step-by-Step Surgical Process
             </h2>
             <div className="space-y-3">
               {procedure.procedureSteps.map((step, idx) => (
                 <div key={idx} className="flex items-start gap-3.5 p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#003366] text-[11px] font-bold text-white">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#003366] text-xs font-bold text-white">
                     {idx + 1}
                   </span>
-                  <p className="text-xs sm:text-sm text-[#1E293B] leading-relaxed pt-0.5">
+                  <p className="text-sm text-[#1E293B] leading-relaxed pt-0.5">
                     {step}
                   </p>
                 </div>
@@ -192,10 +191,10 @@ export const ProcedureDetailView: React.FC<ProcedureDetailViewProps> = ({
 
           {/* Recovery */}
           <div className="bg-white rounded-2xl border border-[#E2E8F0] p-8 shadow-xs space-y-3">
-            <h2 className="text-xl font-serif font-bold text-[#003366]">
+            <h2 className="text-xl font-editorial font-bold text-[#003366]">
               Post-Operative Recovery & Care
             </h2>
-            <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
+            <p className="text-sm sm:text-base text-[#475569] leading-relaxed font-normal">
               {procedure.recoveryTimeline}
             </p>
           </div>
@@ -203,7 +202,7 @@ export const ProcedureDetailView: React.FC<ProcedureDetailViewProps> = ({
           {/* FAQs */}
           {procedure.faqs.length > 0 && (
             <div className="bg-white rounded-2xl border border-[#E2E8F0] p-8 shadow-xs space-y-4">
-              <h2 className="text-xl font-serif font-bold text-[#003366]">
+              <h2 className="text-xl font-editorial font-bold text-[#003366]">
                 Frequently Asked Questions
               </h2>
               <div className="space-y-3">
@@ -215,11 +214,11 @@ export const ProcedureDetailView: React.FC<ProcedureDetailViewProps> = ({
                         onClick={() => setOpenFaq(isOpen ? null : idx)}
                         className="w-full p-4 text-left font-bold text-[#003366] flex items-center justify-between gap-4 cursor-pointer hover:bg-[#F8FAFC] transition-colors"
                       >
-                        <span className="text-sm">{faq.question}</span>
+                        <span className="text-sm sm:text-base">{faq.question}</span>
                         <ChevronDown className={`w-4 h-4 text-[#00A3E0] transition-transform ${isOpen ? 'rotate-180' : ''}`} />
                       </button>
                       {isOpen && (
-                        <div className="px-4 pb-4 text-xs sm:text-sm text-[#475569] leading-relaxed border-t border-[#E2E8F0] bg-[#F8FAFC]">
+                        <div className="px-4 pb-4 text-sm text-[#475569] leading-relaxed border-t border-[#E2E8F0] bg-[#F8FAFC]">
                           {faq.answer}
                         </div>
                       )}
@@ -245,20 +244,20 @@ export const ProcedureDetailView: React.FC<ProcedureDetailViewProps> = ({
                 />
               </div>
               <div>
-                <h3 className="font-serif font-bold text-base text-white">Dr. R. K. Mishra</h3>
-                <p className="text-xs text-[#00A3E0] font-medium">M.Ch Senior Plastic Surgeon</p>
-                <p className="text-[10px] text-slate-300">25+ Yrs Exp • SIPS Hospital</p>
+                <h3 className="font-editorial font-bold text-lg text-white">Dr. R. K. Mishra</h3>
+                <p className="text-xs font-semibold text-[#00A3E0]">M.Ch Senior Plastic Surgeon</p>
+                <p className="text-xs text-slate-300">25+ Yrs Exp • SIPS Hospital</p>
               </div>
             </div>
 
-            <p className="text-xs text-slate-300 leading-relaxed">
+            <p className="text-sm text-slate-300 leading-relaxed font-normal">
               Performed over 30,000 successful surgeries. Every treatment plan is custom sculpted with uncompromising anatomical safety.
             </p>
 
             <div className="pt-2 border-t border-white/10 space-y-3">
               <button
                 onClick={() => onNavigate('book-consultation')}
-                className="btn-crimson w-full py-3"
+                className="w-full py-3.5 rounded-xl bg-white hover:bg-slate-100 text-[#003366] font-bold text-sm shadow-md transition-all cursor-pointer"
               >
                 Schedule Consultation
               </button>

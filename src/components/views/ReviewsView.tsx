@@ -69,12 +69,11 @@ export const ReviewsView: React.FC<ReviewsViewProps> = ({ onNavigate }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-12">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
           <div className="max-w-2xl space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00A3E0]/10 border border-[#00A3E0]/20 text-[#00A3E0] text-xs font-semibold tracking-wide uppercase">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Independent Patient Feedback</span>
-            </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#003366] tracking-tight">
-              Verified Patient Reviews
+            <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block mb-1">
+              Independent Patient Feedback
+            </span>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-editorial font-bold text-[#003366] tracking-tight">
+              Verified Patient <span className="italic text-[#00A3E0] font-normal">Reviews</span>
             </h1>
             <p className="text-sm sm:text-base text-[#475569] font-normal leading-relaxed pt-1">
               Read honest experiences from patients treated by Senior Plastic Surgeon Dr. R. K. Mishra at SIPS Super Specialty Hospital, Lucknow.
@@ -83,22 +82,22 @@ export const ReviewsView: React.FC<ReviewsViewProps> = ({ onNavigate }) => {
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <div className="p-4 bg-white rounded-2xl border border-[#E2E8F0] flex items-center gap-3.5 shadow-sm">
-              <div className="text-3xl font-serif font-bold text-[#003366]">4.9</div>
+              <div className="text-3xl font-editorial font-bold text-[#003366]">4.9</div>
               <div>
                 <div className="flex text-amber-500">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-3.5 h-3.5 fill-current" />
                   ))}
                 </div>
-                <p className="text-[11px] text-[#64748B] font-medium mt-0.5">500+ Verified Patient Ratings</p>
+                <p className="text-xs text-[#64748B] font-medium mt-0.5">500+ Verified Patient Ratings</p>
               </div>
             </div>
 
             <button
               onClick={() => setShowSubmitModal(true)}
-              className="btn-crimson"
+              className="btn-navy text-xs sm:text-sm py-3 px-5 rounded-xl font-bold uppercase tracking-wider flex items-center gap-2 cursor-pointer"
             >
-              <MessageSquarePlus className="w-4 h-4" />
+              <MessageSquarePlus className="w-4 h-4 text-[#00A3E0]" />
               <span>Submit a Review</span>
             </button>
           </div>
@@ -110,7 +109,7 @@ export const ReviewsView: React.FC<ReviewsViewProps> = ({ onNavigate }) => {
             <button
               key={opt}
               onClick={() => setSelectedFilter(opt)}
-              className={`px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wide uppercase transition-all cursor-pointer whitespace-nowrap ${
+              className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold tracking-wide uppercase transition-all cursor-pointer whitespace-nowrap ${
                 selectedFilter === opt
                   ? 'bg-[#003366] text-white shadow-sm'
                   : 'bg-white text-[#475569] border border-[#E2E8F0] hover:bg-[#F8FAFC] hover:text-[#003366]'
@@ -137,36 +136,36 @@ export const ReviewsView: React.FC<ReviewsViewProps> = ({ onNavigate }) => {
                       <Star key={i} className="w-3.5 h-3.5 fill-current" />
                     ))}
                   </div>
-                  <span className="text-[11px] text-[#64748B]">{rev.date}</span>
+                  <span className="text-xs text-[#64748B]">{rev.date}</span>
                 </div>
 
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="px-2.5 py-0.5 bg-[#00A3E0]/10 text-[#003366] text-[10px] font-bold uppercase rounded-md border border-[#00A3E0]/20">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#00A3E0]">
                     {rev.procedure}
                   </span>
                   {rev.verified && (
-                    <span className="inline-flex items-center gap-1 text-[11px] text-[#003366] font-semibold">
-                      <CheckCircle2 className="w-3 h-3 text-[#00A3E0]" /> Verified Patient
+                    <span className="inline-flex items-center gap-1 text-xs text-[#003366] font-semibold">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#00A3E0]" /> Verified Patient
                     </span>
                   )}
                 </div>
 
-                <h3 className="text-base font-bold text-[#003366] mb-2 leading-snug">
+                <h3 className="text-base sm:text-lg font-editorial font-bold text-[#003366] mb-2 leading-snug">
                   {rev.title}
                 </h3>
 
-                <p className="text-xs text-[#475569] leading-relaxed mb-4">
+                <p className="text-sm text-[#475569] leading-relaxed mb-4 font-normal">
                   "{rev.content}"
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-[#E2E8F0] flex items-center justify-between text-xs">
+              <div className="pt-3 border-t border-[#E2E8F0] flex items-center justify-between text-xs sm:text-sm">
                 <div>
                   <p className="font-bold text-[#003366]">{rev.author}</p>
-                  <p className="text-[11px] text-[#64748B]">{rev.location}</p>
+                  <p className="text-xs text-[#64748B]">{rev.location}</p>
                 </div>
                 <div className="flex items-center gap-1 text-[#64748B]">
-                  <ThumbsUp className="w-3 h-3 text-[#00A3E0]" />
+                  <ThumbsUp className="w-3.5 h-3.5 text-[#00A3E0]" />
                   <span>Helpful ({rev.helpfulCount || 12})</span>
                 </div>
               </div>
@@ -272,7 +271,7 @@ export const ReviewsView: React.FC<ReviewsViewProps> = ({ onNavigate }) => {
                 <div className="pt-2">
                   <button
                     type="submit"
-                    className="btn-crimson w-full justify-center py-3"
+                    className="w-full py-3.5 rounded-xl bg-[#003366] hover:bg-[#002244] text-white font-bold text-sm shadow-sm transition-all cursor-pointer flex items-center justify-center"
                   >
                     Submit Review
                   </button>

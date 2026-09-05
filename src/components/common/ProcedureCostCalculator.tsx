@@ -31,18 +31,18 @@ export const ProcedureCostCalculator: React.FC<ProcedureCostCalculatorProps> = (
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-[#E2E8F0]">
         <div>
-          <span className="text-xs font-semibold tracking-[0.2em] text-[#00A3E0] uppercase block mb-1">
+          <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block mb-1">
             Financial Transparency
           </span>
-          <h3 className="text-2xl sm:text-3xl font-heading font-bold text-[#003366]">
-            Procedure Cost & EMI Estimator
+          <h3 className="text-3xl sm:text-4xl font-editorial font-bold text-[#003366]">
+            Procedure Cost & <span className="italic text-[#00A3E0] font-normal">EMI Estimator</span>
           </h3>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-xl">
+          <p className="text-sm sm:text-base text-slate-600 mt-1 max-w-xl font-normal">
             Clear, transparent hospital estimates with zero hidden fees at SIPS Super Specialty Hospital, Lucknow.
           </p>
         </div>
 
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#F0F7FD] border border-[#003366]/20 text-xs font-semibold text-[#003366]">
+        <div className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#F0F7FD] border border-[#003366]/20 text-xs sm:text-sm font-semibold text-[#003366]">
           <ShieldCheck className="w-4 h-4 text-[#00A3E0]" />
           <span>NABH Accredited Hospital Center</span>
         </div>
@@ -62,7 +62,7 @@ export const ProcedureCostCalculator: React.FC<ProcedureCostCalculatorProps> = (
             <select
               value={selectedSlug}
               onChange={(e) => setSelectedSlug(e.target.value)}
-              className="w-full bg-white text-[#0F172A] text-xs font-semibold rounded-lg border border-[#E2E8F0] p-3 focus:border-[#003366] focus:outline-none"
+              className="w-full bg-white text-[#0F172A] text-sm font-semibold rounded-xl border border-[#E2E8F0] p-3 focus:border-[#003366] focus:outline-none"
             >
               {proceduresData.map((proc) => (
                 <option key={proc.slug} value={proc.slug}>
@@ -88,12 +88,12 @@ export const ProcedureCostCalculator: React.FC<ProcedureCostCalculatorProps> = (
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
-                  <span className="font-bold text-xs">Day-Care / Semi-Private</span>
-                  <span className={`text-[10px] ${stayPreference === 'daycare' ? 'text-[#00A3E0]' : 'text-slate-400'}`}>
+                  <span className="font-bold text-sm">Day-Care / Semi-Private</span>
+                  <span className={`text-xs font-bold ${stayPreference === 'daycare' ? 'text-[#00A3E0]' : 'text-slate-400'}`}>
                     Standard
                   </span>
                 </div>
-                <p className={`text-[11px] ${stayPreference === 'daycare' ? 'text-slate-200' : 'text-slate-500'}`}>
+                <p className={`text-xs leading-relaxed ${stayPreference === 'daycare' ? 'text-slate-200' : 'text-slate-500'}`}>
                   Discharge within 6–24 hours post-procedure with monitoring.
                 </p>
               </button>
@@ -108,12 +108,12 @@ export const ProcedureCostCalculator: React.FC<ProcedureCostCalculatorProps> = (
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
-                  <span className="font-bold text-xs">Private Deluxe Suite</span>
-                  <span className={`text-[10px] font-bold ${stayPreference === 'vip-suite' ? 'text-[#00A3E0]' : 'text-[#003366]'}`}>
+                  <span className="font-bold text-sm">Private Deluxe Suite</span>
+                  <span className={`text-xs font-bold ${stayPreference === 'vip-suite' ? 'text-[#00A3E0]' : 'text-[#003366]'}`}>
                     +₹18,000
                   </span>
                 </div>
-                <p className={`text-[11px] ${stayPreference === 'vip-suite' ? 'text-slate-200' : 'text-slate-500'}`}>
+                <p className={`text-xs leading-relaxed ${stayPreference === 'vip-suite' ? 'text-slate-200' : 'text-slate-500'}`}>
                   Private suite with attendant accommodation and personal nursing.
                 </p>
               </button>
@@ -125,7 +125,7 @@ export const ProcedureCostCalculator: React.FC<ProcedureCostCalculatorProps> = (
             <span className="text-xs font-bold uppercase tracking-wider text-[#003366] block">
               Transparent Package Inclusions:
             </span>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-600">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-slate-600">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#003366] shrink-0" />
                 <span>Senior Surgeon Fee (Dr. R. K. Mishra)</span>
@@ -159,10 +159,10 @@ export const ProcedureCostCalculator: React.FC<ProcedureCostCalculatorProps> = (
               <Clock className="w-3.5 h-3.5" />
               <span>Recovery Milestones for {selectedProcedure.title}</span>
             </div>
-            <p className="text-xs text-slate-600">
+            <p className="text-xs sm:text-sm text-slate-600">
               <strong>{selectedProcedure.duration}</strong> surgical time • <strong>{selectedProcedure.hospitalStay}</strong> stay.
             </p>
-            <div className="p-3 rounded-lg bg-[#F8FAFC] text-xs text-slate-700">
+            <div className="p-3 rounded-lg bg-[#F8FAFC] text-xs sm:text-sm text-slate-700">
               {selectedProcedure.recoveryTimeline}
             </div>
           </div>
@@ -176,28 +176,28 @@ export const ProcedureCostCalculator: React.FC<ProcedureCostCalculatorProps> = (
               <span className="text-xs font-bold uppercase tracking-widest text-[#00A3E0]">
                 Estimated Quote
               </span>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-white/10 text-white font-medium">
+              <span className="text-xs px-2.5 py-0.5 rounded bg-white/10 text-white font-medium">
                 SIPS Hospital, Lucknow
               </span>
             </div>
 
             <div>
               <p className="text-xs text-slate-300">Selected Procedure</p>
-              <h4 className="text-xl font-heading font-bold text-white mt-0.5">
+              <h4 className="text-xl font-editorial font-bold text-white mt-0.5">
                 {selectedProcedure.title}
               </h4>
-              <p className="text-xs text-[#00A3E0] mt-0.5 font-medium">
+              <p className="text-xs sm:text-sm text-[#00A3E0] mt-0.5 font-medium">
                 {selectedProcedure.subtitle}
               </p>
             </div>
 
             <div className="py-4 border-y border-[#003366]">
               <span className="text-xs text-slate-300 block mb-1">Estimated Total Investment:</span>
-              <div className="text-3xl font-heading font-bold text-white tracking-tight">
+              <div className="text-3xl font-editorial font-bold text-white tracking-tight">
                 ₹{totalEstimatedCost.toLocaleString('en-IN')}
                 <span className="text-xs font-normal text-slate-400 ml-2">approx.</span>
               </div>
-              <p className="text-[11px] text-slate-300 mt-1">
+              <p className="text-xs text-slate-300 mt-1">
                 Clinical Range: {selectedProcedure.costRange}
               </p>
             </div>
@@ -230,7 +230,7 @@ export const ProcedureCostCalculator: React.FC<ProcedureCostCalculatorProps> = (
                   </button>
                 ))}
               </div>
-              <p className="text-[10px] text-slate-400">
+              <p className="text-xs text-slate-300">
                 * Zero-interest EMI available through healthcare finance partners at the hospital desk.
               </p>
             </div>
@@ -240,10 +240,10 @@ export const ProcedureCostCalculator: React.FC<ProcedureCostCalculatorProps> = (
             <button
               type="button"
               onClick={() => onNavigate && onNavigate('book-consultation')}
-              className="btn-crimson w-full py-3 px-4 rounded-lg font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-md"
+              className="w-full py-3.5 px-4 rounded-xl bg-white hover:bg-slate-100 text-[#003366] font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-md transition-all"
             >
               <span>Schedule Consultation</span>
-              <ArrowRight className="w-4 h-4 ml-1" />
+              <ArrowRight className="w-4 h-4 ml-1 text-[#003366]" />
             </button>
           </div>
 

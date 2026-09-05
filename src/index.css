@@ -11,14 +11,14 @@
   --brand-sky-light: #E0F2FE;
   --brand-sky-dark: #0284C7;
 
-  --brand-crimson: #CE181E;
-  --brand-crimson-hover: #B3141A;
-  --brand-crimson-light: #FEECEB;
+  --brand-crimson: #003366;
+  --brand-crimson-hover: #002244;
+  --brand-crimson-light: #F0F7FD;
 
   --bg-canvas: #F8FAFC;
   --bg-white: #FFFFFF;
   --border-subtle: #E2E8F0;
-  --border-navy: rgba(0, 51, 102, 0.15);
+  --border-navy: rgba(0, 51, 102, 0.12);
 
   --text-primary: #003366;
   --text-heading: #0F172A;
@@ -34,12 +34,13 @@
   }
 
   body {
-    font-family: 'Poppins', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background-color: #F8FAFC;
     color: var(--text-body);
     overflow-x: hidden;
     text-rendering: geometricPrecision;
     -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.011em;
   }
 
   ::selection {
@@ -48,13 +49,21 @@
   }
 
   h1, h2, h3, h4, .font-heading {
-    font-family: 'Poppins', sans-serif;
-    letter-spacing: -0.015em;
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.025em;
+    color: var(--text-heading);
+    font-weight: 700;
   }
 
   .font-serif, .font-serif-luxury {
-    font-family: 'Playfair Display', 'Poppins', Georgia, serif;
-    letter-spacing: -0.01em;
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.025em;
+    font-weight: 700;
+  }
+
+  .font-editorial {
+    font-family: 'Playfair Display', Georgia, serif;
+    letter-spacing: -0.02em;
   }
 
   button,
@@ -212,9 +221,9 @@
   border: 1px solid rgba(2, 132, 199, 0.2);
 }
 .badge-crimson {
-  background-color: #FEECEB;
-  color: #CE181E;
-  border: 1px solid rgba(206, 24, 30, 0.2);
+  background-color: #F0F7FD;
+  color: #003366;
+  border: 1px solid rgba(0, 51, 102, 0.2);
 }
 
 /* Smooth Page Transition */

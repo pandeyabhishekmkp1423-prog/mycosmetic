@@ -148,19 +148,19 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
             <button
               type="button"
               onClick={() => goTo('book-consultation')}
-              className="btn-crimson text-xs py-1 px-3 rounded-md"
+              className="py-1.5 px-3.5 rounded-lg bg-[#003366] hover:bg-[#002244] text-white text-xs font-bold shadow-xs cursor-pointer inline-flex items-center gap-1"
             >
-              <Calendar className="h-3.5 w-3.5 mr-1" />
+              <Calendar className="h-3.5 w-3.5 mr-1 text-[#00A3E0]" />
               <span>Book consultation</span>
             </button>
             <button
               type="button"
               onClick={() => goTo('pricing')}
-              className="btn-outline-navy text-xs py-1 px-3 rounded-md"
+              className="btn-outline-navy text-xs py-1.5 px-3.5 rounded-lg"
             >
               Pricing guide
             </button>
-            <span className="ml-auto hidden text-slate-400 text-[11px] sm:inline">Press Esc to close</span>
+            <span className="ml-auto hidden text-slate-400 text-xs sm:inline">Press Esc to close</span>
           </div>
         </div>
 
@@ -176,7 +176,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
               </div>
               <div className="min-w-0">
                 <h4 className="truncate text-xs font-bold text-[#003366]">{doctorData.name}</h4>
-                <p className="truncate text-[11px] text-slate-500">
+                <p className="truncate text-xs text-slate-500">
                   Senior Plastic Surgeon, SIPS Super Specialty Hospital Lucknow • {doctorData.experienceYears}+ years
                 </p>
               </div>
@@ -190,7 +190,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
                 <Stethoscope className="h-3.5 w-3.5 text-[#00A3E0]" />
                 Procedures ({searchResults.procedures.length})
               </h3>
-              {!query && <span className="text-[10px] text-slate-400">Featured</span>}
+              {!query && <span className="text-xs text-slate-400">Featured</span>}
             </div>
 
             {searchResults.procedures.length > 0 ? (
@@ -214,10 +214,10 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
                         <span className="truncate text-xs font-bold text-[#0F172A] group-hover:text-[#003366]">
                           {procedure.title}
                         </span>
-                        <span className="shrink-0 text-[9px] font-bold uppercase text-slate-500">{procedure.category}</span>
+                        <span className="shrink-0 text-xs font-bold uppercase text-[#00A3E0]">{procedure.category}</span>
                       </div>
-                      <p className="mt-0.5 truncate text-[11px] text-slate-500">{procedure.shortDesc}</p>
-                      <span className="mt-1 block text-[10px] font-bold text-[#003366]">From {procedure.costRange}</span>
+                      <p className="mt-0.5 truncate text-xs text-slate-500">{procedure.shortDesc}</p>
+                      <span className="mt-1 block text-xs font-bold text-[#003366]">From {procedure.costRange}</span>
                     </div>
                   </button>
                 ))}
@@ -245,9 +245,9 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
                     className="group flex w-full items-center justify-between gap-4 rounded-lg border border-[#E2E8F0] bg-white p-3 text-left hover:border-[#003366] transition-colors"
                   >
                     <div className="min-w-0">
-                      <span className="text-[10px] font-bold uppercase text-[#00A3E0]">{article.category}</span>
+                      <span className="text-xs font-bold uppercase text-[#00A3E0]">{article.category}</span>
                       <h4 className="truncate text-xs font-bold text-[#0F172A] group-hover:text-[#003366]">{article.title}</h4>
-                      <p className="truncate text-[11px] text-slate-500">{article.excerpt}</p>
+                      <p className="truncate text-xs text-slate-500">{article.excerpt}</p>
                     </div>
                     <ArrowRight className="h-3.5 w-3.5 shrink-0 text-slate-400 group-hover:text-[#003366]" />
                   </button>
@@ -284,7 +284,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
           {query && totalResults === 0 && (
             <div className="rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-5 text-center">
               <p className="text-xs font-bold text-[#0F172A]">No matches found for "{query}"</p>
-              <p className="mt-1 text-[11px] text-slate-500">You can send a question or schedule a direct consultation.</p>
+              <p className="mt-1 text-xs text-slate-500">You can send a question or schedule a direct consultation.</p>
             </div>
           )}
         </div>
@@ -312,10 +312,10 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
             id="search-footer-book-btn"
             type="button"
             onClick={() => goTo('book-consultation')}
-            className="btn-crimson text-xs py-1.5 px-3.5 rounded-lg"
+            className="py-2 px-4 rounded-lg bg-[#003366] hover:bg-[#002244] text-white text-xs font-bold shadow-xs cursor-pointer inline-flex items-center gap-1"
           >
             <span>Schedule Consultation</span>
-            <ArrowRight className="h-3.5 w-3.5 ml-1" />
+            <ArrowRight className="h-3.5 w-3.5 ml-1 text-[#00A3E0]" />
           </button>
         </div>
       </div>

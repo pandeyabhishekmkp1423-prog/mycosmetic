@@ -54,14 +54,14 @@ export const HeroStats: React.FC = () => {
 
             {/* Number & Label */}
             <div className="space-y-1">
-              <p className="text-xl sm:text-2xl font-serif font-bold text-[#071D3B]">
+              <p className="text-xl sm:text-2xl font-editorial font-bold text-[#003366]">
                 {stat.number}
               </p>
               <div className="space-y-0.5">
                 <p className="text-xs sm:text-sm font-semibold text-[#102A43] leading-tight">
                   {stat.label}
                 </p>
-                <p className="text-[11px] sm:text-xs text-[#52677D] font-medium">
+                <p className="text-xs text-[#52677D] font-medium">
                   {stat.sublabel}
                 </p>
               </div>

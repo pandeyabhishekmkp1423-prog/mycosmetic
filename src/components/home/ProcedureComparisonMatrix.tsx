@@ -128,22 +128,21 @@ export const ProcedureComparisonMatrix: React.FC<ProcedureComparisonMatrixProps>
   const currentTopic = topics.find(t => t.id === activeTopicId) || topics[0];
 
   return (
-    <section id="procedure-comparison-matrix" className="py-20 sm:py-28 bg-[#F8FAFC] relative overflow-hidden border-b border-[#E2E8F0]">
+    <section id="procedure-comparison-matrix" className="py-12 sm:py-16 bg-[#F8FAFC] relative overflow-hidden border-b border-[#E2E8F0]">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#00A3E0]/10 border border-[#00A3E0]/20 text-[#00A3E0] text-xs font-semibold tracking-wide uppercase">
-            <GitCompare className="w-3.5 h-3.5" />
-            <span>Clinical Decision Clarity</span>
-          </div>
+        {/* Header with Rich Editorial Typography */}
+        <div className="text-center max-w-3xl mx-auto space-y-2 mb-8 sm:mb-10">
+          <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block">
+            Clinical Decision Clarity
+          </span>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#003366] tracking-tight">
-            Which Procedure Is Right For You?
+          <h2 className="font-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-[#003366] tracking-tight">
+            Which Procedure Is <span className="italic text-[#00A3E0] font-normal">Right For You?</span>
           </h2>
 
-          <p className="text-sm sm:text-base text-[#475569] leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
             Patients often debate between surgical techniques. Here is an honest, clinical side-by-side comparison to help you understand your best anatomical option.
           </p>
 
@@ -153,7 +152,7 @@ export const ProcedureComparisonMatrix: React.FC<ProcedureComparisonMatrixProps>
               <button
                 key={t.id}
                 onClick={() => setActiveTopicId(t.id)}
-                className={`px-4 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
+                className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold uppercase tracking-wider transition-all cursor-pointer ${
                   activeTopicId === t.id
                     ? 'bg-[#003366] text-white shadow-sm'
                     : 'bg-white text-[#475569] border border-[#E2E8F0] hover:bg-[#F8FAFC] hover:text-[#003366]'
@@ -167,7 +166,7 @@ export const ProcedureComparisonMatrix: React.FC<ProcedureComparisonMatrixProps>
 
         {/* Comparison Header Title */}
         <div className="text-center mb-8">
-          <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#003366]">
+          <h3 className="font-editorial text-2xl sm:text-3xl font-bold text-[#003366]">
             {currentTopic.title}
           </h3>
         </div>
@@ -176,19 +175,19 @@ export const ProcedureComparisonMatrix: React.FC<ProcedureComparisonMatrixProps>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8">
           
           {/* OPTION A */}
-          <div className="bg-white rounded-3xl border-2 border-[#003366]/20 p-6 sm:p-8 shadow-sm hover:border-[#003366] transition-all flex flex-col justify-between space-y-6 relative group">
-            <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#003366] text-white text-[10px] font-bold uppercase tracking-wider">
-              Option A
-            </div>
+          <div className="bg-white rounded-3xl border border-[#003366]/20 p-6 sm:p-8 shadow-sm hover:border-[#003366] transition-all flex flex-col justify-between space-y-6 relative group">
+            <span className="text-xs uppercase font-bold tracking-widest text-[#003366]">
+              Protocol A
+            </span>
 
             <div className="space-y-3">
-              <h4 className="text-xl sm:text-2xl font-serif font-bold text-[#003366]">
+              <h4 className="font-editorial text-2xl font-bold text-[#003366]">
                 {currentTopic.optionA.name}
               </h4>
-              <p className="text-xs font-semibold text-[#00A3E0]">
+              <p className="text-sm font-semibold text-[#00A3E0]">
                 {currentTopic.optionA.tagline}
               </p>
-              <div className="p-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-xs text-[#1E293B]">
+              <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-sm text-[#1E293B]">
                 <strong>Key Advantage:</strong> {currentTopic.optionA.highlight}
               </div>
             </div>
@@ -222,19 +221,19 @@ export const ProcedureComparisonMatrix: React.FC<ProcedureComparisonMatrixProps>
           </div>
 
           {/* OPTION B */}
-          <div className="bg-white rounded-3xl border-2 border-[#00A3E0]/30 p-6 sm:p-8 shadow-sm hover:border-[#00A3E0] transition-all flex flex-col justify-between space-y-6 relative group">
-            <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#00A3E0] text-white text-[10px] font-bold uppercase tracking-wider">
-              Option B
-            </div>
+          <div className="bg-white rounded-3xl border border-[#00A3E0]/30 p-6 sm:p-8 shadow-sm hover:border-[#00A3E0] transition-all flex flex-col justify-between space-y-6 relative group">
+            <span className="text-xs uppercase font-bold tracking-widest text-[#00A3E0]">
+              Protocol B
+            </span>
 
             <div className="space-y-3">
-              <h4 className="text-xl sm:text-2xl font-serif font-bold text-[#003366]">
+              <h4 className="font-editorial text-2xl font-bold text-[#003366]">
                 {currentTopic.optionB.name}
               </h4>
-              <p className="text-xs font-semibold text-[#00A3E0]">
+              <p className="text-sm font-semibold text-[#00A3E0]">
                 {currentTopic.optionB.tagline}
               </p>
-              <div className="p-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-xs text-[#1E293B]">
+              <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-sm text-[#1E293B]">
                 <strong>Key Advantage:</strong> {currentTopic.optionB.highlight}
               </div>
             </div>
@@ -282,9 +281,9 @@ export const ProcedureComparisonMatrix: React.FC<ProcedureComparisonMatrixProps>
 
           <button
             onClick={() => onNavigate('book-consultation')}
-            className="btn-crimson shrink-0 text-xs py-3 px-6 shadow-lg"
+            className="bg-[#003366] hover:bg-[#002244] border border-[#00A3E0]/40 text-white rounded-xl font-bold uppercase tracking-wider shrink-0 text-xs py-3 px-6 shadow-lg inline-flex items-center gap-2 cursor-pointer transition-all"
           >
-            <Calendar className="w-4 h-4" />
+            <Calendar className="w-4 h-4 text-[#00A3E0]" />
             <span>Schedule Diagnostic Evaluation</span>
           </button>
         </div>

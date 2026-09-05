@@ -91,7 +91,7 @@ export const Header: React.FC<HeaderProps> = ({
     <header className="fixed top-0 left-0 right-0 z-50 w-full font-sans transition-all duration-300">
       
       {/* 1. Moving Marquee Announcement Bar */}
-      <div className="bg-[#001D3D] text-slate-300 text-[11px] py-1.5 border-b border-[#002E5C] overflow-hidden select-none">
+      <div className="bg-[#001D3D] text-slate-300 text-xs py-2 border-b border-[#002E5C] overflow-hidden select-none">
         <div className="flex items-center overflow-hidden">
           {/* Continuous scrolling track (duplicated for seamless loop) */}
           <div className="animate-marquee-scroll flex items-center gap-10 sm:gap-14 cursor-pointer">
@@ -108,7 +108,7 @@ export const Header: React.FC<HeaderProps> = ({
               );
             })}
 
-            {/* Duplicate Set for Seamless Loop */}
+            {/* Duplicated Second Set for Seamless Infinite Scrolling Loop */}
             {marqueeItems.map((item, idx) => {
               const Icon = item.icon;
               return (
@@ -124,8 +124,8 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* 2. Main Navigation Bar with Smooth Frosted Blur on Scroll */}
-      <div className={`transition-all duration-300 ${
+      {/* 2. Main Navigation Bar */}
+      <div className={`transition-all duration-200 ${
         isScrolled 
           ? 'bg-white/80 backdrop-blur-md shadow-md border-b border-[#E2E8F0]/80 py-2.5' 
           : 'bg-white/95 backdrop-blur-xs border-b border-[#E2E8F0] py-3.5'
@@ -178,7 +178,7 @@ export const Header: React.FC<HeaderProps> = ({
                       
                       {/* Column 1: Face & Nose */}
                       <div className="space-y-2">
-                        <span className="text-[11px] font-bold uppercase tracking-wider text-[#00A3E0] block pb-2 border-b border-slate-100">
+                        <span className="text-xs font-bold uppercase tracking-wider text-[#00A3E0] block pb-2 border-b border-slate-100">
                           Face & Neck Aesthetics
                         </span>
                         <div className="space-y-1">
@@ -186,7 +186,7 @@ export const Header: React.FC<HeaderProps> = ({
                             <div
                               key={p.slug}
                               onClick={() => handleNav(`procedure-${p.slug}`)}
-                              className="text-xs text-[#334155] hover:text-[#003366] hover:bg-[#F0F7FD] p-1.5 rounded-lg transition-colors cursor-pointer font-medium"
+                              className="text-xs sm:text-sm text-[#334155] hover:text-[#003366] hover:bg-[#F0F7FD] p-1.5 rounded-lg transition-colors cursor-pointer font-medium"
                             >
                               {p.title}
                             </div>
@@ -196,7 +196,7 @@ export const Header: React.FC<HeaderProps> = ({
 
                       {/* Column 2: Breast & Body */}
                       <div className="space-y-2">
-                        <span className="text-[11px] font-bold uppercase tracking-wider text-[#00A3E0] block pb-2 border-b border-slate-100">
+                        <span className="text-xs font-bold uppercase tracking-wider text-[#00A3E0] block pb-2 border-b border-slate-100">
                           Body & Chest Sculpting
                         </span>
                         <div className="space-y-1">
@@ -204,7 +204,7 @@ export const Header: React.FC<HeaderProps> = ({
                             <div
                               key={p.slug}
                               onClick={() => handleNav(`procedure-${p.slug}`)}
-                              className="text-xs text-[#334155] hover:text-[#003366] hover:bg-[#F0F7FD] p-1.5 rounded-lg transition-colors cursor-pointer font-medium"
+                              className="text-xs sm:text-sm text-[#334155] hover:text-[#003366] hover:bg-[#F0F7FD] p-1.5 rounded-lg transition-colors cursor-pointer font-medium"
                             >
                               {p.title}
                             </div>
@@ -214,7 +214,7 @@ export const Header: React.FC<HeaderProps> = ({
 
                       {/* Column 3: Reconstructive & Skin */}
                       <div className="space-y-2">
-                        <span className="text-[11px] font-bold uppercase tracking-wider text-[#00A3E0] block pb-2 border-b border-slate-100">
+                        <span className="text-xs font-bold uppercase tracking-wider text-[#00A3E0] block pb-2 border-b border-slate-100">
                           Skin & Reconstructive
                         </span>
                         <div className="space-y-1">
@@ -222,7 +222,7 @@ export const Header: React.FC<HeaderProps> = ({
                             <div
                               key={p.slug}
                               onClick={() => handleNav(`procedure-${p.slug}`)}
-                              className="text-xs text-[#334155] hover:text-[#003366] hover:bg-[#F0F7FD] p-1.5 rounded-lg transition-colors cursor-pointer font-medium"
+                              className="text-xs sm:text-sm text-[#334155] hover:text-[#003366] hover:bg-[#F0F7FD] p-1.5 rounded-lg transition-colors cursor-pointer font-medium"
                             >
                               {p.title}
                             </div>

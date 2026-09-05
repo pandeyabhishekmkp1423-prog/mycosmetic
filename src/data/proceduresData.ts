@@ -35,7 +35,7 @@ export const proceduresData: Procedure[] = [
     costRange: '₹65,000 – ₹1,35,000',
     priceStartingFrom: 65000,
     featured: true,
-    image: 'https://images.unsplash.com/photo-1512290900672-1f4a47a1ff1e?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://www.perfectdrs.com/wp-content/uploads/2025/12/What-are-the-different-rhinoplasty-procedures.webp',
     beforeAfterCaseIds: ['rhino-01', 'rhino-02'],
     tags: ['Nose Job', 'Dorsal Hump', 'Septorhinoplasty', 'Tip Plasty', 'Facial Harmony'],
     relatedSlugs: ['chin-correction', 'facelift', 'blepharoplasty'],

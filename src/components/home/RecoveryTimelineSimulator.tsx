@@ -278,22 +278,21 @@ export const RecoveryTimelineSimulator: React.FC<RecoveryTimelineSimulatorProps>
   const activeMilestone = currentTimeline.milestones[activeStepIndex];
 
   return (
-    <section id="recovery-timeline-simulator" className="py-20 sm:py-28 bg-white relative overflow-hidden border-b border-[#E2E8F0]">
+    <section id="recovery-timeline-simulator" className="py-12 sm:py-16 bg-white relative overflow-hidden border-b border-[#E2E8F0]">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#00A3E0]/10 border border-[#00A3E0]/20 text-[#00A3E0] text-xs font-semibold tracking-wide uppercase">
-            <Clock className="w-3.5 h-3.5" />
-            <span>Realistic Healing & Downtime Clarity</span>
-          </div>
+        {/* Section Header with Rich Editorial Typography */}
+        <div className="text-center max-w-3xl mx-auto space-y-2 mb-8 sm:mb-10">
+          <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block">
+            Realistic Healing & Downtime Clarity
+          </span>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#003366] tracking-tight">
-            Day-by-Day Recovery Simulator
+          <h2 className="font-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-[#003366] tracking-tight">
+            Day-by-Day <span className="italic text-[#00A3E0] font-normal">Recovery Simulator.</span>
           </h2>
 
-          <p className="text-sm sm:text-base text-[#475569] leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
             Wondering when you can return to work, when swelling resolves, or when results look natural? Explore realistic milestone timelines based on Dr. R. K. Mishra’s gentle surgical protocols.
           </p>
 
@@ -335,13 +334,13 @@ export const RecoveryTimelineSimulator: React.FC<RecoveryTimelineSimulatorProps>
                       : 'bg-white text-[#475569] border-[#E2E8F0] hover:border-[#00A3E0] hover:text-[#003366]'
                   }`}
                 >
-                  <span className={`text-[10px] uppercase font-bold tracking-wider ${isSelected ? 'text-[#00A3E0]' : 'text-[#64748B]'}`}>
+                  <span className={`text-xs uppercase font-bold tracking-wider ${isSelected ? 'text-[#00A3E0]' : 'text-[#64748B]'}`}>
                     Milestone
                   </span>
                   <span className="text-sm sm:text-base font-bold mt-0.5">
                     {m.dayLabel}
                   </span>
-                  <span className={`text-[10px] line-clamp-1 mt-1 font-medium ${isSelected ? 'text-white/80' : 'text-slate-400'}`}>
+                  <span className={`text-xs line-clamp-1 mt-1 font-medium ${isSelected ? 'text-white/80' : 'text-slate-500'}`}>
                     {idx === 2 ? '★ Back to Work' : m.status.split(' ')[0]}
                   </span>
                 </button>
@@ -355,24 +354,24 @@ export const RecoveryTimelineSimulator: React.FC<RecoveryTimelineSimulatorProps>
             {/* Left: Narrative & Status */}
             <div className="lg:col-span-7 space-y-4">
               <div className="flex items-center gap-2 text-xs">
-                <span className="px-2.5 py-0.5 bg-[#00A3E0]/10 text-[#003366] font-bold uppercase rounded-md border border-[#00A3E0]/20 text-[10px]">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#00A3E0]">
                   {currentTimeline.name}
                 </span>
-                <span className="text-[#64748B]">• {activeMilestone.dayLabel} Milestone</span>
+                <span className="text-[#64748B] font-medium">• {activeMilestone.dayLabel} Milestone</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#003366]">
+              <h3 className="text-2xl sm:text-3xl font-editorial font-bold text-[#003366]">
                 {activeMilestone.title}
               </h3>
 
-              <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
+              <p className="text-sm sm:text-base text-[#475569] leading-relaxed">
                 {activeMilestone.description}
               </p>
 
               {/* Surgeon Clinical Tip */}
-              <div className="p-4 rounded-xl bg-[#F8FAFC] border-l-4 border-[#00A3E0] text-xs space-y-1">
+              <div className="p-4 rounded-xl bg-[#F8FAFC] border-l-4 border-[#00A3E0] text-sm space-y-1">
                 <p className="font-bold text-[#003366] flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-[#00A3E0]" />
+                  <Sparkles className="w-4 h-4 text-[#00A3E0]" />
                   <span>Dr. R. K. Mishra's Surgical Recovery Guidance:</span>
                 </p>
                 <p className="text-[#475569] italic pl-5">
@@ -388,45 +387,45 @@ export const RecoveryTimelineSimulator: React.FC<RecoveryTimelineSimulatorProps>
               </h4>
 
               {/* Pain Level */}
-              <div className="flex items-start gap-3 text-xs">
+              <div className="flex items-start gap-3 text-xs sm:text-sm">
                 <div className="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 border border-amber-200">
                   <Activity className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-[#64748B] uppercase font-bold block">Comfort & Pain Score</span>
+                  <span className="text-xs text-[#64748B] uppercase font-bold block">Comfort & Pain Score</span>
                   <span className="font-semibold text-[#1E293B]">{activeMilestone.painLevel}</span>
                 </div>
               </div>
 
               {/* Work Status */}
-              <div className="flex items-start gap-3 text-xs">
+              <div className="flex items-start gap-3 text-xs sm:text-sm">
                 <div className="w-8 h-8 rounded-xl bg-blue-50 text-[#003366] flex items-center justify-center shrink-0 border border-blue-200">
                   <Briefcase className="w-4 h-4 text-[#00A3E0]" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-[#64748B] uppercase font-bold block">Work Readiness</span>
+                  <span className="text-xs text-[#64748B] uppercase font-bold block">Work Readiness</span>
                   <span className="font-semibold text-[#1E293B]">{activeMilestone.workStatus}</span>
                 </div>
               </div>
 
               {/* Social Appearance */}
-              <div className="flex items-start gap-3 text-xs">
+              <div className="flex items-start gap-3 text-xs sm:text-sm">
                 <div className="w-8 h-8 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center shrink-0 border border-purple-200">
                   <Smile className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-[#64748B] uppercase font-bold block">Social & Public Discretion</span>
+                  <span className="text-xs text-[#64748B] uppercase font-bold block">Social & Public Discretion</span>
                   <span className="font-semibold text-[#1E293B]">{activeMilestone.socialStatus}</span>
                 </div>
               </div>
 
               {/* Exercise Status */}
-              <div className="flex items-start gap-3 text-xs">
+              <div className="flex items-start gap-3 text-xs sm:text-sm">
                 <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-200">
                   <Dumbbell className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-[#64748B] uppercase font-bold block">Physical Exercise</span>
+                  <span className="text-xs text-[#64748B] uppercase font-bold block">Physical Exercise</span>
                   <span className="font-semibold text-[#1E293B]">{activeMilestone.exerciseStatus}</span>
                 </div>
               </div>
@@ -435,9 +434,9 @@ export const RecoveryTimelineSimulator: React.FC<RecoveryTimelineSimulatorProps>
               <div className="pt-2">
                 <button
                   onClick={() => onNavigate('book-consultation')}
-                  className="btn-crimson w-full justify-center py-2.5 text-xs"
+                  className="btn-navy w-full justify-center py-2.5 text-xs flex items-center gap-1.5"
                 >
-                  <Calendar className="w-3.5 h-3.5" />
+                  <Calendar className="w-3.5 h-3.5 text-[#00A3E0]" />
                   <span>Discuss Your Recovery Schedule</span>
                 </button>
               </div>
