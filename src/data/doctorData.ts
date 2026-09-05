@@ -9,9 +9,9 @@ export const doctorData: DoctorProfile = {
   surgeriesCount: '30,000+',
   hospital: 'Sushrut Institute of Plastic Surgery (SIPS) Hospital',
   hospitalAddress: '29 Shah Mina Road, Chowk, Lucknow, Uttar Pradesh – 226003, India',
-  contactPhone: '+91 9795-800-800',
+  contactPhone: '+91 94150 23675',
   contactEmail: 'MyCosmeticSurgery@gmail.com',
-  whatsappNumber: '+919795800800',
+  whatsappNumber: '+919415023675',
   internationalTraining: [
     'Fellowship Training in Aesthetic Plastic Surgery — Dallas Medical Center, Texas, USA',
     'Advanced Reconstructive & Microvascular Surgery — NYU Medical Center, New York, USA',

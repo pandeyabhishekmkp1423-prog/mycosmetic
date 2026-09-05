@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Search, ArrowRight, Clock, Filter } from 'lucide-react';
+import { Search, ArrowRight, Clock, Filter, Sparkles } from 'lucide-react';
 import { proceduresData } from '../../data/proceduresData';
 import { ProcedureCategory } from '../../types';
 import { SafeImage } from '../common/SafeImage';
@@ -33,49 +33,44 @@ export const ProceduresDirectoryView: React.FC<ProceduresDirectoryViewProps> = (
     });
   }, [selectedCategory, searchQuery]);
 
-  const getStartingCost = (costRange: string) => {
-    const [startingCost] = costRange.split('–');
-    return startingCost.trim();
-  };
-
   return (
-    <div id="procedures-directory-page" className="pt-24 pb-20 bg-[#F6FAFD]">
+    <div className="pt-32 sm:pt-36 pb-24 bg-[#F8FAFC]">
       
       {/* Breadcrumb */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-xs text-gray-500 flex items-center gap-2">
-        <button onClick={() => onNavigate('home')} className="hover:text-[#102A43]">Home</button>
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3 text-xs text-[#64748B] flex items-center gap-2 border-b border-[#E2E8F0] mb-8">
+        <button onClick={() => onNavigate('home')} className="hover:text-[#003366] transition-colors cursor-pointer">Home</button>
         <span>/</span>
-        <span className="text-[#102A43] font-semibold">Procedures Directory</span>
+        <span className="text-[#003366] font-semibold">Procedures Directory</span>
       </div>
 
-      {/* Directory Hero */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <div className="max-w-3xl space-y-4">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[#1769AA] block">
-            Comprehensive Surgical Catalogue
-          </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#102A43] tracking-tight">
-            Aesthetic & Reconstructive Procedures
+      {/* Hero Header */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-12">
+        <div className="max-w-3xl space-y-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00A3E0]/10 border border-[#00A3E0]/20 text-[#00A3E0] text-xs font-semibold tracking-wide uppercase">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Comprehensive Clinical Portfolio</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#003366] tracking-tight">
+            Surgical & Non-Surgical Procedures
           </h1>
-          <p className="text-base text-gray-600 leading-relaxed font-normal">
-            Explore advanced surgical treatments performed by Dr. R. K. Mishra at SIPS Hospital Lucknow. Every procedure is customized to enhance your authentic beauty and restore physical comfort.
+          <p className="text-sm sm:text-base text-[#475569] font-normal leading-relaxed pt-1">
+            Personalized cosmetic and reconstructive procedures performed with artistic precision by Senior Plastic Surgeon Dr. R. K. Mishra (25+ Yrs Experience) at SIPS Hospital, Lucknow.
           </p>
         </div>
 
-        {/* Filter & Search Bar */}
-        <div className="mt-8 pt-6 border-t border-[#DCE7F0] flex flex-col md:flex-row md:items-center justify-between gap-4">
+        {/* Filter Tabs & Search Bar */}
+        <div className="mt-8 pt-6 border-t border-[#E2E8F0] flex flex-col md:flex-row md:items-center justify-between gap-4">
           
-          {/* Category Tabs */}
+          {/* Category Pills */}
           <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                aria-pressed={selectedCategory === cat.id}
-                className={`min-h-10 rounded-lg px-4 py-2 text-xs font-bold whitespace-nowrap transition-all ${
+                className={`px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wide uppercase transition-all cursor-pointer whitespace-nowrap ${
                   selectedCategory === cat.id
-                    ? 'bg-[#0B2A5B] text-white shadow-xs'
-                    : 'bg-white text-gray-700 hover:bg-[#EEF7FC] border border-[#DCE7F0]'
+                    ? 'bg-[#003366] text-white shadow-sm'
+                    : 'bg-white text-[#475569] border border-[#E2E8F0] hover:bg-[#F8FAFC] hover:text-[#003366]'
                 }`}
               >
                 {cat.label}
@@ -83,38 +78,34 @@ export const ProceduresDirectoryView: React.FC<ProceduresDirectoryViewProps> = (
             ))}
           </div>
 
-          {/* Quick Search Field */}
-          <div className="relative md:w-72">
-            <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          {/* Search Input */}
+          <div className="relative md:w-80">
+            <Search className="w-4 h-4 text-[#00A3E0] absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search treatments..."
+              placeholder="Search procedures by name or concern..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="min-h-10 w-full rounded-lg border border-[#DCE7F0] bg-white py-2 pl-9 pr-4 text-xs font-semibold focus:border-[#1769AA] focus:outline-hidden"
+              className="w-full rounded-xl border border-[#E2E8F0] bg-white py-2.5 pl-10 pr-4 text-xs text-[#1E293B] focus:border-[#003366] focus:ring-1 focus:ring-[#003366] focus:outline-none transition-all shadow-xs"
             />
           </div>
 
         </div>
 
-        <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-[#52677D]">
-          <Filter className="h-3.5 w-3.5 text-[#1769AA]" />
-          <span>
-            Showing <strong className="text-[#102A43]">{filteredProcedures.length}</strong> of {proceduresData.length} procedures
-          </span>
+        <div className="mt-4 text-xs text-[#64748B]">
+          Showing <strong className="text-[#003366]">{filteredProcedures.length}</strong> specialized procedures
         </div>
       </div>
 
-      {/* Grid of Procedures */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Grid of Clean Cards */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
         {filteredProcedures.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProcedures.map((proc) => (
               <div
                 key={proc.slug}
-                id={`proc-dir-card-${proc.slug}`}
                 onClick={() => onNavigate(`procedure-${proc.slug}`)}
-                className="interactive-lift group flex cursor-pointer flex-col justify-between overflow-hidden rounded-lg border border-[#DCE7F0] bg-white shadow-xs hover:border-[#1769AA]/60"
+                className="clean-card bg-white overflow-hidden flex flex-col justify-between group cursor-pointer border border-[#E2E8F0] rounded-2xl hover:border-[#00A3E0]/50 hover:shadow-xl transition-all"
               >
                 <div>
                   <div className="aspect-[16/10] overflow-hidden relative bg-gray-100">
@@ -124,54 +115,43 @@ export const ProceduresDirectoryView: React.FC<ProceduresDirectoryViewProps> = (
                       fallbackCategory={proc.category}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-white/90 backdrop-blur-xs text-[#102A43] text-[10px] font-bold uppercase rounded-md tracking-wider">
+                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-white/95 text-[#003366] text-[10px] font-bold uppercase tracking-wider rounded-md shadow-xs border border-[#E2E8F0]">
                       {proc.category}
-                    </div>
-                    <div className="absolute bottom-3 right-3 px-2.5 py-1 bg-[#102A43]/85 text-[#C89448] text-xs font-semibold rounded-md backdrop-blur-xs border border-white/10">
-                      From {getStartingCost(proc.costRange)}
                     </div>
                   </div>
 
-                  <div className="p-6">
-                    <h3 className="text-xl font-serif font-bold text-[#102A43] group-hover:text-[#1769AA] transition-colors mb-1.5">
+                  <div className="p-6 space-y-2">
+                    <h3 className="text-lg font-serif font-bold text-[#003366] group-hover:text-[#00A3E0] transition-colors">
                       {proc.title}
                     </h3>
-                    <p className="text-xs text-gray-500 font-medium mb-3">
+                    <p className="text-xs text-[#00A3E0] font-semibold">
                       {proc.subtitle}
                     </p>
-                    <p className="text-xs text-gray-600 line-clamp-3 leading-relaxed mb-4">
+                    <p className="text-xs text-[#475569] line-clamp-2 leading-relaxed pt-1">
                       {proc.shortDesc}
                     </p>
-
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-1.5">
-                      {proc.tags.slice(0, 3).map((tag, idx) => (
-                        <span key={idx} className="px-2 py-0.5 bg-[#F6FAFD] text-gray-600 text-[10px] rounded-md border border-[#DCE7F0]">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
                   </div>
                 </div>
 
-                <div className="p-6 pt-0 border-t border-[#DCE7F0] mt-2 pt-4 flex items-center justify-between text-xs">
-                  <span className="text-gray-500 flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5 text-[#1769AA]" /> {proc.duration}
+                <div className="p-6 pt-3 border-t border-[#E2E8F0] flex items-center justify-between text-xs">
+                  <span className="text-[#64748B] flex items-center gap-1 font-medium">
+                    <Clock className="w-3.5 h-3.5 text-[#00A3E0]" /> {proc.duration}
                   </span>
-                  <span className="font-semibold text-[#102A43] group-hover:text-[#1769AA] flex items-center gap-1 transition-colors">
-                    Explore Details <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  <span className="font-bold text-[#003366] flex items-center gap-1 group-hover:text-[#00A3E0] transition-colors">
+                    <span>Clinical Details</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </div>
               </div>
             ))}
           </div>
         ) : (
-          <div className="text-center py-16 bg-white rounded-2xl border border-[#DCE7F0] p-8">
-            <p className="text-base font-serif font-bold text-[#102A43]">No procedures found matching your criteria</p>
-            <p className="text-xs text-gray-500 mt-1">Try resetting the category filter or search keywords.</p>
+          <div className="text-center py-16 bg-white rounded-2xl border border-[#E2E8F0] p-8 shadow-sm">
+            <p className="text-base font-bold text-[#003366]">No procedures matched your search</p>
+            <p className="text-xs text-[#64748B] mt-1">Try clearing search keywords or selecting another category.</p>
             <button
               onClick={() => { setSelectedCategory('ALL'); setSearchQuery(''); }}
-              className="mt-4 px-4 py-2 bg-[#102A43] text-white text-xs font-semibold rounded-lg"
+              className="mt-4 btn-navy"
             >
               Reset Filters
             </button>

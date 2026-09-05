@@ -1,157 +1,130 @@
-import React, { useState } from 'react';
-import { Activity, ArrowRight, Clock, Droplets, HeartPulse, ScanFace, ShieldCheck, Sparkles } from 'lucide-react';
-import { proceduresData } from '../../data/proceduresData';
-import { ProcedureCategory } from '../../types';
-import { SafeImage } from '../common/SafeImage';
+import React from 'react';
+import { ArrowRight, Sparkles, User, Heart, Activity, Shield, Feather } from 'lucide-react';
 
 interface ProcedureExplorerProps {
   onNavigate: (route: string) => void;
 }
 
 export const ProcedureExplorer: React.FC<ProcedureExplorerProps> = ({ onNavigate }) => {
-  const [activeCategory, setActiveCategory] = useState<ProcedureCategory>('FACE');
-
-  const categories: { id: ProcedureCategory; label: string; icon: React.ReactNode }[] = [
-    { id: 'FACE', label: 'Face', icon: <ScanFace className="w-4 h-4" /> },
-    { id: 'BREAST', label: 'Breast', icon: <HeartPulse className="w-4 h-4" /> },
-    { id: 'BODY', label: 'Body', icon: <Activity className="w-4 h-4" /> },
-    { id: 'SKIN', label: 'Skin & Scar', icon: <Droplets className="w-4 h-4" /> },
-    { id: 'RECONSTRUCTIVE', label: 'Reconstructive', icon: <ShieldCheck className="w-4 h-4" /> }
+  const categories = [
+    {
+      title: 'Facial Surgery',
+      subtitle: 'Rhinoplasty, facelift, eyelid surgery & more.',
+      image: '/assets/proc_face.jpg',
+      slug: 'rhinoplasty',
+      icon: User
+    },
+    {
+      title: 'Breast Surgery',
+      subtitle: 'Augmentation, lift, reduction & reconstruction.',
+      image: '/assets/proc_breast.jpg',
+      slug: 'breast-augmentation',
+      icon: Heart
+    },
+    {
+      title: 'Body Contouring',
+      subtitle: 'Liposuction, tummy tuck, 360 sculpting & more.',
+      image: '/assets/proc_body.jpg',
+      slug: 'liposuction',
+      icon: Activity
+    },
+    {
+      title: 'Male Procedures',
+      subtitle: 'Gynecomastia, male chest & facial sculpting.',
+      image: '/assets/proc_male.jpg',
+      slug: 'gynecomastia',
+      icon: Shield
+    },
+    {
+      title: 'Non-Surgical',
+      subtitle: 'Botox, dermal fillers, tightening & threads.',
+      image: '/assets/proc_nonsurgical.jpg',
+      slug: 'hair-transplant',
+      icon: Feather
+    },
+    {
+      title: 'Skin Treatments',
+      subtitle: 'Laser resurfacing, microneedling & scar repair.',
+      image: '/assets/proc_skincare.jpg',
+      slug: 'scar-revision',
+      icon: Sparkles
+    }
   ];
 
-  const currentProcedures = proceduresData.filter(p => p.category === activeCategory);
-
   return (
-    <section id="explore-procedures" className="py-16 sm:py-24 bg-white relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 sm:py-28 bg-white border-b border-[#E2E8F0]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
-        {/* Section Header & Supporting Copy */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-6">
-          <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#1769AA] mb-2">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Specialized Surgical Solutions</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-serif font-bold text-[#102A43] tracking-tight leading-tight">
-              Explore Procedures
-            </h2>
-            <p className="text-sm sm:text-base text-[#52677D] mt-2 max-w-xl font-normal">
-              Thoughtfully planned surgical solutions for face, body and reconstructive needs.
-            </p>
-          </div>
-
-          {/* Elegant Category Navigation Pills */}
-          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 scrollbar-none bg-[#F5FAFD] p-1.5 rounded-2xl border border-[#DCE7F0]">
-            {categories.map((cat) => {
-              const isActive = activeCategory === cat.id;
-              return (
-                <button
-                  key={cat.id}
-                  id={`proc-tab-${cat.id.toLowerCase()}`}
-                  onClick={() => setActiveCategory(cat.id)}
-                  aria-pressed={isActive}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer whitespace-nowrap ${
-                    isActive
-                      ? 'bg-white text-[#0B2A5B] shadow-sm'
-                      : 'text-[#52677D] hover:text-[#102A43] hover:bg-white/60'
-                  }`}
-                >
-                  <span className={isActive ? 'text-[#1769AA]' : 'text-[#718096]'}>
-                    {cat.icon}
-                  </span>
-                  <span>{cat.label}</span>
-                </button>
-              );
-            })}
-          </div>
+        {/* Section Header */}
+        <div className="text-center space-y-3 max-w-2xl mx-auto mb-16">
+          <span className="text-xs font-semibold tracking-[0.2em] text-[#00A3E0] uppercase block">
+            Our Specialties
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-heading font-bold text-[#003366] tracking-tight">
+            Surgical & Aesthetic Solutions
+          </h2>
+          <p className="text-sm text-slate-500 max-w-lg mx-auto">
+            Comprehensive reconstructive & aesthetic procedures performed at SIPS Super Specialty Hospital Lucknow.
+          </p>
+          <div className="w-16 h-[3px] bg-[#00A3E0] mx-auto rounded-full mt-4" />
         </div>
 
-        {/* Dynamic Editorial Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {currentProcedures.map((proc) => (
-            <div
-              key={proc.slug}
-              id={`card-proc-${proc.slug}`}
-              onClick={() => onNavigate(`procedure-${proc.slug}`)}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                  event.preventDefault();
-                  onNavigate(`procedure-${proc.slug}`);
-                }
-              }}
-              role="button"
-              tabIndex={0}
-              aria-label={`Explore ${proc.title}`}
-              className="interactive-lift group flex h-full cursor-pointer flex-col justify-between overflow-hidden rounded-lg border border-[#DCE7F0] bg-white shadow-[0_8px_24px_rgba(11,42,91,0.05)] hover:border-[#1769AA]/50 hover:shadow-[0_16px_34px_rgba(11,42,91,0.10)]"
-            >
-              <div>
-                {/* Large Visual Image Area (240px - 280px) */}
-                <div className="relative h-56 overflow-hidden bg-[#EAF3F8] sm:h-60">
-                  <SafeImage
-                    src={proc.image}
-                    alt={proc.title}
-                    fallbackCategory={proc.category}
-                    className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
-                  />
-                  
-                  {/* Category Pill Over Image */}
-                  <div className="absolute left-4 top-4 rounded-md border border-white/70 bg-white/95 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#0B2A5B] shadow-sm">
-                    {proc.category}
-                  </div>
-
-                  {/* Downtime / Duration Pill */}
-                  <div className="absolute bottom-4 left-4 flex items-center gap-1.5 rounded-md bg-[#071D3B]/90 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur-md">
-                    <Clock className="w-3 h-3 text-[#93C5FD]" />
-                    <span>{proc.duration}</span>
-                  </div>
-                </div>
-
-                {/* Content Area with Generous Spacing & Refined Typography */}
-                <div className="p-5 sm:p-6">
-                  <h3 className="card-readable mb-2 text-lg font-serif font-bold leading-snug text-[#102A43] transition-colors group-hover:text-[#1769AA] sm:text-xl">
-                    {proc.title}
-                  </h3>
-                  
-                  <p className="card-readable line-clamp-2 text-xs leading-relaxed text-[#52677D] sm:text-sm">
-                    {proc.shortDesc}
-                  </p>
-
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    {proc.tags.slice(0, 3).map((tag, idx) => (
-                      <span 
-                        key={idx} 
-                        className="rounded-sm bg-[#EEF7FC] px-2 py-0.5 text-[10px] font-semibold text-[#1769AA]"
-                      >
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Minimal Circular Action & Price Indication */}
-              <div className="mt-1 flex items-center justify-between border-t border-[#E8EFF4] px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
+        {/* 6 Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+          {categories.map((item) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={item.title}
+                onClick={() => onNavigate(`procedure-${item.slug}`)}
+                className="clean-card bg-white overflow-hidden flex flex-col justify-between group cursor-pointer border border-[#E2E8F0] rounded-xl hover:shadow-xl hover:border-[#00A3E0]/40 transition-all"
+              >
                 <div>
-                  <span className="text-[10px] text-[#718096] uppercase tracking-wider block">Estimated Fee</span>
-                  <span className="text-xs font-bold text-[#102A43]">{proc.costRange}</span>
+                  {/* Photo with subtle top radius */}
+                  <div className="relative aspect-square overflow-hidden bg-slate-100">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+
+                  {/* Body */}
+                  <div className="p-4 sm:p-5 text-center space-y-2 relative">
+                    {/* Outline circular icon badge floating right above title */}
+                    <div className="w-10 h-10 rounded-full bg-white border border-[#E2E8F0] flex items-center justify-center mx-auto -mt-8 shadow-sm text-[#003366] group-hover:text-[#00A3E0] relative z-10 transition-colors">
+                      <Icon className="w-4 h-4 stroke-[1.8]" />
+                    </div>
+
+                    <h3 className="text-sm sm:text-base font-heading font-bold text-[#003366] pt-1 group-hover:text-[#00A3E0] transition-colors">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-[11px] sm:text-xs text-slate-500 leading-relaxed line-clamp-2">
+                      {item.subtitle}
+                    </p>
+                  </div>
                 </div>
 
-                <div className="w-9 h-9 rounded-full bg-[#EEF7FC] group-hover:bg-[#0B2A5B] text-[#1769AA] group-hover:text-white flex items-center justify-center transition-all duration-200 shadow-xs">
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                {/* Learn More Button */}
+                <div className="p-4 pt-0 text-center">
+                  <button className="w-full py-2 px-3 border border-[#003366]/20 text-[10px] sm:text-[11px] font-bold tracking-[0.1em] uppercase text-[#003366] rounded-lg group-hover:bg-[#003366] group-hover:text-white transition-colors">
+                    Learn More
+                  </button>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        {/* Bottom Directory Link */}
-        <div className="mt-12 text-center">
+        {/* View All Procedures Action */}
+        <div className="text-center mt-12">
           <button
             onClick={() => onNavigate('procedures')}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#EEF7FC] hover:bg-[#DCE7F0] text-[#0B2A5B] text-xs sm:text-sm font-semibold transition-colors shadow-xs"
+            className="btn-navy px-8 py-3.5 rounded-lg shadow-sm"
           >
-            <span>View Complete 13-Procedure Clinical Catalog</span>
-            <ArrowRight className="w-4 h-4 text-[#1769AA]" />
+            <span>View All 30+ Procedures</span>
+            <ArrowRight className="w-4 h-4 ml-1.5" />
           </button>
         </div>
 

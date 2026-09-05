@@ -1,62 +1,50 @@
 import React from 'react';
-import { Shield, Award, HeartHandshake, Globe } from 'lucide-react';
+import { UserCheck, Sparkles, HeartHandshake, ShieldCheck } from 'lucide-react';
 
 export const TrustCredentials: React.FC = () => {
-  const stats = [
+  const highlights = [
     {
-      icon: Award,
-      value: '25+',
-      label: 'Years Experience',
-      detail: 'M.Ch Plastic Surgery (KGMC, 2000)'
+      title: 'PERSONALIZED SURGICAL CARE',
+      desc: 'Tailored treatment plans matching your natural facial and body proportions',
+      icon: UserCheck
     },
     {
-      icon: Shield,
-      value: '30,000+',
-      label: 'Surgeries Performed',
-      detail: 'Aesthetic & Reconstructive Mastery'
+      title: 'ADVANCED TECHNOLOGY',
+      desc: 'VASER ultrasound, microsurgical loupes, and modern laminar airflow OTs',
+      icon: Sparkles
     },
     {
-      icon: Globe,
-      value: 'USA & Taiwan',
-      label: 'International Training',
-      detail: 'Dallas, NYU & Chang Gung Memorial'
+      title: 'NATURAL, HARMONIOUS RESULTS',
+      desc: 'Subtle anatomical refinement that revamps your looks naturally',
+      icon: HeartHandshake
     },
     {
-      icon: HeartHandshake,
-      value: 'Patient-First',
-      label: 'Safety & Hospital Care',
-      detail: 'NABH Accredited SIPS Facility'
+      title: 'NABH ACCREDITED SAFETY',
+      desc: 'Round-the-clock emergency support, ICU and complete clinical safety at SIPS',
+      icon: ShieldCheck
     }
   ];
 
   return (
-    <section id="trust-credentials-section" className="py-12 sm:py-16 bg-[#EEF7FC]/70 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-[#002244] text-white py-10 sm:py-12 border-y border-[#003366]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
-        {/* Soft Editorial Row with Numbers as Focus */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x divide-[#DCE7F0]">
-          {stats.map((stat, idx) => {
-            const Icon = stat.icon;
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {highlights.map((item) => {
+            const Icon = item.icon;
             return (
-              <div 
-                key={idx} 
-                className="flex flex-col items-center text-center px-4 sm:px-6 lg:px-8 group"
-              >
-                <div className="w-10 h-10 rounded-full bg-white text-[#1769AA] flex items-center justify-center shadow-xs mb-3 group-hover:scale-110 transition-transform duration-300">
-                  <Icon className="w-5 h-5" />
+              <div key={item.title} className="flex items-start gap-4 group">
+                <div className="w-12 h-12 rounded-xl bg-[#003366] border border-[#00A3E0]/30 flex items-center justify-center shrink-0 text-[#00A3E0] group-hover:scale-105 group-hover:border-[#00A3E0] transition-all shadow-sm">
+                  <Icon className="w-5 h-5 stroke-[1.8]" />
                 </div>
-                
-                <p className="text-3xl sm:text-4xl lg:text-[40px] font-serif font-bold text-[#102A43] tracking-tight leading-none mb-1.5">
-                  {stat.value}
-                </p>
-                
-                <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0B2A5B] mb-1">
-                  {stat.label}
-                </h3>
-                
-                <p className="text-xs text-[#52677D] max-w-[200px]">
-                  {stat.detail}
-                </p>
+                <div>
+                  <h3 className="text-xs font-bold tracking-[0.1em] uppercase text-white mb-1">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                    {item.desc}
+                  </p>
+                </div>
               </div>
             );
           })}

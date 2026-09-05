@@ -1,452 +1,408 @@
-import React, { useEffect, useState, useRef } from 'react';
-import {
+import React, { useState, useEffect, useRef } from 'react';
+import { 
+  MapPin, 
+  Clock, 
+  Phone, 
+  ChevronDown, 
+  Menu, 
+  X, 
   Calendar,
-  ChevronDown,
-  Languages,
-  MapPin,
-  Menu,
-  MessageCircle,
-  Phone,
   Search,
+  Sparkles,
+  ArrowRight,
   ShieldCheck,
-  X,
-  ArrowRight
+  Award,
+  CreditCard,
+  Plane,
+  MessageCircle,
+  Star
 } from 'lucide-react';
-import { proceduresData } from '../../data/proceduresData';
-import { doctorData } from '../../data/doctorData';
 import { Logo } from '../common/Logo';
+import { proceduresData } from '../../data/proceduresData';
 
 interface HeaderProps {
   currentRoute: string;
   onNavigate: (route: string) => void;
   onOpenSearch: () => void;
-  lang: 'EN' | 'HI';
-  onToggleLang: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   currentRoute,
   onNavigate,
-  onOpenSearch,
-  lang,
-  onToggleLang
+  onOpenSearch
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [proceduresDropdownOpen, setProceduresDropdownOpen] = useState(false);
-  const [mobileProceduresOpen, setMobileProceduresOpen] = useState(false);
-
-  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [procDropdownOpen, setProcDropdownOpen] = useState(false);
+  const [patientDropdownOpen, setPatientDropdownOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10);
-    handleScroll();
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 15);
+    };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setMobileMenuOpen(false);
-        setProceduresDropdownOpen(false);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
-  // Prevent background scrolling when mobile menu is open
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [mobileMenuOpen]);
-
-  const navItems = [
+  // De-densified, spacious navigation links (6 clean anchors)
+  const navLinks = [
     { label: 'Home', route: 'home' },
     { label: 'Procedures', route: 'procedures', hasDropdown: true },
-    { label: 'Doctor', route: 'doctor' },
-    { label: 'Results', route: 'results' },
-    { label: 'Stories', route: 'patient-stories' },
-    { label: 'Pricing', route: 'pricing' },
-    { label: 'Insights', route: 'insights' },
+    { label: 'Before & After', route: 'results' },
+    { label: 'About Surgeon', route: 'doctor' },
+    { 
+      label: 'Patient Care', 
+      route: 'patient-stories',
+      hasPatientDropdown: true 
+    },
     { label: 'Contact', route: 'contact' }
   ];
 
-  const procedureGroups = [
-    { title: 'Face & Neck', items: proceduresData.filter((p) => p.category === 'FACE') },
-    { title: 'Breast & Body', items: proceduresData.filter((p) => p.category === 'BREAST' || p.category === 'BODY') },
-    { title: 'Skin & Reconstruction', items: proceduresData.filter((p) => p.category === 'SKIN' || p.category === 'RECONSTRUCTIVE') }
-  ];
-
-  const handleNavClick = (route: string) => {
+  const handleNav = (route: string) => {
     onNavigate(route);
     setMobileMenuOpen(false);
-    setProceduresDropdownOpen(false);
+    setProcDropdownOpen(false);
+    setPatientDropdownOpen(false);
   };
 
-  const isActiveRoute = (route: string) => (
-    currentRoute === route || (route === 'procedures' && currentRoute.startsWith('procedure-'))
-  );
-
-  const handleMouseEnter = () => {
-    if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
-    setProceduresDropdownOpen(true);
+  const isLinkActive = (item: typeof navLinks[0]) => {
+    if (item.route === 'home') return currentRoute === 'home';
+    if (item.route === 'procedures') return currentRoute === 'procedures' || currentRoute.startsWith('procedure-');
+    if (item.route === 'patient-stories') return currentRoute === 'patient-stories' || currentRoute === 'reviews' || currentRoute === 'pricing' || currentRoute === 'hospital';
+    return currentRoute === item.route;
   };
 
-  const handleMouseLeave = () => {
-    dropdownTimeoutRef.current = setTimeout(() => {
-      setProceduresDropdownOpen(false);
-    }, 150);
-  };
+  // Groupings for mega menu
+  const faceProcedures = proceduresData.filter(p => p.category === 'FACE').slice(0, 5);
+  const bodyBreastProcedures = proceduresData.filter(p => p.category === 'BREAST' || p.category === 'BODY').slice(0, 5);
+  const skinReconProcedures = proceduresData.filter(p => p.category === 'SKIN' || p.category === 'RECONSTRUCTIVE').slice(0, 5);
+
+  // Marquee announcement ticker items
+  const marqueeItems = [
+    { icon: ShieldCheck, text: 'NABH Super Specialty Center • SIPS Hospital Chowk, Lucknow' },
+    { icon: Award, text: 'Senior Plastic Surgeon Dr. R. K. Mishra (25+ Yrs Exp • 30,000+ Surgeries)' },
+    { icon: Clock, text: 'OPD Hours: Mon – Sat 10:00 AM – 6:00 PM' },
+    { icon: Phone, text: 'Direct Clinic Helpline: +91 94150 23675 / (0522) 225-8700' },
+    { icon: CreditCard, text: '0% Interest Surgery EMI Options Available' },
+    { icon: Plane, text: 'Out-of-Town & Medical Tourism Patient Concierge Desk' }
+  ];
 
   return (
-    <header
-      id="main-header"
-      className={`fixed inset-x-0 top-0 z-50 bg-white/95 backdrop-blur-md transition-all duration-300 ${
-        isScrolled
-          ? 'border-b border-slate-200/80 shadow-sm py-0'
-          : 'border-b border-slate-100 py-0.5'
-      }`}
-    >
-      {/* Top Banner Bar */}
-      <div className="hidden border-b border-slate-100 bg-slate-50/90 text-slate-600 md:block">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-1.5 text-xs font-medium sm:px-6 lg:px-8">
-          <div className="flex items-center gap-6">
-            <span className="inline-flex items-center gap-1.5 font-semibold text-slate-800">
-              <ShieldCheck className="h-4 w-4 text-sky-600" />
-              NABH Accredited SIPS Hospital
-            </span>
-            <span className="inline-flex items-center gap-1.5 text-slate-500">
-              <MapPin className="h-3.5 w-3.5 text-slate-400" />
-              Lucknow, Uttar Pradesh
-            </span>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <a
-              href={`tel:${doctorData.contactPhone.replace(/[^0-9+]/g, '')}`}
-              className="inline-flex items-center gap-1.5 font-semibold text-slate-800 transition-colors hover:text-sky-600"
-            >
-              <Phone className="h-3.5 w-3.5 text-sky-600" />
-              +91 9795 800 800
-            </a>
-            <span className="h-3 w-px bg-slate-200" aria-hidden="true" />
-            <button
-              id="language-toggle-btn"
-              type="button"
-              onClick={onToggleLang}
-              className="inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 font-bold text-slate-700 transition-colors hover:bg-slate-200/60 hover:text-slate-900"
-              aria-label="Toggle language"
-            >
-              <Languages className="h-3.5 w-3.5 text-sky-600" />
-              <span>{lang}</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navbar */}
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2.5 sm:px-6 lg:px-8">
-        <button
-          id="header-logo"
-          type="button"
-          onClick={() => handleNavClick('home')}
-          className="flex shrink-0 items-center transition-opacity hover:opacity-90"
-          aria-label="Go to homepage"
-        >
-          <Logo />
-        </button>
-
-        {/* Desktop Navigation Links */}
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary navigation">
-          {navItems.map((item) => {
-            const isActive = isActiveRoute(item.route);
-
-            if (item.hasDropdown) {
+    <header className="fixed top-0 left-0 right-0 z-50 w-full font-sans transition-all duration-300">
+      
+      {/* 1. Moving Marquee Announcement Bar */}
+      <div className="bg-[#001D3D] text-slate-300 text-[11px] py-1.5 border-b border-[#002E5C] overflow-hidden select-none">
+        <div className="flex items-center overflow-hidden">
+          {/* Continuous scrolling track (duplicated for seamless loop) */}
+          <div className="animate-marquee-scroll flex items-center gap-10 sm:gap-14 cursor-pointer">
+            
+            {/* First Set */}
+            {marqueeItems.map((item, idx) => {
+              const Icon = item.icon;
               return (
-                <div
-                  key={item.route}
-                  className="relative"
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <button
-                    id="nav-procedures-btn"
-                    type="button"
-                    onClick={() => handleNavClick('procedures')}
-                    aria-haspopup="true"
-                    aria-expanded={proceduresDropdownOpen}
-                    className={`inline-flex items-center gap-1 rounded-full px-3.5 py-1.5 text-sm font-semibold transition-all ${
-                      isActive
-                        ? 'bg-sky-50 text-sky-700'
-                        : 'text-slate-700 hover:bg-slate-100/80 hover:text-slate-900'
-                    }`}
-                  >
-                    <span>{item.label}</span>
-                    <ChevronDown
-                      className={`h-3.5 w-3.5 transition-transform duration-200 ${
-                        proceduresDropdownOpen ? 'rotate-180' : ''
-                      }`}
-                    />
-                  </button>
-
-                  {/* Mega Menu Dropdown */}
-                  {proceduresDropdownOpen && (
-                    <div
-                      id="procedures-mega-menu"
-                      className="absolute left-1/2 top-full z-50 mt-1 w-[760px] -translate-x-1/2 rounded-2xl border border-slate-200/80 bg-white p-6 shadow-2xl shadow-slate-900/10 transition-all"
-                    >
-                      <div className="grid grid-cols-[1fr_240px] gap-6">
-                        <div className="grid grid-cols-3 gap-5 border-r border-slate-100 pr-5">
-                          {procedureGroups.map((group) => (
-                            <div key={group.title}>
-                              <h4 className="mb-2.5 text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                                {group.title}
-                              </h4>
-                              <ul className="space-y-1">
-                                {group.items.slice(0, 6).map((procedure) => (
-                                  <li key={procedure.slug}>
-                                    <button
-                                      type="button"
-                                      onClick={() => handleNavClick(`procedure-${procedure.slug}`)}
-                                      className="w-full rounded-lg px-2.5 py-1.5 text-left text-xs font-medium text-slate-600 transition-colors hover:bg-sky-50 hover:text-sky-700"
-                                    >
-                                      {procedure.title}
-                                    </button>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))}
-                        </div>
-
-                        {/* Mega Menu Sidebar CTA */}
-                        <div className="flex flex-col justify-between rounded-xl bg-slate-50 p-4 border border-slate-100">
-                          <div>
-                            <span className="inline-block rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-800">
-                              Directory
-                            </span>
-                            <p className="mt-2 text-xs font-bold leading-snug text-slate-800">
-                              Compare procedures, downtime, & estimated costs.
-                            </p>
-                          </div>
-                          <button
-                            type="button"
-                            onClick={() => handleNavClick('procedures')}
-                            className="mt-4 inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-slate-900 px-3 py-2 text-xs font-semibold text-white transition-all hover:bg-slate-800"
-                          >
-                            Explore Directory
-                            <ArrowRight className="h-3 w-3" />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                <div key={`m1-${idx}`} className="inline-flex items-center gap-2 whitespace-nowrap">
+                  <Icon className="w-3.5 h-3.5 text-[#00A3E0] shrink-0" />
+                  <span className="font-medium text-slate-200 tracking-wide">{item.text}</span>
+                  <span className="text-slate-600 pl-4">•</span>
                 </div>
               );
-            }
+            })}
 
-            return (
-              <button
-                key={item.route}
-                id={`nav-${item.route}-btn`}
-                type="button"
-                onClick={() => handleNavClick(item.route)}
-                aria-current={isActive ? 'page' : undefined}
-                className={`rounded-full px-3.5 py-1.5 text-sm font-semibold transition-all ${
-                  isActive
-                    ? 'bg-sky-50 text-sky-700'
-                    : 'text-slate-700 hover:bg-slate-100/80 hover:text-slate-900'
-                }`}
-              >
-                {item.label}
-              </button>
-            );
-          })}
-        </nav>
+            {/* Duplicate Set for Seamless Loop */}
+            {marqueeItems.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div key={`m2-${idx}`} className="inline-flex items-center gap-2 whitespace-nowrap">
+                  <Icon className="w-3.5 h-3.5 text-[#00A3E0] shrink-0" />
+                  <span className="font-medium text-slate-200 tracking-wide">{item.text}</span>
+                  <span className="text-slate-600 pl-4">•</span>
+                </div>
+              );
+            })}
 
-        {/* Header Actions */}
-        <div className="flex items-center gap-2">
-          <button
-            id="open-search-header-btn"
-            type="button"
-            onClick={onOpenSearch}
-            aria-label="Search procedures and insights"
-            className="inline-flex h-9 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-3 text-slate-600 transition-all hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900"
-            title="Search procedures and articles"
-          >
-            <Search className="h-4 w-4" />
-            <span className="hidden text-xs font-semibold lg:inline">Search</span>
-          </button>
-
-          <button
-            id="header-book-btn"
-            type="button"
-            onClick={() => handleNavClick('book-consultation')}
-            className="hidden h-9 items-center justify-center gap-2 rounded-full bg-amber-600 px-4 text-xs font-semibold text-white shadow-sm transition-all hover:bg-amber-700 hover:shadow sm:inline-flex"
-          >
-            <Calendar className="h-3.5 w-3.5" />
-            <span>Book Consultation</span>
-          </button>
-
-          <a
-            href={`https://wa.me/${doctorData.whatsappNumber.replace('+', '')}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden h-9 w-9 items-center justify-center rounded-full border border-emerald-200 bg-emerald-50 text-emerald-700 transition-colors hover:bg-emerald-100 sm:inline-flex lg:hidden"
-            title="WhatsApp consultation"
-            aria-label="WhatsApp consultation"
-          >
-            <MessageCircle className="h-4 w-4" />
-          </a>
-
-          {/* Mobile Menu Trigger */}
-          <button
-            id="mobile-menu-toggle-btn"
-            type="button"
-            onClick={() => setMobileMenuOpen((open) => !open)}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition-colors hover:bg-slate-50 lg:hidden"
-            aria-label="Toggle menu"
-            aria-expanded={mobileMenuOpen}
-          >
-            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Drawer Navigation */}
-      {mobileMenuOpen && (
-        <div
-          id="mobile-drawer-menu"
-          className="absolute inset-x-0 top-full z-50 flex h-[calc(100dvh-65px)] max-h-[calc(100dvh-65px)] flex-col justify-between overflow-y-auto border-t border-slate-100 bg-white px-4 pb-6 pt-2 shadow-xl lg:hidden"
-        >
-          <div className="space-y-4">
-            {/* Mobile Practice Badge */}
-            <div className="flex items-center justify-between rounded-xl bg-slate-900 p-3.5 text-white shadow-sm">
-              <div>
-                <p className="text-xs font-bold text-white">Dr. R. K. Mishra</p>
-                <p className="text-[11px] text-slate-400">Plastic & Cosmetic Surgeon</p>
-              </div>
-              <span className="rounded-md bg-amber-500/20 px-2 py-0.5 text-[10px] font-bold text-amber-300">
-                Lucknow
-              </span>
-            </div>
+      {/* 2. Main Navigation Bar with Smooth Frosted Blur on Scroll */}
+      <div className={`transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-white/80 backdrop-blur-md shadow-md border-b border-[#E2E8F0]/80 py-2.5' 
+          : 'bg-white/95 backdrop-blur-xs border-b border-[#E2E8F0] py-3.5'
+      }`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between">
+          
+          {/* Logo */}
+          <div onClick={() => handleNav('home')} className="shrink-0 cursor-pointer">
+            <Logo />
+          </div>
 
-            {/* Nav Menu */}
-            <div className="space-y-1 pt-1">
-              {navItems.map((item) => {
-                const isActive = isActiveRoute(item.route);
+          {/* Desktop Navigation Links: Spacious & De-densified */}
+          <nav className="hidden lg:flex items-center space-x-5 xl:space-x-8">
+            {navLinks.map((item) => (
+              <div 
+                key={item.label}
+                className="relative"
+                onMouseEnter={() => {
+                  if (item.hasDropdown) setProcDropdownOpen(true);
+                  if (item.hasPatientDropdown) setPatientDropdownOpen(true);
+                }}
+                onMouseLeave={() => {
+                  if (item.hasDropdown) setProcDropdownOpen(false);
+                  if (item.hasPatientDropdown) setPatientDropdownOpen(false);
+                }}
+              >
+                <button
+                  onClick={() => handleNav(item.route)}
+                  className={`flex items-center gap-1.5 text-sm transition-all py-1.5 px-2.5 rounded-lg cursor-pointer ${
+                    isLinkActive(item) 
+                      ? 'text-[#003366] font-bold' 
+                      : 'text-slate-600 hover:text-[#003366] font-medium'
+                  }`}
+                >
+                  <span>{item.label}</span>
+                  {(item.hasDropdown || item.hasPatientDropdown) && (
+                    <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#003366] transition-transform" />
+                  )}
+                  {/* Subtle active indicator dot */}
+                  {isLinkActive(item) && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00A3E0] ml-0.5" />
+                  )}
+                </button>
 
-                if (item.hasDropdown) {
-                  return (
-                    <div key={item.route} className="space-y-1">
-                      <button
-                        type="button"
-                        onClick={() => setMobileProceduresOpen(!mobileProceduresOpen)}
-                        className={`flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-semibold transition-colors ${
-                          isActive
-                            ? 'bg-sky-50 text-sky-700'
-                            : 'text-slate-700 hover:bg-slate-50'
-                        }`}
-                      >
-                        <span>{item.label}</span>
-                        <ChevronDown
-                          className={`h-4 w-4 transition-transform duration-200 ${
-                            mobileProceduresOpen ? 'rotate-180' : ''
-                          }`}
-                        />
-                      </button>
-
-                      {mobileProceduresOpen && (
-                        <div className="ml-3 space-y-3 border-l-2 border-slate-100 pl-3 py-1">
-                          {procedureGroups.map((group) => (
-                            <div key={group.title}>
-                              <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 py-1">
-                                {group.title}
-                              </p>
-                              {group.items.slice(0, 4).map((proc) => (
-                                <button
-                                  key={proc.slug}
-                                  type="button"
-                                  onClick={() => handleNavClick(`procedure-${proc.slug}`)}
-                                  className="block w-full text-left py-1 text-xs font-medium text-slate-600 hover:text-sky-700"
-                                >
-                                  {proc.title}
-                                </button>
-                              ))}
+                {/* Procedures Mega Dropdown */}
+                {item.hasDropdown && procDropdownOpen && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 w-[680px] bg-white/95 backdrop-blur-md border border-[#E2E8F0] shadow-2xl rounded-2xl p-6 z-50 transition-all animate-in fade-in zoom-in-95 duration-150 mt-1">
+                    
+                    <div className="grid grid-cols-3 gap-6">
+                      
+                      {/* Column 1: Face & Nose */}
+                      <div className="space-y-2">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-[#00A3E0] block pb-2 border-b border-slate-100">
+                          Face & Neck Aesthetics
+                        </span>
+                        <div className="space-y-1">
+                          {faceProcedures.map((p) => (
+                            <div
+                              key={p.slug}
+                              onClick={() => handleNav(`procedure-${p.slug}`)}
+                              className="text-xs text-[#334155] hover:text-[#003366] hover:bg-[#F0F7FD] p-1.5 rounded-lg transition-colors cursor-pointer font-medium"
+                            >
+                              {p.title}
                             </div>
                           ))}
-                          <button
-                            type="button"
-                            onClick={() => handleNavClick('procedures')}
-                            className="inline-flex items-center gap-1 pt-1 text-xs font-bold text-sky-600"
-                          >
-                            View All Procedures
-                            <ArrowRight className="h-3 w-3" />
-                          </button>
                         </div>
-                      )}
+                      </div>
+
+                      {/* Column 2: Breast & Body */}
+                      <div className="space-y-2">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-[#00A3E0] block pb-2 border-b border-slate-100">
+                          Body & Chest Sculpting
+                        </span>
+                        <div className="space-y-1">
+                          {bodyBreastProcedures.map((p) => (
+                            <div
+                              key={p.slug}
+                              onClick={() => handleNav(`procedure-${p.slug}`)}
+                              className="text-xs text-[#334155] hover:text-[#003366] hover:bg-[#F0F7FD] p-1.5 rounded-lg transition-colors cursor-pointer font-medium"
+                            >
+                              {p.title}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Column 3: Reconstructive & Skin */}
+                      <div className="space-y-2">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-[#00A3E0] block pb-2 border-b border-slate-100">
+                          Skin & Reconstructive
+                        </span>
+                        <div className="space-y-1">
+                          {skinReconProcedures.map((p) => (
+                            <div
+                              key={p.slug}
+                              onClick={() => handleNav(`procedure-${p.slug}`)}
+                              className="text-xs text-[#334155] hover:text-[#003366] hover:bg-[#F0F7FD] p-1.5 rounded-lg transition-colors cursor-pointer font-medium"
+                            >
+                              {p.title}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
                     </div>
-                  );
-                }
 
-                return (
-                  <button
-                    key={item.route}
-                    type="button"
-                    onClick={() => handleNavClick(item.route)}
-                    className={`block w-full rounded-lg px-3 py-2.5 text-left text-sm font-semibold transition-colors ${
-                      isActive
-                        ? 'bg-sky-50 text-sky-700'
-                        : 'text-slate-700 hover:bg-slate-50'
-                    }`}
-                  >
-                    {item.label}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+                    {/* Bottom Feature Strip inside Mega Menu */}
+                    <div className="mt-5 pt-4 border-t border-[#E2E8F0] flex items-center justify-between bg-[#F8FAFC] -mx-6 -mb-6 p-4 rounded-b-2xl text-xs">
+                      <div 
+                        onClick={() => {
+                          setProcDropdownOpen(false);
+                          const el = document.getElementById('procedure-matcher-quiz');
+                          if (el) el.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className="flex items-center gap-1.5 font-bold text-[#003366] hover:text-[#00A3E0] transition-colors cursor-pointer"
+                      >
+                        <Sparkles className="w-4 h-4 text-[#00A3E0]" />
+                        <span>Unsure which procedure is right for you? Take 1-Min Quiz →</span>
+                      </div>
 
-          {/* Bottom Actions */}
-          <div className="mt-6 space-y-2 border-t border-slate-100 pt-4">
-            <div className="grid grid-cols-2 gap-2">
-              <a
-                href={`tel:${doctorData.contactPhone.replace(/[^0-9+]/g, '')}`}
-                className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-slate-50 py-2.5 text-xs font-semibold text-slate-800"
-              >
-                <Phone className="h-3.5 w-3.5 text-sky-600" />
-                Call
-              </a>
-              <a
-                href={`https://wa.me/${doctorData.whatsappNumber.replace('+', '')}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 py-2.5 text-xs font-semibold text-emerald-800"
-              >
-                <MessageCircle className="h-3.5 w-3.5 text-emerald-600" />
-                WhatsApp
-              </a>
-            </div>
+                      <button
+                        onClick={() => handleNav('procedures')}
+                        className="font-bold text-[#003366] hover:text-[#00A3E0] transition-colors flex items-center gap-1 cursor-pointer"
+                      >
+                        <span>View All Procedures</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
 
+                  </div>
+                )}
+
+                {/* Patients Dropdown */}
+                {item.hasPatientDropdown && patientDropdownOpen && (
+                  <div className="absolute top-full left-0 w-64 bg-white/95 backdrop-blur-md border border-[#E2E8F0] shadow-xl rounded-2xl p-2.5 z-50 animate-in fade-in zoom-in-95 duration-150 mt-1">
+                    <button
+                      onClick={() => handleNav('hospital')}
+                      className="w-full text-left text-xs text-[#334155] hover:text-[#003366] hover:bg-[#F0F7FD] p-2.5 rounded-xl transition-colors font-medium flex items-center justify-between cursor-pointer"
+                    >
+                      <span>Hospital & Laminar OTs</span>
+                      <ArrowRight className="w-3 h-3 text-slate-400" />
+                    </button>
+                    <button
+                      onClick={() => handleNav('patient-stories')}
+                      className="w-full text-left text-xs text-[#334155] hover:text-[#003366] hover:bg-[#F0F7FD] p-2.5 rounded-xl transition-colors font-medium flex items-center justify-between cursor-pointer"
+                    >
+                      <span>Patient Stories</span>
+                      <ArrowRight className="w-3 h-3 text-slate-400" />
+                    </button>
+                    <button
+                      onClick={() => handleNav('reviews')}
+                      className="w-full text-left text-xs text-[#334155] hover:text-[#003366] hover:bg-[#F0F7FD] p-2.5 rounded-xl transition-colors font-medium flex items-center justify-between cursor-pointer"
+                    >
+                      <span>Verified Reviews (★ 4.9)</span>
+                      <ArrowRight className="w-3 h-3 text-slate-400" />
+                    </button>
+                    <button
+                      onClick={() => handleNav('pricing')}
+                      className="w-full text-left text-xs text-[#334155] hover:text-[#003366] hover:bg-[#F0F7FD] p-2.5 rounded-xl transition-colors font-medium flex items-center justify-between cursor-pointer"
+                    >
+                      <span>Pricing & 0% EMI Plans</span>
+                      <ArrowRight className="w-3 h-3 text-slate-400" />
+                    </button>
+                    <button
+                      onClick={() => handleNav('ask-question')}
+                      className="w-full text-left text-xs text-[#334155] hover:text-[#003366] hover:bg-[#F0F7FD] p-2.5 rounded-xl transition-colors font-medium flex items-center justify-between cursor-pointer"
+                    >
+                      <span>Ask Dr. R. K. Mishra</span>
+                      <ArrowRight className="w-3 h-3 text-slate-400" />
+                    </button>
+                  </div>
+                )}
+
+              </div>
+            ))}
+          </nav>
+
+          {/* Right Actions: Clean, Uncluttered & No Red */}
+          <div className="flex items-center gap-3">
+            
+            {/* Quick Search Button */}
             <button
-              type="button"
-              onClick={() => handleNavClick('book-consultation')}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-amber-600 py-3 text-sm font-semibold text-white shadow-sm active:bg-amber-700"
+              onClick={onOpenSearch}
+              className="p-2.5 text-slate-600 hover:text-[#003366] hover:bg-[#F8FAFC] border border-transparent hover:border-[#E2E8F0] rounded-xl transition-all cursor-pointer"
+              title="Search procedures (Ctrl+K)"
+              aria-label="Search"
             >
-              <Calendar className="h-4 w-4" />
-              Book Consultation
+              <Search className="w-4 h-4 text-[#003366]" />
+            </button>
+
+            {/* Prestige Royal Navy Consultation Button (No Red) */}
+            <button
+              onClick={() => handleNav('book-consultation')}
+              className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#003366] hover:bg-[#002244] text-white text-xs font-bold uppercase tracking-wider shadow-sm hover:shadow-md border border-[#003366] hover:border-[#00A3E0] transition-all cursor-pointer group"
+            >
+              <Calendar className="w-3.5 h-3.5 text-[#00A3E0] group-hover:scale-110 transition-transform" />
+              <span>Book Consultation</span>
+            </button>
+
+            {/* Mobile Menu Toggle */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 text-[#003366] lg:hidden hover:bg-slate-100 rounded-xl cursor-pointer"
+              aria-label="Toggle Navigation Menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
+
+        </div>
+      </div>
+
+      {/* 3. Mobile Navigation Drawer */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-white/95 backdrop-blur-md border-b border-[#E2E8F0] shadow-2xl px-6 py-6 space-y-5 animate-in slide-in-from-top-4 duration-200 max-h-[85vh] overflow-y-auto">
+          
+          {/* Mobile Quick Action Buttons */}
+          <div className="grid grid-cols-2 gap-2 pb-2">
+            <a
+              href="tel:+919415023675"
+              className="p-2.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] flex items-center justify-center gap-1.5 text-xs font-bold text-[#003366]"
+            >
+              <Phone className="w-3.5 h-3.5 text-[#00A3E0]" />
+              <span>Call Helpline</span>
+            </a>
+            <a
+              href="https://wa.me/919415023675?text=Hello%20Dr.%20Mishra%2C%20I%20would%20like%20to%20inquire%20about%20a%20consultation."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center gap-1.5 text-xs font-bold text-emerald-800"
+            >
+              <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+              <span>WhatsApp</span>
+            </a>
+          </div>
+
+          <div className="space-y-1 divide-y divide-slate-100 text-sm">
+            {navLinks.map((item) => (
+              <div key={item.label} className="pt-2.5 first:pt-0">
+                <button
+                  onClick={() => handleNav(item.route)}
+                  className={`w-full text-left py-1.5 font-medium tracking-wide flex items-center justify-between ${
+                    isLinkActive(item) ? 'text-[#003366] font-bold' : 'text-[#334155]'
+                  }`}
+                >
+                  <span>{item.label}</span>
+                  <ArrowRight className="w-4 h-4 text-slate-300" />
+                </button>
+              </div>
+            ))}
+          </div>
+
+          <div className="pt-4 border-t border-[#E2E8F0] space-y-2">
+            <button
+              onClick={() => handleNav('book-consultation')}
+              className="w-full py-3 rounded-xl bg-[#003366] text-white text-xs font-bold uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <Calendar className="w-4 h-4 text-[#00A3E0]" />
+              <span>Schedule Confidential Consultation</span>
+            </button>
+
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                const el = document.getElementById('procedure-matcher-quiz');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="w-full py-2.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-[#003366] text-xs font-bold flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <Sparkles className="w-4 h-4 text-[#00A3E0]" />
+              <span>Take Procedure Self-Assessment Quiz</span>
+            </button>
+          </div>
+
         </div>
       )}
+
     </header>
   );
 };

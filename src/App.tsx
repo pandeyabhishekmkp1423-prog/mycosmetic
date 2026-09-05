@@ -16,6 +16,15 @@ import { HospitalSection } from './components/home/HospitalSection';
 import { InsightsSection } from './components/home/InsightsSection';
 import { HomeFaqSection } from './components/home/HomeFaqSection';
 import { ConsultationCTA } from './components/home/ConsultationCTA';
+import { ProcedureCostCalculator } from './components/common/ProcedureCostCalculator';
+
+// World-Class Interactive Medical Tools
+import { ProcedureMatcherQuiz } from './components/home/ProcedureMatcherQuiz';
+import { RecoveryTimelineSimulator } from './components/home/RecoveryTimelineSimulator';
+import { ProcedureComparisonMatrix } from './components/home/ProcedureComparisonMatrix';
+import { MedicalTourismConcierge } from './components/home/MedicalTourismConcierge';
+import { DoctorCredentialsTimeline } from './components/home/DoctorCredentialsTimeline';
+import { SurgeryEMICalculator } from './components/common/SurgeryEMICalculator';
 
 // Dedicated Views
 import { DoctorView } from './components/views/DoctorView';
@@ -127,13 +136,24 @@ export default function App() {
             <HeroSection onNavigate={handleNavigate} />
             <TrustCredentials />
             <ProcedureExplorer onNavigate={handleNavigate} />
+            <ProcedureMatcherQuiz onNavigate={handleNavigate} />
             <DoctorStorySection onNavigate={handleNavigate} />
-            <WhyDrMishra onNavigate={handleNavigate} />
+            <DoctorCredentialsTimeline onNavigate={handleNavigate} />
+            <RecoveryTimelineSimulator onNavigate={handleNavigate} />
             <InteractiveBeforeAfter onNavigate={handleNavigate} />
-            <PatientStoriesSection onNavigate={handleNavigate} />
+            <ProcedureComparisonMatrix onNavigate={handleNavigate} />
             <HospitalSection onNavigate={handleNavigate} />
-            <InsightsSection onNavigate={handleNavigate} />
-            <HomeFaqSection />
+            <MedicalTourismConcierge onNavigate={handleNavigate} />
+            <PatientStoriesSection onNavigate={handleNavigate} />
+            
+            {/* Surgery Financing & Transparent Inclusions */}
+            <section className="py-20 sm:py-28 bg-[#F8FAFC] border-b border-[#E2E8F0]">
+              <div className="max-w-7xl mx-auto px-4 sm:px-8">
+                <SurgeryEMICalculator onNavigate={handleNavigate} />
+              </div>
+            </section>
+
+            <HomeFaqSection onNavigate={handleNavigate} />
             <ConsultationCTA onNavigate={handleNavigate} />
           </main>
         );
@@ -141,10 +161,10 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F7FBFE] text-[#102A43] selection:bg-[#0B2A5B] selection:text-white font-sans antialiased">
+    <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-[#1E293B] selection:bg-[#003366] selection:text-white font-sans antialiased">
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-white focus:text-[#0B2A5B] focus:border focus:border-[#DCE7F0] focus:rounded-lg focus:shadow-lg"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] px-4 py-2 bg-white text-[#003366] border border-[#E2E8F0] rounded-md shadow-lg font-semibold"
       >
         Skip to main content
       </a>

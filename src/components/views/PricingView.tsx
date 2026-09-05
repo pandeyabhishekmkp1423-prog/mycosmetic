@@ -1,17 +1,17 @@
 import React from 'react';
 import { 
-  Calculator, 
-  ShieldCheck, 
-  HelpCircle, 
-  Calendar, 
+  Clock, 
   ArrowRight, 
   CheckCircle2, 
   Info,
-  DollarSign,
-  Sparkles
+  Sparkles,
+  ShieldCheck,
+  CreditCard
 } from 'lucide-react';
 import { proceduresData } from '../../data/proceduresData';
 import { ProcedureCategory } from '../../types';
+import { ProcedureCostCalculator } from '../common/ProcedureCostCalculator';
+import { SurgeryEMICalculator } from '../common/SurgeryEMICalculator';
 
 interface PricingViewProps {
   onNavigate: (route: string) => void;
@@ -20,116 +20,138 @@ interface PricingViewProps {
 export const PricingView: React.FC<PricingViewProps> = ({ onNavigate }) => {
   const categoryGroups: { category: ProcedureCategory; title: string }[] = [
     { category: 'FACE', title: 'Facial Aesthetics & Correction' },
-    { category: 'BREAST', title: 'Breast Aesthetics & Male Chest' },
-    { category: 'BODY', title: 'Body Contouring & Sculpting' },
-    { category: 'SKIN', title: 'Skin, Hair & Scar Treatments' },
-    { category: 'RECONSTRUCTIVE', title: 'Reconstructive & Deformity Correction' }
+    { category: 'BREAST', title: 'Breast Aesthetics & Male Chest (Gynecomastia)' },
+    { category: 'BODY', title: 'Body Contouring & Liposuction' },
+    { category: 'SKIN', title: 'Skin & Scar Revision' },
+    { category: 'RECONSTRUCTIVE', title: 'Reconstructive & Trauma Correction' }
   ];
 
   return (
-    <div id="pricing-guide-page" className="pt-24 pb-20 bg-[#F6FAFD]">
+    <div className="pt-32 sm:pt-36 pb-24 bg-[#F8FAFC]">
       
       {/* Breadcrumb */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-xs text-gray-500 flex items-center gap-2">
-        <button onClick={() => onNavigate('home')} className="hover:text-[#102A43]">Home</button>
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3 text-xs text-[#64748B] flex items-center gap-2 border-b border-[#E2E8F0] mb-8">
+        <button onClick={() => onNavigate('home')} className="hover:text-[#003366] transition-colors cursor-pointer">Home</button>
         <span>/</span>
-        <span className="text-[#102A43] font-semibold">Transparent Pricing Guide</span>
+        <span className="text-[#003366] font-semibold">Pricing & Procedure Estimates</span>
       </div>
 
-      {/* Hero */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <div className="max-w-3xl space-y-4">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[#1769AA] block">
-            Financial Transparency
-          </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#102A43] tracking-tight">
-            Cosmetic Surgery Pricing Guide
+      {/* Hero Header */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-12">
+        <div className="max-w-3xl space-y-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00A3E0]/10 border border-[#00A3E0]/20 text-[#00A3E0] text-xs font-semibold tracking-wide uppercase">
+            <CreditCard className="w-3.5 h-3.5" />
+            <span>Honest & Transparent Financial Policy</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#003366] tracking-tight">
+            Surgery Pricing & Inclusions
           </h1>
-          <p className="text-base text-gray-600 leading-relaxed font-normal">
-            Clear, honest estimates for cosmetic and plastic surgery procedures at SIPS Hospital Lucknow under Dr. R. K. Mishra. We believe in transparent financial expectations without hidden fees.
+          <p className="text-sm sm:text-base text-[#475569] font-normal leading-relaxed pt-1">
+            Upfront, comprehensive estimates for all cosmetic procedures at SIPS Hospital Lucknow under Senior Surgeon Dr. R. K. Mishra. We offer transparent itemized pricing with zero-interest EMI options.
           </p>
         </div>
 
-        {/* Cost Factors Pillars */}
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl bg-white border border-[#DCE7F0] shadow-xs">
-            <h3 className="text-sm font-bold text-[#102A43] uppercase tracking-wide mb-2">
-              1. Surgical Complexity
+        {/* 3 Pillars */}
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs space-y-2 hover:border-[#00A3E0]/40 transition-all">
+            <span className="text-[11px] font-bold text-[#00A3E0] uppercase tracking-wider block">
+              Pillar 01
+            </span>
+            <h3 className="text-base font-bold text-[#003366]">
+              Surgical Precision
             </h3>
-            <p className="text-xs text-gray-600 leading-relaxed">
-              Every anatomy is unique. Primary vs. revision cases, structural grafting, and tissue laxity influence procedural time.
+            <p className="text-xs text-[#64748B] leading-relaxed">
+              Tailored techniques, micro-cartilage grafting needs, and individual anatomical complexity guide surgery time.
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-white border border-[#DCE7F0] shadow-xs">
-            <h3 className="text-sm font-bold text-[#102A43] uppercase tracking-wide mb-2">
-              2. Hospital & Anesthesia
+          <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs space-y-2 hover:border-[#00A3E0]/40 transition-all">
+            <span className="text-[11px] font-bold text-[#00A3E0] uppercase tracking-wider block">
+              Pillar 02
+            </span>
+            <h3 className="text-base font-bold text-[#003366]">
+              NABH Operating Suites
             </h3>
-            <p className="text-xs text-gray-600 leading-relaxed">
-              Performed at NABH-accredited SIPS Hospital with modular laminar airflow OTs and board-certified anesthesiologists.
+            <p className="text-xs text-[#64748B] leading-relaxed">
+              Performed exclusively in Class 100 laminar airflow sterile theaters with dedicated senior cardiac anesthetists.
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-white border border-[#DCE7F0] shadow-xs">
-            <h3 className="text-sm font-bold text-[#102A43] uppercase tracking-wide mb-2">
-              3. Implants & Consumables
+          <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs space-y-2 hover:border-[#00A3E0]/40 transition-all">
+            <span className="text-[11px] font-bold text-[#00A3E0] uppercase tracking-wider block">
+              Pillar 03
+            </span>
+            <h3 className="text-base font-bold text-[#003366]">
+              FDA-Approved Implants
             </h3>
-            <p className="text-xs text-gray-600 leading-relaxed">
-              US-FDA approved medical implants (e.g. Mentor/Polytech for breast surgery, micro-sutures, and garment support).
+            <p className="text-xs text-[#64748B] leading-relaxed">
+              US-FDA approved cohesive medical silicone, suture materials, and medical-grade compression garments included.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Pricing Tables by Category */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      {/* Interactive Calculators */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-16 space-y-10">
+        <ProcedureCostCalculator onNavigate={onNavigate} />
+        <SurgeryEMICalculator onNavigate={onNavigate} />
+      </div>
+
+      {/* Pricing Tables */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-8">
         {categoryGroups.map((group) => {
           const procs = proceduresData.filter(p => p.category === group.category);
           if (procs.length === 0) return null;
 
           return (
-            <div key={group.category} className="bg-white rounded-3xl border border-[#DCE7F0] p-6 sm:p-8 shadow-xs">
-              <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#102A43] mb-4 pb-3 border-b border-[#DCE7F0]">
+            <div key={group.category} className="bg-white rounded-3xl border border-[#E2E8F0] p-6 sm:p-8 shadow-sm">
+              <h2 className="text-xl font-serif font-bold text-[#003366] mb-4 pb-3 border-b border-[#E2E8F0]">
                 {group.title}
               </h2>
 
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
                   <thead>
-                    <tr className="border-b border-[#DCE7F0] text-gray-500 font-semibold uppercase tracking-wider">
-                      <th className="py-3 px-4">Procedure</th>
-                      <th className="py-3 px-4">Estimated Range</th>
-                      <th className="py-3 px-4">Procedure Time</th>
-                      <th className="py-3 px-4">Hospital Stay</th>
-                      <th className="py-3 px-4 text-right">Action</th>
+                    <tr className="border-b border-[#E2E8F0] text-[#64748B] font-bold uppercase tracking-wider">
+                      <th className="py-3.5 px-4">Procedure</th>
+                      <th className="py-3.5 px-4">Estimated Range</th>
+                      <th className="py-3.5 px-4">Duration</th>
+                      <th className="py-3.5 px-4">Hospital Stay</th>
+                      <th className="py-3.5 px-4 text-right">Consultation</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#DCE7F0]">
+                  <tbody className="divide-y divide-[#E2E8F0]">
                     {procs.map((proc) => (
-                      <tr key={proc.slug} className="hover:bg-[#F6FAFD] transition-colors">
-                        <td className="py-4 px-4 font-semibold text-[#102A43]">
+                      <tr key={proc.slug} className="hover:bg-[#F8FAFC] transition-colors">
+                        <td className="py-4 px-4 font-bold text-[#003366]">
                           <button 
                             onClick={() => onNavigate(`procedure-${proc.slug}`)}
-                            className="hover:text-[#1769AA] text-left"
+                            className="hover:text-[#00A3E0] text-left cursor-pointer transition-colors"
                           >
                             {proc.title}
                           </button>
                         </td>
-                        <td className="py-4 px-4 font-bold text-[#1769AA]">
-                          {proc.costRange}
+                        <td className="py-4 px-4 font-bold text-[#003366]">
+                          <span className="px-2.5 py-1 rounded-md bg-[#00A3E0]/10 text-[#003366] border border-[#00A3E0]/20 font-semibold">
+                            {proc.costRange}
+                          </span>
                         </td>
-                        <td className="py-4 px-4 text-gray-600">
-                          {proc.duration}
+                        <td className="py-4 px-4 text-[#475569]">
+                          <span className="flex items-center gap-1.5 font-medium">
+                            <Clock className="w-3.5 h-3.5 text-[#00A3E0]" />
+                            {proc.duration}
+                          </span>
                         </td>
-                        <td className="py-4 px-4 text-gray-600">
+                        <td className="py-4 px-4 text-[#475569] font-medium">
                           {proc.hospitalStay}
                         </td>
                         <td className="py-4 px-4 text-right">
                           <button
                             onClick={() => onNavigate('book-consultation')}
-                            className="px-3 py-1.5 bg-[#102A43] hover:bg-[#1769AA] text-white rounded-lg font-semibold transition-colors inline-flex items-center gap-1"
+                            className="btn-crimson py-1.5 px-3 text-xs inline-flex items-center gap-1"
                           >
-                            <span>Get Exact Quote</span>
+                            <span>Consult</span>
+                            <ArrowRight className="w-3 h-3" />
                           </button>
                         </td>
                       </tr>
@@ -141,36 +163,39 @@ export const PricingView: React.FC<PricingViewProps> = ({ onNavigate }) => {
           );
         })}
 
-        {/* Pricing Inclusions Banner */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-[#102A43] text-white space-y-4">
-          <h3 className="text-xl font-serif font-bold text-white">
-            What is Included in Your Surgical Quotation?
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs text-gray-300">
-            <div className="flex items-start gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#C89448] shrink-0 mt-0.5" />
-              <span>Surgeon’s fee for Dr. R. K. Mishra & assisting surgical team</span>
+        {/* Package Inclusions */}
+        <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-[#002244] to-[#003366] text-white space-y-5 shadow-xl border border-white/10">
+          <div className="space-y-1">
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#00A3E0]">All-Inclusive Guarantee</span>
+            <h3 className="text-2xl font-serif font-bold text-white">
+              What is Included in Your Surgical Package?
+            </h3>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 text-xs text-slate-300">
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-[#00A3E0] shrink-0 mt-0.5" />
+              <span>Surgeon fee for Senior Surgeon Dr. R. K. Mishra and specialized team</span>
             </div>
-            <div className="flex items-start gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#C89448] shrink-0 mt-0.5" />
-              <span>Modular laminar OT charges & board anesthesiologist fee</span>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-[#00A3E0] shrink-0 mt-0.5" />
+              <span>Class 100 laminar airflow OT sterile charges & senior anesthesiologist fee</span>
             </div>
-            <div className="flex items-start gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#C89448] shrink-0 mt-0.5" />
-              <span>Hospital room stay & post-operative nursing care</span>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-[#00A3E0] shrink-0 mt-0.5" />
+              <span>Hospital stay, specialized post-operative recovery nursing care</span>
             </div>
-            <div className="flex items-start gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#C89448] shrink-0 mt-0.5" />
-              <span>Routine post-operative follow-up visits & suture removal</span>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-[#00A3E0] shrink-0 mt-0.5" />
+              <span>6 months of complimentary follow-up visits & scar healing review</span>
             </div>
           </div>
         </div>
 
-        {/* Mandatory Note */}
-        <div className="p-4 rounded-2xl bg-white border border-[#DCE7F0] text-xs text-gray-500 flex items-start gap-3">
-          <Info className="w-4 h-4 text-[#1769AA] shrink-0 mt-0.5" />
+        {/* Disclaimer */}
+        <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] text-xs text-[#64748B] flex items-start gap-3 shadow-xs">
+          <Info className="w-4 h-4 text-[#00A3E0] shrink-0 mt-0.5" />
           <p>
-            * Prices are indicative starting estimates in Indian Rupees (INR) and subject to formal evaluation of patient anatomy, medical co-morbidities, and customized surgical plans during the clinical consultation with Dr. R. K. Mishra. Applicable hospital GST and special post-op compression garments are specified in detail prior to surgery.
+            * Prices are indicative starting estimates in INR and subject to formal anatomical evaluation and clinical diagnosis during your confidential consultation with Dr. R. K. Mishra at SIPS Hospital.
           </p>
         </div>
 

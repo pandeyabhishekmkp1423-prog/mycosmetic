@@ -1,7 +1,8 @@
 import React from 'react';
-import { ShieldCheck, MapPin, Building2, ArrowRight, Activity, CheckCircle2, BedDouble, Stethoscope } from 'lucide-react';
+import { ShieldCheck, MapPin, Building2, ArrowRight, Activity, BedDouble, Stethoscope, Sparkles } from 'lucide-react';
 import { hospitalData } from '../../data/hospitalData';
 import { SafeImage } from '../common/SafeImage';
+import { Card3D } from '../common/Card3D';
 
 interface HospitalSectionProps {
   onNavigate: (route: string) => void;
@@ -9,76 +10,102 @@ interface HospitalSectionProps {
 
 export const HospitalSection: React.FC<HospitalSectionProps> = ({ onNavigate }) => {
   return (
-    <section id="homepage-hospital-section" className="py-16 sm:py-24 bg-white relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="homepage-hospital-section" className="py-20 sm:py-28 bg-[#F8FAFC] relative overflow-hidden border-b border-[#E2E8F0]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left Column: Hospital Narrative & Facilities */}
           <div className="lg:col-span-6 space-y-6">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EEF7FC] text-[#0B2A5B] text-xs font-bold uppercase tracking-wider mb-3 border border-[#DCE7F0]">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#1769AA]" />
-                <span>NABH Accredited Facility</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#00A3E0]/10 border border-[#00A3E0]/20 text-[#00A3E0] text-xs font-semibold tracking-wide uppercase mb-3">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#00A3E0]" />
+                <span>NABH Accredited Super-Specialty Infrastructure</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-serif font-bold text-[#102A43] tracking-tight leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#003366] tracking-tight leading-[1.14]">
                 Operating at SIPS Hospital, Lucknow
               </h2>
-              <p className="text-sm sm:text-base text-[#52677D] mt-3 leading-relaxed font-normal">
-                Sushrut Institute of Plastic Surgery (SIPS) is North India’s premier super-specialty hospital infrastructure dedicated to plastic, cosmetic, and reconstructive surgery.
+              <p className="text-sm sm:text-base text-[#475569] mt-3 leading-relaxed font-normal">
+                Sushrut Institute of Plastic Surgery (SIPS) is North India’s premier super-specialty hospital dedicated exclusively to plastic, cosmetic, and reconstructive surgical artistry.
               </p>
             </div>
 
             {/* Core Facility Features */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-              <div className="p-5 rounded-2xl bg-[#F5FAFD] border border-[#DCE7F0] shadow-xs">
-                <Activity className="w-5 h-5 text-[#1769AA] mb-2.5" />
-                <h4 className="text-xs font-bold text-[#102A43] uppercase mb-1">Laminar Airflow OTs</h4>
-                <p className="text-xs text-[#52677D] leading-relaxed">HEPA-filtered positive pressure surgical suites minimizing infection risks.</p>
+              <div className="p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs hover:border-[#00A3E0]/40 transition-all">
+                <div className="w-10 h-10 rounded-xl bg-[#00A3E0]/10 text-[#003366] flex items-center justify-center mb-3">
+                  <Activity className="w-5 h-5 text-[#00A3E0]" />
+                </div>
+                <h4 className="text-xs font-bold text-[#003366] uppercase tracking-wider mb-1">
+                  Class 100 Laminar OTs
+                </h4>
+                <p className="text-xs text-[#64748B] leading-relaxed">
+                  HEPA-filtered positive pressure surgical suites strictly minimizing any microbial infection risks.
+                </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-[#F5FAFD] border border-[#DCE7F0] shadow-xs">
-                <BedDouble className="w-5 h-5 text-[#1769AA] mb-2.5" />
-                <h4 className="text-xs font-bold text-[#102A43] uppercase mb-1">Private Recovery Suites</h4>
-                <p className="text-xs text-[#52677D] leading-relaxed">Discreet, comfortable inpatient recovery rooms with 24/7 specialized nursing.</p>
+              <div className="p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs hover:border-[#00A3E0]/40 transition-all">
+                <div className="w-10 h-10 rounded-xl bg-[#00A3E0]/10 text-[#003366] flex items-center justify-center mb-3">
+                  <BedDouble className="w-5 h-5 text-[#00A3E0]" />
+                </div>
+                <h4 className="text-xs font-bold text-[#003366] uppercase tracking-wider mb-1">
+                  VIP Inpatient Suites
+                </h4>
+                <p className="text-xs text-[#64748B] leading-relaxed">
+                  Discreet, comfortable inpatient recovery rooms with 24/7 specialized nursing and attendant space.
+                </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-[#F5FAFD] border border-[#DCE7F0] shadow-xs">
-                <Stethoscope className="w-5 h-5 text-[#1769AA] mb-2.5" />
-                <h4 className="text-xs font-bold text-[#102A43] uppercase mb-1">24/7 Dedicated Anaesthesia</h4>
-                <p className="text-xs text-[#52677D] leading-relaxed">Full-time board-certified anaesthesiologists on-site throughout surgery and recovery.</p>
+              <div className="p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs hover:border-[#00A3E0]/40 transition-all">
+                <div className="w-10 h-10 rounded-xl bg-[#00A3E0]/10 text-[#003366] flex items-center justify-center mb-3">
+                  <Stethoscope className="w-5 h-5 text-[#00A3E0]" />
+                </div>
+                <h4 className="text-xs font-bold text-[#003366] uppercase tracking-wider mb-1">
+                  Cardiac Anesthesia
+                </h4>
+                <p className="text-xs text-[#64748B] leading-relaxed">
+                  Full-time board-certified cardiac anesthetists on-site throughout preoperative, surgical, and post-op care.
+                </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-[#F5FAFD] border border-[#DCE7F0] shadow-xs">
-                <Building2 className="w-5 h-5 text-[#1769AA] mb-2.5" />
-                <h4 className="text-xs font-bold text-[#102A43] uppercase mb-1">Advanced Endoscopy</h4>
-                <p className="text-xs text-[#52677D] leading-relaxed">High-resolution HD endoscopic visualization for minimally invasive tissue handling.</p>
+              <div className="p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs hover:border-[#00A3E0]/40 transition-all">
+                <div className="w-10 h-10 rounded-xl bg-[#00A3E0]/10 text-[#003366] flex items-center justify-center mb-3">
+                  <Building2 className="w-5 h-5 text-[#00A3E0]" />
+                </div>
+                <h4 className="text-xs font-bold text-[#003366] uppercase tracking-wider mb-1">
+                  VASER Ultrasound Tech
+                </h4>
+                <p className="text-xs text-[#64748B] leading-relaxed">
+                  High-definition ultrasound body sculpting & Karl Storz endoscopy for precise, bloodless incisions.
+                </p>
               </div>
             </div>
 
             {/* Address & Actions */}
-            <div className="p-4 rounded-xl bg-[#EEF7FC] border border-[#DCE7F0] space-y-1.5 shadow-xs">
-              <p className="text-xs text-[#102A43] flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-[#1769AA] shrink-0 mt-0.5" />
-                <span><strong>Address:</strong> {hospitalData.address}</span>
+            <div className="p-5 rounded-2xl bg-white border border-[#E2E8F0] space-y-1.5 shadow-xs">
+              <p className="text-xs text-[#003366] flex items-start gap-2.5 font-bold">
+                <MapPin className="w-4 h-4 text-[#00A3E0] shrink-0 mt-0.5" />
+                <span>{hospitalData.address}</span>
               </p>
-              <p className="text-[11px] text-[#52677D] pl-6">
+              <p className="text-[11px] text-[#64748B] pl-6.5">
                 <strong>Landmark:</strong> Near King George’s Medical University (KGMU), Chowk, Lucknow
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            <div className="flex flex-wrap items-center gap-3.5 pt-2">
               <button
+                type="button"
                 onClick={() => onNavigate('hospital')}
-                className="px-6 py-3 bg-[#0B2A5B] hover:bg-[#071D3B] text-white text-xs sm:text-sm font-semibold rounded-xl transition-colors flex items-center gap-2 shadow-xs cursor-pointer"
+                className="btn-navy"
               >
                 <span>Tour Hospital & Facilities</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 
               <button
+                type="button"
                 onClick={() => onNavigate('contact')}
-                className="px-5 py-3 bg-white hover:bg-[#EEF7FC] text-[#0B2A5B] border border-[#DCE7F0] text-xs sm:text-sm font-semibold rounded-xl transition-colors cursor-pointer"
+                className="btn-outline-navy"
               >
                 View Directions & Map
               </button>
@@ -86,49 +113,55 @@ export const HospitalSection: React.FC<HospitalSectionProps> = ({ onNavigate }) 
 
           </div>
 
-          {/* Right Column: Hospital Facility Photos with SafeImage */}
+          {/* Right Column: 3D Hospital Facility Mosaic */}
           <div className="lg:col-span-6 grid grid-cols-2 gap-4">
             <div className="space-y-4">
-              <div className="aspect-[4/3] rounded-[22px] overflow-hidden border border-[#DCE7F0] shadow-xs bg-gray-100">
-                <SafeImage
-                  src={hospitalData.gallery[0]}
-                  alt="SIPS Hospital Modern Surgical Infrastructure"
-                  fallbackCategory="Hospital & Theatre"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="aspect-square rounded-[22px] overflow-hidden border border-[#DCE7F0] shadow-xs bg-gray-100">
-                <SafeImage
-                  src={hospitalData.gallery[1]}
-                  alt="SIPS Hospital Operating Suite"
-                  fallbackCategory="Hospital & Theatre"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                />
-              </div>
+              <Card3D maxTilt={6}>
+                <div className="aspect-[4/3] rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-md bg-slate-900">
+                  <SafeImage
+                    src={hospitalData.gallery[0]}
+                    alt="SIPS Hospital Modern Surgical Infrastructure"
+                    fallbackCategory="Hospital & Theatre"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+              </Card3D>
+              <Card3D maxTilt={6}>
+                <div className="aspect-square rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-md bg-slate-900">
+                  <SafeImage
+                    src={hospitalData.gallery[1]}
+                    alt="NABH Laminar Airflow Operating Suite"
+                    fallbackCategory="Hospital & Theatre"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+              </Card3D>
             </div>
-
             <div className="space-y-4 pt-6">
-              <div className="aspect-square rounded-[22px] overflow-hidden border border-[#DCE7F0] shadow-xs bg-gray-100">
-                <SafeImage
-                  src={hospitalData.gallery[2]}
-                  alt="SIPS Hospital Inpatient Care"
-                  fallbackCategory="Hospital & Theatre"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="aspect-[4/3] rounded-[22px] overflow-hidden border border-[#DCE7F0] shadow-xs bg-gray-100">
-                <SafeImage
-                  src={hospitalData.gallery[3]}
-                  alt="SIPS Hospital Consultation Suite"
-                  fallbackCategory="Hospital & Theatre"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                />
-              </div>
+              <Card3D maxTilt={6}>
+                <div className="aspect-square rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-md bg-slate-900">
+                  <SafeImage
+                    src={hospitalData.gallery[2]}
+                    alt="High Tech Cosmetic Consultation Room"
+                    fallbackCategory="Hospital & Theatre"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+              </Card3D>
+              <Card3D maxTilt={6}>
+                <div className="aspect-[4/3] rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-md bg-slate-900">
+                  <SafeImage
+                    src={hospitalData.gallery[3]}
+                    alt="SIPS Hospital Inpatient Recovery Wing"
+                    fallbackCategory="Hospital & Theatre"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+              </Card3D>
             </div>
           </div>
 
         </div>
-
       </div>
     </section>
   );

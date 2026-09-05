@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Filter, Shield, Sparkles, Calendar, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Calendar, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { beforeAfterCases } from '../../data/resultsData';
 import { BeforeAfterSlider } from '../common/BeforeAfterSlider';
 import { ProcedureCategory } from '../../types';
@@ -12,10 +12,10 @@ export const ResultsGalleryView: React.FC<ResultsGalleryViewProps> = ({ onNaviga
   const [selectedCategory, setSelectedCategory] = useState<ProcedureCategory | 'ALL'>('ALL');
 
   const categories: { id: ProcedureCategory | 'ALL'; label: string }[] = [
-    { id: 'ALL', label: 'All Documented Cases' },
+    { id: 'ALL', label: 'All Cases' },
     { id: 'FACE', label: 'Facial Surgery' },
-    { id: 'BREAST', label: 'Gynecomastia & Breast' },
-    { id: 'BODY', label: 'Liposuction & Body Contouring' }
+    { id: 'BREAST', label: 'Breast & Chest' },
+    { id: 'BODY', label: 'Body Contouring' }
   ];
 
   const filteredCases = selectedCategory === 'ALL'
@@ -23,39 +23,39 @@ export const ResultsGalleryView: React.FC<ResultsGalleryViewProps> = ({ onNaviga
     : beforeAfterCases.filter(c => c.category === selectedCategory);
 
   return (
-    <div id="results-gallery-page" className="pt-24 pb-20 bg-[#F6FAFD]">
+    <div className="pt-32 sm:pt-36 pb-24 bg-[#F8FAFC]">
       
       {/* Breadcrumb */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-xs text-gray-500 flex items-center gap-2">
-        <button onClick={() => onNavigate('home')} className="hover:text-[#102A43]">Home</button>
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3 text-xs text-slate-500 flex items-center gap-2 border-b border-[#E2E8F0] mb-8">
+        <button onClick={() => onNavigate('home')} className="hover:text-[#003366] cursor-pointer">Home</button>
         <span>/</span>
-        <span className="text-[#102A43] font-semibold">Before & After Results Gallery</span>
+        <span className="text-[#003366] font-semibold">Results Gallery</span>
       </div>
 
-      {/* Gallery Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <div className="max-w-3xl space-y-4">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[#1769AA] block">
-            Clinical Documentation
+      {/* Header */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-12">
+        <div className="max-w-2xl space-y-3">
+          <span className="text-xs font-semibold tracking-[0.2em] text-[#00A3E0] uppercase block">
+            Clinical Outcomes
           </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#102A43] tracking-tight">
-            Before & After Patient Gallery
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-[#003366] tracking-tight">
+            Before & After Gallery
           </h1>
-          <p className="text-base text-gray-600 leading-relaxed">
-            Standardized photographic clinical records demonstrating natural proportions, anatomical balance, and scar maturation under Dr. R. K. Mishra's surgical protocols.
+          <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed pt-1">
+            Standardized medical records illustrating natural aesthetic balance, symmetry, and scar refinement under Dr. R. K. Mishra's surgical care at SIPS Super Specialty Hospital.
           </p>
         </div>
 
-        {/* Category Filters */}
-        <div className="mt-8 pt-6 border-t border-[#DCE7F0] flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+        {/* Filter Pills */}
+        <div className="mt-8 pt-6 border-t border-[#E2E8F0] flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
+              className={`px-4 py-2 rounded-lg text-xs font-semibold tracking-wide uppercase transition-colors cursor-pointer whitespace-nowrap ${
                 selectedCategory === cat.id
-                  ? 'bg-[#102A43] text-white shadow-xs'
-                  : 'bg-white text-gray-700 hover:bg-[#E7F2F8] border border-[#DCE7F0]'
+                  ? 'bg-[#003366] text-white shadow-sm'
+                  : 'bg-white text-slate-600 border border-[#E2E8F0] hover:bg-[#F0F7FD] hover:text-[#003366]'
               }`}
             >
               {cat.label}
@@ -65,43 +65,73 @@ export const ResultsGalleryView: React.FC<ResultsGalleryViewProps> = ({ onNaviga
       </div>
 
       {/* Cases Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
-          {filteredCases.map((caseItem) => (
-            <BeforeAfterSlider key={caseItem.id} caseData={caseItem} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          {filteredCases.map((item) => (
+            <div
+              key={item.id}
+              className="bg-white border border-[#E2E8F0] rounded-2xl p-6 sm:p-8 space-y-5 shadow-xs hover:shadow-md transition-shadow"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-lg font-heading font-bold text-[#003366]">
+                    {item.procedureName}
+                  </h3>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    {item.patientInfo} • {item.timeline}
+                  </p>
+                </div>
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-[#E0F2FE] text-[#0284C7] border border-[#00A3E0]/20">
+                  Standardized Record
+                </span>
+              </div>
+
+              <div className="rounded-xl overflow-hidden border border-[#E2E8F0]">
+                <BeforeAfterSlider
+                  caseData={item}
+                  beforeImage={item.beforeImage}
+                  afterImage={item.afterImage}
+                  beforeLabel="Before"
+                  afterLabel="After"
+                  procedureName={item.procedureName}
+                />
+              </div>
+
+              <p className="text-xs text-slate-600 leading-relaxed italic">
+                "{item.description}"
+              </p>
+
+              <div className="pt-2 flex items-center justify-between border-t border-[#E2E8F0] text-xs">
+                <span className="text-slate-500 flex items-center gap-1.5 font-medium">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#003366]" />
+                  <span>Unfiltered & Verified</span>
+                </span>
+                <button
+                  onClick={() => onNavigate('book-consultation')}
+                  className="font-bold text-[#003366] hover:text-[#00A3E0] hover:underline"
+                >
+                  Consult on this procedure →
+                </button>
+              </div>
+            </div>
           ))}
         </div>
 
-        {/* Mandatory Transparency & Safety Disclaimer Banner */}
-        <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-white border border-[#DCE7F0] shadow-xs space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#F6FAFD] border border-[#DCE7F0] flex items-center justify-center text-[#1769AA]">
-              <Shield className="w-5 h-5" />
-            </div>
-            <div>
-              <h3 className="text-sm font-bold text-[#102A43] uppercase tracking-wide">
-                Patient Privacy & Medical Notice
-              </h3>
-              <p className="text-xs text-gray-500">
-                Ethical medical photography standards compliant with Indian medical guidelines.
-              </p>
-            </div>
-          </div>
-
-          <p className="text-xs text-gray-600 leading-relaxed">
-            All clinical photographs shown in this gallery are authentic, un-retouched records of surgical procedures performed personally by Dr. R. K. Mishra at SIPS Hospital Lucknow. Published with verified informed patient consent. Individual aesthetic results, swelling duration, and recovery timelines vary based on unique genetics, body mass index, skin elasticity, and adherence to post-operative instructions.
+        {/* Bottom CTA */}
+        <div className="mt-16 text-center bg-white rounded-2xl border border-[#E2E8F0] p-10 space-y-4 max-w-2xl mx-auto shadow-xs">
+          <h2 className="text-2xl font-heading font-bold text-[#003366]">
+            Ready to Revamp Your Looks?
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            During your confidential consultation, Dr. Mishra will perform an anatomical assessment and review customized treatment options tailored to your facial structure and body contours.
           </p>
-
-          <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 border-t border-[#DCE7F0]">
-            <span className="text-xs text-gray-700 font-medium">
-              Want a personalized assessment for your unique anatomy?
-            </span>
+          <div className="pt-2">
             <button
               onClick={() => onNavigate('book-consultation')}
-              className="px-6 py-2.5 bg-[#102A43] hover:bg-[#1769AA] text-white text-xs font-bold rounded-lg transition-colors flex items-center justify-center gap-2"
+              className="btn-crimson"
             >
-              <Calendar className="w-3.5 h-3.5 text-[#C89448]" />
-              <span>Book In-Clinic Evaluation</span>
+              <Calendar className="w-4 h-4 mr-1.5" />
+              <span>Schedule Your Private Consultation</span>
             </button>
           </div>
         </div>

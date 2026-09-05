@@ -1,20 +1,14 @@
 import React, { useState } from 'react';
 import { 
   Users, 
-  Calendar, 
   HelpCircle, 
   Star, 
-  CheckCircle2, 
-  Clock, 
   Phone, 
   Mail, 
   Download, 
-  RefreshCw,
-  Search,
-  MessageSquare,
-  ShieldCheck,
-  Building2,
-  Trash2
+  Search, 
+  Trash2,
+  ShieldCheck
 } from 'lucide-react';
 import { useConsultationStore } from '../../lib/consultationStore';
 
@@ -31,11 +25,10 @@ export const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onNaviga
   const { 
     leads, 
     updateLeadStatus, 
-    deleteLead,
+    deleteLead, 
     questions, 
     answerQuestion, 
-    reviews, 
-    addReview 
+    reviews 
   } = useConsultationStore();
 
   const filteredLeads = leads.filter(l => 
@@ -62,34 +55,34 @@ export const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onNaviga
   };
 
   return (
-    <div id="admin-dashboard-page" className="pt-24 pb-20 bg-[#F6FAFD]">
+    <div className="pt-28 pb-20 bg-[#F8FAFC]">
       
       {/* Top Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#DCE7F0]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-6">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#E2E8F0]">
           <div>
             <div className="flex items-center gap-2">
-              <span className="px-2.5 py-0.5 bg-[#102A43] text-white text-[10px] font-mono uppercase rounded-md">
-                Clinic Admin CMS
+              <span className="px-2.5 py-0.5 bg-[#003366] text-white text-[10px] font-bold uppercase rounded-md">
+                Clinic Admin Desk
               </span>
-              <span className="text-xs text-gray-500">SIPS Hospital Lucknow</span>
+              <span className="text-xs text-[#64748B]">SIPS Super Specialty Hospital, Lucknow</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#102A43] mt-1">
-              Clinic Operations & Patient Desk
+            <h1 className="text-2xl font-serif font-bold text-[#003366] mt-1">
+              Clinic Operations & Patient Portal
             </h1>
           </div>
 
           <div className="flex items-center gap-3">
             <button
               onClick={exportLeadsToJSON}
-              className="px-4 py-2 bg-white hover:bg-[#F6FAFD] text-[#102A43] border border-[#DCE7F0] text-xs font-semibold rounded-xl flex items-center gap-1.5 transition-colors shadow-xs"
+              className="px-3.5 py-2 bg-white text-[#003366] border border-[#E2E8F0] text-xs font-semibold rounded-xl flex items-center gap-1.5 hover:bg-[#F8FAFC] transition-colors cursor-pointer shadow-xs"
             >
-              <Download className="w-3.5 h-3.5 text-[#1769AA]" />
-              <span>Export Leads Data</span>
+              <Download className="w-3.5 h-3.5 text-[#00A3E0]" />
+              <span>Export Leads</span>
             </button>
             <button
               onClick={() => onNavigate('home')}
-              className="px-4 py-2 bg-[#102A43] text-white text-xs font-semibold rounded-xl hover:bg-[#1769AA] transition-colors"
+              className="btn-navy"
             >
               Exit to Website
             </button>
@@ -100,110 +93,108 @@ export const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onNaviga
         <div className="flex items-center gap-2 pt-6">
           <button
             onClick={() => setActiveTab('LEADS')}
-            className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
               activeTab === 'LEADS'
-                ? 'bg-[#102A43] text-white shadow-xs'
-                : 'bg-white text-gray-700 hover:bg-[#F6FAFD] border border-[#DCE7F0]'
+                ? 'bg-[#003366] text-white shadow-sm'
+                : 'bg-white text-[#475569] border border-[#E2E8F0] hover:bg-[#F8FAFC]'
             }`}
           >
-            <Users className="w-4 h-4 text-[#C89448]" />
+            <Users className="w-3.5 h-3.5 text-[#00A3E0]" />
             <span>Consultation Leads ({leads.length})</span>
           </button>
 
           <button
             onClick={() => setActiveTab('QUESTIONS')}
-            className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
               activeTab === 'QUESTIONS'
-                ? 'bg-[#102A43] text-white shadow-xs'
-                : 'bg-white text-gray-700 hover:bg-[#F6FAFD] border border-[#DCE7F0]'
+                ? 'bg-[#003366] text-white shadow-sm'
+                : 'bg-white text-[#475569] border border-[#E2E8F0] hover:bg-[#F8FAFC]'
             }`}
           >
-            <HelpCircle className="w-4 h-4 text-[#C89448]" />
-            <span>Patient Q&A Inbox ({questions.length})</span>
+            <HelpCircle className="w-3.5 h-3.5 text-[#00A3E0]" />
+            <span>Patient Q&A ({questions.length})</span>
           </button>
 
           <button
             onClick={() => setActiveTab('REVIEWS')}
-            className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
               activeTab === 'REVIEWS'
-                ? 'bg-[#102A43] text-white shadow-xs'
-                : 'bg-white text-gray-700 hover:bg-[#F6FAFD] border border-[#DCE7F0]'
+                ? 'bg-[#003366] text-white shadow-sm'
+                : 'bg-white text-[#475569] border border-[#E2E8F0] hover:bg-[#F8FAFC]'
             }`}
           >
-            <Star className="w-4 h-4 text-[#C89448]" />
+            <Star className="w-3.5 h-3.5 text-[#00A3E0]" />
             <span>Reviews Moderation ({reviews.length})</span>
           </button>
         </div>
       </div>
 
       {/* Main Content Area */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 pt-4">
         
         {/* TAB 1: CONSULTATION LEADS */}
         {activeTab === 'LEADS' && (
-          <div className="space-y-6">
+          <div className="space-y-4">
             
-            {/* Search and Filters */}
-            <div className="bg-white p-4 rounded-2xl border border-[#DCE7F0] flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="bg-white p-3.5 rounded-2xl border border-[#E2E8F0] flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xs">
               <div className="relative w-full sm:w-80">
-                <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <Search className="w-3.5 h-3.5 text-[#00A3E0] absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   placeholder="Search patient name, phone, procedure..."
                   value={leadSearch}
                   onChange={(e) => setLeadSearch(e.target.value)}
-                  className="w-full pl-9 pr-4 py-2 bg-[#F6FAFD] border border-[#DCE7F0] rounded-xl text-xs focus:outline-hidden focus:border-[#1769AA]"
+                  className="w-full pl-10 pr-3.5 py-2 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs text-[#1E293B] focus:border-[#003366] focus:ring-1 focus:ring-[#003366] focus:outline-none"
                 />
               </div>
-              <p className="text-xs text-gray-500">
-                Showing {filteredLeads.length} of {leads.length} recorded leads
+              <p className="text-xs text-[#64748B]">
+                Showing <strong className="text-[#003366]">{filteredLeads.length}</strong> of {leads.length} recorded leads
               </p>
             </div>
 
-            {/* Leads Table */}
-            <div className="bg-white rounded-3xl border border-[#DCE7F0] overflow-hidden shadow-xs">
+            <div className="bg-white rounded-3xl border border-[#E2E8F0] overflow-hidden shadow-sm">
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-[#F6FAFD] border-b border-[#DCE7F0] text-gray-500 font-semibold uppercase tracking-wider">
+                  <thead className="bg-[#F8FAFC] border-b border-[#E2E8F0] text-[#64748B] font-semibold uppercase tracking-wider">
                     <tr>
                       <th className="py-3 px-4">Patient Info</th>
                       <th className="py-3 px-4">Procedure</th>
-                      <th className="py-3 px-4">Type & Preferred Slot</th>
+                      <th className="py-3 px-4">Slot</th>
                       <th className="py-3 px-4">Status</th>
                       <th className="py-3 px-4">Date Logged</th>
                       <th className="py-3 px-4 text-right">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#DCE7F0]">
+                  <tbody className="divide-y divide-[#E2E8F0]">
                     {filteredLeads.map((lead) => (
-                      <tr key={lead.id} className="hover:bg-[#F6FAFD]/60 transition-colors">
-                        <td className="py-3 px-4">
-                          <p className="font-bold text-[#102A43]">{lead.name}</p>
-                          <div className="flex items-center gap-2 text-gray-500 text-[11px] mt-0.5">
-                            <span className="flex items-center gap-1"><Phone className="w-3 h-3 text-[#1769AA]" /> {lead.phone}</span>
+                      <tr key={lead.id} className="hover:bg-[#F8FAFC] transition-colors">
+                        <td className="py-3.5 px-4">
+                          <p className="font-bold text-[#003366]">{lead.name}</p>
+                          <div className="flex items-center gap-2 text-[#64748B] text-[11px] mt-0.5">
+                            <span className="flex items-center gap-1 font-medium"><Phone className="w-3 h-3 text-[#003366]" /> {lead.phone}</span>
                             <span>•</span>
-                            <span className="flex items-center gap-1"><Mail className="w-3 h-3 text-gray-400" /> {lead.email}</span>
+                            <span className="flex items-center gap-1"><Mail className="w-3 h-3 text-[#64748B]" /> {lead.email}</span>
                           </div>
-                          {lead.city && <p className="text-[10px] text-gray-400">City: {lead.city}</p>}
+                          {lead.city && <p className="text-[10px] text-[#64748B]">City: {lead.city}</p>}
                         </td>
 
-                        <td className="py-3 px-4 font-semibold text-[#1769AA]">
+                        <td className="py-3.5 px-4 font-semibold text-[#003366]">
                           {lead.procedure}
                         </td>
 
-                        <td className="py-3 px-4 text-gray-700">
-                          <span className="px-2 py-0.5 bg-[#F6FAFD] rounded text-[10px] font-bold uppercase border border-[#DCE7F0]">
-                            {lead.consultationType === 'IN_PERSON' ? 'In-Person OPD' : 'Virtual Call'}
+                        <td className="py-3.5 px-4 text-[#475569]">
+                          <span className="px-2 py-0.5 bg-[#00A3E0]/10 text-[#003366] rounded-md text-[10px] font-bold uppercase border border-[#00A3E0]/20">
+                            {lead.consultationType === 'IN_PERSON' ? 'In-Person' : 'Virtual'}
                           </span>
-                          <p className="text-[11px] text-gray-500 mt-1">{lead.preferredDate}</p>
-                          <p className="text-[10px] text-gray-400">{lead.timeSlot}</p>
+                          <p className="text-[11px] text-[#64748B] mt-1">{lead.preferredDate}</p>
+                          <p className="text-[10px] text-[#64748B]">{lead.timeSlot}</p>
                         </td>
 
-                        <td className="py-3 px-4">
+                        <td className="py-3.5 px-4">
                           <select
                             value={lead.status}
                             onChange={(e) => updateLeadStatus(lead.id, e.target.value as any)}
-                            className={`p-1.5 rounded-lg text-xs font-bold border focus:outline-hidden ${
+                            className={`p-1.5 rounded-lg text-xs font-bold border focus:outline-none ${
                               lead.status === 'PENDING' ? 'bg-amber-50 text-amber-800 border-amber-300' :
                               lead.status === 'CONFIRMED' ? 'bg-emerald-50 text-emerald-800 border-emerald-300' :
                               lead.status === 'COMPLETED' ? 'bg-blue-50 text-blue-800 border-blue-300' :
@@ -217,24 +208,24 @@ export const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onNaviga
                           </select>
                         </td>
 
-                        <td className="py-3 px-4 text-gray-500 text-[11px]">
+                        <td className="py-3.5 px-4 text-[#64748B] text-[11px]">
                           {new Date(lead.createdAt).toLocaleDateString()}
                         </td>
 
-                        <td className="py-3 px-4 text-right">
+                        <td className="py-3.5 px-4 text-right">
                           <div className="flex items-center justify-end gap-2">
                             <a
                               href={`https://wa.me/${lead.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hello ${lead.name}, this is SIPS Hospital Lucknow regarding your consultation for ${lead.procedure} with Dr. R. K. Mishra.`)}`}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="p-1.5 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-lg"
+                              className="p-1.5 text-emerald-700 hover:bg-emerald-50 rounded-lg transition-colors"
                               title="Message Patient on WhatsApp"
                             >
                               <Phone className="w-3.5 h-3.5" />
                             </a>
                             <button
                               onClick={() => deleteLead(lead.id)}
-                              className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg"
+                              className="p-1.5 text-gray-400 hover:text-red-600 rounded-lg transition-colors cursor-pointer"
                               title="Delete Lead"
                             >
                               <Trash2 className="w-3.5 h-3.5" />
@@ -247,7 +238,6 @@ export const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onNaviga
                 </table>
               </div>
             </div>
-
           </div>
         )}
 
@@ -255,45 +245,45 @@ export const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onNaviga
         {activeTab === 'QUESTIONS' && (
           <div className="space-y-4">
             {questions.map((q) => (
-              <div key={q.id} className="p-6 rounded-2xl bg-white border border-[#DCE7F0] shadow-xs space-y-3">
+              <div key={q.id} className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="px-2.5 py-0.5 bg-[#F6FAFD] text-[#1769AA] text-xs font-bold uppercase rounded border border-[#DCE7F0]">
+                  <span className="px-2.5 py-0.5 bg-[#00A3E0]/10 text-[#003366] text-xs font-bold uppercase rounded-md border border-[#00A3E0]/20">
                     {q.procedure}
                   </span>
-                  <span className="text-xs text-gray-400">{q.date}</span>
+                  <span className="text-xs text-[#64748B]">{q.date}</span>
                 </div>
 
-                <h3 className="text-base font-serif font-bold text-[#102A43]">
+                <h3 className="text-base font-serif font-bold text-[#003366]">
                   {q.question}
                 </h3>
-                <p className="text-xs text-gray-500">From: {q.authorName} ({q.email})</p>
+                <p className="text-xs text-[#64748B]">From: {q.authorName} ({q.email})</p>
 
                 {q.answer ? (
-                  <div className="p-4 rounded-xl bg-[#F6FAFD] border border-[#DCE7F0] text-xs text-gray-700 space-y-1">
-                    <p className="font-bold text-[#102A43]">Answered by: {q.answeredBy}</p>
+                  <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-xs text-[#475569] space-y-1.5">
+                    <p className="font-bold text-[#003366]">Answered by: {q.answeredBy}</p>
                     <p>{q.answer}</p>
                   </div>
                 ) : (
                   <div className="pt-2">
                     {answerModalId === q.id ? (
-                      <div className="space-y-3">
+                      <div className="space-y-2.5">
                         <textarea
                           rows={3}
-                          placeholder="Type Dr. Mishra's surgical answer..."
+                          placeholder="Type Dr. Mishra's clinical answer..."
                           value={answerDraft}
                           onChange={(e) => setAnswerDraft(e.target.value)}
-                          className="w-full p-3 bg-[#F6FAFD] border border-[#DCE7F0] rounded-xl text-xs focus:outline-hidden focus:border-[#1769AA]"
+                          className="w-full p-2.5 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs focus:border-[#003366] focus:ring-1 focus:ring-[#003366] focus:outline-none"
                         />
                         <div className="flex items-center gap-2">
                           <button
                             onClick={() => handleAnswerSubmit(q.id)}
-                            className="px-4 py-2 bg-[#102A43] text-white text-xs font-bold rounded-lg"
+                            className="btn-crimson text-xs py-1.5 px-3"
                           >
-                            Publish Doctor Answer
+                            Publish Answer
                           </button>
                           <button
                             onClick={() => { setAnswerModalId(null); setAnswerDraft(''); }}
-                            className="px-3 py-2 text-xs text-gray-500"
+                            className="px-3 py-1.5 text-xs text-[#64748B] hover:text-[#1E293B] cursor-pointer"
                           >
                             Cancel
                           </button>
@@ -302,7 +292,7 @@ export const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onNaviga
                     ) : (
                       <button
                         onClick={() => setAnswerModalId(q.id)}
-                        className="px-4 py-2 bg-[#F6FAFD] hover:bg-[#E7F2F8] text-[#102A43] border border-[#DCE7F0] text-xs font-semibold rounded-lg"
+                        className="px-3.5 py-1.5 bg-[#F8FAFC] hover:bg-[#E2E8F0] text-[#003366] border border-[#E2E8F0] text-xs font-semibold rounded-xl cursor-pointer transition-colors"
                       >
                         Reply & Publish Answer
                       </button>
@@ -318,20 +308,22 @@ export const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onNaviga
         {activeTab === 'REVIEWS' && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {reviews.map((rev) => (
-              <div key={rev.id} className="p-5 rounded-2xl bg-white border border-[#DCE7F0] shadow-xs space-y-2">
+              <div key={rev.id} className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs space-y-2.5">
                 <div className="flex items-center justify-between">
-                  <div className="flex text-[#C89448]">
+                  <div className="flex text-amber-500">
                     {[...Array(rev.rating)].map((_, i) => (
                       <Star key={i} className="w-3.5 h-3.5 fill-current" />
                     ))}
                   </div>
-                  <span className="text-xs text-gray-400">{rev.date}</span>
+                  <span className="text-xs text-[#64748B]">{rev.date}</span>
                 </div>
-                <h4 className="font-serif font-bold text-sm text-[#102A43]">{rev.title}</h4>
-                <p className="text-xs text-gray-600">"{rev.content}"</p>
-                <div className="pt-2 border-t border-[#DCE7F0] flex items-center justify-between text-xs text-gray-500">
+                <h4 className="font-bold text-sm text-[#003366]">{rev.title}</h4>
+                <p className="text-xs text-[#475569]">"{rev.content}"</p>
+                <div className="pt-2.5 border-t border-[#E2E8F0] flex items-center justify-between text-xs text-[#64748B]">
                   <span>{rev.author} ({rev.procedure})</span>
-                  <span className="text-emerald-700 font-semibold">Published</span>
+                  <span className="text-emerald-700 font-semibold flex items-center gap-1">
+                    <ShieldCheck className="w-3.5 h-3.5" /> Published
+                  </span>
                 </div>
               </div>
             ))}

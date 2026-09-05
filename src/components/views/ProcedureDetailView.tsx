@@ -3,17 +3,14 @@ import {
   Clock, 
   ShieldCheck, 
   Calendar, 
-  HelpCircle, 
   CheckCircle2, 
   ArrowRight, 
-  Sparkles, 
-  UserCheck, 
-  AlertCircle,
-  Building2,
-  PhoneCall,
-  ChevronDown
+  Building2, 
+  PhoneCall, 
+  ChevronDown,
+  Sparkles,
+  Award
 } from 'lucide-react';
-import { Procedure, BeforeAfterCase } from '../../types';
 import { proceduresData } from '../../data/proceduresData';
 import { beforeAfterCases } from '../../data/resultsData';
 import { doctorData } from '../../data/doctorData';
@@ -40,82 +37,66 @@ export const ProcedureDetailView: React.FC<ProcedureDetailViewProps> = ({
   );
 
   return (
-    <div id={`procedure-detail-${procedure.slug}`} className="pt-24 pb-20 bg-[#F6FAFD]">
+    <div className="pt-32 sm:pt-36 pb-24 bg-[#F8FAFC]">
       
       {/* Breadcrumb */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-xs text-gray-500 flex items-center gap-2">
-        <button onClick={() => onNavigate('home')} className="hover:text-[#102A43]">Home</button>
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3 text-xs text-[#64748B] flex items-center gap-2 border-b border-[#E2E8F0] mb-8">
+        <button onClick={() => onNavigate('home')} className="hover:text-[#003366] transition-colors cursor-pointer">Home</button>
         <span>/</span>
-        <button onClick={() => onNavigate('procedures')} className="hover:text-[#102A43]">Procedures</button>
+        <button onClick={() => onNavigate('procedures')} className="hover:text-[#003366] transition-colors cursor-pointer">Procedures</button>
         <span>/</span>
-        <span className="text-[#1769AA] font-semibold">{procedure.category}</span>
+        <span className="text-[#00A3E0] font-semibold">{procedure.category}</span>
         <span>/</span>
-        <span className="text-[#102A43] font-semibold">{procedure.title}</span>
+        <span className="text-[#003366] font-bold">{procedure.title}</span>
       </div>
 
-      {/* Procedure Hero */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
-        <div className="bg-white rounded-3xl border border-[#DCE7F0] p-6 sm:p-10 lg:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      {/* Main Hero */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
+        <div className="bg-white rounded-3xl border border-[#E2E8F0] p-8 sm:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
           <div className="lg:col-span-7 space-y-5">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F6FAFD] border border-[#DCE7F0] text-xs font-bold text-[#1769AA] tracking-wider uppercase">
-              <span>{procedure.category}</span>
-              <span>•</span>
-              <span>Dr. R. K. Mishra</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00A3E0]/10 border border-[#00A3E0]/20 text-[#00A3E0] text-xs font-semibold tracking-wide uppercase">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>{procedure.category} • Surgical Excellence</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#102A43] tracking-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#003366] tracking-tight leading-tight">
               {procedure.title}
             </h1>
 
-            <p className="text-base sm:text-lg text-gray-600 font-normal leading-relaxed">
+            <p className="text-base text-[#00A3E0] font-semibold">
               {procedure.subtitle}
             </p>
 
-            <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">
+            <p className="text-sm sm:text-base text-[#475569] leading-relaxed font-normal">
               {procedure.shortDesc}
             </p>
 
-            {/* CTAs */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+            <div className="pt-3 flex flex-wrap items-center gap-4">
               <button
-                id="procedure-book-consultation-btn"
                 onClick={() => onNavigate('book-consultation')}
-                className="px-7 py-3.5 bg-[#102A43] hover:bg-[#1769AA] text-white text-xs sm:text-sm font-bold rounded-xl transition-all shadow-md flex items-center justify-center gap-2"
+                className="btn-crimson"
               >
-                <Calendar className="w-4 h-4 text-[#C89448]" />
-                <span>Book Consultation for {procedure.title}</span>
+                <Calendar className="w-4 h-4" />
+                <span>Schedule Confidential Consultation</span>
               </button>
 
               <button
-                id="procedure-ask-question-btn"
                 onClick={() => onNavigate('ask-question')}
-                className="px-6 py-3.5 bg-[#F6FAFD] hover:bg-[#E7F2F8] text-[#102A43] border border-[#DCE7F0] text-xs sm:text-sm font-semibold rounded-xl transition-all text-center"
+                className="btn-outline-navy"
               >
-                Ask a Question
+                <span>Ask a Doctor</span>
               </button>
             </div>
           </div>
 
           <div className="lg:col-span-5">
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-md border border-[#DCE7F0] relative">
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-[#E2E8F0] bg-gray-50 relative group">
               <img
                 src={procedure.image}
                 alt={procedure.title}
-                className="w-full h-full object-cover"
+                className="w-full h-auto object-cover aspect-[4/3] group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute bottom-3 left-3 right-3 p-3 bg-white/90 backdrop-blur-xs rounded-xl border border-white/40 text-xs flex items-center justify-between">
-                <div>
-                  <span className="text-[10px] text-gray-500 uppercase font-semibold">Estimated Cost Range</span>
-                  <p className="font-bold text-[#102A43]">{procedure.costRange}</p>
-                </div>
-                <button 
-                  onClick={() => onNavigate('pricing')}
-                  className="text-xs font-bold text-[#1769AA] hover:underline"
-                >
-                  Pricing Guide →
-                </button>
-              </div>
             </div>
           </div>
 
@@ -123,89 +104,85 @@ export const ProcedureDetailView: React.FC<ProcedureDetailViewProps> = ({
       </div>
 
       {/* Quick Facts Strip */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="p-5 rounded-2xl bg-white border border-[#DCE7F0] shadow-xs">
-            <div className="flex items-center gap-2 text-xs text-gray-500 mb-1">
-              <Clock className="w-4 h-4 text-[#1769AA]" />
-              <span>Procedure Time</span>
+          <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] text-center shadow-xs">
+            <div className="flex items-center justify-center gap-1.5 text-xs text-[#00A3E0] mb-1 font-semibold uppercase tracking-wider">
+              <Clock className="w-3.5 h-3.5" />
+              <span>Duration</span>
             </div>
-            <p className="text-base font-bold text-[#102A43]">{procedure.duration}</p>
+            <p className="text-sm font-bold text-[#003366]">{procedure.duration}</p>
           </div>
 
-          <div className="p-5 rounded-2xl bg-white border border-[#DCE7F0] shadow-xs">
-            <div className="flex items-center gap-2 text-xs text-gray-500 mb-1">
-              <ShieldCheck className="w-4 h-4 text-[#1769AA]" />
-              <span>Anesthesia Type</span>
+          <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] text-center shadow-xs">
+            <div className="flex items-center justify-center gap-1.5 text-xs text-[#00A3E0] mb-1 font-semibold uppercase tracking-wider">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span>Anesthesia</span>
             </div>
-            <p className="text-xs sm:text-sm font-bold text-[#102A43] truncate" title={procedure.anesthesiaType}>
-              {procedure.anesthesiaType.split('(')[0]}
-            </p>
+            <p className="text-sm font-bold text-[#003366] truncate">{procedure.anesthesiaType.split('(')[0]}</p>
           </div>
 
-          <div className="p-5 rounded-2xl bg-white border border-[#DCE7F0] shadow-xs">
-            <div className="flex items-center gap-2 text-xs text-gray-500 mb-1">
-              <Building2 className="w-4 h-4 text-[#1769AA]" />
+          <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] text-center shadow-xs">
+            <div className="flex items-center justify-center gap-1.5 text-xs text-[#00A3E0] mb-1 font-semibold uppercase tracking-wider">
+              <Building2 className="w-3.5 h-3.5" />
               <span>Hospital Stay</span>
             </div>
-            <p className="text-xs sm:text-sm font-bold text-[#102A43]">{procedure.hospitalStay}</p>
+            <p className="text-sm font-bold text-[#003366]">{procedure.hospitalStay}</p>
           </div>
 
-          <div className="p-5 rounded-2xl bg-white border border-[#DCE7F0] shadow-xs">
-            <div className="flex items-center gap-2 text-xs text-gray-500 mb-1">
-              <UserCheck className="w-4 h-4 text-[#1769AA]" />
-              <span>Return to Work</span>
+          <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] text-center shadow-xs">
+            <div className="flex items-center justify-center gap-1.5 text-xs text-[#00A3E0] mb-1 font-semibold uppercase tracking-wider">
+              <CheckCircle2 className="w-3.5 h-3.5" />
+              <span>Recovery</span>
             </div>
-            <p className="text-xs sm:text-sm font-bold text-[#102A43] truncate" title={procedure.recoveryTimeline}>
-              {procedure.recoveryTimeline.split(';')[0]}
-            </p>
+            <p className="text-sm font-bold text-[#003366] truncate">{procedure.recoveryTimeline.split(';')[0]}</p>
           </div>
         </div>
       </div>
 
-      {/* Main Content Layout */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 lg:grid-cols-12 gap-10">
+      {/* Main Content Details */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10">
         
-        {/* Left Comprehensive Clinical Breakdown */}
-        <div className="lg:col-span-8 space-y-10">
+        {/* Left Column: Details */}
+        <div className="lg:col-span-8 space-y-8">
           
-          {/* Section 1: Overview */}
-          <div className="bg-white rounded-3xl border border-[#DCE7F0] p-6 sm:p-8 shadow-xs space-y-4">
-            <h2 className="text-2xl font-serif font-bold text-[#102A43]">
+          {/* Overview */}
+          <div className="bg-white rounded-2xl border border-[#E2E8F0] p-8 shadow-xs space-y-3">
+            <h2 className="text-xl font-serif font-bold text-[#003366]">
               Procedure Overview & Anatomical Objectives
             </h2>
-            <p className="text-sm text-gray-700 leading-relaxed">
+            <p className="text-sm text-[#475569] leading-relaxed font-normal">
               {procedure.overview}
             </p>
           </div>
 
-          {/* Section 2: Ideal Candidates */}
-          <div className="bg-white rounded-3xl border border-[#DCE7F0] p-6 sm:p-8 shadow-xs space-y-4">
-            <h2 className="text-2xl font-serif font-bold text-[#102A43]">
+          {/* Ideal Candidates */}
+          <div className="bg-white rounded-2xl border border-[#E2E8F0] p-8 shadow-xs space-y-4">
+            <h2 className="text-xl font-serif font-bold text-[#003366]">
               Who is an Ideal Candidate?
             </h2>
             <ul className="space-y-2.5">
-              {procedure.idealCandidate.map((candidate, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-gray-700">
-                  <CheckCircle2 className="w-4 h-4 text-[#1769AA] shrink-0 mt-0.5" />
-                  <span>{candidate}</span>
+              {procedure.idealCandidate.map((cand, idx) => (
+                <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-[#475569]">
+                  <CheckCircle2 className="w-4 h-4 text-[#00A3E0] shrink-0 mt-0.5" />
+                  <span>{cand}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Section 3: Step-by-Step Surgical Process */}
-          <div className="bg-white rounded-3xl border border-[#DCE7F0] p-6 sm:p-8 shadow-xs space-y-6">
-            <h2 className="text-2xl font-serif font-bold text-[#102A43]">
+          {/* Steps */}
+          <div className="bg-white rounded-2xl border border-[#E2E8F0] p-8 shadow-xs space-y-4">
+            <h2 className="text-xl font-serif font-bold text-[#003366]">
               Step-by-Step Surgical Process
             </h2>
-            <div className="space-y-4">
+            <div className="space-y-3">
               {procedure.procedureSteps.map((step, idx) => (
-                <div key={idx} className="flex items-start gap-4 p-4 rounded-xl bg-[#F6FAFD] border border-[#DCE7F0]">
-                  <span className="w-7 h-7 rounded-full bg-[#102A43] text-white flex items-center justify-center text-xs font-bold shrink-0">
+                <div key={idx} className="flex items-start gap-3.5 p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#003366] text-[11px] font-bold text-white">
                     {idx + 1}
                   </span>
-                  <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#1E293B] leading-relaxed pt-0.5">
                     {step}
                   </p>
                 </div>
@@ -213,186 +190,108 @@ export const ProcedureDetailView: React.FC<ProcedureDetailViewProps> = ({
             </div>
           </div>
 
-          {/* Section 4: Recovery & Healing Timeline */}
-          <div className="bg-white rounded-3xl border border-[#DCE7F0] p-6 sm:p-8 shadow-xs space-y-4">
-            <h2 className="text-2xl font-serif font-bold text-[#102A43]">
-              Recovery & Post-Operative Timeline
+          {/* Recovery */}
+          <div className="bg-white rounded-2xl border border-[#E2E8F0] p-8 shadow-xs space-y-3">
+            <h2 className="text-xl font-serif font-bold text-[#003366]">
+              Post-Operative Recovery & Care
             </h2>
-            <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
               {procedure.recoveryTimeline}
             </p>
-            <div className="p-4 rounded-xl bg-[#F6FAFD] border border-[#DCE7F0] space-y-2">
-              <h4 className="text-xs font-bold text-[#102A43] uppercase tracking-wider">Expected Results</h4>
-              <p className="text-xs sm:text-sm text-gray-600">{procedure.expectedResults}</p>
-            </div>
           </div>
 
-          {/* Section 5: Safety & Risk Minimization at SIPS Hospital */}
-          <div className="bg-white rounded-3xl border border-[#DCE7F0] p-6 sm:p-8 shadow-xs space-y-4">
-            <h2 className="text-2xl font-serif font-bold text-[#102A43] flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-[#1769AA]" />
-              Surgical Safety & Risk Management
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-700">
-              All surgeries are performed at Sushrut Institute of Plastic Surgery (SIPS Hospital) under strict NABH protocols.
-            </p>
-            <ul className="space-y-2">
-              {procedure.risksAndSafety.map((risk, idx) => (
-                <li key={idx} className="flex items-start gap-2.5 text-xs text-gray-600">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#1769AA] mt-1.5 shrink-0" />
-                  <span>{risk}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Section 6: Before and After Cases for this Procedure */}
-          {matchedCases.length > 0 && (
-            <div className="space-y-6">
-              <h2 className="text-2xl font-serif font-bold text-[#102A43]">
-                Documented Clinical Results: {procedure.title}
+          {/* FAQs */}
+          {procedure.faqs.length > 0 && (
+            <div className="bg-white rounded-2xl border border-[#E2E8F0] p-8 shadow-xs space-y-4">
+              <h2 className="text-xl font-serif font-bold text-[#003366]">
+                Frequently Asked Questions
               </h2>
-              <div className="space-y-6">
-                {matchedCases.map((c) => (
-                  <BeforeAfterSlider key={c.id} caseData={c} />
-                ))}
+              <div className="space-y-3">
+                {procedure.faqs.map((faq, idx) => {
+                  const isOpen = openFaq === idx;
+                  return (
+                    <div key={idx} className="rounded-xl border border-[#E2E8F0] overflow-hidden">
+                      <button
+                        onClick={() => setOpenFaq(isOpen ? null : idx)}
+                        className="w-full p-4 text-left font-bold text-[#003366] flex items-center justify-between gap-4 cursor-pointer hover:bg-[#F8FAFC] transition-colors"
+                      >
+                        <span className="text-sm">{faq.question}</span>
+                        <ChevronDown className={`w-4 h-4 text-[#00A3E0] transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                      </button>
+                      {isOpen && (
+                        <div className="px-4 pb-4 text-xs sm:text-sm text-[#475569] leading-relaxed border-t border-[#E2E8F0] bg-[#F8FAFC]">
+                          {faq.answer}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}
 
-          {/* Section 7: FAQs */}
-          <div className="bg-white rounded-3xl border border-[#DCE7F0] p-6 sm:p-8 shadow-xs space-y-4">
-            <h2 className="text-2xl font-serif font-bold text-[#102A43] flex items-center gap-2">
-              <HelpCircle className="w-5 h-5 text-[#1769AA]" />
-              Frequently Asked Questions
-            </h2>
-            <div className="space-y-3 pt-2">
-              {procedure.faqs.map((faq, idx) => (
-                <div 
-                  key={idx} 
-                  className="border border-[#DCE7F0] rounded-xl overflow-hidden transition-colors"
-                >
-                  <button
-                    onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                    className="w-full p-4 text-left font-semibold text-xs sm:text-sm text-[#102A43] flex items-center justify-between gap-3 hover:bg-[#F6FAFD]"
-                  >
-                    <span>{faq.question}</span>
-                    <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${openFaq === idx ? 'rotate-180 text-[#1769AA]' : ''}`} />
-                  </button>
-                  {openFaq === idx && (
-                    <div className="px-4 pb-4 text-xs sm:text-sm text-gray-600 leading-relaxed border-t border-[#DCE7F0] pt-3 bg-[#F6FAFD]">
-                      {faq.answer}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-
         </div>
 
-        {/* Right Sticky Consultation & Doctor Card */}
+        {/* Right Sidebar: Contact & Related */}
         <div className="lg:col-span-4 space-y-6">
           
-          {/* Sticky Consultation Box */}
-          <div className="sticky top-28 space-y-6">
-            
-            {/* Consultation Card */}
-            <div className="bg-white rounded-3xl border border-[#DCE7F0] p-6 shadow-sm space-y-5">
+          <div className="bg-gradient-to-br from-[#002244] to-[#003366] text-white rounded-3xl p-6 sm:p-7 border border-white/10 shadow-lg space-y-5">
+            <div className="flex items-center gap-3.5">
+              <div className="w-13 h-13 rounded-full overflow-hidden border-2 border-[#00A3E0] shrink-0">
+                <img
+                  src="/hero.png"
+                  alt="Dr. R. K. Mishra"
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
               <div>
-                <span className="text-xs font-bold text-[#1769AA] uppercase tracking-wider block mb-1">
-                  Private Consultation
-                </span>
-                <h3 className="text-xl font-serif font-bold text-[#102A43]">
-                  Consult Dr. R. K. Mishra
-                </h3>
-                <p className="text-xs text-gray-600 mt-1">
-                  Get a personalized surgical assessment, 3D evaluation, and transparent cost estimate.
-                </p>
+                <h3 className="font-serif font-bold text-base text-white">Dr. R. K. Mishra</h3>
+                <p className="text-xs text-[#00A3E0] font-medium">M.Ch Senior Plastic Surgeon</p>
+                <p className="text-[10px] text-slate-300">25+ Yrs Exp • SIPS Hospital</p>
               </div>
+            </div>
 
-              <div className="p-4 rounded-xl bg-[#F6FAFD] border border-[#DCE7F0] text-xs space-y-2">
-                <div className="flex justify-between text-gray-600">
-                  <span>Procedure:</span>
-                  <span className="font-bold text-[#102A43]">{procedure.title}</span>
-                </div>
-                <div className="flex justify-between text-gray-600">
-                  <span>Starting Tariff:</span>
-                  <span className="font-bold text-[#1769AA]">From {procedure.costRange.split('–')[0]}</span>
-                </div>
-                <div className="flex justify-between text-gray-600">
-                  <span>Hospital:</span>
-                  <span className="font-medium text-gray-800">SIPS Lucknow</span>
-                </div>
-              </div>
+            <p className="text-xs text-slate-300 leading-relaxed">
+              Performed over 30,000 successful surgeries. Every treatment plan is custom sculpted with uncompromising anatomical safety.
+            </p>
 
+            <div className="pt-2 border-t border-white/10 space-y-3">
               <button
                 onClick={() => onNavigate('book-consultation')}
-                className="w-full py-3.5 bg-[#102A43] hover:bg-[#1769AA] text-white text-xs font-bold rounded-xl transition-all shadow-md flex items-center justify-center gap-2"
+                className="btn-crimson w-full py-3"
               >
-                <Calendar className="w-4 h-4 text-[#C89448]" />
-                <span>Schedule Consultation</span>
+                Schedule Consultation
               </button>
-
               <a
-                href={`https://wa.me/${doctorData.whatsappNumber.replace('+', '')}?text=${encodeURIComponent(`Hello Dr. Mishra, I am interested in ${procedure.title} and would like to know consultation timings at SIPS Hospital.`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-3 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-2"
+                href={`tel:${doctorData.contactPhone.replace(/[^0-9+]/g, '')}`}
+                className="w-full py-2.5 border border-white/20 text-white font-medium text-xs rounded-xl flex items-center justify-center gap-2 hover:bg-white/10 transition-colors"
               >
-                <span>WhatsApp Coordination</span>
+                <PhoneCall className="w-3.5 h-3.5 text-[#00A3E0]" />
+                <span>Call Clinic Helpline</span>
               </a>
-
-              <p className="text-[11px] text-center text-gray-600 flex items-center justify-center gap-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#1769AA]" />
-                100% Confidential Patient Care
-              </p>
             </div>
-
-            {/* Doctor Authority Snippet */}
-            <div className="bg-[#F6FAFD] rounded-3xl border border-[#DCE7F0] p-6 space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-[#102A43] text-white flex items-center justify-center font-serif text-lg">
-                  RM
-                </div>
-                <div>
-                  <h4 className="text-sm font-serif font-bold text-[#102A43]">Dr. R. K. Mishra</h4>
-                  <p className="text-xs text-gray-500">{doctorData.experienceYears}+ Yrs • 30,000+ Surgeries</p>
-                </div>
-              </div>
-              <p className="text-xs text-gray-600 leading-relaxed">
-                Senior Plastic Surgeon at SIPS Hospital Lucknow with international fellowship training in Dallas and New York.
-              </p>
-              <button
-                onClick={() => onNavigate('doctor')}
-                className="text-xs font-bold text-[#1769AA] hover:text-[#102A43] transition-colors"
-              >
-                View Full Surgical Credentials →
-              </button>
-            </div>
-
-            {/* Related Procedures */}
-            {relatedProcedures.length > 0 && (
-              <div className="bg-white rounded-3xl border border-[#DCE7F0] p-6 space-y-3">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-[#102A43]">
-                  Complementary Procedures
-                </h4>
-                <div className="space-y-2">
-                  {relatedProcedures.map((rp) => (
-                    <div
-                      key={rp.slug}
-                      onClick={() => onNavigate(`procedure-${rp.slug}`)}
-                      className="p-3 rounded-lg border border-[#DCE7F0] hover:border-[#1769AA] hover:bg-[#F6FAFD] cursor-pointer transition-colors flex items-center justify-between text-xs group"
-                    >
-                      <span className="font-semibold text-gray-800 group-hover:text-[#1769AA]">{rp.title}</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#1769AA]" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
           </div>
+
+          {/* Related Procedures */}
+          {relatedProcedures.length > 0 && (
+            <div className="bg-white rounded-2xl p-6 border border-[#E2E8F0] shadow-xs space-y-3">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#003366]">
+                Related Procedures
+              </h4>
+              <div className="space-y-2">
+                {relatedProcedures.map((rp) => (
+                  <button
+                    key={rp.slug}
+                    onClick={() => onNavigate(`procedure-${rp.slug}`)}
+                    className="w-full p-3 rounded-xl bg-[#F8FAFC] hover:bg-[#003366]/5 text-left text-xs font-semibold text-[#003366] flex items-center justify-between transition-colors border border-[#E2E8F0]"
+                  >
+                    <span>{rp.title}</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#00A3E0]" />
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
         </div>
 

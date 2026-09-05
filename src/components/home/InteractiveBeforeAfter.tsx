@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { beforeAfterCases } from '../../data/resultsData';
 import { BeforeAfterSlider } from '../common/BeforeAfterSlider';
 import { ProcedureCategory } from '../../types';
@@ -17,77 +17,95 @@ export const InteractiveBeforeAfter: React.FC<InteractiveBeforeAfterProps> = ({ 
 
   const categories: { id: ProcedureCategory | 'ALL'; label: string }[] = [
     { id: 'ALL', label: 'All Cases' },
-    { id: 'FACE', label: 'Face' },
-    { id: 'BREAST', label: 'Gynecomastia & Breast' },
-    { id: 'BODY', label: 'Liposuction & Body' }
+    { id: 'FACE', label: 'Facial Aesthetics' },
+    { id: 'BREAST', label: 'Breast & Gynecomastia' },
+    { id: 'BODY', label: 'Body Contouring' }
   ];
 
   return (
-    <section id="homepage-results-section" className="py-16 sm:py-24 bg-[#F5FAFD] relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 sm:py-28 bg-[#F8FAFC] border-b border-[#E2E8F0]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4">
-          <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#1769AA] mb-2">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Documented Transformations</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-serif font-bold text-[#102A43] tracking-tight leading-tight">
-              Patient Results & Transformations
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+          <div className="max-w-2xl space-y-2">
+            <span className="text-xs font-semibold tracking-[0.2em] text-[#00A3E0] uppercase block">
+              Real Transformations
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-heading font-bold text-[#003366] tracking-tight">
+              Before & After Gallery
             </h2>
-            <p className="text-sm sm:text-base text-[#52677D] mt-2 max-w-xl font-normal">
-              Authentic before-and-after photographic documentation demonstrating natural structural balance and precision surgical outcomes.
+            <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed pt-1">
+              Standardized clinical photography from Dr. R. K. Mishra's surgical cases. Drag slider to compare natural tissue contours.
             </p>
           </div>
 
           <button
             onClick={() => onNavigate('results')}
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#1769AA] hover:text-[#0B2A5B] transition-colors"
+            className="btn-outline-navy shrink-0 self-start md:self-end"
           >
-            <span>View Full Gallery ({beforeAfterCases.length}+ Cases)</span>
-            <ArrowRight className="w-4 h-4" />
+            <span>View Full Gallery</span>
+            <ArrowRight className="w-4 h-4 ml-1.5" />
           </button>
         </div>
 
-        {/* Filter Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-8 scrollbar-none">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-200 cursor-pointer ${
-                activeCategory === cat.id
-                  ? 'bg-[#0B2A5B] text-white shadow-xs'
-                  : 'bg-white text-[#52677D] hover:bg-[#EEF7FC] border border-[#DCE7F0]'
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
+        {/* Filter Tabs */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-10 scrollbar-none">
+          {categories.map((cat) => {
+            const isActive = activeCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`px-4 py-2 rounded-lg text-xs font-semibold tracking-wide uppercase transition-colors cursor-pointer ${
+                  isActive
+                    ? 'bg-[#003366] text-white shadow-sm'
+                    : 'bg-white text-slate-600 border border-[#E2E8F0] hover:bg-[#F0F7FD] hover:text-[#003366]'
+                }`}
+              >
+                {cat.label}
+              </button>
+            );
+          })}
         </div>
 
-        {/* Results Sliders Grid */}
+        {/* Results Slider Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {filteredCases.slice(0, 2).map((item) => (
-            <BeforeAfterSlider key={item.id} caseData={item} />
-          ))}
-        </div>
+            <div
+              key={item.id}
+              className="bg-white border border-[#E2E8F0] rounded-2xl p-5 sm:p-6 space-y-4 hover:shadow-lg transition-shadow"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-base font-heading font-bold text-[#003366]">
+                    {item.procedureName}
+                  </h3>
+                  <p className="text-xs text-slate-500">
+                    {item.patientInfo} • {item.timeline}
+                  </p>
+                </div>
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-[#E0F2FE] text-[#0284C7] border border-[#00A3E0]/20">
+                  Verified Outcome
+                </span>
+              </div>
 
-        {/* Mandatory Transparency & Safety Notice */}
-        <div className="mt-10 p-5 rounded-2xl bg-white border border-[#DCE7F0] shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-[#52677D]">
-          <div className="flex items-center gap-3">
-            <ShieldCheck className="w-5 h-5 text-[#1769AA] shrink-0" />
-            <p>
-              <strong className="text-[#102A43]">Clinical Transparency Notice:</strong> Individual surgical results vary according to patient baseline anatomy, age, and healing response. Photography is published strictly with informed patient consent.
-            </p>
-          </div>
-          <button
-            onClick={() => onNavigate('results')}
-            className="px-4 py-2 bg-[#EEF7FC] hover:bg-[#DCE7F0] text-[#1769AA] rounded-xl font-semibold shrink-0 transition-colors whitespace-nowrap"
-          >
-            Explore All Case Studies
-          </button>
+              <div className="rounded-xl overflow-hidden shadow-xs">
+                <BeforeAfterSlider
+                  caseData={item}
+                  beforeImage={item.beforeImage}
+                  afterImage={item.afterImage}
+                  beforeLabel="Before"
+                  afterLabel="After"
+                  procedureName={item.procedureName}
+                />
+              </div>
+
+              <p className="text-xs text-[#57635B] leading-relaxed italic">
+                "{item.description}"
+              </p>
+            </div>
+          ))}
         </div>
 
       </div>

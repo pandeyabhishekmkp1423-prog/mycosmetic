@@ -99,7 +99,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center bg-[#071D3B]/72 px-3 pt-16 backdrop-blur-md sm:px-4 sm:pt-24"
+      className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 px-3 pt-16 backdrop-blur-xs sm:px-4 sm:pt-24"
       onClick={onClose}
     >
       <div
@@ -107,12 +107,12 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
         role="dialog"
         aria-modal="true"
         aria-label="Search procedures and patient guidance"
-        className="route-transition flex max-h-[82vh] w-full max-w-3xl flex-col overflow-hidden rounded-lg border border-[#DCE7F0] bg-white shadow-[0_30px_90px_rgba(7,29,59,0.28)]"
+        className="flex max-h-[82vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl border border-[#E2E8F0] bg-white shadow-2xl"
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="border-b border-[#DCE7F0] bg-[#F7FBFE] p-3 sm:p-4">
-          <div className="flex items-center gap-3 rounded-lg border border-[#DCE7F0] bg-white px-3 py-3 shadow-sm">
-            <Search className="h-5 w-5 shrink-0 text-[#1769AA]" />
+        <div className="border-b border-[#E2E8F0] bg-[#F8FAFC] p-3 sm:p-4">
+          <div className="flex items-center gap-3 rounded-lg border border-[#E2E8F0] bg-white px-3.5 py-2.5 shadow-xs">
+            <Search className="h-4 w-4 shrink-0 text-[#00A3E0]" />
             <input
               id="global-search-input"
               type="text"
@@ -120,24 +120,24 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               autoFocus
-              className="w-full bg-transparent text-base font-semibold text-[#102A43] placeholder:text-[#718096] focus:outline-hidden"
+              className="w-full bg-transparent text-sm font-medium text-[#0F172A] placeholder:text-slate-400 focus:outline-none"
             />
             {query && (
               <button
                 id="clear-search-btn"
                 type="button"
                 onClick={() => setQuery('')}
-                className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-[#718096] hover:bg-[#EEF7FC] hover:text-[#102A43]"
+                className="inline-flex h-7 w-7 items-center justify-center rounded text-slate-400 hover:text-slate-700"
                 aria-label="Clear search"
               >
-                <X className="h-4 w-4" />
+                <X className="h-3.5 w-3.5" />
               </button>
             )}
             <button
               id="close-search-modal-btn"
               type="button"
               onClick={onClose}
-              className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-[#718096] hover:bg-[#EEF7FC] hover:text-[#102A43]"
+              className="inline-flex h-7 w-7 items-center justify-center rounded text-slate-400 hover:text-slate-700"
               aria-label="Close search"
             >
               <X className="h-4 w-4" />
@@ -148,19 +148,19 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
             <button
               type="button"
               onClick={() => goTo('book-consultation')}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-[#0B2A5B] px-3 py-2 font-bold text-white hover:bg-[#1769AA]"
+              className="btn-crimson text-xs py-1 px-3 rounded-md"
             >
-              <Calendar className="h-3.5 w-3.5" />
-              Book consultation
+              <Calendar className="h-3.5 w-3.5 mr-1" />
+              <span>Book consultation</span>
             </button>
             <button
               type="button"
               onClick={() => goTo('pricing')}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-[#DCE7F0] bg-white px-3 py-2 font-bold text-[#0B2A5B] hover:border-[#1769AA]"
+              className="btn-outline-navy text-xs py-1 px-3 rounded-md"
             >
               Pricing guide
             </button>
-            <span className="ml-auto hidden text-[#718096] sm:inline">Press Esc to close</span>
+            <span className="ml-auto hidden text-slate-400 text-[11px] sm:inline">Press Esc to close</span>
           </div>
         </div>
 
@@ -168,29 +168,29 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
           <button
             type="button"
             onClick={() => goTo('doctor')}
-            className="interactive-lift flex w-full items-center justify-between gap-4 rounded-lg border border-[#DCE7F0] bg-[#F5FAFD] p-4 text-left"
+            className="flex w-full items-center justify-between gap-4 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-3.5 text-left hover:border-[#003366] transition-colors"
           >
             <div className="flex min-w-0 items-center gap-3">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#0B2A5B] text-sm font-bold text-white">
-                Dr
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#003366] text-xs font-bold text-white">
+                RM
               </div>
               <div className="min-w-0">
-                <h4 className="truncate text-sm font-bold text-[#102A43]">{doctorData.name}</h4>
-                <p className="truncate text-xs text-[#52677D]">
-                  Senior Plastic Surgeon, SIPS Hospital Lucknow - {doctorData.experienceYears}+ years
+                <h4 className="truncate text-xs font-bold text-[#003366]">{doctorData.name}</h4>
+                <p className="truncate text-[11px] text-slate-500">
+                  Senior Plastic Surgeon, SIPS Super Specialty Hospital Lucknow • {doctorData.experienceYears}+ years
                 </p>
               </div>
             </div>
-            <ArrowRight className="h-4 w-4 shrink-0 text-[#1769AA]" />
+            <ArrowRight className="h-4 w-4 shrink-0 text-[#00A3E0]" />
           </button>
 
           <div>
             <div className="mb-3 flex items-center justify-between gap-3">
-              <h3 className="flex items-center gap-1.5 text-xs font-bold uppercase text-[#52677D]">
-                <Stethoscope className="h-3.5 w-3.5 text-[#1769AA]" />
+              <h3 className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-600">
+                <Stethoscope className="h-3.5 w-3.5 text-[#00A3E0]" />
                 Procedures ({searchResults.procedures.length})
               </h3>
-              {!query && <span className="text-[11px] font-semibold text-[#718096]">Popular treatments</span>}
+              {!query && <span className="text-[10px] text-slate-400">Featured</span>}
             </div>
 
             {searchResults.procedures.length > 0 ? (
@@ -201,39 +201,39 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
                     id={`search-proc-${procedure.slug}`}
                     type="button"
                     onClick={() => goTo(`procedure-${procedure.slug}`)}
-                    className="interactive-lift group flex items-start gap-3 rounded-lg border border-[#DCE7F0] bg-white p-3 text-left hover:border-[#1769AA]"
+                    className="group flex items-start gap-3 rounded-lg border border-[#E2E8F0] bg-white p-3 text-left hover:border-[#003366] transition-colors"
                   >
                     <SafeImage
                       src={procedure.image}
                       alt={procedure.title}
                       fallbackCategory={procedure.category}
-                      className="h-14 w-14 shrink-0 rounded-lg"
+                      className="h-12 w-12 shrink-0 rounded-md object-cover"
                     />
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center justify-between gap-2">
-                        <span className="truncate text-xs font-bold text-[#102A43] group-hover:text-[#1769AA]">
+                        <span className="truncate text-xs font-bold text-[#0F172A] group-hover:text-[#003366]">
                           {procedure.title}
                         </span>
-                        <span className="shrink-0 text-[10px] font-bold uppercase text-[#718096]">{procedure.category}</span>
+                        <span className="shrink-0 text-[9px] font-bold uppercase text-slate-500">{procedure.category}</span>
                       </div>
-                      <p className="mt-1 truncate text-xs text-[#52677D]">{procedure.shortDesc}</p>
-                      <span className="mt-1 block text-[11px] font-bold text-[#1769AA]">From {procedure.costRange}</span>
+                      <p className="mt-0.5 truncate text-[11px] text-slate-500">{procedure.shortDesc}</p>
+                      <span className="mt-1 block text-[10px] font-bold text-[#003366]">From {procedure.costRange}</span>
                     </div>
                   </button>
                 ))}
               </div>
             ) : (
-              <p className="rounded-lg border border-dashed border-[#DCE7F0] bg-[#F7FBFE] p-4 text-sm text-[#52677D]">
-                No procedure matches "{query}". Try a concern like nose, scar, chest, body, eyes or recovery.
+              <p className="rounded-lg border border-dashed border-[#E2E8F0] bg-[#F8FAFC] p-4 text-xs text-slate-500">
+                No procedure matches "{query}". Try a concern like rhinoplasty, breast, gynecomastia, or liposuction.
               </p>
             )}
           </div>
 
           {searchResults.insights.length > 0 && (
             <div>
-              <h3 className="mb-3 flex items-center gap-1.5 text-xs font-bold uppercase text-[#52677D]">
-                <BookOpen className="h-3.5 w-3.5 text-[#1769AA]" />
-                Articles & Recovery Guides
+              <h3 className="mb-3 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-600">
+                <BookOpen className="h-3.5 w-3.5 text-[#00A3E0]" />
+                Clinical Insights
               </h3>
               <div className="space-y-2">
                 {searchResults.insights.map((article) => (
@@ -242,14 +242,14 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
                     id={`search-art-${article.slug}`}
                     type="button"
                     onClick={() => goTo(`insight-${article.slug}`)}
-                    className="group flex w-full items-center justify-between gap-4 rounded-lg border border-[#DCE7F0] bg-white p-3 text-left hover:border-[#1769AA] hover:bg-[#F7FBFE]"
+                    className="group flex w-full items-center justify-between gap-4 rounded-lg border border-[#E2E8F0] bg-white p-3 text-left hover:border-[#003366] transition-colors"
                   >
                     <div className="min-w-0">
-                      <span className="text-[11px] font-bold uppercase text-[#1769AA]">{article.category}</span>
-                      <h4 className="truncate text-xs font-bold text-[#102A43] group-hover:text-[#1769AA]">{article.title}</h4>
-                      <p className="truncate text-xs text-[#52677D]">{article.excerpt}</p>
+                      <span className="text-[10px] font-bold uppercase text-[#00A3E0]">{article.category}</span>
+                      <h4 className="truncate text-xs font-bold text-[#0F172A] group-hover:text-[#003366]">{article.title}</h4>
+                      <p className="truncate text-[11px] text-slate-500">{article.excerpt}</p>
                     </div>
-                    <ArrowRight className="h-4 w-4 shrink-0 text-[#718096] group-hover:text-[#1769AA]" />
+                    <ArrowRight className="h-3.5 w-3.5 shrink-0 text-slate-400 group-hover:text-[#003366]" />
                   </button>
                 ))}
               </div>
@@ -258,9 +258,9 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
 
           {searchResults.stories.length > 0 && (
             <div>
-              <h3 className="mb-3 flex items-center gap-1.5 text-xs font-bold uppercase text-[#52677D]">
-                <Sparkles className="h-3.5 w-3.5 text-[#1769AA]" />
-                Patient Results & Stories
+              <h3 className="mb-3 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-600">
+                <Sparkles className="h-3.5 w-3.5 text-[#00A3E0]" />
+                Patient Results
               </h3>
               <div className="space-y-2">
                 {searchResults.stories.map((story) => (
@@ -268,13 +268,13 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
                     key={story.id}
                     type="button"
                     onClick={() => goTo('patient-stories')}
-                    className="w-full rounded-lg border border-[#DCE7F0] bg-white p-3 text-left hover:border-[#1769AA] hover:bg-[#F7FBFE]"
+                    className="w-full rounded-lg border border-[#E2E8F0] bg-white p-3 text-left hover:border-[#003366] transition-colors"
                   >
                     <div className="mb-1 flex items-center justify-between gap-3 text-xs">
-                      <span className="font-bold text-[#102A43]">{story.patientName}</span>
-                      <span className="font-bold text-[#1769AA]">{story.procedure}</span>
+                      <span className="font-bold text-[#003366]">{story.patientName}</span>
+                      <span className="font-semibold text-[#00A3E0]">{story.procedure}</span>
                     </div>
-                    <p className="line-clamp-2 text-xs italic text-[#52677D]">"{story.headline}"</p>
+                    <p className="line-clamp-2 text-xs italic text-slate-600">"{story.headline}"</p>
                   </button>
                 ))}
               </div>
@@ -282,29 +282,29 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
           )}
 
           {query && totalResults === 0 && (
-            <div className="rounded-lg border border-[#DCE7F0] bg-[#F7FBFE] p-5 text-center">
-              <p className="text-sm font-bold text-[#102A43]">Nothing found for "{query}"</p>
-              <p className="mt-1 text-xs text-[#52677D]">You can still send a question or book a private consultation.</p>
+            <div className="rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-5 text-center">
+              <p className="text-xs font-bold text-[#0F172A]">No matches found for "{query}"</p>
+              <p className="mt-1 text-[11px] text-slate-500">You can send a question or schedule a direct consultation.</p>
             </div>
           )}
         </div>
 
-        <div className="flex flex-col gap-3 border-t border-[#DCE7F0] bg-[#F7FBFE] p-4 text-xs sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-wrap items-center gap-4 text-[#52677D]">
+        <div className="flex flex-col gap-3 border-t border-[#E2E8F0] bg-[#F8FAFC] p-3 sm:p-4 text-xs sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-wrap items-center gap-4 text-slate-600">
             <a
-              href={`tel:${doctorData.contactPhone.replace(/[^0-9+]/g, '')}`}
-              className="inline-flex items-center gap-1.5 font-bold hover:text-[#1769AA]"
+              href="tel:+919415023675"
+              className="inline-flex items-center gap-1.5 font-semibold text-[#003366] hover:text-[#00A3E0]"
             >
-              <Phone className="h-3.5 w-3.5 text-[#1769AA]" />
-              +91 9795 800 800
+              <Phone className="h-3.5 w-3.5 text-[#003366]" />
+              +91 94150 23675
             </a>
             <a
               href={`https://wa.me/${doctorData.whatsappNumber.replace('+', '')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 font-bold text-emerald-700 hover:text-emerald-800"
+              className="inline-flex items-center gap-1.5 font-semibold text-emerald-800 hover:text-emerald-900"
             >
-              <MessageCircle className="h-3.5 w-3.5" />
+              <MessageCircle className="h-3.5 w-3.5 text-emerald-600" />
               WhatsApp
             </a>
           </div>
@@ -312,10 +312,10 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
             id="search-footer-book-btn"
             type="button"
             onClick={() => goTo('book-consultation')}
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#0B2A5B] px-4 py-2.5 font-bold text-white hover:bg-[#1769AA]"
+            className="btn-crimson text-xs py-1.5 px-3.5 rounded-lg"
           >
-            Book Consultation
-            <ArrowRight className="h-3.5 w-3.5" />
+            <span>Schedule Consultation</span>
+            <ArrowRight className="h-3.5 w-3.5 ml-1" />
           </button>
         </div>
       </div>

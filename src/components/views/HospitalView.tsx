@@ -2,14 +2,14 @@ import React from 'react';
 import { 
   Building2, 
   ShieldCheck, 
-  Sparkles, 
   CheckCircle2, 
   MapPin, 
   Clock, 
   Phone, 
-  Calendar,
-  BedDouble,
+  Calendar, 
+  BedDouble, 
   HeartPulse,
+  Sparkles,
   Award
 } from 'lucide-react';
 import { hospitalData } from '../../data/hospitalData';
@@ -21,102 +21,105 @@ interface HospitalViewProps {
 
 export const HospitalView: React.FC<HospitalViewProps> = ({ onNavigate }) => {
   return (
-    <div id="hospital-page" className="pt-24 pb-20 bg-[#F6FAFD]">
+    <div className="pt-32 sm:pt-36 pb-24 bg-[#F8FAFC]">
       
       {/* Breadcrumb */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-xs text-gray-500 flex items-center gap-2">
-        <button onClick={() => onNavigate('home')} className="hover:text-[#102A43]">Home</button>
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3 text-xs text-[#64748B] flex items-center gap-2 border-b border-[#E2E8F0] mb-8">
+        <button onClick={() => onNavigate('home')} className="hover:text-[#003366] transition-colors cursor-pointer">Home</button>
         <span>/</span>
-        <span className="text-[#102A43] font-semibold">Hospital & Surgical Suites</span>
+        <span className="text-[#003366] font-semibold">Hospital & Surgical Facilities</span>
       </div>
 
       {/* Hero */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <div className="bg-white rounded-3xl border border-[#DCE7F0] p-6 sm:p-10 lg:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-12">
+        <div className="bg-white rounded-3xl border border-[#E2E8F0] p-8 sm:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F6FAFD] border border-[#DCE7F0] text-xs font-bold text-[#1769AA] uppercase tracking-wider">
-              <ShieldCheck className="w-4 h-4 text-[#1769AA]" />
-              <span>NABH Accredited Healthcare Center</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00A3E0]/10 border border-[#00A3E0]/20 text-[#00A3E0] text-xs font-semibold tracking-wide uppercase">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span>NABH Accredited Super Specialty Center</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#102A43] tracking-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#003366] tracking-tight leading-tight">
               {hospitalData.name}
             </h1>
 
-            <p className="text-base sm:text-lg text-gray-600 font-normal leading-relaxed">
+            <p className="text-sm sm:text-base text-[#475569] font-normal leading-relaxed">
               {hospitalData.overview}
             </p>
 
-            {/* Quick Accreditation Badges */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
-              <div className="p-3.5 rounded-xl bg-[#F6FAFD] border border-[#DCE7F0]">
-                <p className="text-sm font-bold text-[#102A43]">NABH Accredited</p>
-                <p className="text-xs text-gray-500">Quality & Safety</p>
+            <div className="grid grid-cols-3 gap-4 pt-2">
+              <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-center">
+                <p className="text-xs font-bold text-[#003366]">NABH</p>
+                <p className="text-[10px] text-[#64748B] uppercase font-medium mt-0.5">Accredited Quality</p>
               </div>
-              <div className="p-3.5 rounded-xl bg-[#F6FAFD] border border-[#DCE7F0]">
-                <p className="text-sm font-bold text-[#1769AA]">Laminar OTs</p>
-                <p className="text-xs text-gray-500">HEPA Positive Pressure</p>
+              <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-center">
+                <p className="text-xs font-bold text-[#003366]">Class 100</p>
+                <p className="text-[10px] text-[#64748B] uppercase font-medium mt-0.5">Laminar OTs</p>
               </div>
-              <div className="col-span-2 sm:col-span-1 p-3.5 rounded-xl bg-[#F6FAFD] border border-[#DCE7F0]">
-                <p className="text-sm font-bold text-[#102A43]">24/7 ICU & Anesthesia</p>
-                <p className="text-xs text-gray-500">Critical Care Support</p>
+              <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-center">
+                <p className="text-xs font-bold text-[#003366]">24/7 ICU</p>
+                <p className="text-[10px] text-[#64748B] uppercase font-medium mt-0.5">Critical Care</p>
               </div>
             </div>
 
-            {/* CTA */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <div className="pt-2 flex flex-wrap items-center gap-4">
               <button
                 onClick={() => onNavigate('book-consultation')}
-                className="px-7 py-3.5 bg-[#102A43] hover:bg-[#1769AA] text-white text-xs sm:text-sm font-bold rounded-xl transition-all shadow-md flex items-center justify-center gap-2"
+                className="btn-crimson"
               >
-                <Calendar className="w-4 h-4 text-[#C89448]" />
-                <span>Book In-Person Consultation at SIPS</span>
+                <Calendar className="w-4 h-4" />
+                <span>Book Consultation at SIPS</span>
               </button>
               <button
                 onClick={() => onNavigate('contact')}
-                className="px-6 py-3.5 bg-white hover:bg-[#F6FAFD] text-[#102A43] border border-[#DCE7F0] text-xs sm:text-sm font-semibold rounded-xl transition-all text-center"
+                className="btn-outline-navy"
               >
-                Hospital Map & Directions
+                <span>Hospital Map & Travel</span>
               </button>
             </div>
           </div>
 
           <div className="lg:col-span-5">
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-md border border-[#DCE7F0]">
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-[#E2E8F0] bg-white relative group">
               <img
                 src={hospitalData.gallery[0]}
                 alt="SIPS Hospital Lucknow Facility"
-                className="w-full h-full object-cover"
+                className="w-full h-auto object-cover aspect-[4/3] group-hover:scale-105 transition-transform duration-500"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#002244]/60 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <p className="text-xs font-semibold uppercase tracking-wider text-[#00A3E0]">SIPS Super Specialty Hospital</p>
+                <p className="text-sm font-medium text-white/90">29, Shahmeena Road, Chowk, Lucknow</p>
+              </div>
             </div>
           </div>
 
         </div>
       </div>
 
-      {/* Facilities & Infrastructure Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+      {/* Facilities Details */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
         
-        {/* Core Infrastructure Highlights */}
+        {/* Features */}
         <div>
-          <div className="max-w-2xl mb-8">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#1769AA] block mb-1">
-              Advanced Clinical Capability
+          <div className="max-w-xl mb-6">
+            <span className="text-xs font-semibold tracking-[0.2em] text-[#00A3E0] uppercase block mb-1">
+              Clinical Excellence
             </span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#102A43]">
-              State-of-the-Art Hospital Features
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#003366]">
+              Hospital Infrastructure Highlights
             </h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {hospitalData.features.map((feature, idx) => (
-              <div key={idx} className="p-6 rounded-2xl bg-white border border-[#DCE7F0] shadow-xs space-y-2">
-                <div className="w-9 h-9 rounded-lg bg-[#F6FAFD] border border-[#DCE7F0] flex items-center justify-center text-[#1769AA]">
-                  <CheckCircle2 className="w-5 h-5" />
+              <div key={idx} className="bg-white rounded-2xl border border-[#E2E8F0] p-6 shadow-xs space-y-3 hover:border-[#00A3E0]/40 transition-all hover:shadow-md">
+                <div className="w-10 h-10 rounded-xl bg-[#00A3E0]/10 text-[#003366] flex items-center justify-center border border-[#00A3E0]/20">
+                  <CheckCircle2 className="w-5 h-5 text-[#00A3E0]" />
                 </div>
-                <h3 className="text-sm font-bold text-[#102A43]">{feature.title}</h3>
-                <p className="text-xs text-gray-600 leading-relaxed">
+                <h3 className="text-base font-bold text-[#003366]">{feature.title}</h3>
+                <p className="text-xs text-[#64748B] leading-relaxed">
                   {feature.desc}
                 </p>
               </div>
@@ -124,105 +127,104 @@ export const HospitalView: React.FC<HospitalViewProps> = ({ onNavigate }) => {
           </div>
         </div>
 
-        {/* Operating Theatre Suites & Safety Protocols */}
+        {/* Operating Theatre & Rooms */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
-          <div className="p-8 rounded-3xl bg-white border border-[#DCE7F0] shadow-xs space-y-4">
+          <div className="bg-white rounded-2xl border border-[#E2E8F0] p-8 shadow-xs space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#F6FAFD] border border-[#DCE7F0] flex items-center justify-center text-[#1769AA]">
-                <HeartPulse className="w-5 h-5" />
+              <div className="w-11 h-11 rounded-xl bg-[#00A3E0]/10 border border-[#00A3E0]/20 text-[#003366] flex items-center justify-center">
+                <HeartPulse className="w-6 h-6 text-[#00A3E0]" />
               </div>
-              <h3 className="text-xl font-serif font-bold text-[#102A43]">
+              <h3 className="text-xl font-bold text-[#003366]">
                 Operating Theatre Specifications
               </h3>
             </div>
-            <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
               {hospitalData.otDetails}
             </p>
-            <div className="p-4 rounded-xl bg-[#F6FAFD] border border-[#DCE7F0] text-xs text-gray-600 space-y-1">
-              <p><strong>Air Quality:</strong> Class 100 laminar airflow HEPA filtration</p>
-              <p><strong>Electrocautery:</strong> Advanced bipolar & harmonic scalpel systems</p>
-              <p><strong>Monitoring:</strong> Multi-parameter continuous invasive hemodynamic tracking</p>
+            <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-xs text-[#1E293B] space-y-2">
+              <p className="flex items-center gap-2"><strong className="text-[#003366]">Air Purity:</strong> Class 100 laminar airflow with absolute HEPA sterile filtration</p>
+              <p className="flex items-center gap-2"><strong className="text-[#003366]">Instrumentation:</strong> Advanced bipolar radiofrequency, VASER & harmonic dissection</p>
+              <p className="flex items-center gap-2"><strong className="text-[#003366]">Anesthesia:</strong> Continuous multi-parameter cardiac hemodynamic monitoring by MD specialists</p>
             </div>
           </div>
 
-          <div className="p-8 rounded-3xl bg-white border border-[#DCE7F0] shadow-xs space-y-4">
+          <div className="bg-white rounded-2xl border border-[#E2E8F0] p-8 shadow-xs space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#F6FAFD] border border-[#DCE7F0] flex items-center justify-center text-[#1769AA]">
-                <BedDouble className="w-5 h-5" />
+              <div className="w-11 h-11 rounded-xl bg-[#00A3E0]/10 border border-[#00A3E0]/20 text-[#003366] flex items-center justify-center">
+                <BedDouble className="w-6 h-6 text-[#00A3E0]" />
               </div>
-              <h3 className="text-xl font-serif font-bold text-[#102A43]">
-                Patient Recovery & Inpatient Suites
+              <h3 className="text-xl font-bold text-[#003366]">
+                Patient Recovery & Deluxe Suites
               </h3>
             </div>
-            <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
               {hospitalData.patientRooms}
             </p>
-            <div className="p-4 rounded-xl bg-[#F6FAFD] border border-[#DCE7F0] text-xs text-gray-600 space-y-1">
-              <p><strong>Discretion:</strong> Private elevator access and dedicated discharge lounges</p>
-              <p><strong>Nursing:</strong> 1:1 post-anesthesia recovery nursing</p>
-              <p><strong>Hospitality:</strong> Personalized dietary catering and attendant accommodations</p>
+            <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-xs text-[#1E293B] space-y-2">
+              <p className="flex items-center gap-2"><strong className="text-[#003366]">Privacy:</strong> Discretionary luxury suites with private attendant areas and en-suite facilities</p>
+              <p className="flex items-center gap-2"><strong className="text-[#003366]">Nursing:</strong> Dedicated 1:1 post-anesthetic specialized surgical nursing team</p>
+              <p className="flex items-center gap-2"><strong className="text-[#003366]">Hospitality:</strong> Tailored nutritional meal programs and compassionate care coordinator</p>
             </div>
           </div>
 
         </div>
 
-        {/* Hospital Photo Gallery */}
+        {/* Gallery */}
         <div>
-          <h3 className="text-xl font-serif font-bold text-[#102A43] mb-6">
-            SIPS Hospital Infrastructure Gallery
+          <h3 className="text-xl font-bold text-[#003366] mb-4">
+            Hospital Campus Gallery
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {hospitalData.gallery.map((imgUrl, idx) => (
-              <div key={idx} className="aspect-[4/3] rounded-2xl overflow-hidden border border-[#DCE7F0] shadow-xs group">
+              <div key={idx} className="aspect-[4/3] rounded-xl overflow-hidden border border-[#E2E8F0] bg-gray-50 shadow-xs">
                 <img
                   src={imgUrl}
-                  alt={`SIPS Facility view ${idx + 1}`}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  alt={`SIPS Facility ${idx + 1}`}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
             ))}
           </div>
         </div>
 
-        {/* Location & Visiting Hours */}
-        <div className="p-8 rounded-3xl bg-[#102A43] text-white grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        {/* Bottom Banner */}
+        <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-[#002244] to-[#003366] text-white grid grid-cols-1 md:grid-cols-2 gap-8 items-center shadow-xl border border-white/10">
           <div className="space-y-3">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#C89448]">
-              Visiting & OPD Hours
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#00A3E0]">
+              Hospital Location & Timings
             </span>
-            <h3 className="text-2xl font-serif font-bold text-white">
+            <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white">
               Sushrut Institute of Plastic Surgery (SIPS)
             </h3>
-            <p className="text-xs text-gray-300 flex items-start gap-2 pt-2">
-              <MapPin className="w-4 h-4 text-[#C89448] shrink-0 mt-0.5" />
+            <p className="text-xs text-slate-300 flex items-center gap-2 pt-1">
+              <MapPin className="w-4 h-4 text-[#00A3E0] shrink-0" />
               <span>{hospitalData.address}</span>
             </p>
-            <p className="text-xs text-gray-300 flex items-center gap-2">
-              <Clock className="w-4 h-4 text-[#C89448] shrink-0" />
+            <p className="text-xs text-slate-300 flex items-center gap-2">
+              <Clock className="w-4 h-4 text-[#00A3E0] shrink-0" />
               <span>{hospitalData.timings}</span>
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-[#1B2026] border border-[#2A313A] space-y-3">
-            <h4 className="text-sm font-bold text-[#C89448]">Consultation Appointments</h4>
-            <p className="text-xs text-gray-300">
-              Prior appointment is recommended for comprehensive surgical evaluation with Dr. R. K. Mishra.
+          <div className="space-y-4">
+            <p className="text-xs text-slate-300 leading-relaxed">
+              Prior appointment booking is strictly recommended to ensure in-depth confidential evaluation with Dr. R. K. Mishra.
             </p>
-            <div className="pt-2 flex items-center gap-3">
-              <a
-                href={`tel:${doctorData.contactPhone.replace(/[^0-9+]/g, '')}`}
-                className="px-4 py-2.5 bg-[#1769AA] hover:bg-[#a37f4e] text-white text-xs font-bold rounded-lg transition-colors flex items-center gap-1.5"
-              >
-                <Phone className="w-3.5 h-3.5" />
-                <span>Call Helpline</span>
-              </a>
+            <div className="flex flex-wrap items-center gap-3">
               <button
                 onClick={() => onNavigate('book-consultation')}
-                className="px-4 py-2.5 bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs font-bold rounded-lg transition-colors"
+                className="btn-crimson"
               >
-                Book Online
+                Schedule Consultation
               </button>
+              <a
+                href={`tel:${doctorData.contactPhone.replace(/[^0-9+]/g, '')}`}
+                className="btn-outline-navy border-white/30 text-white hover:bg-white/10"
+              >
+                <Phone className="w-3.5 h-3.5 text-[#00A3E0]" />
+                <span>Call Helpline</span>
+              </a>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, Quote, Calendar, ArrowRight, ShieldCheck, Heart, Sparkles } from 'lucide-react';
+import { Star, Calendar, ArrowRight, Sparkles, Heart } from 'lucide-react';
 import { patientStoriesData } from '../../data/patientStoriesData';
 
 interface PatientStoriesViewProps {
@@ -12,46 +12,51 @@ export const PatientStoriesView: React.FC<PatientStoriesViewProps> = ({ onNaviga
   const activeStory = patientStoriesData.find(s => s.id === selectedStory) || patientStoriesData[0];
 
   return (
-    <div id="patient-stories-page" className="pt-24 pb-20 bg-[#F6FAFD]">
+    <div className="pt-32 sm:pt-36 pb-24 bg-[#F8FAFC]">
       
       {/* Breadcrumb */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-xs text-gray-500 flex items-center gap-2">
-        <button onClick={() => onNavigate('home')} className="hover:text-[#102A43]">Home</button>
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3 text-xs text-[#64748B] flex items-center gap-2 border-b border-[#E2E8F0] mb-8">
+        <button onClick={() => onNavigate('home')} className="hover:text-[#003366] transition-colors cursor-pointer">Home</button>
         <span>/</span>
-        <span className="text-[#102A43] font-semibold">Patient Journeys & Stories</span>
+        <span className="text-[#003366] font-semibold">Patient Journeys & Stories</span>
       </div>
 
       {/* Hero */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <div className="max-w-3xl space-y-4">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[#1769AA] block">
-            Real Human Journeys
-          </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#102A43] tracking-tight">
-            Patient Stories & Transformations
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-12">
+        <div className="max-w-3xl space-y-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00A3E0]/10 border border-[#00A3E0]/20 text-[#00A3E0] text-xs font-semibold tracking-wide uppercase">
+            <Heart className="w-3.5 h-3.5 fill-current" />
+            <span>Real Patient Experiences</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#003366] tracking-tight">
+            Patient Stories & Journeys
           </h1>
-          <p className="text-base text-gray-600 leading-relaxed font-normal">
-            Behind every surgical procedure is a personal transformation. Read candid accounts of the patient experience at My Cosmetic Surgery — from consultation to full recovery.
+          <p className="text-sm sm:text-base text-[#475569] font-normal leading-relaxed pt-1">
+            Behind every surgical procedure is a deeply personal transformation. Read candid reflections from patients treated by Senior Plastic Surgeon Dr. R. K. Mishra at SIPS Hospital, Lucknow.
           </p>
         </div>
 
         {/* Story Selector Tabs */}
-        <div className="mt-8 pt-6 border-t border-[#DCE7F0] grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="mt-8 pt-6 border-t border-[#E2E8F0] grid grid-cols-1 sm:grid-cols-3 gap-4">
           {patientStoriesData.map((story) => (
             <button
               key={story.id}
               onClick={() => setSelectedStory(story.id)}
-              className={`p-4 rounded-2xl border text-left transition-all ${
+              className={`p-5 rounded-2xl border text-left transition-all cursor-pointer shadow-xs ${
                 selectedStory === story.id
-                  ? 'bg-white border-[#1769AA] shadow-md ring-1 ring-[#1769AA]'
-                  : 'bg-[#F6FAFD] border-[#DCE7F0] hover:bg-white text-gray-700'
+                  ? 'bg-[#003366] text-white border-[#003366] shadow-md'
+                  : 'bg-white border-[#E2E8F0] hover:bg-[#F8FAFC] text-[#1E293B] hover:border-[#00A3E0]/40'
               }`}
             >
-              <div className="flex items-center justify-between text-xs mb-1">
-                <span className="font-bold text-[#1769AA]">{story.procedure}</span>
-                <span className="text-gray-600">{story.patientName}</span>
+              <div className="flex items-center justify-between text-xs mb-1.5">
+                <span className={`font-bold uppercase tracking-wider text-[11px] ${selectedStory === story.id ? 'text-[#00A3E0]' : 'text-[#003366]'}`}>
+                  {story.procedure}
+                </span>
+                <span className={`text-[11px] font-medium ${selectedStory === story.id ? 'text-white/80' : 'text-[#64748B]'}`}>
+                  {story.patientName}
+                </span>
               </div>
-              <p className="text-xs font-serif font-bold text-[#102A43] line-clamp-1">
+              <p className={`text-xs font-serif font-bold line-clamp-1 ${selectedStory === story.id ? 'text-white' : 'text-[#003366]'}`}>
                 {story.headline}
               </p>
             </button>
@@ -59,106 +64,101 @@ export const PatientStoriesView: React.FC<PatientStoriesViewProps> = ({ onNaviga
         </div>
       </div>
 
-      {/* Active Story Deep-Dive Layout */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-3xl border border-[#DCE7F0] p-6 sm:p-10 lg:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-10">
+      {/* Active Story Layout */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
+        <div className="bg-white rounded-3xl border border-[#E2E8F0] p-8 sm:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-10">
           
-          {/* Main Story Narrative */}
-          <div className="lg:col-span-8 space-y-8">
-            
-            {/* Story Header */}
+          {/* Main Story */}
+          <div className="lg:col-span-8 space-y-6">
             <div>
-              <div className="flex items-center gap-1 text-[#C89448] mb-2">
+              <div className="flex items-center gap-1 text-amber-500 mb-2.5">
                 {[...Array(activeStory.rating)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-current" />
                 ))}
               </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#102A43] leading-snug">
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#003366] leading-snug">
                 "{activeStory.headline}"
               </h2>
-              <div className="flex flex-wrap items-center gap-3 text-xs text-gray-500 mt-2">
-                <span className="font-semibold text-gray-900">{activeStory.patientName}</span>
+              <div className="flex flex-wrap items-center gap-2.5 text-xs text-[#64748B] mt-2">
+                <span className="font-bold text-[#003366]">{activeStory.patientName}</span>
                 <span>•</span>
                 <span>{activeStory.location}</span>
                 <span>•</span>
-                <span className="text-[#1769AA] font-semibold">{activeStory.procedure}</span>
+                <span className="text-[#00A3E0] font-semibold">{activeStory.procedure}</span>
                 <span>•</span>
-                <span>{activeStory.timeline}</span>
+                <span>{activeStory.timeline} post-op</span>
               </div>
             </div>
 
-            {/* Quote Callout */}
-            <div className="p-6 rounded-2xl bg-[#F6FAFD] border-l-4 border-[#1769AA] text-sm sm:text-base italic text-gray-800 leading-relaxed font-serif">
+            <div className="p-6 rounded-2xl bg-[#F8FAFC] border-l-4 border-[#00A3E0] text-sm sm:text-base italic text-[#1E293B] leading-relaxed font-serif shadow-xs">
               "{activeStory.quote}"
             </div>
 
-            {/* Narrative Body */}
-            <div className="space-y-4 text-xs sm:text-sm text-gray-700 leading-relaxed">
-              <h3 className="text-base font-serif font-bold text-[#102A43]">The Decision & Consultation</h3>
+            <div className="space-y-3 text-xs sm:text-sm text-[#475569] leading-relaxed">
+              <h3 className="text-base font-bold text-[#003366]">The Surgical Journey</h3>
               <p>{activeStory.story}</p>
             </div>
 
-            {/* Doctor Note */}
-            <div className="p-6 rounded-2xl bg-[#102A43] text-white space-y-2">
-              <span className="text-xs font-semibold uppercase tracking-widest text-[#C89448]">
-                Surgeon Note from Dr. R. K. Mishra
+            {/* Doctor Reflection */}
+            <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-r from-[#002244] to-[#003366] text-white space-y-2 border border-white/10 shadow-md">
+              <span className="text-xs font-semibold uppercase tracking-widest text-[#00A3E0]">
+                Surgeon Note • Dr. R. K. Mishra
               </span>
-              <p className="text-xs sm:text-sm text-gray-300 leading-relaxed italic">
+              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed italic">
                 "{activeStory.doctorNote}"
               </p>
             </div>
 
           </div>
 
-          {/* Right Sidebar: Surgery Context & CTA */}
+          {/* Right Sidebar */}
           <div className="lg:col-span-4 space-y-6">
             
-            <div className="p-6 rounded-3xl bg-[#F6FAFD] border border-[#DCE7F0] space-y-4">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-[#102A43]">
-                Case Overview
+            <div className="p-6 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-5">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#003366]">
+                Case Summary
               </h4>
               
               <div className="space-y-3 text-xs">
-                <div className="flex justify-between pb-2 border-b border-[#DCE7F0]">
-                  <span className="text-gray-500">Procedure</span>
-                  <span className="font-bold text-[#102A43]">{activeStory.procedure}</span>
+                <div className="flex justify-between pb-2 border-b border-[#E2E8F0]">
+                  <span className="text-[#64748B]">Procedure</span>
+                  <span className="font-bold text-[#003366]">{activeStory.procedure}</span>
                 </div>
-                <div className="flex justify-between pb-2 border-b border-[#DCE7F0]">
-                  <span className="text-gray-500">Patient Origin</span>
-                  <span className="font-medium text-gray-800">{activeStory.location}</span>
+                <div className="flex justify-between pb-2 border-b border-[#E2E8F0]">
+                  <span className="text-[#64748B]">Location</span>
+                  <span className="font-medium text-[#1E293B]">{activeStory.location}</span>
                 </div>
-                <div className="flex justify-between pb-2 border-b border-[#DCE7F0]">
-                  <span className="text-gray-500">Follow-up Period</span>
-                  <span className="font-medium text-gray-800">{activeStory.timeline}</span>
+                <div className="flex justify-between pb-2 border-b border-[#E2E8F0]">
+                  <span className="text-[#64748B]">Follow-up</span>
+                  <span className="font-medium text-[#1E293B]">{activeStory.timeline}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-500">Operating Surgeon</span>
-                  <span className="font-bold text-[#1769AA]">Dr. R. K. Mishra</span>
+                  <span className="text-[#64748B]">Surgeon</span>
+                  <span className="font-bold text-[#003366]">Dr. R. K. Mishra</span>
                 </div>
               </div>
 
               <button
                 onClick={() => onNavigate('book-consultation')}
-                className="w-full py-3 bg-[#102A43] hover:bg-[#1769AA] text-white text-xs font-bold rounded-xl transition-all shadow-xs flex items-center justify-center gap-2"
+                className="btn-crimson w-full justify-center"
               >
-                <Calendar className="w-4 h-4 text-[#C89448]" />
+                <Calendar className="w-4 h-4" />
                 <span>Book Similar Consultation</span>
               </button>
             </div>
 
-            {/* Read All Reviews Card */}
-            <div className="p-6 rounded-3xl bg-white border border-[#DCE7F0] text-center space-y-3">
-              <h4 className="text-sm font-serif font-bold text-[#102A43]">
-                Explore More Patient Feedback
+            <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] text-center space-y-2 shadow-xs">
+              <h4 className="text-sm font-serif font-bold text-[#003366]">
+                Explore All 500+ Reviews
               </h4>
-              <p className="text-xs text-gray-500">
-                Over 500+ verified patient ratings from Lucknow, UP, and across India.
+              <p className="text-xs text-[#64748B]">
+                Verified patient feedback from Lucknow, UP, and international visitors.
               </p>
               <button
                 onClick={() => onNavigate('reviews')}
-                className="w-full py-2.5 bg-[#F6FAFD] hover:bg-[#E7F2F8] text-[#102A43] border border-[#DCE7F0] rounded-xl text-xs font-semibold transition-colors"
+                className="mt-2 text-xs font-bold text-[#00A3E0] hover:underline cursor-pointer"
               >
-                View Verified Reviews Directory →
+                View Reviews Directory →
               </button>
             </div>
 

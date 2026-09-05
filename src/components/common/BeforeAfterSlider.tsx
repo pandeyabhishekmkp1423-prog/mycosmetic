@@ -1,22 +1,37 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { BeforeAfterCase } from '../../types';
-import { Sparkles, ArrowLeftRight, CheckCircle2, Shield } from 'lucide-react';
-import { SafeImage } from './SafeImage';
+import { Sparkles, ArrowLeftRight, CheckCircle2, ZoomIn, ZoomOut } from 'lucide-react';
 
-interface BeforeAfterSliderProps {
-  caseData: BeforeAfterCase;
+export interface BeforeAfterSliderProps {
+  caseData?: BeforeAfterCase;
+  beforeImage?: string;
+  afterImage?: string;
+  beforeLabel?: string;
+  afterLabel?: string;
+  procedureName?: string;
   showDetails?: boolean;
   className?: string;
 }
 
 export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
   caseData,
-  showDetails = true,
+  beforeImage,
+  afterImage,
+  beforeLabel = 'Before',
+  afterLabel = 'After',
+  procedureName,
+  showDetails = false,
   className = ''
 }) => {
   const [sliderPosition, setSliderPosition] = useState<number>(50);
   const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [isZoomed, setIsZoomed] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const effectiveId = caseData?.id || 'slider-case';
+  const effectiveBeforeImage = beforeImage || caseData?.beforeImage || '';
+  const effectiveAfterImage = afterImage || caseData?.afterImage || '';
+  const effectiveProcedureName = procedureName || caseData?.procedureName || 'Clinical Procedure';
 
   const handleMove = useCallback((clientX: number) => {
     if (!containerRef.current) return;
@@ -52,109 +67,147 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
     };
   }, [isDragging, handleMove]);
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'ArrowLeft') {
+      setSliderPosition((prev) => Math.max(0, prev - 5));
+    } else if (e.key === 'ArrowRight') {
+      setSliderPosition((prev) => Math.min(100, prev + 5));
+    }
+  };
+
   return (
-    <div id={`before-after-case-${caseData.id}`} className={`bg-white rounded-[20px] border border-[#DCE7F0] overflow-hidden shadow-xs hover:shadow-[0_8px_30px_rgba(11,42,91,0.06)] transition-all duration-300 ${className}`}>
+    <div 
+      id={`before-after-case-${effectiveId}`} 
+      className={`bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden transition-all duration-300 ${className}`}
+    >
       {/* Slider Visual Container */}
       <div 
         ref={containerRef}
-        className="relative w-full aspect-[4/3] select-none overflow-hidden cursor-ew-resize bg-[#071D3B]"
+        tabIndex={0}
+        role="slider"
+        aria-valuenow={Math.round(sliderPosition)}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label={`Before and after comparison slider for ${effectiveProcedureName}`}
+        onKeyDown={handleKeyDown}
+        className="relative w-full aspect-[4/3] select-none overflow-hidden cursor-ew-resize bg-[#071323] focus:outline-none focus:ring-2 focus:ring-[#003366]"
         onClick={(e) => handleMove(e.clientX)}
       >
         {/* After Image (Background) */}
-        <img 
-          src={caseData.afterImage} 
-          alt={`After result - ${caseData.procedureName}`}
-          className="absolute inset-0 w-full h-full object-cover"
-          loading="lazy"
-          referrerPolicy="no-referrer"
-        />
-
-        {/* Before Image (Clipped Overlay) */}
-        <div 
-          className="absolute inset-0 overflow-hidden"
-          style={{ width: `${sliderPosition}%` }}
-        >
+        {effectiveAfterImage && (
           <img 
-            src={caseData.beforeImage} 
-            alt={`Before procedure - ${caseData.procedureName}`}
-            className="absolute inset-0 w-full h-full object-cover max-w-none"
-            style={{ width: containerRef.current ? `${containerRef.current.clientWidth}px` : '100%' }}
+            src={effectiveAfterImage} 
+            alt={`Post-Op result - ${effectiveProcedureName}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-transform duration-300 ${
+              isZoomed ? 'scale-125 origin-center' : 'scale-100'
+            }`}
             loading="lazy"
             referrerPolicy="no-referrer"
           />
-        </div>
+        )}
+
+        {/* Before Image (Clipped Overlay with Clip-Path) */}
+        {effectiveBeforeImage && (
+          <div 
+            className="absolute inset-0 overflow-hidden pointer-events-none"
+            style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
+          >
+            <img 
+              src={effectiveBeforeImage} 
+              alt={`Pre-Op view - ${effectiveProcedureName}`}
+              className={`absolute inset-0 w-full h-full object-cover transition-transform duration-300 ${
+                isZoomed ? 'scale-125 origin-center' : 'scale-100'
+              }`}
+              loading="lazy"
+              referrerPolicy="no-referrer"
+            />
+          </div>
+        )}
 
         {/* Floating Badges */}
-        <div className="absolute top-4 left-4 z-10 px-3 py-1 bg-black/60 backdrop-blur-md text-white text-[10px] tracking-wider uppercase font-bold rounded-lg border border-white/10">
-          Before
+        <div className="absolute top-3 left-3 z-10 px-2.5 py-1 bg-black/60 backdrop-blur-md text-white text-[10px] tracking-wider uppercase font-semibold rounded shadow-xs">
+          {beforeLabel}
         </div>
-        <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-[#1769AA] text-white text-[10px] tracking-wider uppercase font-bold rounded-lg shadow-xs">
-          After
+        
+        <div className="absolute top-3 right-3 z-10 px-2.5 py-1 bg-[#003366]/90 backdrop-blur-md text-white text-[10px] tracking-wider uppercase font-semibold rounded shadow-xs border border-[#00A3E0]/40">
+          {afterLabel}
         </div>
+
+        {/* Zoom Toggle Button */}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsZoomed(!isZoomed);
+          }}
+          className="absolute bottom-3 left-3 z-20 p-2 rounded-lg bg-black/60 hover:bg-black/80 text-white backdrop-blur-md border border-white/20 transition-all cursor-pointer shadow-xs"
+          title={isZoomed ? 'Zoom Out' : 'Zoom In 1.25x'}
+          aria-label="Toggle Zoom"
+        >
+          {isZoomed ? <ZoomOut className="w-3.5 h-3.5 text-[#00A3E0]" /> : <ZoomIn className="w-3.5 h-3.5 text-white" />}
+        </button>
 
         {/* Divider Slider Handle Line */}
         <div 
-          className="absolute top-0 bottom-0 z-20 w-0.5 bg-white shadow-[0_0_12px_rgba(0,0,0,0.5)] cursor-ew-resize"
+          className="absolute top-0 bottom-0 z-20 w-0.5 bg-white shadow-[0_0_8px_rgba(0,0,0,0.6)] cursor-ew-resize"
           style={{ left: `${sliderPosition}%` }}
           onMouseDown={handleMouseDown}
           onTouchStart={handleTouchStart}
         >
-          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-9 h-9 bg-white rounded-full shadow-lg border-2 border-[#1769AA] flex items-center justify-center text-[#102A43] hover:scale-110 active:scale-95 transition-transform">
-            <ArrowLeftRight className="w-4 h-4 text-[#1769AA]" />
+          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-[#003366] border-2 border-white text-white flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-transform cursor-ew-resize">
+            <ArrowLeftRight className="w-3.5 h-3.5 text-[#00A3E0]" />
           </div>
-        </div>
-
-        {/* Bottom instruction hint */}
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 px-3.5 py-1 bg-black/60 backdrop-blur-md text-white/90 text-[11px] font-medium rounded-full flex items-center gap-1.5 pointer-events-none">
-          <Sparkles className="w-3 h-3 text-[#93C5FD]" />
-          <span>Drag slider to view comparison</span>
         </div>
       </div>
 
-      {/* Case Details & Narrative */}
-      {showDetails && (
-        <div className="p-6 bg-white">
-          <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
-            <span className="text-[11px] font-bold tracking-wider text-[#1769AA] uppercase">
-              {caseData.category}
-            </span>
-            <span className="text-xs text-[#52677D] bg-[#EEF7FC] px-2.5 py-0.5 rounded-full border border-[#DCE7F0]">
-              {caseData.timeline}
-            </span>
+      {/* Case Details Card (only rendered when caseData is present and showDetails is true) */}
+      {showDetails && caseData && (
+        <div className="p-6 space-y-4 bg-white border-t border-[#E2E8F0]">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              {caseData.category && (
+                <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded bg-[#E0F2FE] text-[10px] font-bold uppercase tracking-wider text-[#0284C7] mb-1.5 border border-[#00A3E0]/20">
+                  <Sparkles className="w-3 h-3 text-[#00A3E0]" />
+                  <span>{caseData.category} Procedure</span>
+                </div>
+              )}
+              <h4 className="text-lg font-heading font-bold text-[#003366]">
+                {caseData.procedureName}
+              </h4>
+              {(caseData.patientInfo || caseData.timeline) && (
+                <p className="text-xs text-slate-500 font-medium mt-0.5">
+                  {[caseData.patientInfo, caseData.timeline].filter(Boolean).join(' • ')}
+                </p>
+              )}
+            </div>
+            
+            <div className="px-2.5 py-1 rounded-md bg-[#F0F7FD] border border-[#003366]/20 text-[10px] font-bold text-[#003366] uppercase tracking-wider shrink-0">
+              Verified Case
+            </div>
           </div>
 
-          <h4 className="text-lg font-serif font-bold text-[#102A43] mb-1">
-            {caseData.procedureName}
-          </h4>
+          {caseData.description && (
+            <p className="text-xs text-slate-600 leading-relaxed italic">
+              "{caseData.description}"
+            </p>
+          )}
 
-          <p className="text-xs text-[#718096] mb-3">
-            Patient Profile: {caseData.patientInfo}
-          </p>
-
-          <p className="text-xs sm:text-sm text-[#52677D] leading-relaxed mb-4">
-            {caseData.description}
-          </p>
-
-          <div className="border-t border-[#EEF2F6] pt-3.5 mt-3.5">
-            <h5 className="text-xs font-bold text-[#102A43] uppercase tracking-wider mb-2 flex items-center gap-1.5">
-              <CheckCircle2 className="w-3.5 h-3.5 text-[#1769AA]" />
-              Key Clinical Outcomes
-            </h5>
-            <ul className="space-y-1.5">
-              {caseData.keyImprovements.map((item, idx) => (
-                <li key={idx} className="text-xs text-[#52677D] flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#1769AA] mt-1.5 shrink-0" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Medical Transparency Disclaimer */}
-          <div className="mt-4 pt-3 border-t border-dashed border-[#DCE7F0] flex items-center gap-2 text-[11px] text-[#718096]">
-            <Shield className="w-3.5 h-3.5 shrink-0 text-[#1769AA]" />
-            <span>Individual results vary according to patient anatomy. Photo published with informed consent.</span>
-          </div>
+          {/* Key Improvements */}
+          {caseData.keyImprovements && caseData.keyImprovements.length > 0 && (
+            <div className="pt-3 border-t border-[#E2E8F0] space-y-2">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#0F172A] block">
+                Surgical Accomplishments:
+              </span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {caseData.keyImprovements.map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-2 text-xs text-slate-600">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#003366] shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
