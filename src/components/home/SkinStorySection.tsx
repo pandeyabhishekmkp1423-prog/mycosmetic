@@ -76,7 +76,7 @@ export const SkinStorySection: React.FC<SkinStorySectionProps> = ({ onNavigate }
             <div className="relative w-full max-w-md">
               
               {/* Soft decorative shadow border */}
-              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-blue-50 shadow-2xl shadow-slate-900/10 border border-slate-200/80">
+              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-white shadow-2xl shadow-slate-900/10 border border-slate-200/80">
                 <img
                   src="/assets/to.png"
                   alt="Rewrite Your Skin Story - Clinical Transformation Split Face"
