@@ -1,5 +1,5 @@
 export const hospitalData = {
-  name: 'Sushrut Institute of Plastic Surgery (SIPS) Hospital',
+  name: 'SIPS Super Specialty Hospital (Pvt. Ltd.)',
   accreditation: 'NABH Accredited Superspeciality Hospital & Trauma Center',
   address: '29 Shah Mina Road, Chowk, Lucknow, Uttar Pradesh – 226003, India',
   landmark: 'Near King George’s Medical University (KGMU), Chowk, Lucknow',
@@ -8,9 +8,9 @@ export const hospitalData = {
   email: 'MyCosmeticSurgery@gmail.com',
   timings: 'Mon – Sat: 10:00 AM – 6:00 PM (Prior Appointment)',
   consultationHours: 'Monday – Saturday: 10:00 AM – 6:00 PM (By Appointment Only)',
-  overview: 'Sushrut Institute of Plastic Surgery (SIPS Hospital) is a premier NABH-accredited super-specialty surgical facility in Lucknow dedicated to advanced aesthetic, plastic, and micro-vascular reconstructive surgery. Operating with 6 modular operating theatres, dedicated post-anesthesia recovery units, and 24/7 in-house critical care backup, SIPS provides a sterile, secure, and discrete environment for patients across India and overseas.',
-  otDetails: 'SIPS Hospital houses 6 dedicated modular surgical suites equipped with ultra-clean Class 100 laminar airflow and HEPA positive-pressure filtration systems. Surgical instrumentation includes advanced Karl Storz high-definition endoscopy, ultrasonic harmonic scalpels, VASER power-assisted lipo-sculpting systems, and Zeiss operating microscopes for delicate micro-vascular reconstruction.',
-  patientRooms: 'Patient accommodation at SIPS Hospital features private, deluxe aesthetic recovery suites created for maximum privacy, quiet recuperation, and personalized nursing. Each suite offers electric adjustable beds, attendant seating, en-suite bathrooms, high-speed Wi-Fi, and personalized dietary room service tailored to post-surgical healing protocols.',
+  overview: 'SIPS Super Specialty Hospital (Pvt. Ltd.) — Sushrut Institute of Plastic Surgery — is a premier NABH-accredited super-specialty surgical facility in Lucknow under the leadership of Managing Director and Head of Plastic Surgery Department, Dr. R.K. Mishra. Operating with 6 modular operating theatres, dedicated post-anesthesia recovery units, and 24/7 in-house critical care backup, SIPS provides a sterile, secure, and discrete environment for patients across India and overseas.',
+  otDetails: 'SIPS Super Specialty Hospital (Pvt. Ltd.) houses 6 dedicated modular surgical suites equipped with ultra-clean Class 100 laminar airflow and HEPA positive-pressure filtration systems. Surgical instrumentation includes advanced Karl Storz high-definition endoscopy, ultrasonic harmonic scalpels, VASER power-assisted lipo-sculpting systems, and Zeiss operating microscopes for delicate micro-vascular reconstruction.',
+  patientRooms: 'Patient accommodation at SIPS Super Specialty Hospital features private, deluxe aesthetic recovery suites created for maximum privacy, quiet recuperation, and personalized nursing. Each suite offers electric adjustable beds, attendant seating, en-suite bathrooms, high-speed Wi-Fi, and personalized dietary room service tailored to post-surgical healing protocols.',
   features: [
     {
       title: 'NABH Accredited Infrastructure',
@@ -29,8 +29,8 @@ export const hospitalData = {
       desc: 'Dedicated round-the-clock cardiac and neuro-anesthesiologists managing safe sedation and pre-operative health optimization.'
     },
     {
-      title: 'Smile Train USA Cleft Care Center',
-      desc: 'Internationally recognized humanitarian center providing comprehensive pediatric and adult cleft lip, palate, and reconstructive care.'
+      title: 'Smile Train (USA) Cleft Care Center',
+      desc: 'Internationally recognized humanitarian center directed by Project Director Dr. R.K. Mishra, providing comprehensive pediatric and adult cleft lip, palate, and facial reconstruction.'
     },
     {
       title: '24x7 Emergency & Advanced ICU Support',

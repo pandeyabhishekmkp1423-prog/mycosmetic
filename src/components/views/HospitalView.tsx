@@ -194,7 +194,7 @@ export const HospitalView: React.FC<HospitalViewProps> = ({ onNavigate }) => {
               Hospital Location & Timings
             </span>
             <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white">
-              Sushrut Institute of Plastic Surgery (SIPS)
+              SIPS Super Specialty Hospital (Pvt. Ltd.)
             </h3>
             <p className="text-xs text-slate-300 flex items-center gap-2 pt-1">
               <MapPin className="w-4 h-4 text-[#00A3E0] shrink-0" />
@@ -208,7 +208,7 @@ export const HospitalView: React.FC<HospitalViewProps> = ({ onNavigate }) => {
 
           <div className="space-y-4">
             <p className="text-sm text-slate-300 leading-relaxed">
-              Prior appointment booking is strictly recommended to ensure in-depth confidential evaluation with Dr. R. K. Mishra.
+              Prior appointment booking is strictly recommended to ensure in-depth confidential evaluation with Managing Director & Head of Plastic Surgery Dept., Dr. R.K. Mishra.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <button

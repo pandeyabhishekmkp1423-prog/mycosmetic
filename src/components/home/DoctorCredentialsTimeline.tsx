@@ -71,11 +71,11 @@ export const DoctorCredentialsTimeline: React.FC<DoctorCredentialsTimelineProps>
     },
     {
       year: 'Present',
-      title: 'Senior Surgeon & Department Head',
-      institution: 'Sushrut Institute of Plastic Surgery (SIPS)',
+      title: 'Managing Director & Head of Plastic Surgery Dept.',
+      institution: 'SIPS Super Specialty Hospital (Pvt. Ltd.)',
       location: 'Lucknow, India',
       highlight: '30,000+ Surgeries',
-      details: 'Over 25 years of relentless surgical commitment, establishing SIPS Hospital Chowk as Uttar Pradesh’s leading aesthetic and reconstructive center.'
+      details: 'Managing Director & Head of Plastic Surgery Department at SIPS Super Specialty Hospital (Pvt. Ltd.), ASPS Board Certified Plastic Surgeon, Secretary of SRRE Welfare Society, and Project Director for Smile Train (USA).'
     }
   ];
 
@@ -97,7 +97,7 @@ export const DoctorCredentialsTimeline: React.FC<DoctorCredentialsTimelineProps>
           </h2>
 
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
-            Dr. R. K. Mishra’s clinical philosophy combines rigorous academic qualification from KGMC Lucknow with international fellowships from the United States and Asia.
+            Dr. R.K. Mishra’s clinical philosophy combines rigorous academic qualification from KGMC Lucknow with ASPS Board Certification and international fellowships from the United States and Asia.
           </p>
         </div>
 
@@ -176,29 +176,33 @@ export const DoctorCredentialsTimeline: React.FC<DoctorCredentialsTimelineProps>
               <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#00A3E0] shrink-0">
                 <img
                   src="/hero.png"
-                  alt="Dr. R. K. Mishra"
+                  alt="Dr. R.K. Mishra"
                   className="w-full h-full object-cover object-top"
                 />
               </div>
               <div>
-                <h4 className="font-bold text-sm text-[#003366]">Dr. R. K. Mishra</h4>
-                <p className="text-xs text-[#00A3E0] font-medium">M.Ch Plastic Surgery (KGMC)</p>
-                <p className="text-xs text-slate-500">25+ Yrs Exp • 30,000+ Surgeries</p>
+                <h4 className="font-bold text-sm text-[#003366]">Dr. R.K. Mishra</h4>
+                <p className="text-xs text-[#00A3E0] font-semibold">ASPS Board Certified Plastic Surgeon</p>
+                <p className="text-[11px] text-slate-500">25+ Yrs Exp • 30,000+ Surgeries</p>
               </div>
             </div>
 
             <div className="space-y-2 text-xs text-[#475569] pt-2 border-t border-[#E2E8F0]">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#00A3E0] shrink-0" />
-                <span>Member: Association of Plastic Surgeons of India (APSI)</span>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#00A3E0] shrink-0 mt-0.5" />
+                <span className="font-medium text-[#0F172A]">ASPS Board Certified Plastic Surgeon</span>
               </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#00A3E0] shrink-0" />
-                <span>Member: Indian Association of Aesthetic Plastic Surgeons (IAAPS)</span>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#00A3E0] shrink-0 mt-0.5" />
+                <span className="font-medium text-[#0F172A]">Managing Director and Head of Plastic Surgery Department, SIPS Super Specialty Hospital (Pvt. Ltd.)</span>
               </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#00A3E0] shrink-0" />
-                <span>Senior Consultant at SIPS Super Specialty Hospital</span>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#00A3E0] shrink-0 mt-0.5" />
+                <span className="font-medium text-[#0F172A]">Secretary, SRRE Welfare Society</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#00A3E0] shrink-0 mt-0.5" />
+                <span className="font-medium text-[#0F172A]">Project Director, Smile Train (USA)</span>
               </div>
             </div>
           </div>

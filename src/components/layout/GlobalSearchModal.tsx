@@ -177,7 +177,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
               <div className="min-w-0">
                 <h4 className="truncate text-xs font-bold text-[#003366]">{doctorData.name}</h4>
                 <p className="truncate text-xs text-slate-500">
-                  Senior Plastic Surgeon, SIPS Super Specialty Hospital Lucknow • {doctorData.experienceYears}+ years
+                  ASPS Board Certified Plastic Surgeon • Managing Director & Head of Plastic Surgery, SIPS Hospital
                 </p>
               </div>
             </div>

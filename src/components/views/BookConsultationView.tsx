@@ -86,7 +86,7 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
             Schedule Your <span className="italic text-[#00A3E0] font-normal">Visit</span>
           </h1>
           <p className="text-sm sm:text-base text-slate-600 font-normal">
-            Meet with Senior Plastic Surgeon Dr. R. K. Mishra at SIPS Super Specialty Hospital Lucknow.
+            Meet with ASPS Board Certified Plastic Surgeon Dr. R.K. Mishra at SIPS Super Specialty Hospital (Pvt. Ltd.), Lucknow.
           </p>
         </div>
 

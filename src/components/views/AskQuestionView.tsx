@@ -56,10 +56,10 @@ export const AskQuestionView: React.FC<AskQuestionViewProps> = ({ onNavigate }) 
               Direct Surgeon Inquiry
             </span>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-editorial font-bold text-[#003366] tracking-tight">
-              Ask Dr. R. K. <span className="italic text-[#00A3E0] font-normal">Mishra</span>
+              Ask Dr. R.K. <span className="italic text-[#00A3E0] font-normal">Mishra</span>
             </h1>
             <p className="text-sm sm:text-base text-[#475569] font-normal leading-relaxed pt-1">
-              Have clinical questions regarding surgical candidacy, safety protocols, anesthesia, or recovery? Ask directly or read verified responses from Senior Plastic Surgeon Dr. R. K. Mishra.
+              Have clinical questions regarding surgical candidacy, safety protocols, anesthesia, or recovery? Ask directly or read verified responses from ASPS Board Certified Plastic Surgeon Dr. R.K. Mishra (Managing Director & Head of Plastic Surgery, SIPS Hospital).
             </p>
           </div>
 
@@ -117,7 +117,7 @@ export const AskQuestionView: React.FC<AskQuestionViewProps> = ({ onNavigate }) 
                         <p className="text-xs sm:text-sm font-bold text-[#003366] flex items-center gap-2">
                           <span>{q.answeredBy || 'Dr. R. K. Mishra'}</span>
                           <span className="text-[#00A3E0] flex items-center gap-1 text-xs font-semibold">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-[#00A3E0]" /> Senior Plastic Surgeon
+                            <CheckCircle2 className="w-3.5 h-3.5 text-[#00A3E0]" /> ASPS Board Certified Plastic Surgeon
                           </span>
                         </p>
                       </div>

@@ -42,8 +42,8 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   const marqueeItems = [
-    { icon: ShieldCheck, text: 'NABH Super Specialty Center • SIPS Hospital, Lucknow' },
-    { icon: Award, text: 'Senior Plastic Surgeon Dr. R. K. Mishra (25+ Yrs Exp • 30,000+ Surgeries)' },
+    { icon: ShieldCheck, text: 'NABH Super Specialty Center • SIPS Super Specialty Hospital (Pvt. Ltd.), Lucknow' },
+    { icon: Award, text: 'ASPS Board Certified Plastic Surgeon Dr. R.K. Mishra (Managing Director & Head of Plastic Surgery, SIPS)' },
     { icon: Clock, text: 'OPD Hours: Mon – Sat 10:00 AM – 6:00 PM' },
     { icon: Phone, text: 'Clinic Helpline: +91 94150 23675' },
     { icon: CreditCard, text: '0% Interest Surgery EMI Options Available' },
@@ -53,7 +53,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full font-sans select-none">
 
-      {/* 1. Marquee Bar */}
+      {/* 1. Marquee Announcement Bar */}
       <div className="bg-[#001D3D] text-slate-300 text-xs py-2 border-b border-[#002E5C] overflow-hidden">
         <div className="flex overflow-hidden">
           <div className="animate-marquee-scroll flex items-center gap-10 whitespace-nowrap cursor-pointer">
@@ -74,8 +74,8 @@ export const Header: React.FC<HeaderProps> = ({
       {/* 2. Main Navigation Bar */}
       <div
         className={`transition-all duration-200 ${isScrolled
-            ? 'bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-200/80 py-3'
-            : 'bg-white border-b border-slate-200 py-4'
+          ? 'bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-200/80 py-3'
+          : 'bg-white border-b border-slate-200 py-4'
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -85,23 +85,43 @@ export const Header: React.FC<HeaderProps> = ({
             <Logo />
           </div>
 
-          {/* Desktop Navigation: Only Home and Contact */}
+          {/* Desktop Navigation: Home, About Dr. Mishra, Before & After, Contact */}
           <nav className="hidden md:flex items-center space-x-2">
             <button
               onClick={() => handleNav('home')}
               className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer ${currentRoute === 'home'
-                  ? 'text-[#003366] bg-slate-100/80'
-                  : 'text-slate-600 hover:text-[#003366] hover:bg-slate-50'
+                ? 'text-[#003366] bg-slate-100/80'
+                : 'text-slate-600 hover:text-[#003366] hover:bg-slate-50'
                 }`}
             >
               Home
             </button>
 
             <button
+              onClick={() => handleNav('doctor')}
+              className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer ${currentRoute === 'doctor'
+                ? 'text-[#003366] bg-slate-100/80'
+                : 'text-slate-600 hover:text-[#003366] hover:bg-slate-50'
+                }`}
+            >
+              About Dr. Mishra
+            </button>
+
+            <button
+              onClick={() => handleNav('results')}
+              className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer ${currentRoute === 'results'
+                ? 'text-[#003366] bg-slate-100/80'
+                : 'text-slate-600 hover:text-[#003366] hover:bg-slate-50'
+                }`}
+            >
+              Before & After
+            </button>
+
+            <button
               onClick={() => handleNav('contact')}
               className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer ${currentRoute === 'contact'
-                  ? 'text-[#003366] bg-slate-100/80'
-                  : 'text-slate-600 hover:text-[#003366] hover:bg-slate-50'
+                ? 'text-[#003366] bg-slate-100/80'
+                : 'text-slate-600 hover:text-[#003366] hover:bg-slate-50'
                 }`}
             >
               Contact
@@ -178,6 +198,24 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
 
             <button
+              onClick={() => handleNav('doctor')}
+              className={`w-full text-left py-3 flex items-center justify-between font-medium text-sm ${currentRoute === 'doctor' ? 'text-[#003366] font-bold' : 'text-slate-700'
+                }`}
+            >
+              <span>About Dr. R.K. Mishra</span>
+              <ChevronRight className="w-4 h-4 text-slate-300" />
+            </button>
+
+            <button
+              onClick={() => handleNav('results')}
+              className={`w-full text-left py-3 flex items-center justify-between font-medium text-sm ${currentRoute === 'results' ? 'text-[#003366] font-bold' : 'text-slate-700'
+                }`}
+            >
+              <span>Before & After</span>
+              <ChevronRight className="w-4 h-4 text-slate-300" />
+            </button>
+
+            <button
               onClick={() => handleNav('contact')}
               className={`w-full text-left py-3 flex items-center justify-between font-medium text-sm ${currentRoute === 'contact' ? 'text-[#003366] font-bold' : 'text-slate-700'
                 }`}
@@ -194,12 +232,11 @@ export const Header: React.FC<HeaderProps> = ({
             className="w-full py-3 rounded-xl bg-[#003366] hover:bg-[#002244] text-white text-xs font-bold flex items-center justify-center gap-2 cursor-pointer transition-colors"
           >
             <Calendar className="w-4 h-4 text-[#00A3E0]" />
-            <span>Consult Dr. Mishra</span>
+            <span>Consult Dr. R.K. Mishra</span>
             <ArrowUpRight className="w-4 h-4 text-[#00A3E0]" />
           </a>
         </div>
       )}
-
     </header>
   );
 };

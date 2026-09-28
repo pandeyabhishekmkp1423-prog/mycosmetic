@@ -54,7 +54,7 @@ export const SkinStorySection: React.FC<SkinStorySectionProps> = ({ onNavigate }
 
   const handleWhatsApp = (topic: string) => {
     const text = encodeURIComponent(
-      `Hello Dr. R. K. Mishra's Clinic! I would like to consult about skin treatments for: ${topic}. Could you share appointment availability?`
+      `Hello Dr. R.K. Mishra's Clinic! I would like to consult about skin treatments for: ${topic}. Could you share appointment availability?`
     );
     window.open(`https://wa.me/919415582377?text=${text}`, '_blank');
   };

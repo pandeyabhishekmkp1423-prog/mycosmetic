@@ -22,10 +22,10 @@ export const HospitalSection: React.FC<HospitalSectionProps> = ({ onNavigate }) 
                 NABH Super-Specialty Infrastructure
               </span>
               <h2 className="font-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-[#003366] tracking-tight leading-[1.12]">
-                Operating at SIPS Hospital, <span className="italic text-[#00A3E0] font-normal">Lucknow.</span>
+                Operating at SIPS Super Specialty Hospital, <span className="italic text-[#00A3E0] font-normal">Lucknow.</span>
               </h2>
               <p className="text-base sm:text-lg text-slate-600 mt-3 leading-relaxed font-normal">
-                Sushrut Institute of Plastic Surgery (SIPS) is North India’s premier super-specialty hospital dedicated exclusively to plastic, cosmetic, and reconstructive surgical artistry.
+                SIPS Super Specialty Hospital (Pvt. Ltd.) is North India’s premier NABH-accredited tertiary center dedicated to advanced aesthetic, plastic, and reconstructive surgery under the leadership of Managing Director & Head of Plastic Surgery Department, Dr. R.K. Mishra.
               </p>
             </div>
 

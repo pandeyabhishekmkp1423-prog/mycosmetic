@@ -53,7 +53,7 @@ export const ProceduresDirectoryView: React.FC<ProceduresDirectoryViewProps> = (
             Surgical & Non-Surgical <span className="italic text-[#00A3E0] font-normal">Procedures</span>
           </h1>
           <p className="text-sm sm:text-base text-[#475569] font-normal leading-relaxed pt-1">
-            Personalized cosmetic and reconstructive procedures performed with artistic precision by Senior Plastic Surgeon Dr. R. K. Mishra (25+ Yrs Experience) at SIPS Hospital, Lucknow.
+            Personalized cosmetic and reconstructive procedures performed with artistic precision by ASPS Board Certified Plastic Surgeon Dr. R.K. Mishra (Managing Director & Head of Plastic Surgery, SIPS Super Specialty Hospital Pvt. Ltd.).
           </p>
         </div>
 

@@ -31,7 +31,7 @@ export const PatientStoriesView: React.FC<PatientStoriesViewProps> = ({ onNaviga
             Patient Stories & <span className="italic text-[#00A3E0] font-normal">Journeys</span>
           </h1>
           <p className="text-sm sm:text-base text-[#475569] font-normal leading-relaxed pt-1">
-            Behind every surgical procedure is a deeply personal transformation. Read candid reflections from patients treated by Senior Plastic Surgeon Dr. R. K. Mishra at SIPS Hospital, Lucknow.
+            Behind every surgical procedure is a deeply personal transformation. Read candid reflections from patients treated by ASPS Board Certified Plastic Surgeon Dr. R.K. Mishra at SIPS Super Specialty Hospital (Pvt. Ltd.), Lucknow.
           </p>
         </div>
 

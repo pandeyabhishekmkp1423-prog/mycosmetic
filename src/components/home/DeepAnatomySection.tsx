@@ -140,7 +140,7 @@ export const DeepAnatomySection: React.FC<DeepAnatomySectionProps> = ({ onNaviga
             The face you see is never just on the <span className="italic font-normal text-[#00A3E0]">surface.</span>
           </h2>
           <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mt-1.5 max-w-2xl">
-            True aesthetic youthfulness is never created by pulling skin. Senior Plastic Surgeon Dr. R. K. Mishra sculpts and repositions the six profound anatomical layers where facial aging genuinely takes place.
+            True aesthetic youthfulness is never created by pulling skin. ASPS Board Certified Plastic Surgeon Dr. R.K. Mishra sculpts and repositions the six profound anatomical layers where facial aging genuinely takes place.
           </p>
         </div>
 

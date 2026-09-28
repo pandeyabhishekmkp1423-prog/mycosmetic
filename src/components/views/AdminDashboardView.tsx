@@ -39,7 +39,7 @@ export const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onNaviga
 
   const handleAnswerSubmit = (qId: string) => {
     if (!answerDraft.trim()) return;
-    answerQuestion(qId, answerDraft, 'Dr. R. K. Mishra (Senior Plastic Surgeon)');
+    answerQuestion(qId, answerDraft, 'Dr. R.K. Mishra (ASPS Board Certified Plastic Surgeon)');
     setAnswerDraft('');
     setAnswerModalId(null);
   };

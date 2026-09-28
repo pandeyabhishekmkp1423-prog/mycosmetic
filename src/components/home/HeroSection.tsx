@@ -69,7 +69,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
 
             {/* Editorial Subtext */}
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl font-normal">
-              Super-specialty plastic, cosmetic & reconstructive surgery led by senior plastic surgeon <strong className="text-[#003366] font-semibold">Dr. R. K. Mishra</strong> (25+ Years Experience, 30,000+ Surgeries) at NABH Accredited SIPS Hospital, Lucknow.
+              Super-specialty plastic, cosmetic & reconstructive surgery led by ASPS Board Certified Plastic Surgeon <strong className="text-[#003366] font-semibold">Dr. R.K. Mishra</strong> (Managing Director & Head of Plastic Surgery Dept., SIPS Super Specialty Hospital Pvt. Ltd., 25+ Yrs Exp • 30,000+ Surgeries).
             </p>
 
             {/* Action Buttons */}
@@ -181,7 +181,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
               <div className="rounded-3xl overflow-hidden shadow-2xl border border-[#003366]/20 bg-white relative group">
                 <img 
                   src="/hero.png" 
-                  alt="Dr. R. K. Mishra - Senior Plastic Surgeon, SIPS Hospital Lucknow" 
+                  alt="Dr. R.K. Mishra - ASPS Board Certified Plastic Surgeon, SIPS Super Specialty Hospital" 
                   className="w-full h-auto object-cover object-top aspect-[3/4] group-hover:scale-[1.02] transition-transform duration-500"
                 />
 
@@ -193,8 +193,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                         RM
                       </div>
                       <div>
-                        <div className="text-base font-bold text-[#003366]">Dr. R. K. Mishra</div>
-                        <div className="text-xs text-[#00A3E0] font-semibold">M.Ch Senior Plastic Surgeon (KGMC)</div>
+                        <div className="text-base font-bold text-[#003366]">Dr. R.K. Mishra</div>
+                        <div className="text-xs text-[#00A3E0] font-semibold">ASPS Board Certified Plastic Surgeon</div>
                       </div>
                     </div>
 

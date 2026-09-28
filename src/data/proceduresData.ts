@@ -499,7 +499,7 @@ export const proceduresData: Procedure[] = [
     subtitle: 'Humanitarian & Super-Specialty Reconstructive Excellence',
     category: 'RECONSTRUCTIVE',
     shortDesc: 'Comprehensive functional and aesthetic correction for cleft lip, palate, facial trauma, post-burn contractures, and microvascular defects.',
-    overview: 'As Project Director for Smile Train USA in North India, Dr. R. K. Mishra has dedicated decades to restoring facial function, speech, and dental harmony for children and adults born with cleft lip and palate anomalies, as well as complex trauma reconstruction.',
+    overview: 'As Project Director, Smile Train (USA), Dr. R.K. Mishra has dedicated decades to restoring facial function, speech, and dental harmony for children and adults born with cleft lip and palate anomalies, as well as complex trauma reconstruction.',
     idealCandidate: [
       'Infants, children, or adults with unrepaired or secondary cleft lip/palate deformities',
       'Patients suffering from post-burn neck/limb contractures or trauma defects'
@@ -514,7 +514,7 @@ export const proceduresData: Procedure[] = [
     hospitalStay: '1 – 2 Days at SIPS Hospital',
     recoveryTimeline: 'Sutures removed in 7 days; comprehensive follow-up speech and orthodontic support.',
     expectedResults: 'Restoration of normal facial appearance, symmetrical lip/nose anatomy, and clear speech.',
-    risksAndSafety: ['Over 15,000+ cleft procedures successfully performed at SIPS Hospital.'],
+    risksAndSafety: ['Over 15,000+ cleft procedures successfully performed at SIPS Super Specialty Hospital (Pvt. Ltd.).'],
     costRange: 'Subsidized / Smile Train Program / Transparent Private Tariff',
     priceStartingFrom: 35000,
     featured: false,

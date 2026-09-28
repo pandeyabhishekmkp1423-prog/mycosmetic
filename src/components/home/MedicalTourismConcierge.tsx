@@ -168,7 +168,7 @@ export const MedicalTourismConcierge: React.FC<MedicalTourismConciergeProps> = (
               </button>
 
               <a
-                href={`https://wa.me/${doctorData.whatsappNumber.replace('+', '')}?text=${encodeURIComponent('Hello SIPS Hospital Concierge, I am planning to travel to Lucknow for surgery with Dr. R. K. Mishra. Please assist me with dates and travel planning.')}`}
+                href={`https://wa.me/${doctorData.whatsappNumber.replace('+', '')}?text=${encodeURIComponent('Hello SIPS Hospital Concierge, I am planning to travel to Lucknow for surgery with Dr. R.K. Mishra. Please assist me with dates and travel planning.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-outline-navy w-full justify-center py-2.5 text-xs"

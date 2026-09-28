@@ -64,7 +64,7 @@ export const InsightsView: React.FC<InsightsViewProps> = ({ activeArticleSlug, o
                   </div>
                   <div>
                     <p className="text-xs font-bold text-[#003366]">{singleArticle.author}</p>
-                    <p className="text-xs text-[#64748B]">Senior Plastic Surgeon • SIPS Hospital</p>
+                    <p className="text-xs text-[#64748B]">ASPS Board Certified Plastic Surgeon • SIPS Super Specialty Hospital (Pvt. Ltd.)</p>
                   </div>
                 </div>
 
@@ -162,7 +162,7 @@ export const InsightsView: React.FC<InsightsViewProps> = ({ activeArticleSlug, o
             Clinical Insights & <span className="italic text-[#00A3E0] font-normal">Guides</span>
           </h1>
           <p className="text-sm sm:text-base text-[#475569] font-normal leading-relaxed pt-1">
-            Evidence-based educational guides, recovery timelines, and surgical preparation advice authored by Senior Plastic Surgeon Dr. R. K. Mishra.
+            Evidence-based educational guides, recovery timelines, and surgical preparation advice authored by ASPS Board Certified Plastic Surgeon Dr. R.K. Mishra (Managing Director & Head of Plastic Surgery, SIPS Super Specialty Hospital Pvt. Ltd.).
           </p>
         </div>
 

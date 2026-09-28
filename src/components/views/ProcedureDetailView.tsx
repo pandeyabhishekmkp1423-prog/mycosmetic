@@ -244,9 +244,9 @@ export const ProcedureDetailView: React.FC<ProcedureDetailViewProps> = ({
                 />
               </div>
               <div>
-                <h3 className="font-editorial font-bold text-lg text-white">Dr. R. K. Mishra</h3>
-                <p className="text-xs font-semibold text-[#00A3E0]">M.Ch Senior Plastic Surgeon</p>
-                <p className="text-xs text-slate-300">25+ Yrs Exp • SIPS Hospital</p>
+                <h3 className="font-editorial font-bold text-lg text-white">Dr. R.K. Mishra</h3>
+                <p className="text-xs font-semibold text-[#00A3E0]">ASPS Board Certified Plastic Surgeon</p>
+                <p className="text-xs text-slate-300">Managing Director & Head of Plastic Surgery, SIPS Hospital</p>
               </div>
             </div>
 

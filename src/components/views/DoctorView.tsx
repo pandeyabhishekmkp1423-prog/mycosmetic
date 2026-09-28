@@ -59,7 +59,7 @@ export const DoctorView: React.FC<DoctorViewProps> = ({ onNavigate }) => {
                 <span className="font-semibold text-[#003366] flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5 text-[#00A3E0]" /> Hospital:
                 </span>
-                <span>SIPS Hospital, Chowk, Lucknow</span>
+                <span className="text-right">SIPS Super Specialty Hospital (Pvt. Ltd.), Lucknow</span>
               </div>
             </div>
           </div>
@@ -67,8 +67,8 @@ export const DoctorView: React.FC<DoctorViewProps> = ({ onNavigate }) => {
           {/* Right: Bio & Highlights */}
           <div className="lg:col-span-7 space-y-6">
             <div className="space-y-2">
-              <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block">
-                Senior Plastic & Cosmetic Surgeon
+              <span className="text-xs sm:text-sm font-bold tracking-widest text-[#00A3E0] uppercase block">
+                ASPS Board Certified Plastic Surgeon
               </span>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-editorial font-bold text-[#003366] tracking-tight">
                 {doctorData.name}
@@ -119,6 +119,93 @@ export const DoctorView: React.FC<DoctorViewProps> = ({ onNavigate }) => {
 
           </div>
 
+        </div>
+
+        {/* Dedicated Highlight: Professional Roles & Affiliations of Dr. R.K. Mishra */}
+        <div className="mt-12 bg-white rounded-2xl border border-[#E2E8F0] p-8 sm:p-10 shadow-xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E2E8F0] pb-6 mb-8">
+            <div className="space-y-1">
+              <span className="text-xs font-bold tracking-widest text-[#00A3E0] uppercase block">
+                Official Credentials & Leadership
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-editorial font-bold text-[#003366]">
+                Professional Roles & Affiliations of Dr. R.K. Mishra
+              </h2>
+            </div>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E0F2FE] border border-[#00A3E0]/30 text-[#003366] text-xs font-bold shrink-0 self-start sm:self-auto">
+              <Award className="w-4 h-4 text-[#00A3E0]" />
+              <span>Verified Medical Leadership</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Role 1 */}
+            <div className="p-6 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#00A3E0] hover:bg-white transition-all space-y-3 group shadow-2xs">
+              <div className="w-12 h-12 rounded-xl bg-[#003366] text-white flex items-center justify-center group-hover:scale-105 transition-transform shadow-sm">
+                <Award className="w-6 h-6 text-[#00A3E0]" />
+              </div>
+              <div className="space-y-1">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#00A3E0]">International Credential</span>
+                <h3 className="text-lg font-bold text-[#003366]">
+                  ASPS Board Certified Plastic Surgeon
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                  Active member of the American Society of Plastic Surgeons (ASPS), meeting rigorous international standards for surgical safety, patient outcomes, and surgical ethics.
+                </p>
+              </div>
+            </div>
+
+            {/* Role 2 */}
+            <div className="p-6 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#00A3E0] hover:bg-white transition-all space-y-3 group shadow-2xs">
+              <div className="w-12 h-12 rounded-xl bg-[#003366] text-white flex items-center justify-center group-hover:scale-105 transition-transform shadow-sm">
+                <Building2 className="w-6 h-6 text-[#00A3E0]" />
+              </div>
+              <div className="space-y-1">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#00A3E0]">Executive Clinical Leadership</span>
+                <h3 className="text-lg font-bold text-[#003366]">
+                  Managing Director and Head of Plastic Surgery Department
+                </h3>
+                <p className="text-xs font-medium text-[#00A3E0]">
+                  SIPS Super Specialty Hospital (Pvt. Ltd.)
+                </p>
+                <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                  Directing the plastic, cosmetic, and microvascular surgery divisions at North India’s premier NABH-accredited tertiary superspecialty hospital in Lucknow.
+                </p>
+              </div>
+            </div>
+
+            {/* Role 3 */}
+            <div className="p-6 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#00A3E0] hover:bg-white transition-all space-y-3 group shadow-2xs">
+              <div className="w-12 h-12 rounded-xl bg-[#003366] text-white flex items-center justify-center group-hover:scale-105 transition-transform shadow-sm">
+                <ShieldCheck className="w-6 h-6 text-[#00A3E0]" />
+              </div>
+              <div className="space-y-1">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#00A3E0]">Welfare & Reconstructive Health</span>
+                <h3 className="text-lg font-bold text-[#003366]">
+                  Secretary, SRRE Welfare Society
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                  Dedicated leadership ensuring healthcare equity, charitable surgical interventions, and reconstructive patient support for underserved communities.
+                </p>
+              </div>
+            </div>
+
+            {/* Role 4 */}
+            <div className="p-6 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#00A3E0] hover:bg-white transition-all space-y-3 group shadow-2xs">
+              <div className="w-12 h-12 rounded-xl bg-[#003366] text-white flex items-center justify-center group-hover:scale-105 transition-transform shadow-sm">
+                <Globe2 className="w-6 h-6 text-[#00A3E0]" />
+              </div>
+              <div className="space-y-1">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#00A3E0]">Global Humanitarian Leadership</span>
+                <h3 className="text-lg font-bold text-[#003366]">
+                  Project Director, Smile Train (USA)
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                  Over two decades spearheading comprehensive cleft lip and palate repair programs across Northern India, restoring smiles and life quality to over 15,000+ children.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Professional Affiliations & International Training */}

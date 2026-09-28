@@ -107,6 +107,8 @@ export default function App() {
     }
 
     switch (currentRoute) {
+      case 'about':
+      case 'about-us':
       case 'doctor':
         return <DoctorView onNavigate={handleNavigate} />;
       case 'procedures':

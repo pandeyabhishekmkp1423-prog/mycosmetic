@@ -30,7 +30,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </div>
 
             <p className="text-slate-300 leading-relaxed text-xs max-w-sm pt-2">
-              <strong>My Cosmetic Surgery</strong> — Revamping Your Looks. Premier plastic and cosmetic surgery center led by Dr. R. K. Mishra (25+ Yrs Exp, 30,000+ Surgeries) at SIPS Super Specialty Hospital Lucknow.
+              <strong>My Cosmetic Surgery</strong> — Revamping Your Looks. Premier plastic and cosmetic surgery center directed by ASPS Board Certified Plastic Surgeon Dr. R.K. Mishra (Managing Director & Head of Plastic Surgery Dept., SIPS Super Specialty Hospital Pvt. Ltd., 25+ Yrs Exp • 30,000+ Surgeries).
             </p>
 
             <div className="flex items-center gap-3 pt-2">
@@ -77,7 +77,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </li>
               <li>
                 <button onClick={() => onNavigate('doctor')} className="hover:text-[#00A3E0] transition-colors">
-                  About Dr. R. K. Mishra
+                  About Dr. R.K. Mishra
                 </button>
               </li>
               <li>

@@ -42,7 +42,7 @@ export const ResultsGalleryView: React.FC<ResultsGalleryViewProps> = ({ onNaviga
             Before & After <span className="italic text-[#00A3E0] font-normal">Gallery</span>
           </h1>
           <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed pt-1">
-            Standardized medical records illustrating natural aesthetic balance, symmetry, and scar refinement under Dr. R. K. Mishra's surgical care at SIPS Super Specialty Hospital.
+            Standardized medical records illustrating natural aesthetic balance, symmetry, and scar refinement under ASPS Board Certified Plastic Surgeon Dr. R.K. Mishra's surgical care at SIPS Super Specialty Hospital (Pvt. Ltd.).
           </p>
         </div>
 

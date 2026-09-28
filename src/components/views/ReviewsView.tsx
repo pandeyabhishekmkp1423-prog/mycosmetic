@@ -76,7 +76,7 @@ export const ReviewsView: React.FC<ReviewsViewProps> = ({ onNavigate }) => {
               Verified Patient <span className="italic text-[#00A3E0] font-normal">Reviews</span>
             </h1>
             <p className="text-sm sm:text-base text-[#475569] font-normal leading-relaxed pt-1">
-              Read honest experiences from patients treated by Senior Plastic Surgeon Dr. R. K. Mishra at SIPS Super Specialty Hospital, Lucknow.
+              Read honest experiences from patients treated by ASPS Board Certified Plastic Surgeon Dr. R.K. Mishra at SIPS Super Specialty Hospital (Pvt. Ltd.), Lucknow.
             </p>
           </div>
 
@@ -189,7 +189,7 @@ export const ReviewsView: React.FC<ReviewsViewProps> = ({ onNavigate }) => {
               Submit Patient Review
             </h3>
             <p className="text-xs text-[#64748B] mb-5">
-              Share your genuine surgical experience with Dr. R. K. Mishra and the SIPS Hospital team.
+              Share your genuine surgical experience with Dr. R.K. Mishra and the SIPS Super Specialty Hospital team.
             </p>
 
             {submitSuccess ? (

@@ -46,7 +46,7 @@ export const PricingView: React.FC<PricingViewProps> = ({ onNavigate }) => {
             Surgery Pricing & <span className="italic text-[#00A3E0] font-normal">Inclusions</span>
           </h1>
           <p className="text-sm sm:text-base text-[#475569] font-normal leading-relaxed pt-1">
-            Upfront, comprehensive estimates for all cosmetic procedures at SIPS Hospital Lucknow under Senior Surgeon Dr. R. K. Mishra. We offer transparent itemized pricing with zero-interest EMI options.
+            Upfront, comprehensive estimates for all cosmetic procedures at SIPS Super Specialty Hospital (Pvt. Ltd.), Lucknow under ASPS Board Certified Plastic Surgeon Dr. R.K. Mishra. We offer transparent itemized pricing with zero-interest EMI options.
           </p>
         </div>
 
@@ -173,7 +173,7 @@ export const PricingView: React.FC<PricingViewProps> = ({ onNavigate }) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 text-sm text-slate-200">
             <div className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-[#00A3E0] shrink-0 mt-0.5" />
-              <span>Surgeon fee for Senior Surgeon Dr. R. K. Mishra and specialized team</span>
+              <span>Surgeon fee for ASPS Board Certified Plastic Surgeon Dr. R.K. Mishra and specialized team</span>
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-[#00A3E0] shrink-0 mt-0.5" />
@@ -194,7 +194,7 @@ export const PricingView: React.FC<PricingViewProps> = ({ onNavigate }) => {
         <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] text-sm text-[#64748B] flex items-start gap-3 shadow-xs">
           <Info className="w-4 h-4 text-[#00A3E0] shrink-0 mt-0.5" />
           <p>
-            * Prices are indicative starting estimates in INR and subject to formal anatomical evaluation and clinical diagnosis during your confidential consultation with Dr. R. K. Mishra at SIPS Hospital.
+            * Prices are indicative starting estimates in INR and subject to formal anatomical evaluation and clinical diagnosis during your confidential consultation with Dr. R.K. Mishra at SIPS Super Specialty Hospital (Pvt. Ltd.).
           </p>
         </div>
 

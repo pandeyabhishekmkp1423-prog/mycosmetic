@@ -96,6 +96,7 @@ export interface DoctorProfile {
   contactPhone: string;
   contactEmail: string;
   whatsappNumber: string;
+  professionalRolesAndAffiliations: string[];
   internationalTraining: string[];
   affiliations: string[];
   philosophy: string;

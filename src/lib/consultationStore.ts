@@ -87,7 +87,7 @@ export const initialCommunityQuestions: StoredQuestion[] = [
     question: 'How many days after nasal surgery can I travel back to Delhi by flight?',
     date: 'February 24, 2025',
     answer: 'For primary rhinoplasty, patients can typically take domestic flights 5 to 7 days post-surgery once internal splints/nasal packs are removed and nasal mucosal swelling is stable. We advise keeping hydrated and using saline nasal spray in flight.',
-    answeredBy: 'Dr. R. K. Mishra (Senior Plastic Surgeon)',
+    answeredBy: 'Dr. R.K. Mishra (ASPS Board Certified Plastic Surgeon)',
     answerDate: 'February 25, 2025'
   },
   {
@@ -98,7 +98,7 @@ export const initialCommunityQuestions: StoredQuestion[] = [
     question: 'Is gynecomastia surgery permanent or can gland tissue grow back after workout?',
     date: 'February 26, 2025',
     answer: 'When complete surgical excision of glandular tissue is performed alongside lipo-sculpting, the glandular cells are permanently removed and cannot regenerate. Maintaining a stable body weight ensures lifelong flat, masculine chest contours.',
-    answeredBy: 'Dr. R. K. Mishra (Senior Plastic Surgeon)',
+    answeredBy: 'Dr. R.K. Mishra (ASPS Board Certified Plastic Surgeon)',
     answerDate: 'February 27, 2025'
   },
   {
@@ -109,7 +109,7 @@ export const initialCommunityQuestions: StoredQuestion[] = [
     question: 'Will eyelid surgery change my natural eye shape or look stretched?',
     date: 'March 01, 2025',
     answer: 'No. Modern blepharoplasty preserves delicate orbital ligaments and focuses on conservative fat repositioning and minimal skin trimming. Your natural ethnic and personal facial character remains intact, simply looking refreshed and rested.',
-    answeredBy: 'Dr. R. K. Mishra (Senior Plastic Surgeon)',
+    answeredBy: 'Dr. R.K. Mishra (ASPS Board Certified Plastic Surgeon)',
     answerDate: 'March 02, 2025'
   }
 ];
@@ -224,7 +224,7 @@ export function useConsultationStore() {
     return newQ;
   };
 
-  const answerQuestion = (id: string, answerText: string, answeredBy: string = 'Dr. R. K. Mishra') => {
+  const answerQuestion = (id: string, answerText: string, answeredBy: string = 'Dr. R.K. Mishra') => {
     const updated = questions.map(q => q.id === id ? {
       ...q,
       answer: answerText,

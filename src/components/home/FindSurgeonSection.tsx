@@ -90,7 +90,7 @@ export const FindSurgeonSection: React.FC<FindSurgeonSectionProps> = ({ onNaviga
                   <div className="aspect-[3/4] sm:aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 bg-slate-900 group relative">
                     <img 
                       src="/hero.png" 
-                      alt="Dr. R. K. Mishra - Senior Plastic Surgeon" 
+                      alt="Dr. R.K. Mishra - ASPS Board Certified Plastic Surgeon" 
                       className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
@@ -117,11 +117,15 @@ export const FindSurgeonSection: React.FC<FindSurgeonSectionProps> = ({ onNaviga
 
             {/* Supporting Paragraph */}
             <p className="text-base sm:text-lg text-slate-200 leading-relaxed max-w-xl mx-auto lg:mx-0 font-normal">
-              Find a board-certified master surgeon who specializes in precisely what you’re looking for. Connect directly with <strong className="text-white font-semibold">Dr. R. K. Mishra</strong> at NABH-accredited SIPS Super Specialty Hospital for personalized anatomical planning.
+              Find an ASPS Board Certified Plastic Surgeon who specializes in precisely what you’re looking for. Connect directly with <strong className="text-white font-semibold">Dr. R.K. Mishra</strong> (Managing Director & Head of Plastic Surgery Department, SIPS Super Specialty Hospital Pvt. Ltd.) for personalized anatomical planning.
             </p>
 
             {/* Inclusions Row */}
             <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2 text-sm text-slate-200 font-medium">
+              <span className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>ASPS Board Certified</span>
+              </span>
               <span className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span>25+ Yrs Master Surgeon</span>

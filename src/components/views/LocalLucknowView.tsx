@@ -31,7 +31,7 @@ export const LocalLucknowView: React.FC<LocalLucknowViewProps> = ({ onNavigate }
           </h1>
 
           <p className="text-sm sm:text-base text-[#475569] leading-relaxed font-normal pt-1">
-            Led by Senior Plastic Surgeon <strong>Dr. R. K. Mishra</strong> at Sushrut Institute of Plastic Surgery (SIPS Super Specialty Hospital Chowk), Lucknow stands as Uttar Pradesh's premier destination for world-class cosmetic and reconstructive plastic surgery.
+            Led by ASPS Board Certified Plastic Surgeon <strong>Dr. R.K. Mishra</strong> (Managing Director & Head of Plastic Surgery Department at SIPS Super Specialty Hospital Pvt. Ltd., Chowk), Lucknow stands as Uttar Pradesh's premier destination for world-class cosmetic and reconstructive plastic surgery.
           </p>
         </div>
       </div>
