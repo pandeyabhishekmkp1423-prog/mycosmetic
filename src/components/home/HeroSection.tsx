@@ -13,7 +13,8 @@ import {
   Star,
   Activity,
   PhoneCall,
-  Check
+  Check,
+  ArrowUpRight
 } from 'lucide-react';
 
 interface HeroSectionProps {
@@ -73,13 +74,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
 
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-1">
-              <button
-                onClick={() => onNavigate('book-consultation')}
-                className="btn-navy text-sm sm:text-base py-3.5 px-6 rounded-xl shadow-md cursor-pointer flex items-center gap-2 group hover:scale-[1.02] transition-transform font-semibold"
+              <a
+                href="https://mycosmeticsurgery.in/contact-us/"
+                target="_blank"
+                rel="noopener noreferrer"
+                id="hero-book-consultation-btn"
+                className="btn-navy text-sm sm:text-base py-3.5 px-6 rounded-xl shadow-md cursor-pointer flex items-center gap-2 group hover:scale-[1.02] transition-transform font-semibold text-white"
               >
                 <Calendar className="w-4 h-4 text-[#00A3E0] group-hover:scale-110 transition-transform" />
                 <span>Book In-Person Consultation</span>
-              </button>
+                <ArrowUpRight className="w-4 h-4 text-slate-300 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
 
               <button
                 onClick={() => {

@@ -1,0 +1,653 @@
+[
+  {
+    "idx": 1,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.33 PM.jpeg",
+    "width": 1047,
+    "height": 555,
+    "faces": 1,
+    "rects": [
+      [
+        632,
+        251,
+        122,
+        122
+      ]
+    ]
+  },
+  {
+    "idx": 2,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.34 PM (1).jpeg",
+    "width": 1280,
+    "height": 1090,
+    "faces": 1,
+    "rects": [
+      [
+        199,
+        381,
+        283,
+        283
+      ]
+    ]
+  },
+  {
+    "idx": 3,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.34 PM.jpeg",
+    "width": 1280,
+    "height": 1094,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 4,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.35 PM (1).jpeg",
+    "width": 1179,
+    "height": 692,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 5,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.35 PM.jpeg",
+    "width": 929,
+    "height": 600,
+    "faces": 2,
+    "rects": [
+      [
+        33,
+        76,
+        368,
+        368
+      ],
+      [
+        529,
+        104,
+        377,
+        377
+      ]
+    ]
+  },
+  {
+    "idx": 6,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.36 PM (1).jpeg",
+    "width": 931,
+    "height": 625,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 7,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.36 PM (2).jpeg",
+    "width": 929,
+    "height": 600,
+    "faces": 2,
+    "rects": [
+      [
+        529,
+        104,
+        377,
+        377
+      ],
+      [
+        33,
+        76,
+        368,
+        368
+      ]
+    ]
+  },
+  {
+    "idx": 8,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.36 PM.jpeg",
+    "width": 1179,
+    "height": 966,
+    "faces": 1,
+    "rects": [
+      [
+        21,
+        124,
+        755,
+        755
+      ]
+    ]
+  },
+  {
+    "idx": 9,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.37 PM (1).jpeg",
+    "width": 1280,
+    "height": 1041,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 10,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.37 PM.jpeg",
+    "width": 1061,
+    "height": 588,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 11,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.38 PM (1).jpeg",
+    "width": 1280,
+    "height": 986,
+    "faces": 1,
+    "rects": [
+      [
+        148,
+        50,
+        128,
+        128
+      ]
+    ]
+  },
+  {
+    "idx": 12,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.38 PM (2).jpeg",
+    "width": 1280,
+    "height": 693,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 13,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.38 PM.jpeg",
+    "width": 1280,
+    "height": 1220,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 14,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.39 PM (1).jpeg",
+    "width": 1280,
+    "height": 667,
+    "faces": 1,
+    "rects": [
+      [
+        826,
+        21,
+        392,
+        392
+      ]
+    ]
+  },
+  {
+    "idx": 15,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.39 PM (2).jpeg",
+    "width": 1280,
+    "height": 723,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 16,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.39 PM.jpeg",
+    "width": 1280,
+    "height": 834,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 17,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.40 PM (1).jpeg",
+    "width": 1280,
+    "height": 809,
+    "faces": 1,
+    "rects": [
+      [
+        466,
+        522,
+        71,
+        71
+      ]
+    ]
+  },
+  {
+    "idx": 18,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.40 PM.jpeg",
+    "width": 1280,
+    "height": 817,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 19,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.41 PM (1).jpeg",
+    "width": 604,
+    "height": 741,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 20,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.41 PM (2).jpeg",
+    "width": 1024,
+    "height": 775,
+    "faces": 1,
+    "rects": [
+      [
+        298,
+        541,
+        145,
+        145
+      ]
+    ]
+  },
+  {
+    "idx": 21,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.41 PM.jpeg",
+    "width": 960,
+    "height": 1280,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 22,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.42 PM (1).jpeg",
+    "width": 898,
+    "height": 1280,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 23,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.42 PM.jpeg",
+    "width": 1280,
+    "height": 968,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 24,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.43 PM (1).jpeg",
+    "width": 1142,
+    "height": 795,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 25,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.43 PM (2).jpeg",
+    "width": 1280,
+    "height": 1094,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 26,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.43 PM.jpeg",
+    "width": 843,
+    "height": 1280,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 27,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.44 PM.jpeg",
+    "width": 1064,
+    "height": 576,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 28,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.53 PM (1).jpeg",
+    "width": 1280,
+    "height": 1136,
+    "faces": 2,
+    "rects": [
+      [
+        514,
+        91,
+        73,
+        73
+      ],
+      [
+        734,
+        380,
+        502,
+        502
+      ]
+    ]
+  },
+  {
+    "idx": 29,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.53 PM (2).jpeg",
+    "width": 1280,
+    "height": 1151,
+    "faces": 1,
+    "rects": [
+      [
+        511,
+        89,
+        75,
+        75
+      ]
+    ]
+  },
+  {
+    "idx": 30,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.53 PM.jpeg",
+    "width": 1047,
+    "height": 555,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 31,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.54 PM (1).jpeg",
+    "width": 1280,
+    "height": 720,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 32,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.54 PM (2).jpeg",
+    "width": 1280,
+    "height": 764,
+    "faces": 1,
+    "rects": [
+      [
+        741,
+        89,
+        498,
+        498
+      ]
+    ]
+  },
+  {
+    "idx": 33,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.54 PM.jpeg",
+    "width": 1280,
+    "height": 793,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 34,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.55 PM (1).jpeg",
+    "width": 849,
+    "height": 1280,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 35,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.55 PM (2).jpeg",
+    "width": 850,
+    "height": 1280,
+    "faces": 2,
+    "rects": [
+      [
+        230,
+        286,
+        79,
+        79
+      ],
+      [
+        238,
+        255,
+        83,
+        83
+      ]
+    ]
+  },
+  {
+    "idx": 36,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.55 PM.jpeg",
+    "width": 849,
+    "height": 1280,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 37,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.56 PM (1).jpeg",
+    "width": 1143,
+    "height": 1280,
+    "faces": 1,
+    "rects": [
+      [
+        526,
+        861,
+        270,
+        270
+      ]
+    ]
+  },
+  {
+    "idx": 38,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.56 PM (2).jpeg",
+    "width": 711,
+    "height": 526,
+    "faces": 1,
+    "rects": [
+      [
+        94,
+        240,
+        178,
+        178
+      ]
+    ]
+  },
+  {
+    "idx": 39,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.56 PM.jpeg",
+    "width": 850,
+    "height": 1280,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 40,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.57 PM (1).jpeg",
+    "width": 1280,
+    "height": 898,
+    "faces": 1,
+    "rects": [
+      [
+        210,
+        107,
+        546,
+        546
+      ]
+    ]
+  },
+  {
+    "idx": 41,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.57 PM (2).jpeg",
+    "width": 1278,
+    "height": 1041,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 42,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.57 PM.jpeg",
+    "width": 1280,
+    "height": 900,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 43,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.58 PM (1).jpeg",
+    "width": 736,
+    "height": 841,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 44,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.58 PM (2).jpeg",
+    "width": 792,
+    "height": 348,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 45,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.58 PM.jpeg",
+    "width": 539,
+    "height": 395,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 46,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.59 PM (1).jpeg",
+    "width": 380,
+    "height": 512,
+    "faces": 1,
+    "rects": [
+      [
+        33,
+        131,
+        313,
+        313
+      ]
+    ]
+  },
+  {
+    "idx": 47,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.59 PM (2).jpeg",
+    "width": 837,
+    "height": 642,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 48,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.59 PM (3).jpeg",
+    "width": 1026,
+    "height": 1280,
+    "faces": 4,
+    "rects": [
+      [
+        24,
+        93,
+        483,
+        483
+      ],
+      [
+        550,
+        161,
+        448,
+        448
+      ],
+      [
+        626,
+        814,
+        395,
+        395
+      ],
+      [
+        103,
+        757,
+        484,
+        484
+      ]
+    ]
+  },
+  {
+    "idx": 49,
+    "filename": "WhatsApp Image 2026-09-28 at 3.01.59 PM.jpeg",
+    "width": 921,
+    "height": 1280,
+    "faces": 1,
+    "rects": [
+      [
+        56,
+        238,
+        806,
+        806
+      ]
+    ]
+  },
+  {
+    "idx": 50,
+    "filename": "WhatsApp Image 2026-09-28 at 3.02.00 PM (1).jpeg",
+    "width": 849,
+    "height": 1280,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 51,
+    "filename": "WhatsApp Image 2026-09-28 at 3.02.00 PM (2).jpeg",
+    "width": 752,
+    "height": 1132,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 52,
+    "filename": "WhatsApp Image 2026-09-28 at 3.02.00 PM.jpeg",
+    "width": 849,
+    "height": 1280,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 53,
+    "filename": "WhatsApp Image 2026-09-28 at 3.02.01 PM (1).jpeg",
+    "width": 866,
+    "height": 565,
+    "faces": 2,
+    "rects": [
+      [
+        504,
+        115,
+        353,
+        353
+      ],
+      [
+        17,
+        84,
+        346,
+        346
+      ]
+    ]
+  },
+  {
+    "idx": 54,
+    "filename": "WhatsApp Image 2026-09-28 at 3.02.01 PM (2).jpeg",
+    "width": 1179,
+    "height": 966,
+    "faces": 1,
+    "rects": [
+      [
+        21,
+        124,
+        755,
+        755
+      ]
+    ]
+  },
+  {
+    "idx": 55,
+    "filename": "WhatsApp Image 2026-09-28 at 3.02.01 PM.jpeg",
+    "width": 849,
+    "height": 1280,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 56,
+    "filename": "WhatsApp Image 2026-09-28 at 3.02.02 PM (1).jpeg",
+    "width": 849,
+    "height": 1280,
+    "faces": 0,
+    "rects": []
+  },
+  {
+    "idx": 57,
+    "filename": "WhatsApp Image 2026-09-28 at 3.02.02 PM.jpeg",
+    "width": 849,
+    "height": 1280,
+    "faces": 0,
+    "rects": []
+  }
+]
