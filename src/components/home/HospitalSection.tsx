@@ -91,51 +91,78 @@ export const HospitalSection: React.FC<HospitalSectionProps> = ({ onNavigate }) 
 
           </div>
 
-          {/* Right Column: 3D Hospital Facility Mosaic */}
-          <div className="lg:col-span-6 grid grid-cols-2 gap-4">
-            <div className="space-y-4">
-              <Card3D maxTilt={6}>
-                <div className="aspect-[4/3] rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-md bg-slate-900">
+          {/* Right Column: Authentic Hospital Facility Visual Showcase */}
+          <div className="lg:col-span-6 space-y-3.5">
+            {/* Grand Hero Hospital Building Card */}
+            <Card3D maxTilt={5}>
+              <div className="relative rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-lg bg-slate-900 group">
+                <div className="aspect-[16/11] sm:aspect-[16/10] w-full overflow-hidden">
                   <SafeImage
-                    src={hospitalData.gallery[0]}
-                    alt="SIPS Hospital Modern Surgical Infrastructure"
+                    src="/assets/hospital.png"
+                    alt="Sushrut Institute of Plastic Surgery (SIPS) Hospital Building, Lucknow"
                     fallbackCategory="Hospital & Theatre"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover object-[center_35%] group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                   />
                 </div>
-              </Card3D>
-              <Card3D maxTilt={6}>
-                <div className="aspect-square rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-md bg-slate-900">
-                  <SafeImage
-                    src={hospitalData.gallery[1]}
-                    alt="NABH Laminar Airflow Operating Suite"
-                    fallbackCategory="Hospital & Theatre"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  />
+
+                {/* Ambient Smooth Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#001D3D]/95 via-[#001D3D]/30 to-transparent pointer-events-none" />
+
+                {/* Top Badge */}
+                <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-[#003366] text-xs font-bold shadow-md">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#00A3E0]" />
+                  <span>NABH Accredited Tertiary Center</span>
                 </div>
-              </Card3D>
-            </div>
-            <div className="space-y-4 pt-6">
-              <Card3D maxTilt={6}>
-                <div className="aspect-square rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-md bg-slate-900">
-                  <SafeImage
-                    src={hospitalData.gallery[2]}
-                    alt="High Tech Cosmetic Consultation Room"
-                    fallbackCategory="Hospital & Theatre"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  />
+
+                {/* Bottom Overlay Info Card */}
+                <div className="absolute bottom-0 inset-x-0 p-5 text-white space-y-1">
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-editorial text-lg sm:text-xl font-bold tracking-tight text-white drop-shadow-sm">
+                      SIPS Super Specialty Hospital
+                    </h3>
+                    <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full bg-[#00A3E0]/20 border border-[#00A3E0]/40 text-[#00A3E0] text-[11px] font-semibold">
+                      Main Campus
+                    </span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-200 font-medium">
+                    Sushrut Institute of Plastic Surgery &amp; Research • Shah Mina Rd, Lucknow
+                  </p>
+                  <p className="text-[11px] text-[#00A3E0] font-semibold pt-0.5">
+                    Managing Director &amp; Head of Dept: Dr. R. K. Mishra (M.Ch. Plastic Surgery)
+                  </p>
                 </div>
-              </Card3D>
-              <Card3D maxTilt={6}>
-                <div className="aspect-[4/3] rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-md bg-slate-900">
-                  <SafeImage
-                    src={hospitalData.gallery[3]}
-                    alt="SIPS Hospital Inpatient Recovery Wing"
-                    fallbackCategory="Hospital & Theatre"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  />
+              </div>
+            </Card3D>
+
+            {/* Inset Facility Sub-cards */}
+            <div className="grid grid-cols-2 gap-3.5">
+              <div className="group relative rounded-2xl overflow-hidden border border-[#E2E8F0] shadow-xs bg-slate-900 aspect-[16/9]">
+                <SafeImage
+                  src={hospitalData.gallery[1]}
+                  alt="Class 100 Modular OT Suites"
+                  fallbackCategory="Hospital & Theatre"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                <div className="absolute bottom-2.5 left-3 right-3 text-white">
+                  <p className="text-xs font-bold leading-tight drop-shadow-sm">6 Modular Laminar OTs</p>
+                  <p className="text-[10px] text-slate-300">HEPA Positive Pressure</p>
                 </div>
-              </Card3D>
+              </div>
+
+              <div className="group relative rounded-2xl overflow-hidden border border-[#E2E8F0] shadow-xs bg-slate-900 aspect-[16/9]">
+                <SafeImage
+                  src={hospitalData.gallery[3]}
+                  alt="VIP Aesthetic Inpatient Recovery Suites"
+                  fallbackCategory="Hospital & Theatre"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                <div className="absolute bottom-2.5 left-3 right-3 text-white">
+                  <p className="text-xs font-bold leading-tight drop-shadow-sm">Aesthetic Inpatient Suites</p>
+                  <p className="text-[10px] text-slate-300">24/7 Monitored Recovery</p>
+                </div>
+              </div>
             </div>
           </div>
 

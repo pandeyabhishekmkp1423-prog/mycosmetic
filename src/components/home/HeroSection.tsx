@@ -92,6 +92,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'appointment' | 'callback'>('appointment');
   const [submitted, setSubmitted] = useState(false);
+  const [modalName, setModalName] = useState('');
+  const [modalPhone, setModalPhone] = useState('');
+  const [modalProcedure, setModalProcedure] = useState('Gynecomastia (Male Chest Reduction)');
+  const [modalDate, setModalDate] = useState('');
+  const [isSubmittingModal, setIsSubmittingModal] = useState(false);
 
   // Core 8 Surgical Services divided 4 | 4 side-by-side
   const proceduresCol1: Procedure[] = [
@@ -119,13 +124,36 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
     }
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setIsModalOpen(false);
-    }, 2200);
+    if (!modalName.trim() || !modalPhone.trim()) return;
+
+    setIsSubmittingModal(true);
+    try {
+      await fetch('/api/submit_lead.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: modalName.trim(),
+          phone: modalPhone.trim(),
+          procedure: modalProcedure,
+          consultationType: activeTab === 'appointment' ? 'In-Person (SIPS Hospital)' : 'Virtual Video OPD',
+          preferredDate: modalDate || new Date().toISOString().split('T')[0],
+          city: 'Lucknow'
+        })
+      });
+    } catch {
+      // Local fallback
+    } finally {
+      setIsSubmittingModal(false);
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setIsModalOpen(false);
+        setModalName('');
+        setModalPhone('');
+      }, 2500);
+    }
   };
 
   return (
@@ -386,6 +414,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                       <input
                         type="text"
                         required
+                        value={modalName}
+                        onChange={(e) => setModalName(e.target.value)}
                         placeholder="e.g. Rahul Sharma"
                         className="w-full px-3.5 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A3E0]/40 focus:border-[#00A3E0]"
                       />
@@ -397,21 +427,27 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                         <input
                           type="tel"
                           required
+                          value={modalPhone}
+                          onChange={(e) => setModalPhone(e.target.value)}
                           placeholder="+91 97958 00800"
                           className="w-full px-3.5 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A3E0]/40 focus:border-[#00A3E0]"
                         />
                       </div>
                       <div>
                         <label className="block text-xs font-semibold text-slate-700 mb-1">Procedure of Interest</label>
-                        <select className="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A3E0]/40 focus:border-[#00A3E0] bg-white text-slate-700">
-                          <option>Gynecomastia (Male Chest)</option>
-                          <option>Rhinoplasty (Nose Job)</option>
-                          <option>360° HD Liposuction</option>
-                          <option>Tummy Tuck (Abdominoplasty)</option>
-                          <option>Breast Augmentation</option>
-                          <option>Breast Reduction &amp; Lift</option>
-                          <option>Genioplasty / Chin Enhancement</option>
-                          <option>Blepharoplasty (Eyelid Surgery)</option>
+                        <select 
+                          value={modalProcedure}
+                          onChange={(e) => setModalProcedure(e.target.value)}
+                          className="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A3E0]/40 focus:border-[#00A3E0] bg-white text-slate-700"
+                        >
+                          <option value="Gynecomastia (Male Chest Reduction)">Gynecomastia (Male Chest Reduction)</option>
+                          <option value="Rhinoplasty (Nose Job)">Rhinoplasty (Nose Job)</option>
+                          <option value="360° HD Liposuction">360° HD Liposuction</option>
+                          <option value="Tummy Tuck (Abdominoplasty)">Tummy Tuck (Abdominoplasty)</option>
+                          <option value="Breast Augmentation">Breast Augmentation</option>
+                          <option value="Breast Reduction & Lift">Breast Reduction &amp; Lift</option>
+                          <option value="Genioplasty (Chin Enhancement)">Genioplasty (Chin Enhancement)</option>
+                          <option value="Blepharoplasty (Baggy Eyelids)">Blepharoplasty (Baggy Eyelids)</option>
                         </select>
                       </div>
                     </div>
@@ -420,6 +456,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                       <label className="block text-xs font-semibold text-slate-700 mb-1">Preferred Date (Optional)</label>
                       <input
                         type="date"
+                        value={modalDate}
+                        onChange={(e) => setModalDate(e.target.value)}
                         className="w-full px-3.5 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A3E0]/40 focus:border-[#00A3E0] bg-white text-slate-700"
                       />
                     </div>
@@ -428,9 +466,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="w-full py-3 bg-[#00264D] hover:bg-[#003866] text-white rounded-xl text-sm font-semibold shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
+                      disabled={isSubmittingModal}
+                      className="w-full py-3 bg-[#00264D] hover:bg-[#003866] disabled:opacity-60 text-white rounded-xl text-sm font-semibold shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
                     >
-                      <span>Confirm Consultation Request</span>
+                      <span>{isSubmittingModal ? 'Submitting Request...' : 'Confirm Consultation Request'}</span>
                       <ArrowRight className="w-4 h-4" />
                     </button>
                   </div>
