@@ -6,7 +6,6 @@ import {
   Phone,
   CreditCard,
   Plane,
-  Search,
   Calendar,
   ArrowUpRight,
   ArrowRight,
@@ -20,33 +19,85 @@ import { Logo } from '../common/Logo';
 interface HeaderProps {
   currentRoute: string;
   onNavigate: (route: string) => void;
-  onOpenSearch: () => void;
+  onOpenSearch?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   currentRoute,
-  onNavigate,
-  onOpenSearch
+  onNavigate
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('home');
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 15);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 15);
+
+      // Scroll-spy: dynamically detect which section is currently in view
+      const scrollPosition = window.scrollY + 180;
+
+      if (window.scrollY < 200) {
+        setActiveSection('home');
+        return;
+      }
+
+      const sections = [
+        { id: 'consultation', name: 'consultation' },
+        { id: 'hospital', name: 'hospital' },
+        { id: 'results', name: 'results' },
+        { id: 'hero', name: 'home' }
+      ];
+
+      for (const sec of sections) {
+        const el = document.getElementById(sec.id);
+        if (el) {
+          const top = el.offsetTop;
+          if (scrollPosition >= top) {
+            setActiveSection(sec.name);
+            break;
+          }
+        }
+      }
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNav = (route: string) => {
-    onNavigate(route);
+  const handleNav = (target: string) => {
     setMobileMenuOpen(false);
+
+    if (target === 'home' || target === 'hero') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setActiveSection('home');
+      return;
+    }
+
+    const sectionId = target === 'contact' ? 'consultation' : target;
+    const el = document.getElementById(sectionId);
+    if (el) {
+      const headerOffset = 110;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+
+      setActiveSection(sectionId === 'results' ? 'results' : sectionId);
+    } else {
+      onNavigate(target);
+    }
   };
 
   const marqueeItems = [
     { icon: ShieldCheck, text: 'NABH Super Specialty Center • SIPS Super Specialty Hospital (Pvt. Ltd.), Lucknow' },
     { icon: Award, text: 'ASPS Board Certified Plastic Surgeon Dr. R.K. Mishra (Managing Director & Head of Plastic Surgery, SIPS)' },
-    { icon: Clock, text: 'OPD Hours: Mon – Sat 10:00 AM – 6:00 PM' },
-    { icon: Phone, text: 'Clinic Helpline: +91 94150 23675' },
+    { icon: Clock, text: 'OPD Hours: 10:00AM - 5:00PM' },
+    { icon: Phone, text: 'Clinic Helpline: +91 9795 800 800' },
     { icon: CreditCard, text: '0% Interest Surgery EMI Options Available' },
     { icon: Plane, text: 'Out-of-Town & Medical Tourism Concierge Desk' }
   ];
@@ -86,67 +137,77 @@ export const Header: React.FC<HeaderProps> = ({
             <Logo />
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation with Active Section Indicator */}
           <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
             <button
               onClick={() => handleNav('home')}
-              className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer ${currentRoute === 'home'
-                ? 'text-[#003366] bg-slate-100/80'
-                : 'text-slate-600 hover:text-[#003366] hover:bg-slate-50'
-                }`}
+              className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
+                activeSection === 'home'
+                  ? 'text-[#003366] bg-slate-100 shadow-2xs font-bold border-b-2 border-[#003366]'
+                  : 'text-slate-600 hover:text-[#003366] hover:bg-slate-50'
+              }`}
             >
               Home
             </button>
 
             <button
               onClick={() => handleNav('results')}
-              className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer ${currentRoute === 'results'
-                ? 'text-[#003366] bg-slate-100/80'
-                : 'text-slate-600 hover:text-[#003366] hover:bg-slate-50'
-                }`}
+              className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
+                activeSection === 'results'
+                  ? 'text-[#003366] bg-slate-100 shadow-2xs font-bold border-b-2 border-[#003366]'
+                  : 'text-slate-600 hover:text-[#003366] hover:bg-slate-50'
+              }`}
             >
               Before &amp; After
             </button>
 
-            <button
-              onClick={() => handleNav('doctor')}
-              className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer ${currentRoute === 'doctor'
-                ? 'text-[#003366] bg-slate-100/80'
-                : 'text-slate-600 hover:text-[#003366] hover:bg-slate-50'
-                }`}
+            {/* About Us (Redirects to official bio page in new tab) */}
+            <a
+              href="https://mycosmeticsurgery.in/dr-r-k-mishra-best-cosmetic-surgeon-in-lucknow/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-[#003366] hover:bg-slate-50 transition-all cursor-pointer inline-flex items-center gap-1"
             >
-              About Dr. Mishra
-            </button>
+              <span>About Us</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#00A3E0]" />
+            </a>
 
             <button
               onClick={() => handleNav('hospital')}
-              className="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-[#003366] hover:bg-slate-50 transition-all cursor-pointer"
+              className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
+                activeSection === 'hospital'
+                  ? 'text-[#003366] bg-slate-100 shadow-2xs font-bold border-b-2 border-[#003366]'
+                  : 'text-slate-600 hover:text-[#003366] hover:bg-slate-50'
+              }`}
             >
               Hospital
             </button>
 
             <button
               onClick={() => handleNav('consultation')}
-              className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer ${currentRoute === 'contact'
-                ? 'text-[#003366] bg-slate-100/80'
-                : 'text-slate-600 hover:text-[#003366] hover:bg-slate-50'
-                }`}
+              className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
+                activeSection === 'consultation'
+                  ? 'text-[#003366] bg-slate-100 shadow-2xs font-bold border-b-2 border-[#003366]'
+                  : 'text-slate-600 hover:text-[#003366] hover:bg-slate-50'
+              }`}
             >
               Contact
             </button>
           </nav>
 
           {/* Right Action Area */}
-          <div className="flex items-center gap-3">
-            {/* Quick Search */}
-            <button
-              onClick={onOpenSearch}
-              className="p-2.5 text-slate-600 hover:text-[#003366] hover:bg-slate-100 rounded-xl transition-all cursor-pointer"
-              title="Search (Ctrl+K)"
-              aria-label="Search"
+          <div className="flex items-center gap-2.5">
+            {/* Know More About Dr. R.K. Mishra Button (Redirects to official website) */}
+            <a
+              href="https://mycosmeticsurgery.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl border border-[#003366] text-[#003366] hover:bg-[#003366] hover:text-white text-xs font-bold transition-all shadow-2xs group"
+              title="Know more about Dr. R.K. Mishra"
             >
-              <Search className="w-4 h-4 text-[#003366]" />
-            </button>
+              <span>Know More About Dr. R.K. Mishra</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#00A3E0] group-hover:text-white transition-colors" />
+            </a>
 
             {/* Direct Consultation Link */}
             <button
@@ -176,14 +237,14 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="md:hidden bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xl px-6 py-5 space-y-4 animate-in slide-in-from-top-2 duration-150">
           <div className="grid grid-cols-2 gap-2">
             <a
-              href="tel:+919415023675"
+              href="tel:+919795800800"
               className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center gap-1.5 text-xs font-bold text-[#003366]"
             >
               <Phone className="w-3.5 h-3.5 text-[#00A3E0]" />
-              <span>Call Helpline</span>
+              <span>Call 9795800800</span>
             </a>
             <a
-              href="https://wa.me/919415023675"
+              href="https://wa.me/919795800800"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center gap-1.5 text-xs font-bold text-emerald-800"
@@ -196,8 +257,9 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="space-y-1 divide-y divide-slate-100">
             <button
               onClick={() => handleNav('home')}
-              className={`w-full text-left py-3 flex items-center justify-between font-medium text-sm ${currentRoute === 'home' ? 'text-[#003366] font-bold' : 'text-slate-700'
-                }`}
+              className={`w-full text-left py-3 px-2 rounded-lg flex items-center justify-between font-medium text-sm ${
+                activeSection === 'home' ? 'text-[#003366] font-bold bg-slate-100' : 'text-slate-700'
+              }`}
             >
               <span>Home</span>
               <ChevronRight className="w-4 h-4 text-slate-300" />
@@ -205,25 +267,39 @@ export const Header: React.FC<HeaderProps> = ({
 
             <button
               onClick={() => handleNav('results')}
-              className={`w-full text-left py-3 flex items-center justify-between font-medium text-sm ${currentRoute === 'results' ? 'text-[#003366] font-bold' : 'text-slate-700'
-                }`}
+              className={`w-full text-left py-3 px-2 rounded-lg flex items-center justify-between font-medium text-sm ${
+                activeSection === 'results' ? 'text-[#003366] font-bold bg-slate-100' : 'text-slate-700'
+              }`}
             >
               <span>Before &amp; After (Real Results)</span>
               <ChevronRight className="w-4 h-4 text-slate-300" />
             </button>
 
-            <button
-              onClick={() => handleNav('doctor')}
-              className={`w-full text-left py-3 flex items-center justify-between font-medium text-sm ${currentRoute === 'doctor' ? 'text-[#003366] font-bold' : 'text-slate-700'
-                }`}
+            <a
+              href="https://mycosmeticsurgery.in/dr-r-k-mishra-best-cosmetic-surgeon-in-lucknow/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full text-left py-3 px-2 rounded-lg flex items-center justify-between font-medium text-sm text-slate-700 hover:text-[#003366]"
             >
-              <span>About Dr. R.K. Mishra</span>
-              <ChevronRight className="w-4 h-4 text-slate-300" />
-            </button>
+              <span>About Us (Dr. R.K. Mishra)</span>
+              <ArrowUpRight className="w-4 h-4 text-[#00A3E0]" />
+            </a>
+
+            <a
+              href="https://mycosmeticsurgery.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full text-left py-3 px-2 rounded-lg flex items-center justify-between font-medium text-sm text-slate-700 hover:text-[#003366]"
+            >
+              <span>Know More About Dr. R.K. Mishra</span>
+              <ArrowUpRight className="w-4 h-4 text-[#00A3E0]" />
+            </a>
 
             <button
               onClick={() => handleNav('hospital')}
-              className="w-full text-left py-3 flex items-center justify-between font-medium text-sm text-slate-700 hover:text-[#003366]"
+              className={`w-full text-left py-3 px-2 rounded-lg flex items-center justify-between font-medium text-sm ${
+                activeSection === 'hospital' ? 'text-[#003366] font-bold bg-slate-100' : 'text-slate-700'
+              }`}
             >
               <span>Hospital Facilities</span>
               <ChevronRight className="w-4 h-4 text-slate-300" />
@@ -231,9 +307,11 @@ export const Header: React.FC<HeaderProps> = ({
 
             <button
               onClick={() => handleNav('consultation')}
-              className="w-full text-left py-3 flex items-center justify-between font-medium text-sm text-slate-700 hover:text-[#003366]"
+              className={`w-full text-left py-3 px-2 rounded-lg flex items-center justify-between font-medium text-sm ${
+                activeSection === 'consultation' ? 'text-[#003366] font-bold bg-slate-100' : 'text-slate-700'
+              }`}
             >
-              <span>Book Consultation</span>
+              <span>Book Consultation / Contact</span>
               <ChevronRight className="w-4 h-4 text-slate-300" />
             </button>
           </div>

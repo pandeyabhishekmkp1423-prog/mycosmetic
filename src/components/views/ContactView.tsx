@@ -159,7 +159,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
                   <h3 className="text-lg font-heading font-bold text-[#003366]">
                     Hospital Location
                   </h3>
-                  <p className="text-sm text-slate-500">29 Shah Mina Road, Chowk, Lucknow</p>
+                  <p className="text-sm text-slate-500">Sushrut Institute of Plastic Surgery (SIPS) Hospital, 29, Shah Mina Rd, Lucknow, Uttar Pradesh 226003, India</p>
                 </div>
                 <span className="text-xs font-bold uppercase tracking-wider text-[#003366]">
                   Mon – Sat OPD

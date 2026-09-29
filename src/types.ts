@@ -37,6 +37,8 @@ export interface BeforeAfterCase {
   afterImage: string;
   fullImage?: string;
   keyImprovements: string[];
+  externalUrl?: string;
+  badge?: string;
 }
 
 export interface PatientStory {

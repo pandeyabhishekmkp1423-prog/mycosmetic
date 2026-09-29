@@ -8,10 +8,10 @@ export const doctorData: DoctorProfile = {
   experienceYears: 25,
   surgeriesCount: '30,000+',
   hospital: 'SIPS Super Specialty Hospital (Pvt. Ltd.)',
-  hospitalAddress: '29 Shah Mina Road, Chowk, Lucknow, Uttar Pradesh – 226003, India',
-  contactPhone: '+91 94150 23675',
+  hospitalAddress: 'Sushrut Institute of Plastic Surgery (SIPS) Hospital, 29, Shah Mina Rd, Lucknow, Uttar Pradesh 226003, India',
+  contactPhone: '+91 9795 800 800',
   contactEmail: 'MyCosmeticSurgery@gmail.com',
-  whatsappNumber: '+919415023675',
+  whatsappNumber: '+919795800800',
   professionalRolesAndAffiliations: [
     'ASPS Board Certified Plastic Surgeon',
     'Managing Director and Head of Plastic Surgery Department, SIPS Super Specialty Hospital (Pvt. Ltd.)',

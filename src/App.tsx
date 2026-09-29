@@ -2,38 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { MobileBottomBar } from './components/layout/MobileBottomBar';
-import { GlobalSearchModal } from './components/layout/GlobalSearchModal';
 
-// Homepage Sections (Refined & Upgraded)
+// Homepage Sections
 import { HeroSection } from './components/home/HeroSection';
 import { TrustCredentials } from './components/home/TrustCredentials';
-import { DoctorStorySection } from './components/home/DoctorStorySection';
-import { WhyDrMishra } from './components/home/WhyDrMishra';
 import { InteractiveBeforeAfter } from './components/home/InteractiveBeforeAfter';
-import { PatientStoriesSection } from './components/home/PatientStoriesSection';
 import { HospitalSection } from './components/home/HospitalSection';
-import { InsightsSection } from './components/home/InsightsSection';
-import { HomeFaqSection } from './components/home/HomeFaqSection';
 import { ConsultationCTA } from './components/home/ConsultationCTA';
-import { ProcedureCostCalculator } from './components/common/ProcedureCostCalculator';
-
-// World-Class Interactive Medical Tools
-import { FindSurgeonSection } from './components/home/FindSurgeonSection';
-import { ProcedureMatcherQuiz } from './components/home/ProcedureMatcherQuiz';
-import { RecoveryTimelineSimulator } from './components/home/RecoveryTimelineSimulator';
-import { ProcedureComparisonMatrix } from './components/home/ProcedureComparisonMatrix';
-import { MedicalTourismConcierge } from './components/home/MedicalTourismConcierge';
-import { DoctorCredentialsTimeline } from './components/home/DoctorCredentialsTimeline';
-import { SurgeryEMICalculator } from './components/common/SurgeryEMICalculator';
-import { InteractiveExperienceDock } from './components/common/InteractiveExperienceDock';
-import { SkinStorySection } from './components/home/SkinStorySection';
-// 1-DeepAnatomySection.tsx commented out for high-conversion single page landing page
-// import { DeepAnatomySection } from './components/home/DeepAnatomySection';
 import { ConsultationSection } from './components/home/ConsultationSection';
 
 // Dedicated Views
-import { DoctorView } from './components/views/DoctorView';
-import { ProceduresDirectoryView } from './components/views/ProceduresDirectoryView';
 import { ProcedureDetailView } from './components/views/ProcedureDetailView';
 import { ResultsGalleryView } from './components/views/ResultsGalleryView';
 import { PatientStoriesView } from './components/views/PatientStoriesView';
@@ -58,7 +36,6 @@ const pathnameFromRoute = (route: string): string => {
 
 export default function App() {
   const [currentRoute, setCurrentRoute] = useState<string>(() => routeFromPathname(window.location.pathname));
-  const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [lang, setLang] = useState<'EN' | 'HI'>('EN');
 
   // Single Page Landing Navigation: All buttons scroll to corresponding sections on home
@@ -66,27 +43,12 @@ export default function App() {
     const sectionMap: Record<string, string> = {
       home: 'hero',
       hero: 'hero',
-      about: 'about-doctor',
-      'about-us': 'about-doctor',
-      doctor: 'about-doctor',
-      procedures: 'results',
       results: 'results',
       'before-after': 'results',
       hospital: 'hospital',
-      pricing: 'pricing',
-      cost: 'pricing',
-      emi: 'pricing',
-      reviews: 'reviews',
-      'patient-stories': 'reviews',
-      stories: 'reviews',
-      faq: 'faqs',
-      faqs: 'faqs',
       contact: 'consultation',
       'book-consultation': 'consultation',
       consultation: 'consultation',
-      quiz: 'procedure-matcher-quiz',
-      'procedure-matcher': 'procedure-matcher-quiz',
-      timeline: 'doctor-credentials',
     };
 
     const targetSection = sectionMap[route] || (route.startsWith('procedure-') ? 'results' : null);
@@ -123,18 +85,6 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  // Keyboard shortcut for search (Ctrl+K / Cmd+K)
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault();
-        setIsSearchOpen(prev => !prev);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
   const renderContent = () => {
     // Dynamic Procedure Detail Route: procedure-[slug]
     if (currentRoute.startsWith('procedure-')) {
@@ -152,9 +102,11 @@ export default function App() {
       case 'about':
       case 'about-us':
       case 'doctor':
-        return <DoctorView onNavigate={handleNavigate} />;
+        window.location.replace('https://mycosmeticsurgery.in/dr-r-k-mishra-best-cosmetic-surgeon-in-lucknow/');
+        return null;
       case 'procedures':
-        return <ProceduresDirectoryView onNavigate={handleNavigate} />;
+        window.location.replace('https://mycosmeticsurgery.in/services/');
+        return null;
       case 'results':
         return <ResultsGalleryView onNavigate={handleNavigate} />;
       case 'patient-stories':
@@ -183,33 +135,9 @@ export default function App() {
           <main>
             <HeroSection onNavigate={handleNavigate} />
             <TrustCredentials />
-            <FindSurgeonSection onNavigate={handleNavigate} />
-            <ProcedureMatcherQuiz onNavigate={handleNavigate} />
-            <DoctorStorySection onNavigate={handleNavigate} />
-            <DoctorCredentialsTimeline onNavigate={handleNavigate} />
-            
-            {/* 1-DeepAnatomySection.tsx commented out for landing page optimization */}
-            {/* <DeepAnatomySection onNavigate={handleNavigate} /> */}
-            
-            <SkinStorySection onNavigate={handleNavigate} />
-            <RecoveryTimelineSimulator onNavigate={handleNavigate} />
             <InteractiveBeforeAfter onNavigate={handleNavigate} />
-            <ProcedureComparisonMatrix onNavigate={handleNavigate} />
             <HospitalSection onNavigate={handleNavigate} />
-            <MedicalTourismConcierge onNavigate={handleNavigate} />
-            <PatientStoriesSection onNavigate={handleNavigate} />
-            
-            {/* Surgery Financing & Transparent Inclusions */}
-            <section id="pricing" className="py-10 sm:py-14 bg-[#F8FAFC] border-b border-[#E2E8F0]">
-              <div className="max-w-7xl mx-auto px-4 sm:px-8">
-                <SurgeryEMICalculator onNavigate={handleNavigate} />
-              </div>
-            </section>
-
-            {/* Dedicated In-Person / Virtual Consultation Booking Lead Form */}
             <ConsultationSection onNavigate={handleNavigate} />
-
-            <HomeFaqSection onNavigate={handleNavigate} />
             <ConsultationCTA onNavigate={handleNavigate} />
           </main>
         );
@@ -229,13 +157,12 @@ export default function App() {
       <Header
         currentRoute={currentRoute}
         onNavigate={handleNavigate}
-        onOpenSearch={() => setIsSearchOpen(true)}
         lang={lang}
         onToggleLang={() => setLang(l => l === 'EN' ? 'HI' : 'EN')}
       />
 
-      {/* Main Page Content Body */}
-      <main id="main-content" key={currentRoute} className="flex-1 route-transition">
+      {/* Main Page Content Body - with top padding so fixed header never overlaps content */}
+      <main id="main-content" key={currentRoute} className="flex-1 route-transition pt-[104px] sm:pt-[108px]">
         {renderContent()}
       </main>
 
@@ -244,19 +171,6 @@ export default function App() {
 
       {/* Mobile Floating Quick Action Bar (Call / WhatsApp / Book) */}
       <MobileBottomBar onNavigate={handleNavigate} />
-
-      {/* Floating Interactive Experience Suite Dock (Next-Level UI Hub) */}
-      <InteractiveExperienceDock
-        currentRoute={currentRoute}
-        onNavigate={handleNavigate}
-      />
-
-      {/* Global Search Modal */}
-      <GlobalSearchModal
-        isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
-        onNavigate={handleNavigate}
-      />
 
     </div>
   );

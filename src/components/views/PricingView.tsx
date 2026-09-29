@@ -11,7 +11,6 @@ import {
 import { proceduresData } from '../../data/proceduresData';
 import { ProcedureCategory } from '../../types';
 import { ProcedureCostCalculator } from '../common/ProcedureCostCalculator';
-import { SurgeryEMICalculator } from '../common/SurgeryEMICalculator';
 
 interface PricingViewProps {
   onNavigate: (route: string) => void;
@@ -90,10 +89,9 @@ export const PricingView: React.FC<PricingViewProps> = ({ onNavigate }) => {
         </div>
       </div>
 
-      {/* Interactive Calculators */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-16 space-y-10">
+      {/* Interactive Calculator */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-16">
         <ProcedureCostCalculator onNavigate={onNavigate} />
-        <SurgeryEMICalculator onNavigate={onNavigate} />
       </div>
 
       {/* Pricing Tables */}

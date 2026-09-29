@@ -1,5 +1,4 @@
-import React from 'react';
-import { ShieldCheck, MapPin, Building2, ArrowRight, Activity, BedDouble, Stethoscope, Sparkles } from 'lucide-react';
+import { ShieldCheck, MapPin, Building2, Activity, BedDouble, Stethoscope, Sparkles } from 'lucide-react';
 import { hospitalData } from '../../data/hospitalData';
 import { SafeImage } from '../common/SafeImage';
 import { Card3D } from '../common/Card3D';
@@ -10,7 +9,7 @@ interface HospitalSectionProps {
 
 export const HospitalSection: React.FC<HospitalSectionProps> = ({ onNavigate }) => {
   return (
-    <section id="hospital" className="py-12 sm:py-16 bg-[#F8FAFC] relative overflow-hidden border-b border-[#E2E8F0]">
+    <section id="hospital" className="scroll-mt-28 py-12 sm:py-16 bg-[#F8FAFC] relative overflow-hidden border-b border-[#E2E8F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
@@ -18,9 +17,6 @@ export const HospitalSection: React.FC<HospitalSectionProps> = ({ onNavigate }) 
           {/* Left Column: Hospital Narrative & Facilities */}
           <div className="lg:col-span-6 space-y-5">
             <div>
-              <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block mb-1.5">
-                NABH Super-Specialty Infrastructure
-              </span>
               <h2 className="font-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-[#003366] tracking-tight leading-[1.12]">
                 Operating at SIPS Super Specialty Hospital, <span className="italic text-[#00A3E0] font-normal">Lucknow.</span>
               </h2>
@@ -91,24 +87,7 @@ export const HospitalSection: React.FC<HospitalSectionProps> = ({ onNavigate }) 
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3.5 pt-2">
-              <button
-                type="button"
-                onClick={() => onNavigate('hospital')}
-                className="btn-navy"
-              >
-                <span>Tour Hospital & Facilities</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
 
-              <button
-                type="button"
-                onClick={() => onNavigate('contact')}
-                className="btn-outline-navy"
-              >
-                View Directions & Map
-              </button>
-            </div>
 
           </div>
 

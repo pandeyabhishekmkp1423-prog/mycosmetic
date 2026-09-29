@@ -167,8 +167,8 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
         <div className="flex-1 space-y-6 overflow-y-auto p-4 sm:p-6">
           <button
             type="button"
-            onClick={() => goTo('doctor')}
-            className="flex w-full items-center justify-between gap-4 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-3.5 text-left hover:border-[#003366] transition-colors"
+            onClick={() => window.open('https://mycosmeticsurgery.in/dr-r-k-mishra-best-cosmetic-surgeon-in-lucknow/', '_blank')}
+            className="flex w-full items-center justify-between gap-4 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-3.5 text-left hover:border-[#003366] transition-colors cursor-pointer"
           >
             <div className="flex min-w-0 items-center gap-3">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#003366] text-xs font-bold text-white">
@@ -292,11 +292,11 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
         <div className="flex flex-col gap-3 border-t border-[#E2E8F0] bg-[#F8FAFC] p-3 sm:p-4 text-xs sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap items-center gap-4 text-slate-600">
             <a
-              href="tel:+919415023675"
+              href="tel:+919795800800"
               className="inline-flex items-center gap-1.5 font-semibold text-[#003366] hover:text-[#00A3E0]"
             >
               <Phone className="h-3.5 w-3.5 text-[#003366]" />
-              +91 94150 23675
+              +91 9795 800 800
             </a>
             <a
               href={`https://wa.me/${doctorData.whatsappNumber.replace('+', '')}`}

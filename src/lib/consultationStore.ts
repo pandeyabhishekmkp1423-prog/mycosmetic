@@ -51,7 +51,7 @@ export const initialConsultationLeads: StoredLead[] = [
   {
     id: 'lead-102',
     name: 'Aditya Singh',
-    phone: '+91 94150 98765',
+    phone: '+91 98390 98765',
     email: 'aditya.singh@example.com',
     procedure: 'Gynecomastia',
     city: 'Kanpur',

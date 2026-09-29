@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Calendar, ArrowRight, CheckCircle2, ExternalLink } from 'lucide-react';
 import { beforeAfterCases } from '../../data/resultsData';
 import { BeforeAfterSlider } from '../common/BeforeAfterSlider';
 import { ProcedureCategory } from '../../types';
@@ -102,16 +102,25 @@ export const ResultsGalleryView: React.FC<ResultsGalleryViewProps> = ({ onNaviga
                 "{item.description}"
               </p>
 
-              <div className="pt-2 flex items-center justify-between border-t border-[#E2E8F0] text-xs sm:text-sm">
-                <span className="text-slate-500 flex items-center gap-1.5 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-[#003366]" />
-                  <span>Unfiltered & Verified</span>
-                </span>
+              <div className="pt-4 flex flex-col sm:flex-row items-center gap-3 border-t border-[#E2E8F0]">
+                {item.externalUrl && (
+                  <a
+                    href={item.externalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:flex-1 py-2.5 px-3 rounded-xl border-2 border-[#003366] text-[#003366] hover:bg-[#003366] hover:text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all group"
+                  >
+                    <span>Know More</span>
+                    <ExternalLink className="w-3.5 h-3.5 text-[#00A3E0] group-hover:text-white" />
+                  </a>
+                )}
                 <button
                   onClick={() => onNavigate('book-consultation')}
-                  className="font-bold text-[#003366] hover:text-[#00A3E0] hover:underline cursor-pointer"
+                  className="w-full sm:flex-1 py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#003366] to-[#004C99] hover:from-[#002244] hover:to-[#003366] text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-xs"
                 >
-                  Consult on this procedure →
+                  <Calendar className="w-3.5 h-3.5 text-[#00A3E0]" />
+                  <span>Book Consultation</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-slate-300" />
                 </button>
               </div>
             </div>

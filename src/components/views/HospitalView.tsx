@@ -89,7 +89,7 @@ export const HospitalView: React.FC<HospitalViewProps> = ({ onNavigate }) => {
               <div className="absolute inset-0 bg-gradient-to-t from-[#002244]/60 via-transparent to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4 text-white">
                 <p className="text-xs font-semibold uppercase tracking-wider text-[#00A3E0]">SIPS Super Specialty Hospital</p>
-                <p className="text-sm font-medium text-white/90">29, Shahmeena Road, Chowk, Lucknow</p>
+                <p className="text-sm font-medium text-white/90">Sushrut Institute of Plastic Surgery (SIPS) Hospital, 29, Shah Mina Rd, Lucknow, Uttar Pradesh 226003, India</p>
               </div>
             </div>
           </div>

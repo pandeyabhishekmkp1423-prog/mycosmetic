@@ -69,11 +69,11 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ onNavi
     const text = encodeURIComponent(
       `Hello Dr. R.K. Mishra's Clinic! I am looking to schedule a consultation for ${procedure}. Name: ${name || 'Patient'}.`
     );
-    window.open(`https://wa.me/919415023675?text=${text}`, '_blank');
+    window.open(`https://wa.me/919795800800?text=${text}`, '_blank');
   };
 
   return (
-    <section id="consultation" className="py-14 sm:py-20 bg-gradient-to-b from-[#F8FAFC] via-[#F1F5F9] to-[#E2E8F0] border-t border-[#CBD5E1] relative overflow-hidden">
+    <section id="consultation" className="scroll-mt-28 py-14 sm:py-20 bg-gradient-to-b from-[#F8FAFC] via-[#F1F5F9] to-[#E2E8F0] border-t border-[#CBD5E1] relative overflow-hidden">
       
       {/* Background Decorative Auras */}
       <div className="absolute top-10 right-10 w-[500px] h-[500px] bg-[#00A3E0]/10 rounded-full blur-3xl pointer-events-none" />
@@ -81,23 +81,13 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ onNavi
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-        {/* Section Header with Rich Editorial Rhythm */}
-        <div className="text-center max-w-3xl mx-auto space-y-2 mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#003366]/15 shadow-2xs">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            <span className="text-xs font-bold uppercase tracking-wider text-[#003366]">
-              Private &amp; Confidential Consultation
-            </span>
-          </div>
-
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto space-y-2 mb-6 sm:mb-8">
           <h2 className="font-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-[#003366] tracking-tight">
             Schedule Your Visit with <span className="italic text-[#00A3E0] font-normal">Dr. R.K. Mishra.</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto font-normal">
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto font-normal">
             Take the first step toward your aesthetic transformation. Reserve an in-person OPD slot at SIPS Super Specialty Hospital, Lucknow, or request a virtual video consultation.
           </p>
         </div>
@@ -115,8 +105,8 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ onNavi
                   <Building2 className="w-6 h-6 text-[#00A3E0]" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-[#003366]">SIPS Super Specialty Hospital</h3>
-                  <p className="text-xs text-slate-500 font-semibold">29, Shahmeena Road, Chowk, Lucknow</p>
+                  <h3 className="text-base font-bold text-[#003366]">Sushrut Institute of Plastic Surgery (SIPS) Hospital</h3>
+                  <p className="text-xs text-slate-500 font-semibold leading-relaxed">29, Shah Mina Rd, Lucknow, Uttar Pradesh 226003, India</p>
                 </div>
               </div>
 
@@ -125,7 +115,7 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ onNavi
                 <div className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
                   <Clock className="w-4 h-4 text-[#00A3E0] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold text-[#003366]">OPD Timings:</span> Mon – Sat: 10:00 AM – 6:00 PM
+                    <span className="font-bold text-[#003366]">OPD Timings:</span> 10:00AM - 5:00PM
                   </div>
                 </div>
 
@@ -147,11 +137,11 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ onNavi
               {/* Fast Connect Buttons */}
               <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <a
-                  href="tel:+919415023675"
+                  href="tel:+919795800800"
                   className="py-3 px-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-[#003366] text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all shadow-2xs cursor-pointer"
                 >
                   <Phone className="w-4 h-4 text-[#00A3E0]" />
-                  <span>Call +91 94150 23675</span>
+                  <span>Call 9795800800</span>
                 </a>
 
                 <button
@@ -320,8 +310,8 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ onNavi
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-[#003366]"
                       >
                         <option value="10:30 AM – 1:00 PM (Morning OPD)">10:30 AM – 1:00 PM (Morning OPD)</option>
-                        <option value="2:00 PM – 4:00 PM (Afternoon OPD)">2:00 PM – 4:00 PM (Afternoon OPD)</option>
-                        <option value="4:00 PM – 6:00 PM (Evening OPD)">4:00 PM – 6:00 PM (Evening OPD)</option>
+                        <option value="2:00 PM – 3:30 PM (Afternoon OPD)">2:00 PM – 3:30 PM (Afternoon OPD)</option>
+                        <option value="3:30 PM – 5:00 PM (Evening OPD)">3:30 PM – 5:00 PM (Evening OPD)</option>
                       </select>
                     </div>
                   </div>

@@ -31,11 +31,11 @@ export const ConsultationCTA: React.FC<ConsultationCTAProps> = ({ onNavigate }) 
           {/* Right: Buttons */}
           <div className="flex flex-wrap items-center gap-3.5 w-full sm:w-auto justify-center md:justify-end">
             <a
-              href="tel:+919415023675"
+              href="tel:+919795800800"
               className="px-6 py-3.5 rounded-xl border border-white/20 text-sm font-semibold text-white hover:bg-white/10 transition-colors inline-flex items-center gap-2"
             >
               <PhoneCall className="w-4 h-4 text-[#00A3E0]" />
-              <span>Call Helpline</span>
+              <span>Call 9795800800</span>
             </a>
 
             <button

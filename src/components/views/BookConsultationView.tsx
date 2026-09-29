@@ -404,7 +404,7 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
 
             <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] max-w-md mx-auto text-xs text-slate-600 space-y-1">
               <p>Our patient care team will contact you to confirm your OPD appointment token.</p>
-              <p className="font-bold text-[#003366]">Hospital Desk Direct Line: +91 94150 23675</p>
+              <p className="font-bold text-[#003366]">Hospital Desk Direct Line: +91 9795 800 800</p>
             </div>
 
             <div className="pt-2 flex justify-center gap-4">
