@@ -23,7 +23,7 @@ export const InteractiveBeforeAfter: React.FC<InteractiveBeforeAfterProps> = ({ 
   ];
 
   return (
-    <section id="before-after-gallery" className="py-12 sm:py-16 bg-[#F8FAFC] border-b border-[#E2E8F0]">
+    <section id="results" className="py-12 sm:py-16 bg-[#F8FAFC] border-b border-[#E2E8F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Section Header */}
@@ -41,10 +41,10 @@ export const InteractiveBeforeAfter: React.FC<InteractiveBeforeAfterProps> = ({ 
           </div>
 
           <button
-            onClick={() => onNavigate('results')}
-            className="btn-outline-navy shrink-0 self-start md:self-end"
+            onClick={() => setActiveCategory('ALL')}
+            className="btn-outline-navy shrink-0 self-start md:self-end cursor-pointer"
           >
-            <span>View Full Gallery</span>
+            <span>Show All Clinical Cases</span>
             <ArrowRight className="w-4 h-4 ml-1.5" />
           </button>
         </div>
@@ -69,9 +69,9 @@ export const InteractiveBeforeAfter: React.FC<InteractiveBeforeAfterProps> = ({ 
           })}
         </div>
 
-        {/* Results Slider Cards */}
+        {/* Results Slider Cards - Displays all 6 verified clinical cases */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {filteredCases.slice(0, 2).map((item) => (
+          {filteredCases.map((item) => (
             <div
               key={item.id}
               className="bg-white border border-[#E2E8F0] rounded-2xl p-5 sm:p-6 space-y-4 hover:shadow-lg transition-shadow"
@@ -92,6 +92,7 @@ export const InteractiveBeforeAfter: React.FC<InteractiveBeforeAfterProps> = ({ 
                   caseData={item}
                   beforeImage={item.beforeImage}
                   afterImage={item.afterImage}
+                  fullImage={item.fullImage}
                   beforeLabel="Before"
                   afterLabel="After"
                   procedureName={item.procedureName}

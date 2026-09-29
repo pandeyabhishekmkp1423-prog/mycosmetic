@@ -9,6 +9,7 @@ import {
   Search,
   Calendar,
   ArrowUpRight,
+  ArrowRight,
   Menu,
   X,
   MessageCircle,
@@ -85,11 +86,11 @@ export const Header: React.FC<HeaderProps> = ({
             <Logo />
           </div>
 
-          {/* Desktop Navigation: Home, About Dr. Mishra, Before & After, Contact */}
-          <nav className="hidden md:flex items-center space-x-2">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
             <button
               onClick={() => handleNav('home')}
-              className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer ${currentRoute === 'home'
+              className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer ${currentRoute === 'home'
                 ? 'text-[#003366] bg-slate-100/80'
                 : 'text-slate-600 hover:text-[#003366] hover:bg-slate-50'
                 }`}
@@ -98,8 +99,18 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
 
             <button
+              onClick={() => handleNav('results')}
+              className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer ${currentRoute === 'results'
+                ? 'text-[#003366] bg-slate-100/80'
+                : 'text-slate-600 hover:text-[#003366] hover:bg-slate-50'
+                }`}
+            >
+              Before &amp; After
+            </button>
+
+            <button
               onClick={() => handleNav('doctor')}
-              className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer ${currentRoute === 'doctor'
+              className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer ${currentRoute === 'doctor'
                 ? 'text-[#003366] bg-slate-100/80'
                 : 'text-slate-600 hover:text-[#003366] hover:bg-slate-50'
                 }`}
@@ -108,18 +119,15 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
 
             <button
-              onClick={() => handleNav('results')}
-              className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer ${currentRoute === 'results'
-                ? 'text-[#003366] bg-slate-100/80'
-                : 'text-slate-600 hover:text-[#003366] hover:bg-slate-50'
-                }`}
+              onClick={() => handleNav('hospital')}
+              className="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-[#003366] hover:bg-slate-50 transition-all cursor-pointer"
             >
-              Before & After
+              Hospital
             </button>
 
             <button
-              onClick={() => handleNav('contact')}
-              className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer ${currentRoute === 'contact'
+              onClick={() => handleNav('consultation')}
+              className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer ${currentRoute === 'contact'
                 ? 'text-[#003366] bg-slate-100/80'
                 : 'text-slate-600 hover:text-[#003366] hover:bg-slate-50'
                 }`}
@@ -141,16 +149,14 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
 
             {/* Direct Consultation Link */}
-            <a
-              href="https://mycosmeticsurgery.in/contact-us/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#003366] hover:bg-[#002244] text-white text-xs font-semibold shadow-sm hover:shadow transition-all group"
+            <button
+              onClick={() => handleNav('consultation')}
+              className="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#003366] hover:bg-[#002244] text-white text-xs font-semibold shadow-sm hover:shadow transition-all cursor-pointer group"
             >
               <Calendar className="w-3.5 h-3.5 text-[#00A3E0]" />
-              <span>Consult Dr. R.K. Mishra</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-white transition-colors" />
-            </a>
+              <span>Book Consultation</span>
+              <ArrowRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-white group-hover:translate-x-0.5 transition-transform" />
+            </button>
 
             {/* Mobile Menu Button */}
             <button
@@ -198,6 +204,15 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
 
             <button
+              onClick={() => handleNav('results')}
+              className={`w-full text-left py-3 flex items-center justify-between font-medium text-sm ${currentRoute === 'results' ? 'text-[#003366] font-bold' : 'text-slate-700'
+                }`}
+            >
+              <span>Before &amp; After (Real Results)</span>
+              <ChevronRight className="w-4 h-4 text-slate-300" />
+            </button>
+
+            <button
               onClick={() => handleNav('doctor')}
               className={`w-full text-left py-3 flex items-center justify-between font-medium text-sm ${currentRoute === 'doctor' ? 'text-[#003366] font-bold' : 'text-slate-700'
                 }`}
@@ -207,34 +222,30 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
 
             <button
-              onClick={() => handleNav('results')}
-              className={`w-full text-left py-3 flex items-center justify-between font-medium text-sm ${currentRoute === 'results' ? 'text-[#003366] font-bold' : 'text-slate-700'
-                }`}
+              onClick={() => handleNav('hospital')}
+              className="w-full text-left py-3 flex items-center justify-between font-medium text-sm text-slate-700 hover:text-[#003366]"
             >
-              <span>Before & After</span>
+              <span>Hospital Facilities</span>
               <ChevronRight className="w-4 h-4 text-slate-300" />
             </button>
 
             <button
-              onClick={() => handleNav('contact')}
-              className={`w-full text-left py-3 flex items-center justify-between font-medium text-sm ${currentRoute === 'contact' ? 'text-[#003366] font-bold' : 'text-slate-700'
-                }`}
+              onClick={() => handleNav('consultation')}
+              className="w-full text-left py-3 flex items-center justify-between font-medium text-sm text-slate-700 hover:text-[#003366]"
             >
-              <span>Contact</span>
+              <span>Book Consultation</span>
               <ChevronRight className="w-4 h-4 text-slate-300" />
             </button>
           </div>
 
-          <a
-            href="https://mycosmeticsurgery.in/contact-us/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full py-3 rounded-xl bg-[#003366] hover:bg-[#002244] text-white text-xs font-bold flex items-center justify-center gap-2 cursor-pointer transition-colors"
+          <button
+            onClick={() => handleNav('consultation')}
+            className="w-full py-3 rounded-xl bg-[#003366] hover:bg-[#002244] text-white text-xs font-bold flex items-center justify-center gap-2 cursor-pointer transition-colors shadow-sm"
           >
             <Calendar className="w-4 h-4 text-[#00A3E0]" />
             <span>Consult Dr. R.K. Mishra</span>
-            <ArrowUpRight className="w-4 h-4 text-[#00A3E0]" />
-          </a>
+            <ArrowRight className="w-4 h-4 text-[#00A3E0]" />
+          </button>
         </div>
       )}
     </header>

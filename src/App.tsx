@@ -7,7 +7,6 @@ import { GlobalSearchModal } from './components/layout/GlobalSearchModal';
 // Homepage Sections (Refined & Upgraded)
 import { HeroSection } from './components/home/HeroSection';
 import { TrustCredentials } from './components/home/TrustCredentials';
-import { ProcedureExplorer } from './components/home/ProcedureExplorer';
 import { DoctorStorySection } from './components/home/DoctorStorySection';
 import { WhyDrMishra } from './components/home/WhyDrMishra';
 import { InteractiveBeforeAfter } from './components/home/InteractiveBeforeAfter';
@@ -28,7 +27,9 @@ import { DoctorCredentialsTimeline } from './components/home/DoctorCredentialsTi
 import { SurgeryEMICalculator } from './components/common/SurgeryEMICalculator';
 import { InteractiveExperienceDock } from './components/common/InteractiveExperienceDock';
 import { SkinStorySection } from './components/home/SkinStorySection';
-import { DeepAnatomySection } from './components/home/DeepAnatomySection';
+// 1-DeepAnatomySection.tsx commented out for high-conversion single page landing page
+// import { DeepAnatomySection } from './components/home/DeepAnatomySection';
+import { ConsultationSection } from './components/home/ConsultationSection';
 
 // Dedicated Views
 import { DoctorView } from './components/views/DoctorView';
@@ -60,8 +61,49 @@ export default function App() {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [lang, setLang] = useState<'EN' | 'HI'>('EN');
 
-  // Keep the single-page views synchronized with the browser history.
+  // Single Page Landing Navigation: All buttons scroll to corresponding sections on home
   const handleNavigate = (route: string) => {
+    const sectionMap: Record<string, string> = {
+      home: 'hero',
+      hero: 'hero',
+      about: 'about-doctor',
+      'about-us': 'about-doctor',
+      doctor: 'about-doctor',
+      procedures: 'results',
+      results: 'results',
+      'before-after': 'results',
+      hospital: 'hospital',
+      pricing: 'pricing',
+      cost: 'pricing',
+      emi: 'pricing',
+      reviews: 'reviews',
+      'patient-stories': 'reviews',
+      stories: 'reviews',
+      faq: 'faqs',
+      faqs: 'faqs',
+      contact: 'consultation',
+      'book-consultation': 'consultation',
+      consultation: 'consultation',
+      quiz: 'procedure-matcher-quiz',
+      'procedure-matcher': 'procedure-matcher-quiz',
+      timeline: 'doctor-credentials',
+    };
+
+    const targetSection = sectionMap[route] || (route.startsWith('procedure-') ? 'results' : null);
+
+    if (targetSection) {
+      if (currentRoute !== 'home') {
+        setCurrentRoute('home');
+      }
+      setTimeout(() => {
+        const el = document.getElementById(targetSection);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 60);
+      return;
+    }
+
     if (route === currentRoute) {
       return;
     }
@@ -141,12 +183,14 @@ export default function App() {
           <main>
             <HeroSection onNavigate={handleNavigate} />
             <TrustCredentials />
-            <ProcedureExplorer onNavigate={handleNavigate} />
             <FindSurgeonSection onNavigate={handleNavigate} />
             <ProcedureMatcherQuiz onNavigate={handleNavigate} />
             <DoctorStorySection onNavigate={handleNavigate} />
             <DoctorCredentialsTimeline onNavigate={handleNavigate} />
-            <DeepAnatomySection onNavigate={handleNavigate} />
+            
+            {/* 1-DeepAnatomySection.tsx commented out for landing page optimization */}
+            {/* <DeepAnatomySection onNavigate={handleNavigate} /> */}
+            
             <SkinStorySection onNavigate={handleNavigate} />
             <RecoveryTimelineSimulator onNavigate={handleNavigate} />
             <InteractiveBeforeAfter onNavigate={handleNavigate} />
@@ -156,11 +200,14 @@ export default function App() {
             <PatientStoriesSection onNavigate={handleNavigate} />
             
             {/* Surgery Financing & Transparent Inclusions */}
-            <section className="py-10 sm:py-14 bg-[#F8FAFC] border-b border-[#E2E8F0]">
+            <section id="pricing" className="py-10 sm:py-14 bg-[#F8FAFC] border-b border-[#E2E8F0]">
               <div className="max-w-7xl mx-auto px-4 sm:px-8">
                 <SurgeryEMICalculator onNavigate={handleNavigate} />
               </div>
             </section>
+
+            {/* Dedicated In-Person / Virtual Consultation Booking Lead Form */}
+            <ConsultationSection onNavigate={handleNavigate} />
 
             <HomeFaqSection onNavigate={handleNavigate} />
             <ConsultationCTA onNavigate={handleNavigate} />

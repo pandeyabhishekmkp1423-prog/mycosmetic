@@ -82,7 +82,7 @@ export const DoctorCredentialsTimeline: React.FC<DoctorCredentialsTimelineProps>
   const active = milestones[selectedMilestone];
 
   return (
-    <section id="doctor-credentials-timeline" className="py-12 sm:py-16 bg-[#F8FAFC] relative overflow-hidden border-b border-[#E2E8F0]">
+    <section id="doctor-credentials" className="py-12 sm:py-16 bg-[#F8FAFC] relative overflow-hidden border-b border-[#E2E8F0]">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

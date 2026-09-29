@@ -35,6 +35,7 @@ export interface BeforeAfterCase {
   description: string;
   beforeImage: string;
   afterImage: string;
+  fullImage?: string;
   keyImprovements: string[];
 }
 

@@ -66,7 +66,7 @@ export const InteractiveExperienceDock: React.FC<InteractiveExperienceDockProps>
       iconColor: 'text-[#00A3E0]'
     },
     {
-      id: 'before-after-gallery',
+      id: 'results',
       title: 'Interactive Results Slider',
       tagline: 'Drag-to-compare verified patient transformations',
       badge: 'Visual 4K',
@@ -75,7 +75,7 @@ export const InteractiveExperienceDock: React.FC<InteractiveExperienceDockProps>
       iconColor: 'text-emerald-400'
     },
     {
-      id: 'surgery-emi-calculator',
+      id: 'pricing',
       title: '0% Interest EMI Calculator',
       tagline: 'Compute monthly outlay & finance approval',
       badge: 'Financing',
@@ -84,16 +84,16 @@ export const InteractiveExperienceDock: React.FC<InteractiveExperienceDockProps>
       iconColor: 'text-amber-400'
     },
     {
-      id: 'deep-facial-anatomy',
-      title: 'Deep Facial Architecture',
-      tagline: 'Inspect 6 anatomical tiers: SMAS, nerves & bone',
-      badge: 'Anatomy',
-      icon: Layers,
+      id: 'consultation',
+      title: 'Private Consultation OPD',
+      tagline: 'Schedule in-person or virtual OPD with Dr. Mishra',
+      badge: 'Schedule',
+      icon: Calendar,
       accentColor: 'from-[#001329] to-[#003366]',
       iconColor: 'text-[#00A3E0]'
     },
     {
-      id: 'hospital-section',
+      id: 'hospital',
       title: 'SIPS Hospital Laminar OTs',
       tagline: 'Class-100 sterile operating theatre tour',
       badge: 'Hospital',

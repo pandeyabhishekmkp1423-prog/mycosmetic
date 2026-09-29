@@ -57,52 +57,47 @@ export const FindSurgeonSection: React.FC<FindSurgeonSectionProps> = ({ onNaviga
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
-          {/* Left Column: 3-Photo Responsive Mosaic (Matching Reference Layout) */}
-          <div className="lg:col-span-6 order-1 lg:order-1">
-            <div className="relative max-w-lg mx-auto lg:max-w-none">
+          {/* Left Column: Dr. R.K. Mishra Solo Portrait */}
+          <div className="lg:col-span-5 order-1 lg:order-1 flex justify-center">
+            <div className="relative max-w-sm sm:max-w-md w-full">
               
-              {/* 2-Column Asymmetric Photo Grid */}
-              <div className="grid grid-cols-12 gap-3 sm:gap-4 items-center">
-                
-                {/* Left Stacked Column: 2 Square/Landscape Photos (5 cols) */}
-                <div className="col-span-5 space-y-3 sm:space-y-4">
-                  {/* Top Photo */}
-                  <div className="aspect-square rounded-xl sm:rounded-2xl overflow-hidden shadow-xl border border-white/15 bg-slate-900 group">
-                    <img 
-                      src="/assets/hero_model.jpg" 
-                      alt="Cosmetic Surgery Specialist Consultation" 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  
-                  {/* Bottom Photo */}
-                  <div className="aspect-square rounded-xl sm:rounded-2xl overflow-hidden shadow-xl border border-white/15 bg-slate-900 group">
-                    <img 
-                      src="/assets/patient_amanda.jpg" 
-                      alt="Aesthetic Patient Outcome" 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                </div>
+              {/* Outer Decorative Gradient Glow */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#00A3E0] to-[#003366] rounded-3xl blur-md opacity-30 group-hover:opacity-50 transition-opacity" />
 
-                {/* Right Column: 1 Tall Prominent Portrait of Senior Surgeon (7 cols) */}
-                <div className="col-span-7">
-                  <div className="aspect-[3/4] sm:aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 bg-slate-900 group relative">
-                    <img 
-                      src="/hero.png" 
-                      alt="Dr. R.K. Mishra - ASPS Board Certified Plastic Surgeon" 
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                </div>
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-white/20 bg-slate-950 group">
+                <img 
+                  src="/hero.png" 
+                  alt="Dr. R.K. Mishra - ASPS Board Certified Plastic Surgeon" 
+                  className="w-full h-auto object-cover object-top aspect-[3/4] group-hover:scale-[1.02] transition-transform duration-500"
+                />
 
+                {/* Bottom Floating Identity Card */}
+                <div className="absolute bottom-3 inset-x-3 p-3.5 rounded-2xl bg-[#001f3f]/90 backdrop-blur-md border border-white/15 shadow-xl text-left">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="text-white font-bold text-base leading-tight">
+                        Dr. R.K. Mishra
+                      </h3>
+                      <p className="text-[#00A3E0] text-xs font-semibold mt-0.5">
+                        M.S., M.Ch (Plastic Surgery - KGMC)
+                      </p>
+                    </div>
+                    <span className="px-2.5 py-1 rounded-md bg-[#00A3E0]/20 border border-[#00A3E0]/40 text-[#38bdf8] text-[10px] font-bold uppercase tracking-wider">
+                      ASPS Member
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-slate-300 mt-1.5 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                    <span>Managing Director & Head of Plastic Surgery, SIPS Hospital</span>
+                  </p>
+                </div>
               </div>
 
             </div>
           </div>
 
           {/* Right Column: Clean Editorial Content & White CTA Button (Matching Reference) */}
-          <div className="lg:col-span-6 order-2 lg:order-2 space-y-5 text-center lg:text-left">
+          <div className="lg:col-span-7 order-2 lg:order-2 space-y-5 text-center lg:text-left">
             
             {/* Clean Section Eyebrow */}
             <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block">
@@ -153,7 +148,11 @@ export const FindSurgeonSection: React.FC<FindSurgeonSectionProps> = ({ onNaviga
 
               <button
                 type="button"
-                onClick={() => onNavigate('book-consultation')}
+                onClick={() => {
+                  const el = document.getElementById('consultation');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  else onNavigate('consultation');
+                }}
                 className="px-6 py-3.5 rounded-xl border border-white/30 hover:border-white hover:bg-white/10 text-white font-semibold text-sm sm:text-base transition-all cursor-pointer"
               >
                 Book Consultation

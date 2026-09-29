@@ -10,7 +10,7 @@ interface HospitalSectionProps {
 
 export const HospitalSection: React.FC<HospitalSectionProps> = ({ onNavigate }) => {
   return (
-    <section id="hospital-section" className="py-12 sm:py-16 bg-[#F8FAFC] relative overflow-hidden border-b border-[#E2E8F0]">
+    <section id="hospital" className="py-12 sm:py-16 bg-[#F8FAFC] relative overflow-hidden border-b border-[#E2E8F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">

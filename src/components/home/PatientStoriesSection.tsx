@@ -62,7 +62,7 @@ export const PatientStoriesSection: React.FC<PatientStoriesSectionProps> = ({ on
   ];
 
   return (
-    <section id="patient-testimonials-section" className="py-12 sm:py-16 bg-white border-b border-[#E2E8F0] relative">
+    <section id="reviews" className="py-12 sm:py-16 bg-white border-b border-[#E2E8F0] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header with Rich Editorial Typography */}
@@ -168,13 +168,17 @@ export const PatientStoriesSection: React.FC<PatientStoriesSectionProps> = ({ on
 
         </div>
 
-        {/* Bottom CTA to View More Reviews */}
+        {/* Bottom CTA to Book Consultation */}
         <div className="mt-8 text-center">
           <button
-            onClick={() => onNavigate('patient-stories')}
+            onClick={() => {
+              const el = document.getElementById('consultation');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+              else onNavigate('consultation');
+            }}
             className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-slate-100 hover:bg-[#003366] text-[#003366] hover:text-white border border-slate-200 hover:border-[#003366] text-xs font-bold transition-all cursor-pointer shadow-2xs group"
           >
-            <span>View All Patient Stories & Case Reviews</span>
+            <span>Read 850+ Verified Google Reviews & Book Visit</span>
             <ArrowRight className="w-3.5 h-3.5 text-[#00A3E0] group-hover:translate-x-1 transition-transform" />
           </button>
         </div>

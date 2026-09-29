@@ -36,18 +36,20 @@ export const MobileBottomBar: React.FC<MobileBottomBarProps> = ({ onNavigate }) 
         <span>WhatsApp</span>
       </a>
 
-      {/* Consult Dr. Mishra - Main Site Direct */}
-      <a
+      {/* Consult Dr. Mishra - Scroll to Consultation Form on landing page */}
+      <button
         id="mobile-bar-main-site-btn"
-        href="https://mycosmeticsurgery.in/contact-us/"
-        target="_blank"
-        rel="noopener noreferrer"
+        onClick={() => {
+          const el = document.getElementById('consultation');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+          else onNavigate('consultation');
+        }}
         className="flex min-h-11 flex-[1.3] items-center justify-center gap-1.5 rounded-xl bg-[#003366] hover:bg-[#002244] px-3 py-2 text-xs font-bold text-white shadow-sm transition-colors cursor-pointer"
-        aria-label="Consult Dr. Mishra on official site"
+        aria-label="Consult Dr. Mishra"
       >
         <Calendar className="w-3.5 h-3.5 text-[#00A3E0]" />
         <span>Consult Dr. Mishra</span>
-      </a>
+      </button>
     </div>
   );
 };

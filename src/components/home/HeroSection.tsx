@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { 
-  Calendar, 
-  Award, 
-  Users, 
-  ShieldCheck, 
-  Building2, 
-  ArrowRight, 
-  CheckCircle2, 
+import {
+  Calendar,
+  Award,
+  Users,
+  ShieldCheck,
+  Building2,
+  ArrowRight,
+  CheckCircle2,
   Sparkles,
   ChevronRight,
   Clock,
@@ -24,73 +24,79 @@ interface HeroSectionProps {
 export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   const [activeConcern, setActiveConcern] = useState<string>('rhinoplasty');
 
-  // Interactive Quick Concerns for Instant User Engagement
+  // Interactive Quick Concerns for Instant User Engagement matching the 6 Main Services
   const concerns = [
-    { id: 'rhinoplasty', label: 'Nose & Breathing', slug: 'rhinoplasty', icon: '👃', badge: 'Signature' },
+    { id: 'rhinoplasty', label: 'Rhinoplasty (Nose)', slug: 'rhinoplasty', icon: '👃', badge: 'Signature' },
     { id: 'gynecomastia', label: 'Male Chest (Gynecomastia)', slug: 'gynecomastia', icon: '🏋️', badge: 'Daycare' },
-    { id: 'liposuction', label: 'VASER 360° Liposuction', slug: 'liposuction', icon: '✨', badge: 'HD Sculpt' },
-    { id: 'facelift', label: 'SMAS Deep-Plane Facelift', slug: 'facelift', icon: '⏳', badge: 'Anti-Aging' },
-    { id: 'blepharoplasty', label: 'Eyelid & Eye Bags', slug: 'blepharoplasty', icon: '👁️', badge: 'Outpatient' },
-    { id: 'mommy-makeover', label: 'Mommy Makeover', slug: 'mommy-makeover', icon: '👶', badge: 'Restore' },
-    { id: 'scar-revision', label: 'Scar & Keloid Correction', slug: 'scar-revision', icon: '🩹', badge: 'Micro-Surgery' }
+    { id: 'liposuction', label: 'HD 360° Liposuction', slug: 'liposuction', icon: '✨', badge: 'HD Sculpt' },
+    { id: 'tummy-tuck', label: 'Tummy Tuck (Abdominoplasty)', slug: 'tummy-tuck', icon: '⏳', badge: 'Muscle Repair' },
+    { id: 'breast-augmentation', label: 'Breast Augmentation', slug: 'breast-augmentation', icon: '🌸', badge: 'FDA Implants' },
+    { id: 'profile-harmony', label: 'Profile Harmony', slug: 'chin-correction', icon: '💎', badge: 'Preservation' }
   ];
 
+  const scrollToSection = (sectionId: string) => {
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      onNavigate(sectionId);
+    }
+  };
+
   return (
-    <section className="relative pt-28 sm:pt-36 pb-14 sm:pb-20 bg-gradient-to-b from-[#F0F6FA] via-[#F6FAFD] to-[#F8FAFC] overflow-hidden border-b border-[#CBD5E1]">
-      
+    <section id="hero" className="relative pt-28 sm:pt-36 pb-14 sm:pb-20 bg-gradient-to-b from-[#F0F6FA] via-[#F6FAFD] to-[#F8FAFC] overflow-hidden border-b border-[#CBD5E1]">
+
       {/* Background Architectural Grid & Subtle Luminous Glows */}
       <div className="absolute inset-0 opacity-[0.035] bg-[radial-gradient(#003366_1px,transparent_1px)] [background-size:18px_18px] pointer-events-none" />
       <div className="absolute top-10 right-10 w-[500px] h-[500px] bg-[#00A3E0]/8 rounded-full blur-3xl pointer-events-none animate-pulse" />
       <div className="absolute -bottom-10 left-10 w-[500px] h-[500px] bg-[#003366]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
-        
+
         {/* Main 2-Column Hero */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-          
+
           {/* Left Column: Typography, Badges & CTAs (7 cols) */}
           <div className="lg:col-span-7 space-y-6">
-            
+
             {/* Live Trust Eyebrow */}
-            <div className="flex items-center gap-2 text-sm font-semibold tracking-wide text-[#003366]">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="font-bold">OPD Active Today</span>
-              <span className="text-slate-400">•</span>
-              <span className="text-slate-600">SIPS Super Specialty Hospital, Lucknow</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#003366]/15 shadow-2xs">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#003366]">
+                NABH Super-Specialty Plastic Surgery Center • SIPS Hospital, Lucknow
+              </span>
             </div>
 
             {/* Main Headline with Rich Editorial Rhythm */}
-            <h1 className="text-4xl sm:text-6xl lg:text-[62px] font-editorial font-bold text-[#003366] tracking-tight leading-[1.08]">
+            <h1 className="text-4xl sm:text-5xl lg:text-[58px] font-bold text-[#003366] tracking-tight leading-[1.12]">
               Revamping Your Looks.<br />
-              <span className="italic text-[#00A3E0] font-normal">
+              <span className="font-editorial italic font-normal text-[#00A3E0]">
                 Refining Your Confidence.
               </span>
             </h1>
 
             {/* Editorial Subtext */}
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl font-normal">
-              Super-specialty plastic, cosmetic & reconstructive surgery led by ASPS Board Certified Plastic Surgeon <strong className="text-[#003366] font-semibold">Dr. R.K. Mishra</strong> (Managing Director & Head of Plastic Surgery Dept., SIPS Super Specialty Hospital Pvt. Ltd., 25+ Yrs Exp • 30,000+ Surgeries).
+              Super-specialty plastic, cosmetic & reconstructive surgery led by ASPS Board Certified Plastic Surgeon <strong className="text-[#003366] font-semibold">Dr. R.K. Mishra</strong> (Managing Director & Head of Plastic Surgery Dept., SIPS Super Specialty Hospital Pvt. Ltd. • 25+ Yrs Exp • 30,000+ Surgeries).
             </p>
 
-            {/* Action Buttons */}
+            {/* Action Buttons - All smoothly scroll to home sections */}
             <div className="flex flex-wrap items-center gap-3 pt-1">
-              <a
-                href="https://mycosmeticsurgery.in/contact-us/"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => scrollToSection('consultation')}
                 id="hero-book-consultation-btn"
                 className="btn-navy text-sm sm:text-base py-3.5 px-6 rounded-xl shadow-md cursor-pointer flex items-center gap-2 group hover:scale-[1.02] transition-transform font-semibold text-white"
               >
                 <Calendar className="w-4 h-4 text-[#00A3E0] group-hover:scale-110 transition-transform" />
                 <span>Book In-Person Consultation</span>
-                <ArrowUpRight className="w-4 h-4 text-slate-300 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </a>
+                <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-white group-hover:translate-x-0.5 transition-transform" />
+              </button>
 
               <button
-                onClick={() => {
-                  const el = document.getElementById('procedure-matcher-quiz');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={() => scrollToSection('procedure-matcher-quiz')}
                 className="py-3.5 px-5 rounded-xl bg-white border border-[#003366] text-[#003366] hover:bg-[#003366] hover:text-white text-sm sm:text-base font-bold shadow-xs cursor-pointer flex items-center gap-2 transition-all"
               >
                 <Sparkles className="w-4 h-4 text-[#00A3E0]" />
@@ -98,7 +104,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
               </button>
 
               <button
-                onClick={() => onNavigate('procedures')}
+                onClick={() => scrollToSection('procedures')}
                 className="py-3.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-semibold cursor-pointer flex items-center gap-1 transition-colors"
               >
                 <span>Browse All</span>
@@ -115,7 +121,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                 {concerns.map((item) => (
                   <button
                     key={item.id}
-                    onClick={() => onNavigate(`procedure-${item.slug}`)}
+                    onClick={() => scrollToSection('procedures')}
                     className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white hover:bg-[#003366] text-slate-700 hover:text-white border border-[#CBD5E1] hover:border-[#003366] text-xs sm:text-sm font-semibold shadow-2xs hover:shadow-sm transition-all cursor-pointer group"
                   >
                     <span className="text-base">{item.icon}</span>
@@ -173,15 +179,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
           {/* Right Column: Hero Aesthetic Photography with Floating Credential Badges (5 cols) */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
             <div className="relative max-w-md w-full">
-              
+
               {/* Outer Glowing Decorative Aura */}
               <div className="absolute -inset-1 bg-gradient-to-r from-[#003366] to-[#00A3E0] rounded-[32px] blur-md opacity-20 group-hover:opacity-40 transition-opacity" />
 
               {/* Main Photo Card */}
               <div className="rounded-3xl overflow-hidden shadow-2xl border border-[#003366]/20 bg-white relative group">
-                <img 
-                  src="/hero.png" 
-                  alt="Dr. R.K. Mishra - ASPS Board Certified Plastic Surgeon, SIPS Super Specialty Hospital" 
+                <img
+                  src="/hero.png"
+                  alt="Dr. R.K. Mishra - ASPS Board Certified Plastic Surgeon, SIPS Super Specialty Hospital"
                   className="w-full h-auto object-cover object-top aspect-[3/4] group-hover:scale-[1.02] transition-transform duration-500"
                 />
 
@@ -217,7 +223,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                       <Check className="w-3.5 h-3.5 text-emerald-600" />
                       Dallas / NYU Fellow
                     </span>
-                    <span className="text-[#003366] font-bold hover:underline cursor-pointer" onClick={() => onNavigate('doctor')}>
+                    <span className="text-[#003366] font-bold hover:underline cursor-pointer" onClick={() => scrollToSection('about-doctor')}>
                       Full Profile →
                     </span>
                   </div>

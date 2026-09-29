@@ -91,6 +91,7 @@ export const ResultsGalleryView: React.FC<ResultsGalleryViewProps> = ({ onNaviga
                   caseData={item}
                   beforeImage={item.beforeImage}
                   afterImage={item.afterImage}
+                  fullImage={item.fullImage}
                   beforeLabel="Before"
                   afterLabel="After"
                   procedureName={item.procedureName}

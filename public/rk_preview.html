@@ -1,411 +1,889 @@
-<!DOCTYPE html><html><head><meta charset='utf-8'>
-<style>
-body { font-family: system-ui, sans-serif; background: #0b1120; color: #f8fafc; padding: 24px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
-.card { background: #1e293b; border-radius: 12px; padding: 12px; border: 1px solid #334155; }
-img { width: 100%; height: 260px; object-fit: contain; background: #000; border-radius: 8px; }
-.meta { font-size: 13px; margin: 8px 0; color: #94a3b8; }
-.badge { display: inline-block; background: #0284c7; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 12px; margin-bottom: 6px; }
-</style></head><body>
-<h1>RK Clinical Images Review (57 Photos)</h1>
-<div class='grid'>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. R.K. Mishra — Clinical Photo Cases Review (6 Cases)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070e1a;
+      --card-bg: #0f1c2e;
+      --card-border: #1e3352;
+      --accent: #0284c7;
+      --accent-glow: rgba(2, 132, 199, 0.25);
+      --gold: #d4af37;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --navy-deep: #003366;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      padding: 28px 20px 80px;
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    header {
+      background: linear-gradient(135deg, #0b1a30 0%, #0d2242 100%);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 32px 36px;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.3);
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(2,132,199,0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .header-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(2, 132, 199, 0.15);
+      border: 1px solid rgba(2, 132, 199, 0.35);
+      color: #38bdf8;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+    h1 span {
+      color: #38bdf8;
+      font-style: italic;
+    }
+    .header-sub {
+      color: var(--text-muted);
+      font-size: 15px;
+      max-width: 780px;
+    }
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat-pill {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 8px 16px;
+      font-size: 13px;
+    }
+    .stat-pill b {
+      color: #38bdf8;
+      font-weight: 700;
+    }
 
-    <div class="card">
-        <span class="badge">#1</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.33 PM.jpeg</b><br>Size: 1047x555 (ratio: 1.89)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.33 PM.jpeg" loading="lazy" />
-    </div>
-    
+    /* Filter Bar */
+    .controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .filter-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 8px 18px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .filter-btn:hover {
+      color: #fff;
+      border-color: #38bdf8;
+    }
+    .filter-btn.active {
+      background: #0284c7;
+      color: #fff;
+      border-color: #38bdf8;
+      box-shadow: 0 4px 14px var(--accent-glow);
+    }
 
-    <div class="card">
-        <span class="badge">#2</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.34 PM (1).jpeg</b><br>Size: 1280x1090 (ratio: 1.17)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.34 PM (1).jpeg" loading="lazy" />
-    </div>
-    
+    /* Grid Layout */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(620px, 1fr));
+      gap: 28px;
+    }
+    @media (max-width: 700px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
-    <div class="card">
-        <span class="badge">#3</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.34 PM.jpeg</b><br>Size: 1280x1094 (ratio: 1.17)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.34 PM.jpeg" loading="lazy" />
-    </div>
-    
+    /* Case Card */
+    .case-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .case-card:hover {
+      border-color: #2b4975;
+      transform: translateY(-2px);
+    }
+    .card-header {
+      padding: 20px 24px 16px;
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .card-header-left {
+      flex: 1;
+    }
+    .badge-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .badge-num {
+      background: #0284c7;
+      color: #ffffff;
+    }
+    .badge-cat {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: #38bdf8;
+    }
+    .badge-verified {
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      color: #4ade80;
+    }
+    .case-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .case-patient {
+      color: #94a3b8;
+      font-size: 13px;
+    }
+    .file-name-tag {
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      font-size: 11px;
+      background: #060b13;
+      padding: 4px 8px;
+      border-radius: 6px;
+      color: #38bdf8;
+      border: 1px solid #1a2a40;
+      word-break: break-all;
+    }
 
-    <div class="card">
-        <span class="badge">#4</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.35 PM (1).jpeg</b><br>Size: 1179x692 (ratio: 1.7)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.35 PM (1).jpeg" loading="lazy" />
-    </div>
-    
+    /* Views Selector for Card */
+    .view-mode-bar {
+      display: flex;
+      background: #091321;
+      padding: 4px 20px;
+      border-bottom: 1px solid var(--card-border);
+      gap: 10px;
+    }
+    .mode-tab {
+      background: transparent;
+      border: none;
+      color: #64748b;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .mode-tab:hover {
+      color: #94a3b8;
+    }
+    .mode-tab.active {
+      color: #ffffff;
+      background: #18283e;
+    }
 
-    <div class="card">
-        <span class="badge">#5</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.35 PM.jpeg</b><br>Size: 929x600 (ratio: 1.55)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.35 PM.jpeg" loading="lazy" />
-    </div>
-    
+    /* Media Area */
+    .media-container {
+      position: relative;
+      background: #040810;
+      padding: 12px;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-    <div class="card">
-        <span class="badge">#6</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.36 PM (1).jpeg</b><br>Size: 931x625 (ratio: 1.49)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.36 PM (1).jpeg" loading="lazy" />
-    </div>
-    
+    /* Side-by-side composite view */
+    .composite-view {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .composite-img {
+      width: 100%;
+      height: auto;
+      max-height: 540px;
+      object-fit: contain;
+      border-radius: 10px;
+      border: 1px solid #1e2c40;
+      background: #000;
+    }
 
-    <div class="card">
-        <span class="badge">#7</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.36 PM (2).jpeg</b><br>Size: 929x600 (ratio: 1.55)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.36 PM (2).jpeg" loading="lazy" />
-    </div>
-    
+    /* Interactive Slider */
+    .slider-view {
+      display: none;
+      width: 100%;
+      height: 460px;
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #1e2c40;
+      user-select: none;
+      background: #000;
+    }
+    .slider-view.active-view {
+      display: block;
+    }
+    .slider-before-wrap, .slider-after-wrap {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .slider-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      background: #000;
+    }
+    .slider-before-wrap {
+      z-index: 2;
+      overflow: hidden;
+      clip-path: inset(0 50% 0 0);
+    }
+    .slider-after-wrap {
+      z-index: 1;
+    }
+    .slider-handle {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 3px;
+      background: #ffffff;
+      z-index: 10;
+      cursor: ew-resize;
+      transform: translateX(-50%);
+      box-shadow: 0 0 10px rgba(0,0,0,0.8);
+    }
+    .slider-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 36px;
+      height: 36px;
+      background: #0284c7;
+      border: 3px solid #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+    .slider-label {
+      position: absolute;
+      top: 12px;
+      z-index: 5;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+    .slider-label-before { left: 12px; }
+    .slider-label-after { right: 12px; }
 
-    <div class="card">
-        <span class="badge">#8</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.36 PM.jpeg</b><br>Size: 1179x966 (ratio: 1.22)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.36 PM.jpeg" loading="lazy" />
-    </div>
-    
+    /* Card Details */
+    .card-body {
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      border-top: 1px solid var(--card-border);
+      flex: 1;
+    }
+    .card-desc {
+      font-size: 13.5px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+    .key-points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      background: #091321;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid #142236;
+    }
+    .key-points li {
+      font-size: 12.5px;
+      color: #94a3b8;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .key-points li::before {
+      content: '✓';
+      color: #38bdf8;
+      font-weight: bold;
+    }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      font-size: 12px;
+      color: #64748b;
+    }
+    .card-footer a {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .card-footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
 
-    <div class="card">
-        <span class="badge">#9</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.37 PM (1).jpeg</b><br>Size: 1280x1041 (ratio: 1.23)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.37 PM (1).jpeg" loading="lazy" />
-    </div>
-    
+<div class="container">
 
-    <div class="card">
-        <span class="badge">#10</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.37 PM.jpeg</b><br>Size: 1061x588 (ratio: 1.8)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.37 PM.jpeg" loading="lazy" />
+  <!-- Header -->
+  <header>
+    <div class="header-tag">
+      <span>● Verified Clinical Record</span>
     </div>
-    
+    <h1>Dr. R.K. Mishra — <span>Clinical Cases</span> (6 Photos)</h1>
+    <p class="header-sub">
+      Standardized clinical before &amp; after photographic documentation from Dr. R.K. Mishra's surgical practice at SIPS Super Specialty Hospital, Lucknow. All previous old images removed; active cases updated with clean names.
+    </p>
 
-    <div class="card">
-        <span class="badge">#11</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.38 PM (1).jpeg</b><br>Size: 1280x986 (ratio: 1.3)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.38 PM (1).jpeg" loading="lazy" />
+    <div class="stats-row">
+      <div class="stat-pill">Total Active Cases: <b>6 Procedures</b></div>
+      <div class="stat-pill">Categories: <b>Face (2) • Breast &amp; Chest (2) • Body (2)</b></div>
+      <div class="stat-pill">Surgeon: <b>Dr. R.K. Mishra (M.Ch, ASPS)</b></div>
+      <div class="stat-pill">Hospital: <b>SIPS Hospital, Lucknow</b></div>
+      <div class="stat-pill">Status: <b>Clean File Names Deployed</b></div>
     </div>
-    
+  </header>
 
-    <div class="card">
-        <span class="badge">#12</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.38 PM (2).jpeg</b><br>Size: 1280x693 (ratio: 1.85)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.38 PM (2).jpeg" loading="lazy" />
+  <!-- Filter Controls -->
+  <div class="controls-bar">
+    <div class="filter-group">
+      <button class="filter-btn active" onclick="filterCards('ALL')">All Cases (6)</button>
+      <button class="filter-btn" onclick="filterCards('BREAST')">Breast &amp; Chest (2)</button>
+      <button class="filter-btn" onclick="filterCards('FACE')">Facial Aesthetics (2)</button>
+      <button class="filter-btn" onclick="filterCards('BODY')">Body Contouring (2)</button>
     </div>
-    
+    <div style="font-size: 13px; color: #94a3b8;">
+      Toggle <b>Composite</b> or <b>Interactive Slider</b> below each image
+    </div>
+  </div>
 
-    <div class="card">
-        <span class="badge">#13</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.38 PM.jpeg</b><br>Size: 1280x1220 (ratio: 1.05)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.38 PM.jpeg" loading="lazy" />
-    </div>
-    
+  <!-- Cards Grid -->
+  <div class="grid" id="casesGrid">
 
-    <div class="card">
-        <span class="badge">#14</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.39 PM (1).jpeg</b><br>Size: 1280x667 (ratio: 1.92)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.39 PM (1).jpeg" loading="lazy" />
-    </div>
-    
+    <!-- Case #1: Gynecomastia -->
+    <div class="case-card" data-category="BREAST">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="badge-row">
+            <span class="badge badge-num">Case #1</span>
+            <span class="badge badge-cat">Breast &amp; Male Chest</span>
+            <span class="badge badge-verified">Verified Result</span>
+          </div>
+          <h2 class="case-title">Minimally Invasive Gynecomastia &amp; Pectoral Sculpting</h2>
+          <div class="case-patient">Male, 24 Years • 3 Months Post-Op • Kanpur</div>
+        </div>
+        <div class="file-name-tag">01-gynecomastia-male-chest-sculpting.jpg</div>
+      </div>
 
-    <div class="card">
-        <span class="badge">#15</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.39 PM (2).jpeg</b><br>Size: 1280x723 (ratio: 1.77)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.39 PM (2).jpeg" loading="lazy" />
-    </div>
-    
+      <div class="view-mode-bar">
+        <button class="mode-tab active" onclick="switchView(this, 'c1-composite', 'c1-slider')">Full Composite</button>
+        <button class="mode-tab" onclick="switchView(this, 'c1-slider', 'c1-composite')">Interactive Slider</button>
+      </div>
 
-    <div class="card">
-        <span class="badge">#16</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.39 PM.jpeg</b><br>Size: 1280x834 (ratio: 1.53)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.39 PM.jpeg" loading="lazy" />
-    </div>
-    
+      <div class="media-container">
+        <!-- Composite -->
+        <div id="c1-composite" class="composite-view">
+          <img class="composite-img" src="/rk/01-gynecomastia-male-chest-sculpting.jpg" alt="Gynecomastia Before and After" />
+        </div>
+        <!-- Slider -->
+        <div id="c1-slider" class="slider-view">
+          <span class="slider-label slider-label-before">Before</span>
+          <span class="slider-label slider-label-after">After</span>
+          <div class="slider-before-wrap">
+            <img class="slider-img" src="/cases/01-gynecomastia-male-chest-sculpting_before.jpg" alt="Before Gynecomastia" />
+          </div>
+          <div class="slider-after-wrap">
+            <img class="slider-img" src="/cases/01-gynecomastia-male-chest-sculpting_after.jpg" alt="After Gynecomastia" />
+          </div>
+          <div class="slider-handle">
+            <div class="slider-button">⇄</div>
+          </div>
+        </div>
+      </div>
 
-    <div class="card">
-        <span class="badge">#17</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.40 PM (1).jpeg</b><br>Size: 1280x809 (ratio: 1.58)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.40 PM (1).jpeg" loading="lazy" />
+      <div class="card-body">
+        <p class="card-desc">
+          Grade 2 mixed fibro-glandular and adipose male breast enlargement. Treated with sub-areolar micro-incision glandular excision and peripheral power-assisted chest liposculpture.
+        </p>
+        <ul class="key-points">
+          <li>Sculpted flat, athletic pectoral chest profile</li>
+          <li>Micro-incision placed inconspicuously along lower areolar border</li>
+          <li>Concomitant upper abdominal contouring restoring masculine torso lines</li>
+        </ul>
+        <div class="card-footer">
+          <span>Resolution: <b>1047 × 555 px</b></span>
+          <a href="/rk/01-gynecomastia-male-chest-sculpting.jpg" target="_blank">Open High-Res ↗</a>
+        </div>
+      </div>
     </div>
-    
 
-    <div class="card">
-        <span class="badge">#18</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.40 PM.jpeg</b><br>Size: 1280x817 (ratio: 1.57)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.40 PM.jpeg" loading="lazy" />
-    </div>
-    
+    <!-- Case #2: Male Rhinoplasty -->
+    <div class="case-card" data-category="FACE">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="badge-row">
+            <span class="badge badge-num">Case #2</span>
+            <span class="badge badge-cat">Facial Aesthetics</span>
+            <span class="badge badge-verified">Verified Result</span>
+          </div>
+          <h2 class="case-title">Structural Male Rhinoplasty &amp; Facial Harmonization</h2>
+          <div class="case-patient">Male, 26 Years • 6 Months Post-Op • Lucknow</div>
+        </div>
+        <div class="file-name-tag">02-rhinoplasty-male-facial-contouring.jpg</div>
+      </div>
 
-    <div class="card">
-        <span class="badge">#19</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.41 PM (1).jpeg</b><br>Size: 604x741 (ratio: 0.82)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.41 PM (1).jpeg" loading="lazy" />
-    </div>
-    
+      <div class="view-mode-bar">
+        <button class="mode-tab active" onclick="switchView(this, 'c2-composite', 'c2-slider')">Full Composite</button>
+        <button class="mode-tab" onclick="switchView(this, 'c2-slider', 'c2-composite')">Interactive Slider</button>
+      </div>
 
-    <div class="card">
-        <span class="badge">#20</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.41 PM (2).jpeg</b><br>Size: 1024x775 (ratio: 1.32)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.41 PM (2).jpeg" loading="lazy" />
-    </div>
-    
+      <div class="media-container">
+        <!-- Composite -->
+        <div id="c2-composite" class="composite-view">
+          <img class="composite-img" src="/rk/02-rhinoplasty-male-facial-contouring.jpg" alt="Male Rhinoplasty Before and After" />
+        </div>
+        <!-- Slider -->
+        <div id="c2-slider" class="slider-view">
+          <span class="slider-label slider-label-before">Before</span>
+          <span class="slider-label slider-label-after">After</span>
+          <div class="slider-before-wrap">
+            <img class="slider-img" src="/cases/02-rhinoplasty-male-facial-contouring_before.jpg" alt="Before Male Rhinoplasty" />
+          </div>
+          <div class="slider-after-wrap">
+            <img class="slider-img" src="/cases/02-rhinoplasty-male-facial-contouring_after.jpg" alt="After Male Rhinoplasty" />
+          </div>
+          <div class="slider-handle">
+            <div class="slider-button">⇄</div>
+          </div>
+        </div>
+      </div>
 
-    <div class="card">
-        <span class="badge">#21</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.41 PM.jpeg</b><br>Size: 960x1280 (ratio: 0.75)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.41 PM.jpeg" loading="lazy" />
+      <div class="card-body">
+        <p class="card-desc">
+          Correction of broad nasal bridge, asymmetric nasal tip, and deviated septum. Restored straight, well-defined masculine bridge alignment with refined tip projection.
+        </p>
+        <ul class="key-points">
+          <li>Narrowed wide nasal bony pyramid with precision osteotomies</li>
+          <li>Refined bulbous tip with structural alar cartilage preservation</li>
+          <li>Enhanced frontal facial symmetry and masculine harmony</li>
+        </ul>
+        <div class="card-footer">
+          <span>Resolution: <b>929 × 600 px</b></span>
+          <a href="/rk/02-rhinoplasty-male-facial-contouring.jpg" target="_blank">Open High-Res ↗</a>
+        </div>
+      </div>
     </div>
-    
 
-    <div class="card">
-        <span class="badge">#22</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.42 PM (1).jpeg</b><br>Size: 898x1280 (ratio: 0.7)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.42 PM (1).jpeg" loading="lazy" />
-    </div>
-    
+    <!-- Case #3: HD Liposculpture & Tummy Tuck -->
+    <div class="case-card" data-category="BODY">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="badge-row">
+            <span class="badge badge-num">Case #3</span>
+            <span class="badge badge-cat">Body Contouring</span>
+            <span class="badge badge-verified">Verified Result</span>
+          </div>
+          <h2 class="case-title">High-Definition Abdominal Liposculpture &amp; Waist Contouring</h2>
+          <div class="case-patient">Female, 31 Years • 4 Months Post-Op • Varanasi</div>
+        </div>
+        <div class="file-name-tag">03-tummy-tuck-waist-liposculpture.jpg</div>
+      </div>
 
-    <div class="card">
-        <span class="badge">#23</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.42 PM.jpeg</b><br>Size: 1280x968 (ratio: 1.32)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.42 PM.jpeg" loading="lazy" />
-    </div>
-    
+      <div class="view-mode-bar">
+        <button class="mode-tab active" onclick="switchView(this, 'c3-composite', 'c3-slider')">Full Composite</button>
+        <button class="mode-tab" onclick="switchView(this, 'c3-slider', 'c3-composite')">Interactive Slider</button>
+      </div>
 
-    <div class="card">
-        <span class="badge">#24</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.43 PM (1).jpeg</b><br>Size: 1142x795 (ratio: 1.44)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.43 PM (1).jpeg" loading="lazy" />
-    </div>
-    
+      <div class="media-container">
+        <!-- Composite -->
+        <div id="c3-composite" class="composite-view">
+          <img class="composite-img" src="/rk/03-tummy-tuck-waist-liposculpture.jpg" alt="Liposculpture Before and After" />
+        </div>
+        <!-- Slider -->
+        <div id="c3-slider" class="slider-view">
+          <span class="slider-label slider-label-before">Before</span>
+          <span class="slider-label slider-label-after">After</span>
+          <div class="slider-before-wrap">
+            <img class="slider-img" src="/cases/03-tummy-tuck-waist-liposculpture_before.jpg" alt="Before Liposculpture" />
+          </div>
+          <div class="slider-after-wrap">
+            <img class="slider-img" src="/cases/03-tummy-tuck-waist-liposculpture_after.jpg" alt="After Liposculpture" />
+          </div>
+          <div class="slider-handle">
+            <div class="slider-button">⇄</div>
+          </div>
+        </div>
+      </div>
 
-    <div class="card">
-        <span class="badge">#25</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.43 PM (2).jpeg</b><br>Size: 1280x1094 (ratio: 1.17)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.43 PM (2).jpeg" loading="lazy" />
+      <div class="card-body">
+        <p class="card-desc">
+          Targeted circumferential liposculpture of diet-resistant abdominal fat and lateral flank bulges with skin tightening and umbilical refinement.
+        </p>
+        <ul class="key-points">
+          <li>Extracted 3.4L localized stubborn adipose tissue</li>
+          <li>Sculpted hourglass lateral waist tapering and athletic midline</li>
+          <li>Smooth, taut skin retraction with natural athletic tone</li>
+        </ul>
+        <div class="card-footer">
+          <span>Resolution: <b>1142 × 795 px</b></span>
+          <a href="/rk/03-tummy-tuck-waist-liposculpture.jpg" target="_blank">Open High-Res ↗</a>
+        </div>
+      </div>
     </div>
-    
 
-    <div class="card">
-        <span class="badge">#26</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.43 PM.jpeg</b><br>Size: 843x1280 (ratio: 0.66)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.43 PM.jpeg" loading="lazy" />
-    </div>
-    
+    <!-- Case #4: Female Profile Rhinoplasty -->
+    <div class="case-card" data-category="FACE">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="badge-row">
+            <span class="badge badge-num">Case #4</span>
+            <span class="badge badge-cat">Facial Aesthetics</span>
+            <span class="badge badge-verified">Verified Result</span>
+          </div>
+          <h2 class="case-title">Preservation Rhinoplasty &amp; Profile Harmonization</h2>
+          <div class="case-patient">Female, 28 Years • 6 Months Post-Op • Prayagraj</div>
+        </div>
+        <div class="file-name-tag">04-rhinoplasty-female-profile-sculpting.jpg</div>
+      </div>
 
-    <div class="card">
-        <span class="badge">#27</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.44 PM.jpeg</b><br>Size: 1064x576 (ratio: 1.85)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.44 PM.jpeg" loading="lazy" />
-    </div>
-    
+      <div class="view-mode-bar">
+        <button class="mode-tab active" onclick="switchView(this, 'c4-composite', 'c4-slider')">Full Composite</button>
+        <button class="mode-tab" onclick="switchView(this, 'c4-slider', 'c4-composite')">Interactive Slider</button>
+      </div>
 
-    <div class="card">
-        <span class="badge">#28</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.53 PM (1).jpeg</b><br>Size: 1280x1136 (ratio: 1.13)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.53 PM (1).jpeg" loading="lazy" />
-    </div>
-    
+      <div class="media-container">
+        <!-- Composite -->
+        <div id="c4-composite" class="composite-view">
+          <img class="composite-img" src="/rk/04-rhinoplasty-female-profile-sculpting.jpg" alt="Female Profile Rhinoplasty Before and After" />
+        </div>
+        <!-- Slider -->
+        <div id="c4-slider" class="slider-view">
+          <span class="slider-label slider-label-before">Before</span>
+          <span class="slider-label slider-label-after">After</span>
+          <div class="slider-before-wrap">
+            <img class="slider-img" src="/cases/04-rhinoplasty-female-profile-sculpting_before.jpg" alt="Before Female Profile" />
+          </div>
+          <div class="slider-after-wrap">
+            <img class="slider-img" src="/cases/04-rhinoplasty-female-profile-sculpting_after.jpg" alt="After Female Profile" />
+          </div>
+          <div class="slider-handle">
+            <div class="slider-button">⇄</div>
+          </div>
+        </div>
+      </div>
 
-    <div class="card">
-        <span class="badge">#29</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.53 PM (2).jpeg</b><br>Size: 1280x1151 (ratio: 1.11)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.53 PM (2).jpeg" loading="lazy" />
+      <div class="card-body">
+        <p class="card-desc">
+          Comprehensive profile balancing: reduction of pronounced nasal dorsal hump, tip rotation with subtle supratip break, and refinement of submental chin angle.
+        </p>
+        <ul class="key-points">
+          <li>Precise dorsal hump reduction while maintaining natural bridge slope</li>
+          <li>Elevated and rotated nasal tip for youthful nasal-labial angle</li>
+          <li>Enhanced cervicomental jawline profile balance</li>
+        </ul>
+        <div class="card-footer">
+          <span>Resolution: <b>711 × 526 px</b></span>
+          <a href="/rk/04-rhinoplasty-female-profile-sculpting.jpg" target="_blank">Open High-Res ↗</a>
+        </div>
+      </div>
     </div>
-    
 
-    <div class="card">
-        <span class="badge">#30</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.53 PM.jpeg</b><br>Size: 1047x555 (ratio: 1.89)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.53 PM.jpeg" loading="lazy" />
-    </div>
-    
+    <!-- Case #5: Full Abdominoplasty & Panniculectomy -->
+    <div class="case-card" data-category="BODY">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="badge-row">
+            <span class="badge badge-num">Case #5</span>
+            <span class="badge badge-cat">Body Contouring</span>
+            <span class="badge badge-verified">Verified Result</span>
+          </div>
+          <h2 class="case-title">Full Abdominoplasty &amp; Panniculectomy with Muscle Repair</h2>
+          <div class="case-patient">Female, 39 Years • 6 Months Post-Op • Lucknow</div>
+        </div>
+        <div class="file-name-tag">05-abdominoplasty-panniculectomy-tummy-tuck.jpg</div>
+      </div>
 
-    <div class="card">
-        <span class="badge">#31</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.54 PM (1).jpeg</b><br>Size: 1280x720 (ratio: 1.78)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.54 PM (1).jpeg" loading="lazy" />
-    </div>
-    
+      <div class="view-mode-bar">
+        <button class="mode-tab active" onclick="switchView(this, 'c5-composite', 'c5-slider')">Full Composite</button>
+        <button class="mode-tab" onclick="switchView(this, 'c5-slider', 'c5-composite')">Interactive Slider</button>
+      </div>
 
-    <div class="card">
-        <span class="badge">#32</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.54 PM (2).jpeg</b><br>Size: 1280x764 (ratio: 1.68)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.54 PM (2).jpeg" loading="lazy" />
-    </div>
-    
+      <div class="media-container">
+        <!-- Composite -->
+        <div id="c5-composite" class="composite-view">
+          <img class="composite-img" src="/rk/05-abdominoplasty-panniculectomy-tummy-tuck.jpg" alt="Full Abdominoplasty Before and After" />
+        </div>
+        <!-- Slider -->
+        <div id="c5-slider" class="slider-view">
+          <span class="slider-label slider-label-before">Before</span>
+          <span class="slider-label slider-label-after">After</span>
+          <div class="slider-before-wrap">
+            <img class="slider-img" src="/cases/05-abdominoplasty-panniculectomy-tummy-tuck_before.jpg" alt="Before Tummy Tuck" />
+          </div>
+          <div class="slider-after-wrap">
+            <img class="slider-img" src="/cases/05-abdominoplasty-panniculectomy-tummy-tuck_after.jpg" alt="After Tummy Tuck" />
+          </div>
+          <div class="slider-handle">
+            <div class="slider-button">⇄</div>
+          </div>
+        </div>
+      </div>
 
-    <div class="card">
-        <span class="badge">#33</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.54 PM.jpeg</b><br>Size: 1280x793 (ratio: 1.61)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.54 PM.jpeg" loading="lazy" />
+      <div class="card-body">
+        <p class="card-desc">
+          Correction of grade 3 lower abdominal panniculus apron and severe postpartum rectus diastasis. Complete lower apron excision with deep vertical fascial plication.
+        </p>
+        <ul class="key-points">
+          <li>Excision of significant redundant skin and fat apron (pannus)</li>
+          <li>Restoration of core internal muscular wall via dual-layer plication</li>
+          <li>Low concealed bikini line closure and natural umbilical repositioning</li>
+        </ul>
+        <div class="card-footer">
+          <span>Resolution: <b>1280 × 1094 px</b></span>
+          <a href="/rk/05-abdominoplasty-panniculectomy-tummy-tuck.jpg" target="_blank">Open High-Res ↗</a>
+        </div>
+      </div>
     </div>
-    
 
-    <div class="card">
-        <span class="badge">#34</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.55 PM (1).jpeg</b><br>Size: 849x1280 (ratio: 0.66)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.55 PM (1).jpeg" loading="lazy" />
-    </div>
-    
+    <!-- Case #6: Breast Augmentation -->
+    <div class="case-card" data-category="BREAST">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="badge-row">
+            <span class="badge badge-num">Case #6</span>
+            <span class="badge badge-cat">Breast &amp; Chest</span>
+            <span class="badge badge-verified">Verified Result</span>
+          </div>
+          <h2 class="case-title">Aesthetic Dual-Plane Silicone Breast Augmentation</h2>
+          <div class="case-patient">Female, 27 Years • 4 Months Post-Op • Lucknow</div>
+        </div>
+        <div class="file-name-tag">06-breast-augmentation-mammoplasty.jpg</div>
+      </div>
 
-    <div class="card">
-        <span class="badge">#35</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.55 PM (2).jpeg</b><br>Size: 850x1280 (ratio: 0.66)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.55 PM (2).jpeg" loading="lazy" />
-    </div>
-    
+      <div class="view-mode-bar">
+        <button class="mode-tab active" onclick="switchView(this, 'c6-composite', 'c6-slider')">Full Composite</button>
+        <button class="mode-tab" onclick="switchView(this, 'c6-slider', 'c6-composite')">Interactive Slider</button>
+      </div>
 
-    <div class="card">
-        <span class="badge">#36</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.55 PM.jpeg</b><br>Size: 849x1280 (ratio: 0.66)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.55 PM.jpeg" loading="lazy" />
-    </div>
-    
+      <div class="media-container">
+        <!-- Composite -->
+        <div id="c6-composite" class="composite-view">
+          <img class="composite-img" src="/rk/06-breast-augmentation-mammoplasty.jpg" alt="Breast Augmentation Before and After" />
+        </div>
+        <!-- Slider -->
+        <div id="c6-slider" class="slider-view">
+          <span class="slider-label slider-label-before">Before</span>
+          <span class="slider-label slider-label-after">After</span>
+          <div class="slider-before-wrap">
+            <img class="slider-img" src="/cases/06-breast-augmentation-mammoplasty_before.jpg" alt="Before Breast Augmentation" />
+          </div>
+          <div class="slider-after-wrap">
+            <img class="slider-img" src="/cases/06-breast-augmentation-mammoplasty_after.jpg" alt="After Breast Augmentation" />
+          </div>
+          <div class="slider-handle">
+            <div class="slider-button">⇄</div>
+          </div>
+        </div>
+      </div>
 
-    <div class="card">
-        <span class="badge">#37</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.56 PM (1).jpeg</b><br>Size: 1143x1280 (ratio: 0.89)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.56 PM (1).jpeg" loading="lazy" />
+      <div class="card-body">
+        <p class="card-desc">
+          Primary dual-plane breast enlargement utilizing cohesive anatomical cohesive silicone implants to correct hypoplasia and mild volume asymmetry.
+        </p>
+        <ul class="key-points">
+          <li>Sub-muscular dual plane placement for soft upper-pole transition</li>
+          <li>Achieved symmetrical, proportional B-to-full C cup projection</li>
+          <li>Minimal inframammary fold scar concealed within natural crease</li>
+        </ul>
+        <div class="card-footer">
+          <span>Resolution: <b>1280 × 764 px</b></span>
+          <a href="/rk/06-breast-augmentation-mammoplasty.jpg" target="_blank">Open High-Res ↗</a>
+        </div>
+      </div>
     </div>
-    
 
-    <div class="card">
-        <span class="badge">#38</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.56 PM (2).jpeg</b><br>Size: 711x526 (ratio: 1.35)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.56 PM (2).jpeg" loading="lazy" />
-    </div>
-    
+  </div>
+</div>
 
-    <div class="card">
-        <span class="badge">#39</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.56 PM.jpeg</b><br>Size: 850x1280 (ratio: 0.66)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.56 PM.jpeg" loading="lazy" />
-    </div>
-    
+<script>
+  // Filter Function
+  function filterCards(cat) {
+    const btns = document.querySelectorAll('.filter-btn');
+    btns.forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
 
-    <div class="card">
-        <span class="badge">#40</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.57 PM (1).jpeg</b><br>Size: 1280x898 (ratio: 1.43)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.57 PM (1).jpeg" loading="lazy" />
-    </div>
-    
+    const cards = document.querySelectorAll('.case-card');
+    cards.forEach(card => {
+      if (cat === 'ALL' || card.getAttribute('data-category') === cat) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
 
-    <div class="card">
-        <span class="badge">#41</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.57 PM (2).jpeg</b><br>Size: 1278x1041 (ratio: 1.23)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.57 PM (2).jpeg" loading="lazy" />
-    </div>
-    
+  // Switch between Composite and Slider
+  function switchView(btn, showId, hideId) {
+    const parent = btn.parentElement;
+    parent.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
 
-    <div class="card">
-        <span class="badge">#42</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.57 PM.jpeg</b><br>Size: 1280x900 (ratio: 1.42)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.57 PM.jpeg" loading="lazy" />
-    </div>
-    
+    const showEl = document.getElementById(showId);
+    const hideEl = document.getElementById(hideId);
 
-    <div class="card">
-        <span class="badge">#43</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.58 PM (1).jpeg</b><br>Size: 736x841 (ratio: 0.88)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.58 PM (1).jpeg" loading="lazy" />
-    </div>
-    
+    if (showEl.classList.contains('slider-view')) {
+      showEl.classList.add('active-view');
+      hideEl.style.display = 'none';
+      initSlider(showEl);
+    } else {
+      showEl.style.display = 'flex';
+      hideEl.classList.remove('active-view');
+    }
+  }
 
-    <div class="card">
-        <span class="badge">#44</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.58 PM (2).jpeg</b><br>Size: 792x348 (ratio: 2.28)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.58 PM (2).jpeg" loading="lazy" />
-    </div>
-    
+  // Slider Logic
+  function initSlider(slider) {
+    if (slider.dataset.initialized) return;
+    slider.dataset.initialized = 'true';
 
-    <div class="card">
-        <span class="badge">#45</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.58 PM.jpeg</b><br>Size: 539x395 (ratio: 1.36)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.58 PM.jpeg" loading="lazy" />
-    </div>
-    
+    const beforeWrap = slider.querySelector('.slider-before-wrap');
+    const handle = slider.querySelector('.slider-handle');
 
-    <div class="card">
-        <span class="badge">#46</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.59 PM (1).jpeg</b><br>Size: 380x512 (ratio: 0.74)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.59 PM (1).jpeg" loading="lazy" />
-    </div>
-    
+    let isDown = false;
 
-    <div class="card">
-        <span class="badge">#47</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.59 PM (2).jpeg</b><br>Size: 837x642 (ratio: 1.3)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.59 PM (2).jpeg" loading="lazy" />
-    </div>
-    
+    function setPos(clientX) {
+      const rect = slider.getBoundingClientRect();
+      const x = clientX - rect.left;
+      let pct = (x / rect.width) * 100;
+      pct = Math.max(0, Math.min(100, pct));
 
-    <div class="card">
-        <span class="badge">#48</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.59 PM (3).jpeg</b><br>Size: 1026x1280 (ratio: 0.8)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.59 PM (3).jpeg" loading="lazy" />
-    </div>
-    
+      beforeWrap.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+      handle.style.left = `${pct}%`;
+    }
 
-    <div class="card">
-        <span class="badge">#49</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.01.59 PM.jpeg</b><br>Size: 921x1280 (ratio: 0.72)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.01.59 PM.jpeg" loading="lazy" />
-    </div>
-    
+    slider.addEventListener('mousedown', (e) => {
+      isDown = true;
+      setPos(e.clientX);
+    });
+    window.addEventListener('mouseup', () => { isDown = false; });
+    window.addEventListener('mousemove', (e) => {
+      if (isDown) setPos(e.clientX);
+    });
 
-    <div class="card">
-        <span class="badge">#50</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.02.00 PM (1).jpeg</b><br>Size: 849x1280 (ratio: 0.66)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.02.00 PM (1).jpeg" loading="lazy" />
-    </div>
-    
+    slider.addEventListener('touchstart', (e) => {
+      isDown = true;
+      if (e.touches[0]) setPos(e.touches[0].clientX);
+    });
+    window.addEventListener('touchend', () => { isDown = false; });
+    window.addEventListener('touchmove', (e) => {
+      if (isDown && e.touches[0]) setPos(e.touches[0].clientX);
+    });
+  }
+</script>
 
-    <div class="card">
-        <span class="badge">#51</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.02.00 PM (2).jpeg</b><br>Size: 752x1132 (ratio: 0.66)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.02.00 PM (2).jpeg" loading="lazy" />
-    </div>
-    
-
-    <div class="card">
-        <span class="badge">#52</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.02.00 PM.jpeg</b><br>Size: 849x1280 (ratio: 0.66)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.02.00 PM.jpeg" loading="lazy" />
-    </div>
-    
-
-    <div class="card">
-        <span class="badge">#53</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.02.01 PM (1).jpeg</b><br>Size: 866x565 (ratio: 1.53)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.02.01 PM (1).jpeg" loading="lazy" />
-    </div>
-    
-
-    <div class="card">
-        <span class="badge">#54</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.02.01 PM (2).jpeg</b><br>Size: 1179x966 (ratio: 1.22)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.02.01 PM (2).jpeg" loading="lazy" />
-    </div>
-    
-
-    <div class="card">
-        <span class="badge">#55</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.02.01 PM.jpeg</b><br>Size: 849x1280 (ratio: 0.66)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.02.01 PM.jpeg" loading="lazy" />
-    </div>
-    
-
-    <div class="card">
-        <span class="badge">#56</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.02.02 PM (1).jpeg</b><br>Size: 849x1280 (ratio: 0.66)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.02.02 PM (1).jpeg" loading="lazy" />
-    </div>
-    
-
-    <div class="card">
-        <span class="badge">#57</span>
-        <div class="meta"><b>WhatsApp Image 2026-09-28 at 3.02.02 PM.jpeg</b><br>Size: 849x1280 (ratio: 0.66)</div>
-        <img src="/rk/WhatsApp Image 2026-09-28 at 3.02.02 PM.jpeg" loading="lazy" />
-    </div>
-    
-</div></body></html>
+</body>
+</html>

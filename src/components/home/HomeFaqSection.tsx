@@ -103,7 +103,7 @@ export const HomeFaqSection: React.FC<HomeFaqSectionProps> = ({ onNavigate }) =>
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#FFFFFF] via-[#F8FAFC] to-[#FFFFFF] py-14 sm:py-20 border-b border-[#E2E8F0]">
+    <section id="faqs" className="relative overflow-hidden bg-gradient-to-b from-[#FFFFFF] via-[#F8FAFC] to-[#FFFFFF] py-14 sm:py-20 border-b border-[#E2E8F0]">
       
       {/* Background Soft Glow Auras */}
       <div className="absolute top-1/4 -right-32 w-96 h-96 bg-[#00A3E0]/10 rounded-full blur-3xl pointer-events-none" />
@@ -117,30 +117,30 @@ export const HomeFaqSection: React.FC<HomeFaqSectionProps> = ({ onNavigate }) =>
           {/* Left Column: Premium Consultation Visual Showcase (5 Cols) */}
           <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
             
-            {/* Main Consultation Photo Card */}
-            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-white shadow-2xl shadow-slate-900/10 border border-slate-200/80 group">
-              <div className="aspect-[3/4] relative overflow-hidden bg-slate-100">
+            {/* Main AI Process & Surgical Planning Card */}
+            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-950 shadow-2xl shadow-slate-900/20 border border-slate-700/50 group">
+              <div className="aspect-[3/4] relative overflow-hidden bg-slate-950">
                 <img
-                  src="/assets/patient_doctor_consultation.jpg"
-                  alt="Dr. R. K. Mishra In-Depth Aesthetic Consultation with Patient"
+                  src="/assets/surgical_process_ai.jpg"
+                  alt="AI-Assisted 3D Anatomical Surgical Planning & Procedural Workflow"
                   className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700"
                   loading="lazy"
                 />
                 
-                {/* Subtle Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#002244]/80 via-transparent to-transparent" />
+                {/* Subtle Sleek Gradient Overlay at bottom */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent" />
 
-                {/* Photo Bottom Caption */}
-                <div className="absolute bottom-0 inset-x-0 p-5 sm:p-6 text-white">
+                {/* Card Bottom Caption */}
+                <div className="absolute bottom-0 inset-x-0 p-5 sm:p-6 text-white backdrop-blur-[2px]">
                   <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#00A3E0] mb-1.5">
-                    <ShieldCheck className="w-4 h-4" />
-                    <span>Personal 1-on-1 Evaluation</span>
+                    <Sparkles className="w-4 h-4 text-[#00A3E0]" />
+                    <span>3D Precision Planning Process</span>
                   </div>
                   <h3 className="text-xl sm:text-2xl font-bold font-heading leading-tight mb-1 text-white">
-                    Honest, Patient-First Guidance
+                    Anatomical Precision & Vector Mapping
                   </h3>
-                  <p className="text-sm text-slate-200 leading-relaxed">
-                    Every consultation is conducted directly with Dr. R. K. Mishra—evaluating bone and soft tissue harmony with complete transparency.
+                  <p className="text-sm text-slate-300 leading-relaxed">
+                    Personalized procedural planning combining 3D facial vectors, millimeter depth precision, and natural anatomical symmetry.
                   </p>
                 </div>
               </div>

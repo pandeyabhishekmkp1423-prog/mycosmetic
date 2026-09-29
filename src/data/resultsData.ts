@@ -2,83 +2,105 @@ import { BeforeAfterCase } from '../types';
 
 export const beforeAfterCases: BeforeAfterCase[] = [
   {
-    id: 'rhino-01',
-    procedureSlug: 'rhinoplasty',
-    procedureName: 'Structural Preservation Rhinoplasty',
-    category: 'FACE',
-    patientInfo: 'Male, 28 Years | Lucknow',
-    timeline: '6 Months Post-Op',
-    description: 'Correction of pronounced dorsal bone hump, drooping tip on smile, and internal septal deviation. Achieved a clean, masculine straight nasal bridge and unrestricted airway.',
-    beforeImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80',
-    keyImprovements: [
-      'Eliminated dorsal hump while maintaining natural masculine bridge height',
-      'Refined bulbous tip with auto-cartilage grafting',
-      'Normalized nasal airflow with concurrent septoplasty'
-    ]
-  },
-  {
     id: 'gyn-01',
     procedureSlug: 'gynecomastia',
-    procedureName: 'Minimally Invasive Gynecomastia Correction',
+    procedureName: 'Minimally Invasive Gynecomastia & Pectoral Sculpting',
     category: 'BREAST',
     patientInfo: 'Male, 24 Years | Kanpur',
     timeline: '3 Months Post-Op',
-    description: 'Grade 2 mixed fibro-glandular and adipose male breast enlargement. Treated with sub-areolar gland excision and power-assisted peripheral chest liposuction.',
-    beforeImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=800&q=80',
+    description: 'Grade 2 mixed fibro-glandular and adipose male breast enlargement. Treated with sub-areolar micro-incision glandular excision and peripheral power-assisted chest liposculpture.',
+    beforeImage: '/cases/01-gynecomastia-male-chest-sculpting_before.jpg',
+    afterImage: '/cases/01-gynecomastia-male-chest-sculpting_after.jpg',
+    fullImage: '/cases/01-gynecomastia-male-chest-sculpting_full.jpg',
     keyImprovements: [
       'Sculpted athletic, flat pectoral chest profile',
       'Discreet sub-areolar micro-incision with virtually no visible scarring',
-      'Restored full confidence in fitted shirts and sportswear'
+      'Restored full masculine torso definition and self-confidence'
+    ]
+  },
+  {
+    id: 'rhino-01',
+    procedureSlug: 'rhinoplasty',
+    procedureName: 'Structural Male Rhinoplasty & Facial Harmonization',
+    category: 'FACE',
+    patientInfo: 'Male, 26 Years | Lucknow',
+    timeline: '6 Months Post-Op',
+    description: 'Correction of broad nasal bridge, asymmetric nasal tip, and deviated septum. Restored straight, well-defined masculine bridge alignment with refined tip projection.',
+    beforeImage: '/cases/02-rhinoplasty-male-facial-contouring_before.jpg',
+    afterImage: '/cases/02-rhinoplasty-male-facial-contouring_after.jpg',
+    fullImage: '/cases/02-rhinoplasty-male-facial-contouring_full.jpg',
+    keyImprovements: [
+      'Narrowed wide nasal bony pyramid with precision osteotomies',
+      'Refined bulbous tip with structural alar cartilage preservation',
+      'Enhanced frontal facial symmetry and masculine harmony'
     ]
   },
   {
     id: 'lipo-01',
     procedureSlug: 'liposuction',
-    procedureName: 'High-Definition 360° Abdominal & Flank Liposculpture',
+    procedureName: 'High-Definition Abdominal Liposculpture & Waist Contouring',
     category: 'BODY',
-    patientInfo: 'Female, 34 Years | Varanasi',
+    patientInfo: 'Female, 31 Years | Varanasi',
     timeline: '4 Months Post-Op',
-    description: 'Treatment of diet-resistant circumferential waist and lower abdominal fat deposits. Enhanced natural waist tapering and abdominal muscular lines.',
-    beforeImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80',
+    description: 'Targeted circumferential liposculpture of diet-resistant abdominal fat and lateral flank bulges with skin tightening and umbilical refinement.',
+    beforeImage: '/cases/03-tummy-tuck-waist-liposculpture_before.jpg',
+    afterImage: '/cases/03-tummy-tuck-waist-liposculpture_after.jpg',
+    fullImage: '/cases/03-tummy-tuck-waist-liposculpture_full.jpg',
     keyImprovements: [
-      'Extracted 3.8 Liters of targeted subcutaneous fat',
-      'Defined lateral waist contour and athletic lumbar curve',
-      'Smooth skin retraction with zero contour irregularities'
+      'Extracted 3.4L localized stubborn adipose tissue',
+      'Sculpted hourglass lateral waist tapering and athletic midline',
+      'Smooth, taut skin retraction with natural athletic tone'
+    ]
+  },
+  {
+    id: 'rhino-02',
+    procedureSlug: 'rhinoplasty',
+    procedureName: 'Preservation Rhinoplasty & Profile Harmonization',
+    category: 'FACE',
+    patientInfo: 'Female, 28 Years | Prayagraj',
+    timeline: '6 Months Post-Op',
+    description: 'Comprehensive profile balancing: reduction of pronounced nasal dorsal hump, tip rotation with subtle supratip break, and refinement of submental chin angle.',
+    beforeImage: '/cases/04-rhinoplasty-female-profile-sculpting_before.jpg',
+    afterImage: '/cases/04-rhinoplasty-female-profile-sculpting_after.jpg',
+    fullImage: '/cases/04-rhinoplasty-female-profile-sculpting_full.jpg',
+    keyImprovements: [
+      'Precise dorsal hump reduction while maintaining natural bridge slope',
+      'Elevated and rotated nasal tip for youthful nasal-labial angle',
+      'Enhanced cervicomental jawline profile balance'
     ]
   },
   {
     id: 'tuck-01',
     procedureSlug: 'tummy-tuck',
-    procedureName: 'Full Abdominoplasty & Rectus Diastasis Repair',
+    procedureName: 'Full Abdominoplasty & Panniculectomy with Muscle Repair',
     category: 'BODY',
     patientInfo: 'Female, 39 Years | Lucknow',
     timeline: '6 Months Post-Op',
-    description: 'Correction of postpartum rectus muscle separation (6cm diastasis) and extensive lower abdominal skin laxity with low concealed bikini incision.',
-    beforeImage: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
+    description: 'Correction of grade 3 lower abdominal panniculus apron and severe postpartum rectus diastasis. Complete lower apron excision with deep vertical fascial plication.',
+    beforeImage: '/cases/05-abdominoplasty-panniculectomy-tummy-tuck_before.jpg',
+    afterImage: '/cases/05-abdominoplasty-panniculectomy-tummy-tuck_after.jpg',
+    fullImage: '/cases/05-abdominoplasty-panniculectomy-tummy-tuck_full.jpg',
     keyImprovements: [
-      'Internal vertical muscle plication restoring deep core stability',
-      'Excision of 850g redundant skin apron and stretch marks',
-      'Aesthetically recessed natural umbilicus creation'
+      'Excision of significant redundant skin and fat apron (pannus)',
+      'Restoration of core internal muscular wall via dual-layer plication',
+      'Low concealed bikini line closure and natural umbilical repositioning'
     ]
   },
   {
-    id: 'chin-01',
-    procedureSlug: 'chin-correction',
-    procedureName: 'Anatomical Chin Augmentation & Jawline Sculpting',
-    category: 'FACE',
-    patientInfo: 'Male, 31 Years | Prayagraj',
-    timeline: '8 Weeks Post-Op',
-    description: 'Intraoral anatomical silicone chin implant placed to correct severe microgenia (receding chin) and define the cervicofacial angle.',
-    beforeImage: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80',
+    id: 'breast-01',
+    procedureSlug: 'breast-augmentation',
+    procedureName: 'Aesthetic Dual-Plane Silicone Breast Augmentation',
+    category: 'BREAST',
+    patientInfo: 'Female, 27 Years | Lucknow',
+    timeline: '4 Months Post-Op',
+    description: 'Primary dual-plane breast enlargement utilizing cohesive anatomical silicone implants to correct hypoplasia and mild volume asymmetry.',
+    beforeImage: '/cases/06-breast-augmentation-mammoplasty_before.jpg',
+    afterImage: '/cases/06-breast-augmentation-mammoplasty_after.jpg',
+    fullImage: '/cases/06-breast-augmentation-mammoplasty_full.jpg',
     keyImprovements: [
-      'Increased anterior chin projection by 7mm',
-      'Balanced profile relationship with the nasal tip',
-      'Zero external facial incisions performed completely intraorally'
+      'Sub-muscular dual plane placement for soft upper-pole transition',
+      'Achieved symmetrical, proportional B-to-full C cup projection',
+      'Minimal inframammary fold scar concealed within natural crease'
     ]
   }
 ];

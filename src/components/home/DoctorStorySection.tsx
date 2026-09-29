@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
-import { Play, ShieldCheck, Building2, HeartHandshake, Award, X, CheckCircle2, ArrowRight } from 'lucide-react';
+import React from 'react';
+import { ShieldCheck, Building2, HeartHandshake, Award, CheckCircle2, ArrowRight, Sparkles } from 'lucide-react';
 
 interface DoctorStorySectionProps {
   onNavigate: (route: string) => void;
 }
 
 export const DoctorStorySection: React.FC<DoctorStorySectionProps> = ({ onNavigate }) => {
-  const [videoModalOpen, setVideoModalOpen] = useState(false);
-
   const professionalRoles = [
     {
       title: 'ASPS Board Certified Plastic Surgeon',
@@ -36,39 +34,43 @@ export const DoctorStorySection: React.FC<DoctorStorySectionProps> = ({ onNaviga
   ];
 
   return (
-    <section id="about-us-section" className="py-14 sm:py-20 bg-white border-b border-[#E2E8F0]">
+    <section id="about-doctor" className="py-14 sm:py-20 bg-white border-b border-[#E2E8F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           
-          {/* Left: Luxury Clinic Reception Image with Play Button (5 cols) */}
+          {/* Left: Luxury Clinic & Hospital Facility Showcase (5 cols) */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="relative rounded-2xl overflow-hidden shadow-xl border border-[#E2E8F0] group bg-slate-900">
+            <div className="relative rounded-3xl overflow-hidden shadow-xl border border-[#E2E8F0] group bg-slate-900">
               <img
                 src="/assets/clinic_reception.jpg"
                 alt="SIPS Super Specialty Hospital (Pvt. Ltd.) Reception & Surgical Suites"
                 className="w-full h-auto object-cover aspect-[4/3] group-hover:scale-105 transition-transform duration-500"
               />
 
-              {/* Centered Circular Play Button */}
-              <button
-                onClick={() => setVideoModalOpen(true)}
-                className="absolute inset-0 m-auto w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/95 backdrop-blur-md shadow-2xl flex items-center justify-center text-[#003366] hover:scale-110 hover:bg-white transition-all cursor-pointer group-hover:shadow-3xl"
-                aria-label="Play hospital and clinic tour video"
-              >
-                <Play className="w-6 h-6 sm:w-8 sm:h-8 fill-[#003366] ml-1" />
-              </button>
+              {/* Decorative Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none" />
 
-              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 text-white">
-                <p className="text-xs font-semibold uppercase tracking-wider text-[#00A3E0]">SIPS Super Specialty Hospital (Pvt. Ltd.)</p>
-                <p className="text-sm font-medium">Class 100 Laminar OTs • NABH Accredited</p>
+              {/* Floating Top Badge */}
+              <div className="absolute top-4 left-4 z-10">
+                <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[#003366] text-xs font-bold uppercase tracking-wider shadow-md flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-[#00A3E0]" />
+                  <span>SIPS Hospital Facility</span>
+                </span>
+              </div>
+
+              {/* Bottom Credential Overlay */}
+              <div className="absolute bottom-0 inset-x-0 p-5 text-white z-10">
+                <p className="text-xs font-bold uppercase tracking-wider text-[#00A3E0]">SIPS Super Specialty Hospital (Pvt. Ltd.)</p>
+                <p className="text-base font-bold text-white mt-0.5">World-Class Laminar Airflow Operating Suites</p>
+                <p className="text-xs text-slate-300 mt-1">NABH Accredited • 29 Shah Mina Road, Chowk, Lucknow</p>
               </div>
             </div>
 
             {/* Quick Badge summary */}
-            <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] flex items-center justify-between text-xs text-[#003366] font-semibold">
+            <div className="p-4 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] flex items-center justify-between text-xs text-[#003366] font-semibold">
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-[#00A3E0]" /> 25+ Years Experience
+                <CheckCircle2 className="w-4 h-4 text-[#00A3E0]" /> 25+ Years Exp
               </span>
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-[#00A3E0]" /> 30,000+ Surgeries
@@ -102,7 +104,7 @@ export const DoctorStorySection: React.FC<DoctorStorySectionProps> = ({ onNaviga
               <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2">
                 <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#003366] flex items-center gap-2">
                   <Award className="w-4 h-4 text-[#00A3E0]" />
-                  <span>Professional Roles & Affiliations of Dr. R.K. Mishra</span>
+                  <span>Professional Roles &amp; Affiliations of Dr. R.K. Mishra</span>
                 </h3>
                 <span className="text-[11px] font-bold text-[#00A3E0] bg-[#E0F2FE] px-2.5 py-0.5 rounded-full">
                   Official Credentials
@@ -146,16 +148,24 @@ export const DoctorStorySection: React.FC<DoctorStorySectionProps> = ({ onNaviga
             {/* CTAs */}
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <button
-                onClick={() => onNavigate('doctor')}
-                className="btn-navy py-3 px-6 text-sm flex items-center gap-2"
+                onClick={() => {
+                  const el = document.getElementById('doctor-credentials');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  else onNavigate('doctor');
+                }}
+                className="btn-navy py-3 px-6 text-sm flex items-center gap-2 cursor-pointer shadow-sm hover:shadow-md"
               >
-                <span>Read Dr. R.K. Mishra Profile</span>
+                <span>View Full Credentials & Timeline</span>
                 <ArrowRight className="w-4 h-4 text-[#00A3E0]" />
               </button>
 
               <button
-                onClick={() => onNavigate('book-consultation')}
-                className="btn-outline-navy py-3 px-6 text-sm"
+                onClick={() => {
+                  const el = document.getElementById('consultation');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  else onNavigate('consultation');
+                }}
+                className="btn-outline-navy py-3 px-6 text-sm cursor-pointer"
               >
                 <span>Book In-Person / Virtual OPD</span>
               </button>
@@ -166,33 +176,6 @@ export const DoctorStorySection: React.FC<DoctorStorySectionProps> = ({ onNaviga
         </div>
 
       </div>
-
-      {/* Video Modal */}
-      {videoModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl p-6 max-w-2xl w-full relative">
-            <button
-              onClick={() => setVideoModalOpen(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-black cursor-pointer"
-            >
-              <X className="w-6 h-6" />
-            </button>
-            <h3 className="text-lg font-serif font-bold mb-2 text-[#003366]">
-              Clinical Excellence & Hospital Tour
-            </h3>
-            <p className="text-sm text-gray-600 mb-4">
-              SIPS Super Specialty Hospital (Pvt. Ltd.), Lucknow features NABH-accredited laminar airflow Class 100 operating rooms and specialized aesthetic recovery suites under the leadership of Dr. R.K. Mishra.
-            </p>
-            <div className="rounded-xl overflow-hidden aspect-video bg-gray-900 flex items-center justify-center text-white">
-              <div className="text-center p-6">
-                <Building2 className="w-12 h-12 mx-auto text-[#00A3E0] mb-2" />
-                <p className="text-sm font-semibold">SIPS Super Specialty Hospital (Pvt. Ltd.)</p>
-                <p className="text-xs text-gray-400 mt-1">Class 100 HEPA-Filtered OTs & Advanced Plastic Surgery Suites</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
     </section>
   );
