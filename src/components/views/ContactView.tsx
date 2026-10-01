@@ -64,6 +64,9 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
                     <a href={`tel:${doctorData.contactPhone.replace(/[^0-9+]/g, '')}`} className="font-bold text-[#003366] hover:text-[#00A3E0] text-base">
                       {doctorData.contactPhone}
                     </a>
+                    <span className="block text-[11px] text-emerald-700 font-semibold mt-0.5">
+                      Calling Available: 10:00 AM – 5:00 PM (Monday to Saturday)
+                    </span>
                   </div>
                 </div>
 
@@ -95,7 +98,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
                 <div className="flex items-start gap-3.5 p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
                   <Clock className="w-5 h-5 text-[#003366] shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">OPD Operating Hours</p>
+                    <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">OPD &amp; Call Desk Hours</p>
                     <p className="font-bold text-[#0F172A]">{hospitalData.timings}</p>
                   </div>
                 </div>

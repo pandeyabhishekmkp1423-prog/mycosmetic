@@ -3,7 +3,6 @@ import {
   Calendar, 
   Clock, 
   Building2, 
-  Video, 
   ArrowRight, 
   ArrowLeft, 
   CheckCircle2, 
@@ -25,7 +24,8 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
 }) => {
   const [step, setStep] = useState<number>(1);
   const [procedure, setProcedure] = useState<string>(preselectedProcedure || 'Rhinoplasty');
-  const [consultationType, setConsultationType] = useState<'IN_PERSON' | 'VIRTUAL'>('IN_PERSON');
+  const [otherProcedure, setOtherProcedure] = useState<string>('');
+  const consultationType = 'IN_PERSON';
   const [preferredDate, setPreferredDate] = useState<string>(
     new Date(Date.now() + 86400000 * 2).toISOString().split('T')[0]
   );
@@ -44,6 +44,10 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
   const { addLead } = useConsultationStore();
   const canSubmit = Boolean(name.trim() && phone.trim() && email.trim() && privacyConsent);
 
+  const finalProcedure = procedure === 'Other' && otherProcedure.trim()
+    ? `Other: ${otherProcedure.trim()}`
+    : procedure;
+
   const handleCompleteBooking = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !phone || !email) return;
@@ -52,7 +56,7 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
       name,
       phone,
       email,
-      procedure,
+      procedure: finalProcedure,
       city,
       preferredDate,
       timeSlot,
@@ -94,7 +98,7 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
         {step < 4 && (
           <div className="mb-8 grid grid-cols-3 gap-3 text-xs sm:text-sm">
             {[
-              ['1', 'Procedure & Mode'],
+              ['1', 'Select Procedure'],
               ['2', 'Date & Time'],
               ['3', 'Your Details']
             ].map(([number, label], index) => {
@@ -149,54 +153,64 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
                   </span>
                 </button>
               ))}
+
+              <button
+                type="button"
+                onClick={() => setProcedure('Other')}
+                className={`p-3 rounded-xl border text-left text-xs transition-colors cursor-pointer ${
+                  procedure === 'Other'
+                    ? 'bg-[#003366] text-white border-[#003366] shadow-xs'
+                    : 'bg-white border-[#E2E8F0] text-[#0F172A] hover:bg-[#F8FAFC]'
+                }`}
+              >
+                <p className="truncate font-bold">Other / Custom</p>
+                <span className={`text-xs block mt-0.5 ${procedure === 'Other' ? 'text-[#00A3E0]' : 'text-slate-500'}`}>
+                  Specify Concern
+                </span>
+              </button>
             </div>
 
-            <div className="pt-4 border-t border-[#E2E8F0]">
-              <h3 className="text-sm font-bold text-[#003366] mb-1">
-                Consultation Format
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3">
-                <div
-                  onClick={() => setConsultationType('IN_PERSON')}
-                  className={`p-4 rounded-xl border cursor-pointer transition-all ${
-                    consultationType === 'IN_PERSON'
-                      ? 'bg-[#003366] text-white border-[#003366] shadow-xs'
-                      : 'bg-white border-[#E2E8F0] text-[#0F172A] hover:bg-[#F8FAFC]'
-                  }`}
-                >
-                  <div className="flex items-center gap-2 mb-1">
-                    <Building2 className={`w-4 h-4 ${consultationType === 'IN_PERSON' ? 'text-[#00A3E0]' : 'text-[#003366]'}`} />
-                    <span className="text-xs font-bold">In-Person Clinical OPD</span>
-                  </div>
-                  <p className={`text-xs ${consultationType === 'IN_PERSON' ? 'text-slate-200' : 'text-slate-500'}`}>
-                    At SIPS Hospital, Chowk, Lucknow. Full anatomical evaluation.
-                  </p>
-                </div>
+            {procedure === 'Other' && (
+              <div className="p-4 rounded-xl bg-blue-50/50 border border-[#003366]/30 space-y-1.5 animate-in fade-in duration-150">
+                <label className="block text-xs font-bold text-[#003366]">
+                  Specify Procedure or Aesthetic Concern: *
+                </label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. Scar Revision, Mole Removal, Dimple Creation, Facial Trauma..."
+                  value={otherProcedure}
+                  onChange={(e) => setOtherProcedure(e.target.value)}
+                  className="w-full p-2.5 bg-white border border-slate-300 rounded-lg text-xs font-semibold focus:outline-none focus:border-[#003366] text-slate-800"
+                />
+              </div>
+            )}
 
-                <div
-                  onClick={() => setConsultationType('VIRTUAL')}
-                  className={`p-4 rounded-xl border cursor-pointer transition-all ${
-                    consultationType === 'VIRTUAL'
-                      ? 'bg-[#003366] text-white border-[#003366] shadow-xs'
-                      : 'bg-white border-[#E2E8F0] text-[#0F172A] hover:bg-[#F8FAFC]'
-                  }`}
-                >
-                  <div className="flex items-center gap-2 mb-1">
-                    <Video className={`w-4 h-4 ${consultationType === 'VIRTUAL' ? 'text-[#00A3E0]' : 'text-[#003366]'}`} />
-                    <span className="text-xs font-bold">Virtual Video Consultation</span>
+            <div className="pt-4 border-t border-[#E2E8F0]">
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-lg bg-[#003366] text-white flex items-center justify-center shrink-0 shadow-2xs">
+                    <Building2 className="w-5 h-5 text-[#00A3E0]" />
                   </div>
-                  <p className={`text-xs ${consultationType === 'VIRTUAL' ? 'text-slate-200' : 'text-slate-500'}`}>
-                    For outstation or international patients prior to Lucknow travel.
-                  </p>
+                  <div>
+                    <h4 className="text-xs font-bold text-[#003366]">In-Person Clinical OPD Consultation</h4>
+                    <p className="text-[11px] text-slate-500">
+                      At SIPS Super Specialty Hospital, Chowk, Lucknow. Comprehensive surgical evaluation.
+                    </p>
+                  </div>
                 </div>
+                <span className="hidden sm:inline-block text-[11px] font-semibold text-[#003366] bg-blue-50 px-3 py-1 rounded-full border border-blue-100 shrink-0">
+                  Hospital OPD Slot
+                </span>
               </div>
             </div>
 
             <div className="flex justify-end pt-4">
               <button
                 type="button"
+                disabled={procedure === 'Other' && !otherProcedure.trim()}
                 onClick={() => setStep(2)}
-                className="btn-navy"
+                className={`btn-navy ${procedure === 'Other' && !otherProcedure.trim() ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 <span>Continue to Date Selection</span>
                 <ArrowRight className="w-4 h-4 ml-1" />
@@ -398,7 +412,7 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
                 Consultation Request Registered
               </h2>
               <p className="text-sm sm:text-base text-slate-600 max-w-md mx-auto">
-                Thank you, <strong>{name}</strong>. Your consultation request for <strong>{procedure}</strong> has been received. Reference: <strong className="text-[#003366]">#{bookingReference}</strong>.
+                Thank you, <strong>{name}</strong>. Your consultation request for <strong>{procedure === 'Other' && otherProcedure.trim() ? otherProcedure.trim() : procedure}</strong> has been received. Reference: <strong className="text-[#003366]">#{bookingReference}</strong>.
               </p>
             </div>
 

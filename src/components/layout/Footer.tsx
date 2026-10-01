@@ -195,11 +195,16 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   Sushrut Institute of Plastic Surgery (SIPS) Hospital, 29, Shah Mina Rd, Lucknow, Uttar Pradesh 226003, India
                 </span>
               </div>
-              <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#00A3E0] shrink-0" />
-                <a href="tel:+919795800800" className="hover:text-white font-semibold">
-                  +91 9795 800 800
-                </a>
+              <div className="flex items-start gap-2.5">
+                <Phone className="w-4 h-4 text-[#00A3E0] shrink-0 mt-0.5" />
+                <div>
+                  <a href="tel:+919795800800" className="hover:text-white font-semibold block">
+                    +91 9795 800 800
+                  </a>
+                  <span className="text-[11px] text-emerald-400 font-medium">
+                    Calls: 10:00 AM – 5:00 PM (Mon – Sat)
+                  </span>
+                </div>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#00A3E0] shrink-0" />
@@ -209,7 +214,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </div>
               <div className="flex items-center gap-2.5">
                 <Clock className="w-4 h-4 text-[#00A3E0] shrink-0" />
-                <span>OPD Hours: 10:00AM - 5:00PM</span>
+                <span>OPD &amp; Call Hours: 10:00 AM – 5:00 PM (Mon – Sat)</span>
               </div>
             </div>
 

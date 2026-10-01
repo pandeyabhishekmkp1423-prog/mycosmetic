@@ -30,13 +30,19 @@ export const ConsultationCTA: React.FC<ConsultationCTAProps> = ({ onNavigate }) 
 
           {/* Right: Buttons */}
           <div className="flex flex-wrap items-center gap-3.5 w-full sm:w-auto justify-center md:justify-end">
-            <a
-              href="tel:+919795800800"
-              className="px-6 py-3.5 rounded-xl border border-white/20 text-sm font-semibold text-white hover:bg-white/10 transition-colors inline-flex items-center gap-2"
-            >
-              <PhoneCall className="w-4 h-4 text-[#00A3E0]" />
-              <span>Call 9795800800</span>
-            </a>
+            <div className="flex flex-col items-center sm:items-start">
+              <a
+                href="tel:+919795800800"
+                className="px-6 py-3.5 rounded-xl border border-white/20 text-sm font-semibold text-white hover:bg-white/10 transition-colors inline-flex items-center gap-2"
+                title="Call available 10:00 AM to 5:00 PM, Monday to Saturday"
+              >
+                <PhoneCall className="w-4 h-4 text-[#00A3E0]" />
+                <span>Call 9795800800</span>
+              </a>
+              <span className="text-[10px] text-slate-300 font-medium pt-1 text-center sm:text-left">
+                Available 10:00 AM – 5:00 PM (Mon–Sat)
+              </span>
+            </div>
 
             <button
               onClick={() => onNavigate('book-consultation')}

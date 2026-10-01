@@ -96,8 +96,8 @@ export const Header: React.FC<HeaderProps> = ({
   const marqueeItems = [
     { icon: ShieldCheck, text: 'NABH Super Specialty Center • SIPS Super Specialty Hospital (Pvt. Ltd.), Lucknow' },
     { icon: Award, text: 'ASPS Board Certified Plastic Surgeon Dr. R.K. Mishra (Managing Director & Head of Plastic Surgery, SIPS)' },
-    { icon: Clock, text: 'OPD Hours: 10:00AM - 5:00PM' },
-    { icon: Phone, text: 'Clinic Helpline: +91 9795 800 800' },
+    { icon: Phone, text: 'Call Helpline: +91 9795 800 800 (Available 10:00 AM – 5:00 PM, Mon – Sat)' },
+    { icon: Clock, text: 'Hospital OPD: 10:00 AM – 5:00 PM (Monday to Saturday)' },
     { icon: CreditCard, text: '0% Interest Surgery EMI Options Available' },
     { icon: Plane, text: 'Out-of-Town & Medical Tourism Concierge Desk' }
   ];
@@ -238,19 +238,25 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="grid grid-cols-2 gap-2">
             <a
               href="tel:+919795800800"
-              className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center gap-1.5 text-xs font-bold text-[#003366]"
+              className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex flex-col items-center justify-center text-xs font-bold text-[#003366] hover:bg-slate-100 transition-colors"
             >
-              <Phone className="w-3.5 h-3.5 text-[#00A3E0]" />
-              <span>Call 9795800800</span>
+              <div className="flex items-center gap-1.5">
+                <Phone className="w-3.5 h-3.5 text-[#00A3E0]" />
+                <span>Call 9795800800</span>
+              </div>
+              <span className="text-[10px] text-slate-500 font-medium mt-0.5">10 AM – 5 PM (Mon–Sat)</span>
             </a>
             <a
               href="https://wa.me/919795800800"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center gap-1.5 text-xs font-bold text-emerald-800"
+              className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 flex flex-col items-center justify-center text-xs font-bold text-emerald-800 hover:bg-emerald-100 transition-colors"
             >
-              <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
-              <span>WhatsApp</span>
+              <div className="flex items-center gap-1.5">
+                <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+                <span>WhatsApp</span>
+              </div>
+              <span className="text-[10px] text-emerald-600 font-medium mt-0.5">24/7 Chat Support</span>
             </a>
           </div>
 

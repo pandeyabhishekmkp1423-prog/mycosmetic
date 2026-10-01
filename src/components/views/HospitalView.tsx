@@ -219,10 +219,11 @@ export const HospitalView: React.FC<HospitalViewProps> = ({ onNavigate }) => {
               </button>
               <a
                 href={`tel:${doctorData.contactPhone.replace(/[^0-9+]/g, '')}`}
-                className="btn-outline-navy border-white/30 text-white hover:bg-white/10"
+                className="btn-outline-navy border-white/30 text-white hover:bg-white/10 flex items-center gap-1.5"
+                title="Call available 10:00 AM – 5:00 PM (Monday to Saturday)"
               >
                 <Phone className="w-3.5 h-3.5 text-[#00A3E0]" />
-                <span>Call Helpline</span>
+                <span>Call Helpline (10 AM – 5 PM)</span>
               </a>
             </div>
           </div>

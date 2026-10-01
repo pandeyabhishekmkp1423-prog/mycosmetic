@@ -1,4 +1,4 @@
-import { ShieldCheck, MapPin, Building2, Activity, BedDouble, Stethoscope, Sparkles } from 'lucide-react';
+import { ShieldCheck, MapPin, Activity, BedDouble, Sparkles } from 'lucide-react';
 import { hospitalData } from '../../data/hospitalData';
 import { SafeImage } from '../common/SafeImage';
 import { Card3D } from '../common/Card3D';
@@ -51,27 +51,15 @@ export const HospitalSection: React.FC<HospitalSectionProps> = ({ onNavigate }) 
                 </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs hover:border-[#00A3E0]/40 transition-all">
+              <div className="sm:col-span-2 p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs hover:border-[#00A3E0]/40 transition-all">
                 <div className="w-10 h-10 rounded-xl bg-[#00A3E0]/10 text-[#003366] flex items-center justify-center mb-3">
-                  <Stethoscope className="w-5 h-5 text-[#00A3E0]" />
+                  <Sparkles className="w-5 h-5 text-[#00A3E0]" />
                 </div>
                 <h4 className="text-sm font-bold text-[#003366] uppercase tracking-wider mb-1">
-                  Cardiac Anesthesia
+                  VASER- High Tech Machine
                 </h4>
                 <p className="text-sm text-[#64748B] leading-relaxed">
-                  Full-time board-certified cardiac anesthetists on-site throughout preoperative, surgical, and post-op care.
-                </p>
-              </div>
-
-              <div className="p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs hover:border-[#00A3E0]/40 transition-all">
-                <div className="w-10 h-10 rounded-xl bg-[#00A3E0]/10 text-[#003366] flex items-center justify-center mb-3">
-                  <Building2 className="w-5 h-5 text-[#00A3E0]" />
-                </div>
-                <h4 className="text-sm font-bold text-[#003366] uppercase tracking-wider mb-1">
-                  VASER Ultrasound Tech
-                </h4>
-                <p className="text-sm text-[#64748B] leading-relaxed">
-                  High-definition ultrasound body sculpting & Karl Storz endoscopy for precise, bloodless incisions.
+                  High-definition ultrasound body sculpting &amp; Karl Storz endoscopy for precise, bloodless incisions.
                 </p>
               </div>
             </div>

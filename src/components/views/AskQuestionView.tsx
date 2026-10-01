@@ -11,6 +11,7 @@ export const AskQuestionView: React.FC<AskQuestionViewProps> = ({ onNavigate }) 
   const [authorName, setAuthorName] = useState('');
   const [email, setEmail] = useState('');
   const [procedure, setProcedure] = useState('Rhinoplasty');
+  const [otherProcedure, setOtherProcedure] = useState('');
   const [questionText, setQuestionText] = useState('');
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [expandedQuestion, setExpandedQuestion] = useState<string | null>(null);
@@ -21,10 +22,14 @@ export const AskQuestionView: React.FC<AskQuestionViewProps> = ({ onNavigate }) 
     e.preventDefault();
     if (!questionText || !email) return;
 
+    const finalProcedure = procedure === 'Other' && otherProcedure.trim()
+      ? `Other: ${otherProcedure.trim()}`
+      : procedure;
+
     addQuestion({
       authorName: authorName || 'Anonymous Patient',
       email,
-      procedure,
+      procedure: finalProcedure,
       question: questionText
     });
 
@@ -202,7 +207,20 @@ export const AskQuestionView: React.FC<AskQuestionViewProps> = ({ onNavigate }) 
                     <option value="Breast Surgery">Breast Augmentation / Reduction</option>
                     <option value="Tummy Tuck">Abdominoplasty (Tummy Tuck)</option>
                     <option value="General Plastic Surgery">General Aesthetic / Reconstructive</option>
+                    <option value="Other">Other (Please specify)</option>
                   </select>
+                  {procedure === 'Other' && (
+                    <div className="mt-2">
+                      <input
+                        type="text"
+                        required
+                        placeholder="Please specify your procedure or treatment..."
+                        value={otherProcedure}
+                        onChange={(e) => setOtherProcedure(e.target.value)}
+                        className="w-full p-2.5 bg-white border border-[#003366] rounded-xl focus:border-[#003366] focus:ring-1 focus:ring-[#003366] focus:outline-none text-xs"
+                      />
+                    </div>
+                  )}
                 </div>
 
                 <div>
