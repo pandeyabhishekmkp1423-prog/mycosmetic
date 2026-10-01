@@ -42,7 +42,16 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
   const [bookingReference, setBookingReference] = useState<string | null>(null);
 
   const { addLead } = useConsultationStore();
-  const canSubmit = Boolean(name.trim() && phone.trim() && email.trim() && privacyConsent);
+  const cleanPhone = phone.replace(/\D/g, '');
+  const canSubmit = Boolean(name.trim() && cleanPhone.length === 10 && email.trim() && privacyConsent);
+
+  const handlePhoneChange = (val: string) => {
+    let clean = val.replace(/\D/g, '');
+    if (clean.length > 10 && clean.startsWith('91')) {
+      clean = clean.slice(2);
+    }
+    setPhone(clean.slice(0, 10));
+  };
 
   const finalProcedure = procedure === 'Other' && otherProcedure.trim()
     ? `Other: ${otherProcedure.trim()}`
@@ -50,18 +59,19 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
 
   const handleCompleteBooking = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !phone || !email) return;
+    const validPhone = phone.replace(/\D/g, '');
+    if (!name.trim() || validPhone.length !== 10 || !email.trim()) return;
 
     const lead = addLead({
-      name,
-      phone,
-      email,
+      name: name.trim(),
+      phone: validPhone,
+      email: email.trim(),
       procedure: finalProcedure,
-      city,
+      city: city.trim(),
       preferredDate,
       timeSlot,
       consultationType,
-      notes
+      notes: notes.trim()
     });
 
     setBookingReference(lead.id);
@@ -319,15 +329,36 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
               </div>
 
               <div>
-                <label className="block font-bold text-[#0F172A] mb-1.5">Phone / WhatsApp *</label>
-                <input
-                  type="tel"
-                  required
-                  placeholder="+91 98765 43210"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="w-full p-3 bg-white border border-[#E2E8F0] rounded-lg focus:outline-none focus:border-[#003366]"
-                />
+                <div className="flex items-center justify-between mb-1.5">
+                  <label className="block font-bold text-[#0F172A]">Phone / WhatsApp *</label>
+                  {phone.length > 0 && (
+                    <span className={`text-[11px] font-semibold transition-colors ${phone.length === 10 ? 'text-emerald-600' : 'text-slate-400'}`}>
+                      {phone.length === 10 ? '✓ 10 digits' : `${phone.length}/10 digits`}
+                    </span>
+                  )}
+                </div>
+                <div className="relative flex items-center">
+                  <span className="absolute left-3 text-xs font-bold text-slate-400 select-none pointer-events-none">
+                    +91
+                  </span>
+                  <input
+                    type="tel"
+                    inputMode="numeric"
+                    pattern="[0-9]{10}"
+                    maxLength={10}
+                    required
+                    placeholder="9795800800"
+                    value={phone}
+                    onChange={(e) => handlePhoneChange(e.target.value)}
+                    className={`w-full pl-11 pr-3 py-3 bg-white border rounded-lg focus:outline-none transition-all ${
+                      phone.length === 10
+                        ? 'border-emerald-500 focus:ring-1 focus:ring-emerald-500'
+                        : phone.length > 0
+                        ? 'border-amber-400 focus:ring-1 focus:ring-amber-400'
+                        : 'border-[#E2E8F0] focus:border-[#003366]'
+                    }`}
+                  />
+                </div>
               </div>
 
               <div>

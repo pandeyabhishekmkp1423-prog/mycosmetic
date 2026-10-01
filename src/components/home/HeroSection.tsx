@@ -94,10 +94,23 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   const [submitted, setSubmitted] = useState(false);
   const [modalName, setModalName] = useState('');
   const [modalPhone, setModalPhone] = useState('');
+  const [modalPhoneError, setModalPhoneError] = useState<string | null>(null);
   const [modalProcedure, setModalProcedure] = useState('Gynecomastia (Male Chest Reduction)');
   const [modalOtherProcedure, setModalOtherProcedure] = useState('');
   const [modalDate, setModalDate] = useState('');
   const [isSubmittingModal, setIsSubmittingModal] = useState(false);
+
+  const handleModalPhoneChange = (val: string) => {
+    let clean = val.replace(/\D/g, '');
+    if (clean.length > 10 && clean.startsWith('91')) {
+      clean = clean.slice(2);
+    }
+    const limited = clean.slice(0, 10);
+    setModalPhone(limited);
+    if (modalPhoneError && limited.length === 10) {
+      setModalPhoneError(null);
+    }
+  };
 
   // Core 8 Surgical Services divided 4 | 4 side-by-side
   const proceduresCol1: Procedure[] = [
@@ -127,8 +140,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!modalName.trim() || !modalPhone.trim()) return;
+    const cleanPhone = modalPhone.replace(/\D/g, '');
+    if (!modalName.trim()) {
+      setModalPhoneError('Please enter your full name.');
+      return;
+    }
+    if (cleanPhone.length !== 10) {
+      setModalPhoneError('Please enter a valid 10-digit mobile number.');
+      return;
+    }
+    if (modalProcedure === 'Other' && !modalOtherProcedure.trim()) {
+      setModalPhoneError('Please specify your procedure of interest.');
+      return;
+    }
 
+    setModalPhoneError(null);
     setIsSubmittingModal(true);
     try {
       const finalProcedure = modalProcedure === 'Other' && modalOtherProcedure.trim()
@@ -417,15 +443,39 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
-                        <label className="block text-xs font-semibold text-slate-700 mb-1">Phone Number</label>
-                        <input
-                          type="tel"
-                          required
-                          value={modalPhone}
-                          onChange={(e) => setModalPhone(e.target.value)}
-                          placeholder="+91 97958 00800"
-                          className="w-full px-3.5 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A3E0]/40 focus:border-[#00A3E0]"
-                        />
+                        <div className="flex items-center justify-between mb-1">
+                          <label className="block text-xs font-semibold text-slate-700">Phone / WhatsApp *</label>
+                          {modalPhone.length > 0 && (
+                            <span className={`text-[10px] font-semibold transition-colors ${modalPhone.length === 10 ? 'text-emerald-600' : 'text-slate-400'}`}>
+                              {modalPhone.length === 10 ? '✓ 10 digits' : `${modalPhone.length}/10`}
+                            </span>
+                          )}
+                        </div>
+                        <div className="relative flex items-center">
+                          <span className="absolute left-3 text-xs font-bold text-slate-400 select-none pointer-events-none">
+                            +91
+                          </span>
+                          <input
+                            type="tel"
+                            inputMode="numeric"
+                            pattern="[0-9]{10}"
+                            maxLength={10}
+                            required
+                            value={modalPhone}
+                            onChange={(e) => handleModalPhoneChange(e.target.value)}
+                            placeholder="9795800800"
+                            className={`w-full pl-11 pr-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 transition-all ${
+                              modalPhone.length === 10
+                                ? 'border-emerald-500 focus:ring-emerald-500/20'
+                                : modalPhone.length > 0
+                                ? 'border-amber-400 focus:ring-amber-400/20'
+                                : 'border-slate-300 focus:ring-[#00A3E0]/40 focus:border-[#00A3E0]'
+                            }`}
+                          />
+                        </div>
+                        {modalPhoneError && (
+                          <p className="text-[11px] text-red-500 mt-1 font-medium">{modalPhoneError}</p>
+                        )}
                       </div>
                       <div>
                         <label className="block text-xs font-semibold text-slate-700 mb-1">Procedure of Interest</label>

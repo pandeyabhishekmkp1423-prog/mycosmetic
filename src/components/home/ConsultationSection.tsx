@@ -55,10 +55,36 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ onNavi
 
   const { addLead } = useConsultationStore();
 
+  const handlePhoneChange = (val: string) => {
+    // Keep only numbers 0-9
+    let clean = val.replace(/\D/g, '');
+    // If pasted with country code 91 (e.g. 919795800800)
+    if (clean.length > 10 && clean.startsWith('91')) {
+      clean = clean.slice(2);
+    }
+    // Restrict strictly to maximum 10 digits
+    const limited = clean.slice(0, 10);
+    setPhone(limited);
+    if (errorMessage && limited.length === 10) {
+      setErrorMessage(null);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !phone.trim()) {
-      setErrorMessage('Please provide your name and contact phone number.');
+    if (!name.trim()) {
+      setErrorMessage('Please provide your full name.');
+      return;
+    }
+
+    const cleanPhone = phone.replace(/\D/g, '');
+    if (!cleanPhone) {
+      setErrorMessage('Please provide your 10-digit mobile number.');
+      return;
+    }
+
+    if (cleanPhone.length !== 10) {
+      setErrorMessage('Please enter a valid 10-digit mobile number (e.g. 9795800800).');
       return;
     }
 
@@ -400,18 +426,37 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ onNavi
                     </div>
 
                     <div>
-                      <label className="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">
-                        Phone / WhatsApp: *
-                      </label>
-                      <div className="relative">
-                        <Phone className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-2.5 sm:top-3" />
+                      <div className="flex items-center justify-between mb-1">
+                        <label className="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-500">
+                          Phone / WhatsApp: *
+                        </label>
+                        {phone.length > 0 && (
+                          <span className={`text-[10px] font-semibold transition-colors ${phone.length === 10 ? 'text-emerald-600' : 'text-slate-400'}`}>
+                            {phone.length === 10 ? '✓ 10 digits' : `${phone.length}/10 digits`}
+                          </span>
+                        )}
+                      </div>
+                      <div className="relative flex items-center">
+                        <span className="absolute left-3 text-xs font-bold text-slate-400 select-none pointer-events-none">
+                          +91
+                        </span>
                         <input
+                          id="consultation-phone-input"
                           type="tel"
+                          inputMode="numeric"
+                          pattern="[0-9]{10}"
+                          maxLength={10}
                           required
-                          placeholder="e.g. 9795800800"
+                          placeholder="9795800800"
                           value={phone}
-                          onChange={(e) => setPhone(e.target.value)}
-                          className="w-full pl-8.5 pr-3 py-2 sm:py-2.5 rounded-xl border border-slate-300 bg-white text-slate-800 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#003366]"
+                          onChange={(e) => handlePhoneChange(e.target.value)}
+                          className={`w-full pl-11 pr-3 py-2 sm:py-2.5 rounded-xl border bg-white text-slate-800 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 transition-all ${
+                            phone.length === 10
+                              ? 'border-emerald-500 focus:ring-emerald-500/20'
+                              : phone.length > 0
+                              ? 'border-amber-400 focus:ring-amber-400/20'
+                              : 'border-slate-300 focus:ring-[#003366]'
+                          }`}
                         />
                       </div>
                     </div>

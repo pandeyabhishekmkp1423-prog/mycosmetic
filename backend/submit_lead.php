@@ -46,10 +46,15 @@ if (empty($name)) {
     $errors[] = 'Full patient name is required.';
 }
 
-// Validate phone number: minimum 10 digits
+// Validate phone number: exactly 10 digits
 $digitsOnly = preg_replace('/\D/', '', $phone);
-if (empty($phone) || strlen($digitsOnly) < 10) {
-    $errors[] = 'A valid 10-digit WhatsApp or phone number is required.';
+if (strpos($digitsOnly, '91') === 0 && strlen($digitsOnly) === 12) {
+    $digitsOnly = substr($digitsOnly, 2);
+}
+if (empty($phone) || strlen($digitsOnly) !== 10) {
+    $errors[] = 'A valid 10-digit mobile number is required.';
+} else {
+    $phone = $digitsOnly;
 }
 
 if (empty($procedure)) {
