@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { hospitalData } from '../../data/hospitalData';
 import { doctorData } from '../../data/doctorData';
+import { HospitalGallerySlider } from '../home/HospitalGallerySlider';
 
 interface HospitalViewProps {
   onNavigate: (route: string) => void;
@@ -171,19 +172,19 @@ export const HospitalView: React.FC<HospitalViewProps> = ({ onNavigate }) => {
 
         {/* Gallery */}
         <div>
-          <h3 className="text-xl font-bold text-[#003366] mb-4">
-            Hospital Campus Gallery
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {hospitalData.gallery.map((imgUrl, idx) => (
-              <div key={idx} className="aspect-[4/3] rounded-xl overflow-hidden border border-[#E2E8F0] bg-gray-50 shadow-xs">
-                <img
-                  src={imgUrl}
-                  alt={`SIPS Facility ${idx + 1}`}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-            ))}
+          <div className="max-w-xl mb-6">
+            <span className="text-xs font-semibold tracking-[0.2em] text-[#00A3E0] uppercase block mb-1">
+              Facility Showcase
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#003366]">
+              Hospital &amp; Surgical Suite Gallery
+            </h2>
+            <p className="text-sm text-[#64748B] mt-1">
+              Authentic visual documentation of SIPS Super Specialty Hospital campus, Class 100 modular operating suites, and advanced surgical telemetry.
+            </p>
+          </div>
+          <div className="max-w-4xl mx-auto">
+            <HospitalGallerySlider autoPlayInterval={4500} />
           </div>
         </div>
 

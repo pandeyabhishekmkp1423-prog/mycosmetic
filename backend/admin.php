@@ -181,7 +181,7 @@ if ($pdo) {
 $coreProcedures = [
     'Gynecomastia (Male Chest Reduction)',
     'Rhinoplasty (Nose Job)',
-    '360° HD Liposuction',
+    '360° High definition',
     'Tummy Tuck (Abdominoplasty)',
     'Breast Augmentation',
     'Breast Reduction & Lift',

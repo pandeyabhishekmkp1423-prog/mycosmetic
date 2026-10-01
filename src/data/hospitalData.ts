@@ -1,3 +1,15 @@
+export interface HospitalSlide {
+  id: string;
+  image: string;
+  alt: string;
+  badge: string;
+  category: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  specs: string[];
+}
+
 export const hospitalData = {
   name: 'SIPS Super Specialty Hospital (Pvt. Ltd.)',
   accreditation: 'NABH Accredited Superspeciality Hospital & Trauma Center',
@@ -40,8 +52,67 @@ export const hospitalData = {
   ],
   gallery: [
     '/assets/hospital.png',
-    'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1000&q=80',
-    'https://images.unsplash.com/photo-1512678080530-7760d81faba6?auto=format&fit=crop&w=1000&q=80',
-    'https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1000&q=80'
-  ]
+    '/assets/hospital-facility-2.jpeg',
+    '/assets/hospital-facility-4.jpeg',
+    '/assets/hospital-facility-1.jpeg',
+    '/assets/hospital-facility-3.jpeg'
+  ],
+  slides: [
+    {
+      id: 'hospital-building',
+      image: '/assets/hospital.png',
+      alt: 'Sushrut Institute of Plastic Surgery (SIPS) Hospital Building, Lucknow',
+      badge: 'NABH Accredited Tertiary Center',
+      category: 'Hospital Infrastructure',
+      title: 'SIPS Super Specialty Hospital Campus',
+      subtitle: '29, Shah Mina Road, Chowk, Lucknow (Near KGMU)',
+      description: 'North India’s premier NABH-accredited tertiary center dedicated to advanced aesthetic, plastic, and reconstructive surgery under the leadership of Managing Director Dr. R.K. Mishra.',
+      specs: ['NABH Accredited', '6 Modular OTs', '24/7 ICU Support', 'Deluxe Private Suites']
+    },
+    {
+      id: 'modular-ot-surgery',
+      image: '/assets/hospital-facility-2.jpeg',
+      alt: 'Intra-operative surgery in Class 100 Laminar Airflow Operating Suite at SIPS Hospital',
+      badge: 'Class 100 Laminar Airflow OT',
+      category: 'Modular Operating Suites',
+      title: 'Advanced Intra-Operative Surgical Suite',
+      subtitle: 'Ultra-Sterile Positive Pressure Environment',
+      description: 'Dr. R. K. Mishra and specialized surgical team performing precision cosmetic surgery under multi-spectrum shadowless LED operating lamps with continuous HEPA positive airflow.',
+      specs: ['HEPA Filtered Air', 'Shadowless LED OT Lamps', 'Sterile Field Protocol', 'Certified Scrub Team']
+    },
+    {
+      id: 'dr-mishra-ot-leadership',
+      image: '/assets/hospital-facility-4.jpeg',
+      alt: 'Managing Director & Head of Plastic Surgery Dr. R. K. Mishra in SIPS Modular OT',
+      badge: 'Surgical Leadership',
+      category: 'Department Leadership',
+      title: 'Dr. R. K. Mishra (M.Ch. Plastic Surgery)',
+      subtitle: 'Managing Director & Head of Plastic Surgery Department',
+      description: 'ASPS Board Certified Plastic Surgeon with over 15+ years of surgical mastery, personally overseeing surgical planning, meticulous execution, and postoperative care.',
+      specs: ['ASPS Board Certified', 'Chang Gung Fellow', '15,000+ Surgeries', 'State-of-the-Art OT']
+    },
+    {
+      id: 'anesthesia-monitoring',
+      image: '/assets/hospital-facility-1.jpeg',
+      alt: 'GE Healthcare Anesthesia Workstation & Nihon Kohden Life Scope Cardiac Monitor',
+      badge: 'Anesthesia & Critical Care',
+      category: 'Patient Safety Equipment',
+      title: 'Advanced Anesthesia & Life-Support Station',
+      subtitle: 'Continuous Hemodynamic & Multi-Parameter Monitoring',
+      description: 'Ultra-modern GE Healthcare anesthesia delivery system paired with Nihon Kohden Life Scope precision telemetry for continuous vital monitoring throughout surgery.',
+      specs: ['GE Healthcare Workstation', 'Nihon Kohden Telemetry', 'Continuous Vital Tracking', 'MD Anesthesiologist']
+    },
+    {
+      id: 'surgeon-clinical-governance',
+      image: '/assets/hospital-facility-3.jpeg',
+      alt: 'Dr. R. K. Mishra Plastic Surgeon inside SIPS Operative Theater',
+      badge: 'Clinical Governance & Trust',
+      category: 'SIPS Plastic Surgery Department',
+      title: 'Dedicated Aesthetic & Reconstructive Center',
+      subtitle: 'Highest Ethical & Surgical Standards',
+      description: 'Specialized plastic surgery facility equipped with Karl Storz HD endoscopy, VASER ultrasonic lipo-sculpting, and Zeiss operative micro-instruments.',
+      specs: ['VASER Ultrasound Ready', 'Karl Storz HD Endoscopy', 'Zeiss Micro-Vascular Optics', 'NABH Compliant']
+    }
+  ] as HospitalSlide[]
 };
+
