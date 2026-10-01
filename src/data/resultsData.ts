@@ -42,7 +42,7 @@ export const beforeAfterCases: BeforeAfterCase[] = [
   {
     id: 'lipo-01',
     procedureSlug: 'liposuction',
-    procedureName: '360° HD Liposuction & Body Sculpting',
+    procedureName: 'High Definition Liposuction',
     category: 'BODY',
     externalUrl: 'https://mycosmeticsurgery.in/body/liposuction-surgery-in-lucknow/',
     badge: 'HD Sculpt • Circumferential',

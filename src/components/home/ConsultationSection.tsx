@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { 
-  Calendar, 
-  Clock, 
-  Building2, 
-  Phone, 
-  MessageCircle, 
-  ShieldCheck, 
-  CheckCircle2, 
-  ArrowRight, 
-  User, 
-  Mail, 
-  MapPin, 
-  AlertCircle 
+import {
+  Calendar,
+  Clock,
+  Building2,
+  Phone,
+  MessageCircle,
+  ShieldCheck,
+  CheckCircle2,
+  ArrowRight,
+  User,
+  Mail,
+  MapPin,
+  AlertCircle
 } from 'lucide-react';
 import { useConsultationStore } from '../../lib/consultationStore';
 
@@ -24,7 +24,7 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ onNavi
   const procedures = [
     'Gynecomastia (Male Chest Reduction)',
     'Rhinoplasty (Nose Job)',
-    '360° HD Liposuction',
+    'High Definition Liposuction',
     'Tummy Tuck (Abdominoplasty)',
     'Breast Augmentation',
     'Breast Reduction & Lift',
@@ -187,7 +187,7 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ onNavi
 
   return (
     <section id="consultation" className="scroll-mt-16 sm:scroll-mt-24 py-8 sm:py-16 bg-gradient-to-b from-[#F8FAFC] via-[#F1F5F9] to-[#E2E8F0] border-t border-[#CBD5E1] relative overflow-hidden">
-      
+
       {/* Background Decorative Auras */}
       <div className="absolute top-10 right-10 w-[500px] h-[500px] bg-[#00A3E0]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-10 left-10 w-[500px] h-[500px] bg-[#003366]/10 rounded-full blur-3xl pointer-events-none" />
@@ -450,13 +450,12 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ onNavi
                           placeholder="9795800800"
                           value={phone}
                           onChange={(e) => handlePhoneChange(e.target.value)}
-                          className={`w-full pl-11 pr-3 py-2 sm:py-2.5 rounded-xl border bg-white text-slate-800 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 transition-all ${
-                            phone.length === 10
-                              ? 'border-emerald-500 focus:ring-emerald-500/20'
-                              : phone.length > 0
+                          className={`w-full pl-11 pr-3 py-2 sm:py-2.5 rounded-xl border bg-white text-slate-800 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 transition-all ${phone.length === 10
+                            ? 'border-emerald-500 focus:ring-emerald-500/20'
+                            : phone.length > 0
                               ? 'border-amber-400 focus:ring-amber-400/20'
                               : 'border-slate-300 focus:ring-[#003366]'
-                          }`}
+                            }`}
                         />
                       </div>
                     </div>

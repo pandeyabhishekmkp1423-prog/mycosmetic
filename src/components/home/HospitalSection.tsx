@@ -11,9 +11,9 @@ export const HospitalSection: React.FC<HospitalSectionProps> = ({ onNavigate }) 
   return (
     <section id="hospital" className="scroll-mt-28 py-12 sm:py-16 bg-[#F8FAFC] relative overflow-hidden border-b border-[#E2E8F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
-          
+
           {/* Left Column: Hospital Narrative & Facilities */}
           <div className="lg:col-span-6 space-y-5">
             <div>
@@ -56,7 +56,7 @@ export const HospitalSection: React.FC<HospitalSectionProps> = ({ onNavigate }) 
                   <Sparkles className="w-5 h-5 text-[#00A3E0]" />
                 </div>
                 <h4 className="text-sm font-bold text-[#003366] uppercase tracking-wider mb-1">
-                  VASER- High Tech Machine
+                  High Tech Machine
                 </h4>
                 <p className="text-sm text-[#64748B] leading-relaxed">
                   High-definition ultrasound body sculpting &amp; Karl Storz endoscopy for precise, bloodless incisions.

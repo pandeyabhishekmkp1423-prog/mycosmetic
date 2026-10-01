@@ -24,7 +24,7 @@ export const ResultsGalleryView: React.FC<ResultsGalleryViewProps> = ({ onNaviga
 
   return (
     <div className="pt-32 sm:pt-36 pb-24 bg-[#F8FAFC]">
-      
+
       {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3 text-xs text-slate-500 flex items-center gap-2 border-b border-[#E2E8F0] mb-8">
         <button onClick={() => onNavigate('home')} className="hover:text-[#003366] cursor-pointer">Home</button>
@@ -52,11 +52,10 @@ export const ResultsGalleryView: React.FC<ResultsGalleryViewProps> = ({ onNaviga
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold tracking-wide uppercase transition-colors cursor-pointer whitespace-nowrap ${
-                selectedCategory === cat.id
+              className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold tracking-wide uppercase transition-colors cursor-pointer whitespace-nowrap ${selectedCategory === cat.id
                   ? 'bg-[#003366] text-white shadow-sm'
                   : 'bg-white text-slate-600 border border-[#E2E8F0] hover:bg-[#F0F7FD] hover:text-[#003366]'
-              }`}
+                }`}
             >
               {cat.label}
             </button>

@@ -61,7 +61,7 @@ Both the frontend form dropdown and backend database filters are aligned to the 
 
 1. **Gynecomastia (Male Chest Reduction)**
 2. **Rhinoplasty (Nose Job)**
-3. **360° HD Liposuction**
+3. ****
 4. **Tummy Tuck (Abdominoplasty)**
 5. **Breast Augmentation**
 6. **Breast Reduction & Lift**

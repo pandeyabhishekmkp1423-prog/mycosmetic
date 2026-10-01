@@ -116,7 +116,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   const proceduresCol1: Procedure[] = [
     { id: 'gynecomastia', label: 'Gynecomastia (Male Chest)', iconType: 'chest', url: 'https://mycosmeticsurgery.in/breast/gynecomastia-surgery-lucknow/' },
     { id: 'rhinoplasty', label: 'Rhinoplasty (Nose Job)', iconType: 'nose', url: 'https://mycosmeticsurgery.in/face/nose-job-lucknow/' },
-    { id: 'liposuction', label: '360° HD Liposuction', iconType: 'sculpt', url: 'https://mycosmeticsurgery.in/body/liposuction-surgery-in-lucknow/' },
+    { id: 'liposuction', label: 'High Definition Liposuction', iconType: 'sculpt', url: 'https://mycosmeticsurgery.in/body/liposuction-surgery-in-lucknow/' },
     { id: 'tummy-tuck', label: 'Tummy Tuck (Abdominoplasty)', iconType: 'waist', url: 'https://mycosmeticsurgery.in/body/tummy-tuck-in-lucknow/' }
   ];
 
@@ -464,13 +464,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                             value={modalPhone}
                             onChange={(e) => handleModalPhoneChange(e.target.value)}
                             placeholder="9795800800"
-                            className={`w-full pl-11 pr-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 transition-all ${
-                              modalPhone.length === 10
-                                ? 'border-emerald-500 focus:ring-emerald-500/20'
-                                : modalPhone.length > 0
+                            className={`w-full pl-11 pr-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 transition-all ${modalPhone.length === 10
+                              ? 'border-emerald-500 focus:ring-emerald-500/20'
+                              : modalPhone.length > 0
                                 ? 'border-amber-400 focus:ring-amber-400/20'
                                 : 'border-slate-300 focus:ring-[#00A3E0]/40 focus:border-[#00A3E0]'
-                            }`}
+                              }`}
                           />
                         </div>
                         {modalPhoneError && (
@@ -486,7 +485,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                         >
                           <option value="Gynecomastia (Male Chest Reduction)">Gynecomastia (Male Chest Reduction)</option>
                           <option value="Rhinoplasty (Nose Job)">Rhinoplasty (Nose Job)</option>
-                          <option value="360° HD Liposuction">360° HD Liposuction</option>
+                          <option value="High Definition Liposuction">High Definition Liposuction</option>
                           <option value="Tummy Tuck (Abdominoplasty)">Tummy Tuck (Abdominoplasty)</option>
                           <option value="Breast Augmentation">Breast Augmentation</option>
                           <option value="Breast Reduction & Lift">Breast Reduction &amp; Lift</option>

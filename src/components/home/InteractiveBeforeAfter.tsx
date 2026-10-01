@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { 
-  ArrowRight, 
-  ExternalLink, 
-  Calendar 
+import {
+  ArrowRight,
+  ExternalLink,
+  Calendar
 } from 'lucide-react';
 import { beforeAfterCases } from '../../data/resultsData';
 import { BeforeAfterSlider } from '../common/BeforeAfterSlider';
@@ -47,13 +47,13 @@ export const InteractiveBeforeAfter: React.FC<InteractiveBeforeAfterProps> = ({ 
 
   return (
     <section id="results" className="scroll-mt-28 py-12 sm:py-16 bg-gradient-to-b from-[#F8FAFC] via-[#F1F6FB] to-[#F8FAFC] border-b border-[#CBD5E1] relative overflow-hidden">
-      
+
       {/* Decorative Background Lighting Gradients */}
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-[#00A3E0]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-[#003366]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Section Header: Only Heading & Subheading, Compact Vertical Spacing */}
         <div className="text-center max-w-2xl mx-auto space-y-2 mb-6 sm:mb-8">
           <h2 className="font-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-[#003366] tracking-tight leading-[1.12]">
@@ -73,16 +73,14 @@ export const InteractiveBeforeAfter: React.FC<InteractiveBeforeAfterProps> = ({ 
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wide transition-all cursor-pointer flex items-center gap-2 shrink-0 ${
-                  isActive
+                className={`px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wide transition-all cursor-pointer flex items-center gap-2 shrink-0 ${isActive
                     ? 'bg-[#003366] text-white shadow-sm scale-[1.02]'
                     : 'bg-white text-slate-700 border border-slate-200 hover:border-[#003366] hover:bg-[#F0F6FA] hover:text-[#003366]'
-                }`}
+                  }`}
               >
                 <span>{cat.label}</span>
-                <span className={`text-[11px] px-2 py-0.5 rounded-full font-semibold ${
-                  isActive ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
-                }`}>
+                <span className={`text-[11px] px-2 py-0.5 rounded-full font-semibold ${isActive ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
+                  }`}>
                   {cat.count}
                 </span>
               </button>
@@ -98,7 +96,7 @@ export const InteractiveBeforeAfter: React.FC<InteractiveBeforeAfterProps> = ({ 
               className="bg-white border border-slate-200/90 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-sm hover:shadow-lg transition-all duration-200 flex flex-col justify-between group hover:border-[#00A3E0]/40"
             >
               <div className="space-y-3">
-                
+
                 {/* Card Title & Timeline - No Badges */}
                 <div>
                   <h3 className="text-xl sm:text-2xl font-bold font-editorial text-[#003366] tracking-tight">
@@ -128,7 +126,7 @@ export const InteractiveBeforeAfter: React.FC<InteractiveBeforeAfterProps> = ({ 
               {/* Card Footer: The Two Mandatory Action Buttons */}
               <div className="pt-4 mt-4 border-t border-slate-100">
                 <div className="flex flex-col sm:flex-row items-center gap-2.5">
-                  
+
                   {/* Button 1: Know More (Redirects to given link in new tab) */}
                   <a
                     href={item.externalUrl}

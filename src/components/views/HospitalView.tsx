@@ -1,13 +1,13 @@
 import React from 'react';
-import { 
-  Building2, 
-  ShieldCheck, 
-  CheckCircle2, 
-  MapPin, 
-  Clock, 
-  Phone, 
-  Calendar, 
-  BedDouble, 
+import {
+  Building2,
+  ShieldCheck,
+  CheckCircle2,
+  MapPin,
+  Clock,
+  Phone,
+  Calendar,
+  BedDouble,
   HeartPulse,
   Sparkles,
   Award
@@ -22,7 +22,7 @@ interface HospitalViewProps {
 export const HospitalView: React.FC<HospitalViewProps> = ({ onNavigate }) => {
   return (
     <div className="pt-32 sm:pt-36 pb-24 bg-[#F8FAFC]">
-      
+
       {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3 text-xs text-[#64748B] flex items-center gap-2 border-b border-[#E2E8F0] mb-8">
         <button onClick={() => onNavigate('home')} className="hover:text-[#003366] transition-colors cursor-pointer">Home</button>
@@ -33,7 +33,7 @@ export const HospitalView: React.FC<HospitalViewProps> = ({ onNavigate }) => {
       {/* Hero */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-12">
         <div className="bg-white rounded-3xl border border-[#E2E8F0] p-8 sm:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          
+
           <div className="lg:col-span-7 space-y-6">
             <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block mb-1">
               NABH Accredited Super Specialty Center
@@ -99,7 +99,7 @@ export const HospitalView: React.FC<HospitalViewProps> = ({ onNavigate }) => {
 
       {/* Facilities Details */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
-        
+
         {/* Features */}
         <div>
           <div className="max-w-xl mb-6">
@@ -128,7 +128,7 @@ export const HospitalView: React.FC<HospitalViewProps> = ({ onNavigate }) => {
 
         {/* Operating Theatre & Rooms */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          
+
           <div className="bg-white rounded-2xl border border-[#E2E8F0] p-8 shadow-xs space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-11 h-11 rounded-xl bg-[#00A3E0]/10 border border-[#00A3E0]/20 text-[#003366] flex items-center justify-center">

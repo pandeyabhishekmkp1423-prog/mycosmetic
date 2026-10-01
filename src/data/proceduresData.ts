@@ -133,7 +133,7 @@ export const proceduresData: Procedure[] = [
     featured: true,
     image: '/cases/03-tummy-tuck-waist-liposculpture_full.jpg',
     beforeAfterCaseIds: ['lipo-01'],
-    tags: ['HD Liposuction', 'Love Handles', 'Abdominal Sculpting', 'Double Chin', '360 Lipo'],
+    tags: ['High Definition Liposuction', 'Love Handles', 'Abdominal Sculpting', 'Double Chin', '360 Lipo'],
     relatedSlugs: ['tummy-tuck', 'gynecomastia', 'mommy-makeover'],
     faqs: [
       {

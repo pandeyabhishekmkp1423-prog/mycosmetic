@@ -28,7 +28,7 @@ export const TrustCredentials: React.FC = () => {
   return (
     <section className="bg-[#002244] text-white py-10 sm:py-12 border-y border-[#003366]">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
-        
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {highlights.map((item) => {
             const Icon = item.icon;

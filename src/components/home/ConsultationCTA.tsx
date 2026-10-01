@@ -9,9 +9,9 @@ export const ConsultationCTA: React.FC<ConsultationCTAProps> = ({ onNavigate }) 
   return (
     <section className="bg-[#002244] py-8 sm:py-10 border-t border-[#003366] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
-        
+
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          
+
           {/* Left: Icon + Heading & Subtext */}
           <div className="flex items-center gap-4 text-center md:text-left">
             <div className="w-12 h-12 rounded-xl bg-[#003366] text-[#00A3E0] border border-[#00A3E0]/30 flex items-center justify-center shrink-0 shadow-sm hidden sm:flex">

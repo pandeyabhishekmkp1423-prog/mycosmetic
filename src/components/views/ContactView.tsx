@@ -1,15 +1,15 @@
 import React from 'react';
-import { 
-  MapPin, 
-  Phone, 
-  Mail, 
-  Clock, 
-  MessageCircle, 
-  Calendar, 
-  Plane, 
-  Train, 
-  Car, 
-  ArrowRight 
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  MessageCircle,
+  Calendar,
+  Plane,
+  Train,
+  Car,
+  ArrowRight
 } from 'lucide-react';
 import { doctorData } from '../../data/doctorData';
 import { hospitalData } from '../../data/hospitalData';
@@ -21,7 +21,7 @@ interface ContactViewProps {
 export const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
   return (
     <div className="pt-32 sm:pt-36 pb-24 bg-[#F8FAFC]">
-      
+
       {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3 text-xs text-slate-500 flex items-center gap-2 border-b border-[#E2E8F0] mb-8">
         <button onClick={() => onNavigate('home')} className="hover:text-[#003366] cursor-pointer">Home</button>
@@ -47,10 +47,10 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
       {/* Main Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          
+
           {/* Left: Contact info */}
           <div className="lg:col-span-6 space-y-6">
-            
+
             <div className="bg-white rounded-2xl border border-[#E2E8F0] p-6 sm:p-8 space-y-5 shadow-xs">
               <h2 className="text-xl font-heading font-bold text-[#003366]">
                 Direct Hospital Helplines
@@ -74,10 +74,10 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
                   <MessageCircle className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                   <div>
                     <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">WhatsApp Coordinator</p>
-                    <a 
+                    <a
                       href={`https://wa.me/${doctorData.whatsappNumber.replace('+', '')}`}
                       target="_blank"
-                      rel="noopener noreferrer" 
+                      rel="noopener noreferrer"
                       className="font-bold text-emerald-800 hover:underline"
                     >
                       {doctorData.whatsappNumber} (Direct Chat)
@@ -155,7 +155,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
 
           {/* Right: Hospital Map */}
           <div className="lg:col-span-6 space-y-6">
-            
+
             <div className="bg-white rounded-2xl border border-[#E2E8F0] p-6 sm:p-8 space-y-4 shadow-xs">
               <div className="flex items-center justify-between">
                 <div>

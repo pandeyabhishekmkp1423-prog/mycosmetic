@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { 
-  Clock, 
-  ShieldCheck, 
-  Calendar, 
-  CheckCircle2, 
-  ArrowRight, 
-  Building2, 
-  PhoneCall, 
+import {
+  Clock,
+  ShieldCheck,
+  Calendar,
+  CheckCircle2,
+  ArrowRight,
+  Building2,
+  PhoneCall,
   ChevronDown,
   Sparkles,
   Award
@@ -38,7 +38,7 @@ export const ProcedureDetailView: React.FC<ProcedureDetailViewProps> = ({
 
   return (
     <div className="pt-32 sm:pt-36 pb-24 bg-[#F8FAFC]">
-      
+
       {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3 text-xs text-[#64748B] flex items-center gap-2 border-b border-[#E2E8F0] mb-8">
         <button onClick={() => onNavigate('home')} className="hover:text-[#003366] transition-colors cursor-pointer">Home</button>
@@ -53,7 +53,7 @@ export const ProcedureDetailView: React.FC<ProcedureDetailViewProps> = ({
       {/* Main Hero */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="bg-white rounded-3xl border border-[#E2E8F0] p-8 sm:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          
+
           <div className="lg:col-span-7 space-y-5">
             <span className="text-sm font-semibold tracking-widest text-[#00A3E0] uppercase block">
               {procedure.category} • Surgical Excellence
@@ -141,10 +141,10 @@ export const ProcedureDetailView: React.FC<ProcedureDetailViewProps> = ({
 
       {/* Main Content Details */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10">
-        
+
         {/* Left Column: Details */}
         <div className="lg:col-span-8 space-y-8">
-          
+
           {/* Overview */}
           <div className="bg-white rounded-2xl border border-[#E2E8F0] p-8 shadow-xs space-y-3">
             <h2 className="text-xl font-serif font-bold text-[#003366]">
@@ -233,7 +233,7 @@ export const ProcedureDetailView: React.FC<ProcedureDetailViewProps> = ({
 
         {/* Right Sidebar: Contact & Related */}
         <div className="lg:col-span-4 space-y-6">
-          
+
           <div className="bg-gradient-to-br from-[#002244] to-[#003366] text-white rounded-3xl p-6 sm:p-7 border border-white/10 shadow-lg space-y-5">
             <div className="flex items-center gap-3.5">
               <div className="w-13 h-13 rounded-full overflow-hidden border-2 border-[#00A3E0] shrink-0">

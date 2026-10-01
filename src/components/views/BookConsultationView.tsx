@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { 
-  Calendar, 
-  Clock, 
-  Building2, 
-  ArrowRight, 
-  ArrowLeft, 
-  CheckCircle2, 
-  ShieldCheck, 
-  Phone 
+import {
+  Calendar,
+  Clock,
+  Building2,
+  ArrowRight,
+  ArrowLeft,
+  CheckCircle2,
+  ShieldCheck,
+  Phone
 } from 'lucide-react';
 import { useConsultationStore } from '../../lib/consultationStore';
 import { doctorData } from '../../data/doctorData';
@@ -30,7 +30,7 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
     new Date(Date.now() + 86400000 * 2).toISOString().split('T')[0]
   );
   const [timeSlot, setTimeSlot] = useState<string>('10:30 AM – 1:00 PM (Morning OPD)');
-  
+
   // Patient Info
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -80,7 +80,7 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
 
   return (
     <div className="pt-32 sm:pt-36 pb-24 bg-[#F8FAFC]">
-      
+
       {/* Breadcrumb */}
       <div className="max-w-4xl mx-auto px-4 sm:px-8 py-3 text-xs text-slate-500 flex items-center gap-2 border-b border-[#E2E8F0] mb-8">
         <button onClick={() => onNavigate('home')} className="hover:text-[#003366] cursor-pointer">Home</button>
@@ -89,7 +89,7 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-8">
-        
+
         {/* Header */}
         {/* Header */}
         <div className="text-center max-w-xl mx-auto mb-10 space-y-2">
@@ -117,13 +117,12 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
               return (
                 <div
                   key={label}
-                  className={`p-3 rounded-xl border text-center transition-all ${
-                    active
-                      ? 'border-[#003366] bg-[#003366] text-white font-bold shadow-xs'
-                      : complete
-                        ? 'border-[#00A3E0] bg-[#E0F2FE] text-[#0284C7] font-semibold'
-                        : 'border-[#E2E8F0] bg-white text-slate-500'
-                  }`}
+                  className={`p-3 rounded-xl border text-center transition-all ${active
+                    ? 'border-[#003366] bg-[#003366] text-white font-bold shadow-xs'
+                    : complete
+                      ? 'border-[#00A3E0] bg-[#E0F2FE] text-[#0284C7] font-semibold'
+                      : 'border-[#E2E8F0] bg-white text-slate-500'
+                    }`}
                 >
                   <span className="text-xs block opacity-80 uppercase font-semibold">Step {number}</span>
                   <span className="text-xs sm:text-sm font-bold">{label}</span>
@@ -151,11 +150,10 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
                   key={proc.slug}
                   type="button"
                   onClick={() => setProcedure(proc.title)}
-                  className={`p-3 rounded-xl border text-left text-xs transition-colors cursor-pointer ${
-                    procedure === proc.title
-                      ? 'bg-[#003366] text-white border-[#003366] shadow-xs'
-                      : 'bg-white border-[#E2E8F0] text-[#0F172A] hover:bg-[#F8FAFC]'
-                  }`}
+                  className={`p-3 rounded-xl border text-left text-xs transition-colors cursor-pointer ${procedure === proc.title
+                    ? 'bg-[#003366] text-white border-[#003366] shadow-xs'
+                    : 'bg-white border-[#E2E8F0] text-[#0F172A] hover:bg-[#F8FAFC]'
+                    }`}
                 >
                   <p className="truncate font-bold">{proc.title}</p>
                   <span className={`text-xs block mt-0.5 ${procedure === proc.title ? 'text-[#00A3E0]' : 'text-slate-500'}`}>
@@ -167,11 +165,10 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
               <button
                 type="button"
                 onClick={() => setProcedure('Other')}
-                className={`p-3 rounded-xl border text-left text-xs transition-colors cursor-pointer ${
-                  procedure === 'Other'
-                    ? 'bg-[#003366] text-white border-[#003366] shadow-xs'
-                    : 'bg-white border-[#E2E8F0] text-[#0F172A] hover:bg-[#F8FAFC]'
-                }`}
+                className={`p-3 rounded-xl border text-left text-xs transition-colors cursor-pointer ${procedure === 'Other'
+                  ? 'bg-[#003366] text-white border-[#003366] shadow-xs'
+                  : 'bg-white border-[#E2E8F0] text-[#0F172A] hover:bg-[#F8FAFC]'
+                  }`}
               >
                 <p className="truncate font-bold">Other / Custom</p>
                 <span className={`text-xs block mt-0.5 ${procedure === 'Other' ? 'text-[#00A3E0]' : 'text-slate-500'}`}>
@@ -268,11 +265,10 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
                       key={slot}
                       type="button"
                       onClick={() => setTimeSlot(slot)}
-                      className={`w-full p-3 rounded-lg border text-left text-xs font-semibold transition-colors ${
-                        timeSlot === slot
-                          ? 'bg-[#003366] text-white border-[#003366]'
-                          : 'bg-white border-[#E2E8F0] text-[#0F172A] hover:bg-[#F8FAFC]'
-                      }`}
+                      className={`w-full p-3 rounded-lg border text-left text-xs font-semibold transition-colors ${timeSlot === slot
+                        ? 'bg-[#003366] text-white border-[#003366]'
+                        : 'bg-white border-[#E2E8F0] text-[#0F172A] hover:bg-[#F8FAFC]'
+                        }`}
                     >
                       {slot}
                     </button>
@@ -350,13 +346,12 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
                     placeholder="9795800800"
                     value={phone}
                     onChange={(e) => handlePhoneChange(e.target.value)}
-                    className={`w-full pl-11 pr-3 py-3 bg-white border rounded-lg focus:outline-none transition-all ${
-                      phone.length === 10
-                        ? 'border-emerald-500 focus:ring-1 focus:ring-emerald-500'
-                        : phone.length > 0
+                    className={`w-full pl-11 pr-3 py-3 bg-white border rounded-lg focus:outline-none transition-all ${phone.length === 10
+                      ? 'border-emerald-500 focus:ring-1 focus:ring-emerald-500'
+                      : phone.length > 0
                         ? 'border-amber-400 focus:ring-1 focus:ring-amber-400'
                         : 'border-[#E2E8F0] focus:border-[#003366]'
-                    }`}
+                      }`}
                   />
                 </div>
               </div>
