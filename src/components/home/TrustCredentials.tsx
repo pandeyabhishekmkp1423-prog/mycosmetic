@@ -10,7 +10,7 @@ export const TrustCredentials: React.FC = () => {
     },
     {
       title: 'ADVANCED TECHNOLOGY',
-      desc: 'VASER ultrasound, microsurgical loupes, and modern laminar airflow OTs',
+      desc: 'Equipped with advanced medical technology, state-of-the-art instruments, modern equipment, and fully equipped modular operation theatres.',
       icon: Sparkles
     },
     {

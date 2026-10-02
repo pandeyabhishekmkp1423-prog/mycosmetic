@@ -7,7 +7,8 @@ import {
   ArrowLeft,
   CheckCircle2,
   ShieldCheck,
-  Phone
+  Phone,
+  Mail
 } from 'lucide-react';
 import { useConsultationStore } from '../../lib/consultationStore';
 import { doctorData } from '../../data/doctorData';
@@ -426,6 +427,29 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
           </form>
         )}
 
+        {/* Direct Email Assistance Box below consultation steps */}
+        {step < 4 && (
+          <div className="mt-6 p-4 rounded-xl bg-white border border-[#E2E8F0] flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left shadow-2xs">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-lg bg-sky-50 text-[#00A3E0] flex items-center justify-center shrink-0 border border-sky-100">
+                <Mail className="w-4 h-4" />
+              </div>
+              <div>
+                <p className="text-xs font-bold text-[#003366]">Prefer to consult or share documents via email?</p>
+                <p className="text-[11px] text-slate-500">Send inquiries or previous medical records directly to Dr. Mishra's team</p>
+              </div>
+            </div>
+            <a
+              href={`mailto:${doctorData.contactEmail}?subject=${encodeURIComponent('Consultation & Medical Records Inquiry - Dr. R.K. Mishra')}`}
+              className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-[#F8FAFC] border border-slate-300 hover:border-[#00A3E0] text-xs font-bold text-[#003366] hover:text-[#00A3E0] transition-colors cursor-pointer shrink-0 w-full sm:w-auto"
+              title={`Email: ${doctorData.contactEmail}`}
+            >
+              <Mail className="w-3.5 h-3.5 text-[#00A3E0]" />
+              <span>Email: {doctorData.contactEmail}</span>
+            </a>
+          </div>
+        )}
+
         {/* Step 4: Success */}
         {step === 4 && (
           <div className="bg-white rounded-2xl border border-[#E2E8F0] p-8 sm:p-12 text-center space-y-6 shadow-sm">
@@ -442,9 +466,15 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] max-w-md mx-auto text-xs text-slate-600 space-y-1">
+            <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] max-w-md mx-auto text-xs text-slate-600 space-y-2">
               <p>Our patient care team will contact you to confirm your OPD appointment token.</p>
               <p className="font-bold text-[#003366]">Hospital Desk Direct Line: +91 9795 800 800</p>
+              <div className="pt-1 flex items-center justify-center gap-1.5 text-slate-700">
+                <Mail className="w-3.5 h-3.5 text-[#00A3E0]" />
+                <a href={`mailto:${doctorData.contactEmail}`} className="font-semibold text-[#003366] hover:text-[#00A3E0] hover:underline">
+                  {doctorData.contactEmail}
+                </a>
+              </div>
             </div>
 
             <div className="pt-2 flex justify-center gap-4">

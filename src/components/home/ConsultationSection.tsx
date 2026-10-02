@@ -14,6 +14,7 @@ import {
   AlertCircle
 } from 'lucide-react';
 import { useConsultationStore } from '../../lib/consultationStore';
+import { doctorData } from '../../data/doctorData';
 
 interface ConsultationSectionProps {
   onNavigate?: (route: string) => void;
@@ -254,30 +255,43 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ onNavi
                 </div>
               </div>
 
-              {/* Fast Connect Buttons */}
-              <div className="pt-1 grid grid-cols-2 gap-2 sm:gap-2.5">
+              {/* Fast Connect Buttons: Call, WhatsApp, Email */}
+              <div className="pt-1 grid grid-cols-3 gap-1.5 sm:gap-2">
                 <div className="flex flex-col gap-1">
                   <a
                     href="tel:+919795800800"
-                    className="py-2.5 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-[#003366] text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all shadow-2xs cursor-pointer"
+                    className="py-2.5 px-1.5 sm:px-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-[#003366] text-xs font-bold flex items-center justify-center gap-1 transition-all shadow-2xs cursor-pointer text-center"
                     title="Call available 10:00 AM to 5:00 PM (Monday to Saturday)"
                   >
-                    <Phone className="w-3.5 h-3.5 text-[#00A3E0]" />
-                    <span>Call Hospital</span>
+                    <Phone className="w-3.5 h-3.5 text-[#00A3E0] shrink-0" />
+                    <span>Call</span>
                   </a>
-                  <span className="text-[10px] text-center text-slate-500 font-medium">10am–5pm Mon-Sat</span>
+                  <span className="text-[9px] text-center text-slate-500 font-medium">10am–5pm</span>
                 </div>
 
                 <div className="flex flex-col gap-1">
                   <button
                     type="button"
                     onClick={handleWhatsAppDirect}
-                    className="py-2.5 px-3 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all shadow-2xs cursor-pointer"
+                    className="py-2.5 px-1.5 sm:px-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-800 text-xs font-bold flex items-center justify-center gap-1 transition-all shadow-2xs cursor-pointer text-center"
+                    title="Chat on WhatsApp"
                   >
-                    <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+                    <MessageCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                     <span>WhatsApp</span>
                   </button>
-                  <span className="text-[10px] text-center text-emerald-700 font-medium">24/7 Chat Inquiries</span>
+                  <span className="text-[9px] text-center text-emerald-700 font-medium">24/7 Chat</span>
+                </div>
+
+                <div className="flex flex-col gap-1">
+                  <a
+                    href={`mailto:${doctorData.contactEmail}?subject=${encodeURIComponent('Consultation Inquiry - Dr. R.K. Mishra')}`}
+                    className="py-2.5 px-1.5 sm:px-2 rounded-xl bg-sky-50 hover:bg-sky-100 border border-sky-200 text-[#003366] text-xs font-bold flex items-center justify-center gap-1 transition-all shadow-2xs cursor-pointer text-center"
+                    title={`Email: ${doctorData.contactEmail}`}
+                  >
+                    <Mail className="w-3.5 h-3.5 text-[#00A3E0] shrink-0" />
+                    <span>Email</span>
+                  </a>
+                  <span className="text-[9px] text-center text-sky-700 font-medium">Direct Desk</span>
                 </div>
               </div>
 
@@ -340,6 +354,13 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ onNavi
                       <MessageCircle className="w-4 h-4 text-white" />
                       <span>Confirm via WhatsApp Instantly</span>
                     </button>
+                    <a
+                      href={`mailto:${doctorData.contactEmail}?subject=${encodeURIComponent('Consultation Booking Confirmation #' + bookingSuccess)}&body=${encodeURIComponent('Hello Dr. Mishra Team,\n\nI have registered consultation request #' + bookingSuccess + ' for ' + (procedure === 'Other' && otherProcedure.trim() ? otherProcedure : procedure) + ' on ' + preferredDate + ' (' + timeSlot + ').\nName: ' + name + '\nPhone: ' + phone + '\n\nThank you.')}`}
+                      className="py-3 px-5 rounded-xl border border-sky-300 bg-sky-50 text-xs sm:text-sm font-bold text-[#003366] hover:bg-sky-100 flex items-center gap-2 cursor-pointer transition-all"
+                    >
+                      <Mail className="w-4 h-4 text-[#00A3E0]" />
+                      <span>Email Clinical Desk</span>
+                    </a>
                     <button
                       onClick={() => setBookingSuccess(null)}
                       className="py-3 px-5 rounded-xl border border-slate-200 text-xs sm:text-sm font-semibold text-slate-600 hover:bg-slate-50 cursor-pointer"
@@ -580,6 +601,30 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ onNavi
                   <p className="text-[10px] sm:text-[11px] text-center text-slate-500 font-medium">
                     🔒 100% Medical Privacy Guaranteed • Direct Coordinator Confirmation
                   </p>
+
+                  {/* Direct Mail Option Below Consultation Form */}
+                  <div className="pt-3 border-t border-slate-100">
+                    <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-3.5 rounded-xl bg-slate-50/90 border border-slate-200/80">
+                      <div className="flex items-center gap-2.5 text-center sm:text-left">
+                        <div className="w-8 h-8 rounded-lg bg-sky-100 text-[#00A3E0] flex items-center justify-center shrink-0">
+                          <Mail className="w-4 h-4 text-[#008CC4]" />
+                        </div>
+                        <div>
+                          <p className="text-xs font-bold text-[#003366]">Prefer to write via Email?</p>
+                          <p className="text-[11px] text-slate-500">Send questions or medical reports directly to Dr. Mishra</p>
+                        </div>
+                      </div>
+                      <a
+                        id="consultation-direct-mail-btn"
+                        href={`mailto:${doctorData.contactEmail}?subject=${encodeURIComponent('Consultation Inquiry - Dr. R.K. Mishra')}&body=${encodeURIComponent('Hello Dr. R.K. Mishra,\n\nI would like to inquire regarding a consultation.\nProcedure of Interest: ' + (procedure === 'Other' && otherProcedure.trim() ? otherProcedure : procedure) + (name ? '\nName: ' + name : '') + (phone ? '\nPhone: ' + phone : '') + '\n\nQuestions/Concerns:\n')}`}
+                        className="inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-lg bg-white border border-slate-300 hover:border-[#00A3E0] hover:text-[#00A3E0] text-xs font-bold text-[#003366] transition-all shadow-2xs hover:shadow-xs cursor-pointer w-full sm:w-auto shrink-0"
+                        title={`Click to email directly: ${doctorData.contactEmail}`}
+                      >
+                        <Mail className="w-3.5 h-3.5 text-[#00A3E0]" />
+                        <span>Email Clinical Desk</span>
+                      </a>
+                    </div>
+                  </div>
 
                 </form>
               )}

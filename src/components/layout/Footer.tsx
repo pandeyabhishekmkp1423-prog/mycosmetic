@@ -9,7 +9,8 @@ import {
   ExternalLink,
   Calendar,
   ShieldCheck,
-  Mail
+  Mail,
+  MessageCircle
 } from 'lucide-react';
 import { Logo } from '../common/Logo';
 
@@ -28,6 +29,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   };
 
   const socialLinks = [
+    {
+      name: 'Email Clinical Desk',
+      url: 'mailto:MyCosmeticSurgery@gmail.com?subject=Consultation%20Inquiry%20-%20Dr.%20R.K.%20Mishra',
+      icon: Mail,
+      hoverClass: 'hover:bg-[#00A3E0] hover:text-white',
+      color: '#00A3E0'
+    },
     {
       name: 'Facebook',
       url: 'https://www.facebook.com/drrkmishra.sips',
@@ -90,7 +98,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <strong>My Cosmetic Surgery</strong> — Revamping Your Looks. Premier plastic, aesthetic and reconstructive surgery directed by ASPS Board Certified Plastic Surgeon <strong>Dr. R.K. Mishra</strong> (Managing Director &amp; Head of Plastic Surgery Dept., SIPS Super Specialty Hospital Pvt. Ltd., 25+ Yrs Exp • 30,000+ Surgeries).
             </p>
 
-            {/* Clickable Social Media Icons */}
+            {/* Clickable Social Media & Direct Email Icons */}
             <div className="pt-2">
               <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-2.5">
                 Connect with Dr. R.K. Mishra:
@@ -102,11 +110,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     <a
                       key={social.name}
                       href={social.url}
-                      target="_blank"
+                      target={social.url.startsWith('mailto:') ? '_self' : '_blank'}
                       rel="noopener noreferrer"
                       className={`w-9 h-9 rounded-full bg-[#0A2E54] border border-white/10 flex items-center justify-center text-slate-300 transition-all duration-200 cursor-pointer shadow-sm ${social.hoverClass}`}
-                      aria-label={`Follow Dr. R.K. Mishra on ${social.name}`}
-                      title={`Follow on ${social.name}`}
+                      aria-label={social.name}
+                      title={social.name}
                     >
                       {social.customSvg ? (
                         social.customSvg
@@ -198,7 +206,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <div className="flex items-start gap-2.5">
                 <Phone className="w-4 h-4 text-[#00A3E0] shrink-0 mt-0.5" />
                 <div>
-                  <a href="tel:+919795800800" className="hover:text-white font-semibold block">
+                  <a href="tel:+919795800800" className="hover:text-white font-semibold block transition-colors">
                     +91 9795 800 800
                   </a>
                   <span className="text-[11px] text-emerald-400 font-medium">
@@ -207,8 +215,23 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 </div>
               </div>
               <div className="flex items-center gap-2.5">
+                <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0" />
+                <a 
+                  href="https://wa.me/919795800800?text=Hello%20Dr.%20Mishra%20%2F%20SIPS%20Hospital%2C%20I%20would%20like%20to%20inquire%20regarding%20a%20consultation." 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-white font-semibold text-emerald-300 transition-colors"
+                >
+                  WhatsApp: +91 9795 800 800
+                </a>
+              </div>
+              <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#00A3E0] shrink-0" />
-                <a href="mailto:MyCosmeticSurgery@gmail.com" className="hover:text-white font-semibold">
+                <a 
+                  href="mailto:MyCosmeticSurgery@gmail.com?subject=Consultation%20Inquiry%20-%20Dr.%20R.K.%20Mishra" 
+                  className="hover:text-white font-semibold transition-colors"
+                  title="Click to email MyCosmeticSurgery@gmail.com"
+                >
                   MyCosmeticSurgery@gmail.com
                 </a>
               </div>
@@ -233,8 +256,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         </div>
       </div>
 
-      {/* Clean Bottom Legal Bar */}
-      <div className="border-t border-[#002B59] py-4 px-4 sm:px-8 text-slate-400 text-xs">
+      {/* Clean Bottom Legal Bar (pb-24 on mobile so MobileBottomBar never obscures it) */}
+      <div className="border-t border-[#002B59] pt-4 pb-24 lg:pb-4 px-4 sm:px-8 text-slate-400 text-xs">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
           <div>
             © 2026 My Cosmetic Surgery • Dr. R. K. Mishra • SIPS Super Specialty Hospital, Lucknow. All rights reserved.
