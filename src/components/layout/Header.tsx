@@ -98,7 +98,7 @@ export const Header: React.FC<HeaderProps> = ({
     { icon: Award, text: 'ASPS Board Certified Plastic Surgeon Dr. R.K. Mishra (Managing Director & Head of Plastic Surgery, SIPS)' },
     { icon: Phone, text: 'Call Helpline: +91 9795 800 800 (Available 10:00 AM – 5:00 PM, Mon – Sat)' },
     { icon: Clock, text: 'Hospital OPD: 10:00 AM – 5:00 PM (Monday to Saturday)' },
-    { icon: CreditCard, text: '0% Interest Surgery EMI Options Available' },
+    
     { icon: Plane, text: 'Out-of-Town & Medical Tourism Concierge Desk' }
   ];
 

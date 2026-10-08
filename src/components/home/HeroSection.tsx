@@ -12,6 +12,7 @@ import {
   MapPin,
   Lock
 } from 'lucide-react';
+import { useConsultationStore } from '../../lib/consultationStore';
 
 interface Procedure {
   id: string;
@@ -99,6 +100,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   const [modalOtherProcedure, setModalOtherProcedure] = useState('');
   const [modalDate, setModalDate] = useState('');
   const [isSubmittingModal, setIsSubmittingModal] = useState(false);
+  const { addLead } = useConsultationStore();
 
   const handleModalPhoneChange = (val: string) => {
     let clean = val.replace(/\D/g, '');
@@ -172,6 +174,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
           preferredDate: modalDate || new Date().toISOString().split('T')[0],
           city: 'Lucknow'
         })
+      });
+
+      addLead({
+        name: modalName.trim(),
+        phone: modalPhone.trim(),
+        email: `${cleanPhone}@lead.mycosmeticsurgery.in`,
+        procedure: finalProcedure,
+        city: 'Lucknow',
+        preferredDate: modalDate || new Date().toISOString().split('T')[0],
+        timeSlot: 'Morning OPD (10:30 AM – 1:00 PM)',
+        consultationType: 'IN_PERSON'
       });
     } catch {
       // Local fallback

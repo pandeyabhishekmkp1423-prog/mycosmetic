@@ -262,10 +262,18 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div>
             © 2026 My Cosmetic Surgery • Dr. R. K. Mishra • SIPS Super Specialty Hospital, Lucknow. All rights reserved.
           </div>
-          <div className="flex items-center gap-4 text-[11px]">
+          <div className="flex items-center gap-4 text-[11px] flex-wrap justify-center sm:justify-start">
             <span className="text-slate-400">NABH Accredited Tertiary Center</span>
             <span>•</span>
             <span className="text-slate-400">Dallas &amp; NYU Plastic Surgery Fellow</span>
+            <span>•</span>
+            <button 
+              onClick={() => onNavigate('admin')}
+              className="text-slate-400 hover:text-[#00A3E0] transition-colors cursor-pointer font-medium"
+              title="Access Clinic Admin Desk"
+            >
+              Clinic Admin Portal 🔐
+            </button>
           </div>
         </div>
       </div>

@@ -1,87 +1,65 @@
-# Hostinger Deployment Guide • Dr. R. K. Mishra Leads Backend
+# Hostinger Deployment Guide • Dr. R. K. Mishra Leads Backend & Admin Panel
 
-This directory contains the production-ready PHP + MySQL backend for handling patient consultation leads and providing an executive admin panel with Microsoft Excel export.
+This guide explains how to connect your Hostinger MySQL database, manage patient consultation leads, view complete submission details, and download Microsoft Excel sheets.
 
 ---
 
-## 📁 Included Files Overview
+## 🔐 Configured Hostinger Database Credentials
+
+The backend configuration in [`config.php`](file:///c:/Users/Abhishek%20pandey/Desktop/cosmetic/backend/config.php) is pre-configured with your credentials:
+
+- **MySQL Host:** `localhost` (standard on Hostinger)
+- **Database Name:** `u660349605_cosmetic`
+- **Database User:** `u660349605_user`
+- **Database Password:** `Mycosmetic@123`
+- **Admin Portal Username:** `admin`
+- **Admin Portal Password:** `Mycosmetic@123` *(also accepts `DrMishra@2026`)*
+
+---
+
+## 📁 Included Backend Files
 
 | File | Purpose |
 |------|---------|
-| `config.php` | Database configuration, credentials, CORS headers, and security settings |
-| `schema.sql` | MySQL table schema for phpMyAdmin manual import (if desired) |
-| `install.php` | **One-Click Installer**: Automatically creates the `leads` table and indexes in your database |
-| `submit_lead.php` | API endpoint that receives form submissions from the frontend and inserts into MySQL |
-| `admin.php` | Executive Admin Portal with lead counters, WhatsApp direct buttons, and status manager |
-| `export_excel.php` | Generates clean Microsoft Excel (.CSV) downloads with UTF-8 support |
+| [`config.php`](file:///c:/Users/Abhishek%20pandey/Desktop/cosmetic/backend/config.php) | Database connection, credentials, CORS, and security settings |
+| [`submit_lead.php`](file:///c:/Users/Abhishek%20pandey/Desktop/cosmetic/backend/submit_lead.php) | Receives consultation form submissions from website and saves to MySQL |
+| [`admin_api.php`](file:///c:/Users/Abhishek%20pandey/Desktop/cosmetic/backend/admin_api.php) | REST API for fetching leads, updating statuses, deleting leads, and syncing with React |
+| [`admin.php`](file:///c:/Users/Abhishek%20pandey/Desktop/cosmetic/backend/admin.php) | **Executive Admin Portal** (KPI cards, filters, dossier modal, status updater, WhatsApp/Call) |
+| [`export_excel.php`](file:///c:/Users/Abhishek%20pandey/Desktop/cosmetic/backend/export_excel.php) | **One-Click Microsoft Excel Export** with UTF-8 BOM and sanitized telephone formatting |
+| [`schema.sql`](file:///c:/Users/Abhishek%20pandey/Desktop/cosmetic/backend/schema.sql) | Table schema for phpMyAdmin |
+| [`install.php`](file:///c:/Users/Abhishek%20pandey/Desktop/cosmetic/backend/install.php) | Verification and table auto-installer script |
 
 ---
 
-## 🚀 Step-by-Step Hostinger Deployment
+## 🚀 How to Access the Admin Panel
 
-### Step 1: Create a MySQL Database in Hostinger
-1. Log in to your **Hostinger hPanel**.
-2. Go to **Databases** → **MySQL Databases**.
-3. Create a new database:
-   - Database Name (e.g. `u123456789_cosmetic`)
-   - Username (e.g. `u123456789_user`)
-   - Password (e.g. `YourStrongPassword123`)
-4. Note down the Database Name, Username, and Password.
-
----
-
-### Step 2: Configure `config.php`
-Open `backend/config.php` in any text editor and update lines 34–37:
-
-```php
-define('DB_HOST', 'localhost');                // Usually 'localhost' on Hostinger
-define('DB_NAME', 'u123456789_cosmetic');      // Your Hostinger Database Name
-define('DB_USER', 'u123456789_user');          // Your Hostinger Database Username
-define('DB_PASS', 'YourStrongPassword123');    // Your Hostinger Database Password
-
-// Set your Admin Credentials for admin.php:
-define('ADMIN_USERNAME', 'admin');
-define('ADMIN_PASSWORD', 'DrMishra@2026');     // Change to your desired password
+### Option 1: Standalone PHP Executive Portal (Recommended)
+Upload the `backend` folder to Hostinger as `public_html/api/` (or `public_html/backend/`).
+Visit in your browser:
 ```
+https://yourdomain.com/api/admin.php
+```
+1. **Login Credentials:**
+   - **Username:** `admin`
+   - **Password:** `Mycosmetic@123`
+2. **Features:**
+   - **Live Metric Counters:** Total Inquiries, Today's New Leads (pulsing indicator), Pending Action, Scheduled OPDs, Completed.
+   - **Interactive Filters:** Live search (by patient name, phone, email, reference ID, city, or notes), procedure filter, lead status filter, and quick date presets (Today, Last 7 Days, Last 30 Days, All Time).
+   - **Direct Connect Buttons:** Instant Click-to-Call (`📞 Call`) and Click-to-WhatsApp (`💬 WhatsApp`) with pre-composed professional Hindi/English messages.
+   - **Instant Status Changer:** Update status (`New`, `Contacted`, `Scheduled`, `Completed`, `Cancelled`) via real-time AJAX without page reloads.
+   - **Full Patient Dossier Modal (`👁️ View Details`):** Displays all submission details (Full name, phone, email, procedure, consultation mode, preferred date & OPD slot, city, complete patient questions/notes, submission timestamp, and client IP).
+   - **Delete Lead Action (`🗑️`):** Safe modal confirmation to remove test or spam submissions.
+   - **Download Excel Sheet:** Prominent green button downloads clean Microsoft Excel (.CSV) files with UTF-8 BOM encoding.
 
 ---
 
-### Step 3: Upload to Hostinger File Manager
-1. In Hostinger hPanel, go to **Files** → **File Manager**.
-2. Open `public_html`.
-3. Create a folder named `api` (or upload this entire `backend` folder as `api`).
-4. The uploaded files should be located at:
-   - `public_html/api/config.php`
-   - `public_html/api/submit_lead.php`
-   - `public_html/api/admin.php`
-   - `public_html/api/export_excel.php`
-   - `public_html/api/install.php`
+### Option 2: React Web Application Admin View
+On your website, visit:
+```
+https://yourdomain.com/admin
+```
+*(Or click **Clinic Admin Portal 🔐** in the footer legal bar)*
 
----
-
-### Step 4: Run the One-Click Table Installer
-1. Open your browser and visit:
-   ```
-   https://yourdomain.com/api/install.php
-   ```
-2. You will see a green **"Setup Successful!"** badge confirming that the MySQL connection is working and the `leads` table has been created with all indexes.
-3. *(Optional)* For security, you may delete `install.php` from your File Manager once verified.
-
----
-
-### Step 5: Access the Admin Panel & Download Excel
-1. Visit:
-   ```
-   https://yourdomain.com/api/admin.php
-   ```
-2. Log in using your configured username (`admin`) and password (`DrMishra@2026`).
-3. Click the green **"Download Leads in Excel"** button in the top right to download all patient leads formatted for Microsoft Excel!
-4. Directly click **"Call"** or **"WhatsApp"** on any patient row to open an instant pre-filled chat with the patient.
-
----
-
-## 🔒 Security Best Practices Implemented
-- Prepared statements (`PDO::prepare`) used for all database queries to prevent SQL injection.
-- UTF-8 BOM byte order mark included in CSV exports for seamless Microsoft Excel rendering.
-- Session-based authentication on `admin.php` and `export_excel.php`.
-- XSS sanitization on all incoming user inputs.
+- Connects live to `/api/admin_api.php`
+- Displays all leads from your Hostinger database
+- Allows full search, status updates, full detail modal inspection, and one-click Excel download

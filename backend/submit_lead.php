@@ -84,8 +84,23 @@ $referenceId = 'SIPS-' . date('ym') . '-' . $randomDigits;
 $pdo = getDbConnection();
 
 if (!$pdo) {
-    // If DB is temporarily unavailable, still return a successful reference
-    // so the patient isn't alarmed and can continue via WhatsApp
+    // If DB is temporarily unavailable, still send the email notification so lead is never lost
+    $leadNotificationData = [
+        'reference_id'      => $referenceId,
+        'name'              => $name,
+        'phone'             => $phone,
+        'email'             => $email,
+        'procedure'         => $procedure,
+        'consultation_type' => $consultationType,
+        'preferred_date'    => $preferredDate,
+        'preferred_time'    => $preferredTime,
+        'city'              => $city,
+        'message'           => $message,
+        'ip_address'        => $ip
+    ];
+    sendLeadNotificationEmail($leadNotificationData);
+    sendPatientConfirmationEmail($leadNotificationData);
+
     sendJsonResponse([
         'success'      => true,
         'offline_mode' => true,
@@ -168,23 +183,22 @@ try {
 
     $leadId = $pdo->lastInsertId();
 
-    // Optional email notification to clinic desk
-    if (defined('ENABLE_EMAIL_NOTIFICATION') && ENABLE_EMAIL_NOTIFICATION && !empty(CLINIC_EMAIL)) {
-        $subject = "[New Consultation Lead] {$name} - {$procedure} ({$referenceId})";
-        $emailContent = "New Patient Consultation Lead Received:\n\n" .
-            "Reference ID: {$referenceId}\n" .
-            "Name: {$name}\n" .
-            "Phone: {$phone}\n" .
-            "Email: {$email}\n" .
-            "Procedure: {$procedure}\n" .
-            "Mode: {$consultationType}\n" .
-            "Preferred Date: {$preferredDate} ({$preferredTime})\n" .
-            "City: {$city}\n" .
-            "Notes: {$message}\n" .
-            "Submitted: " . date('Y-m-d H:i:s') . "\n";
-        
-        @mail(CLINIC_EMAIL, $subject, $emailContent, "From: no-reply@mycosmeticsurgery.in\r\nReply-To: " . ($email ?: CLINIC_EMAIL));
-    }
+    // Send Real-Time Executive Notification Email to Clinic Desk (MyCosmeticSurgery@gmail.com)
+    $leadNotificationData = [
+        'reference_id'      => $referenceId,
+        'name'              => $name,
+        'phone'             => $phone,
+        'email'             => $email,
+        'procedure'         => $procedure,
+        'consultation_type' => $consultationType,
+        'preferred_date'    => $preferredDate,
+        'preferred_time'    => $preferredTime,
+        'city'              => $city,
+        'message'           => $message,
+        'ip_address'        => $ip
+    ];
+    sendLeadNotificationEmail($leadNotificationData);
+    sendPatientConfirmationEmail($leadNotificationData);
 
     sendJsonResponse([
         'success'      => true,

@@ -41,10 +41,11 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
   const [privacyConsent, setPrivacyConsent] = useState(true);
 
   const [bookingReference, setBookingReference] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   const { addLead } = useConsultationStore();
   const cleanPhone = phone.replace(/\D/g, '');
-  const canSubmit = Boolean(name.trim() && cleanPhone.length === 10 && email.trim() && privacyConsent);
+  const canSubmit = Boolean(name.trim() && cleanPhone.length === 10 && email.trim() && privacyConsent && !isSubmitting);
 
   const handlePhoneChange = (val: string) => {
     let clean = val.replace(/\D/g, '');
@@ -58,24 +59,57 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
     ? `Other: ${otherProcedure.trim()}`
     : procedure;
 
-  const handleCompleteBooking = (e: React.FormEvent) => {
+  const handleCompleteBooking = async (e: React.FormEvent) => {
     e.preventDefault();
     const validPhone = phone.replace(/\D/g, '');
     if (!name.trim() || validPhone.length !== 10 || !email.trim()) return;
 
-    const lead = addLead({
+    setIsSubmitting(true);
+    let assignedRefId = `SIPS-${Date.now().toString().slice(-6)}`;
+
+    try {
+      const response = await fetch('/api/submit_lead.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name.trim(),
+          phone: validPhone,
+          email: email.trim(),
+          procedure: finalProcedure,
+          consultationType: 'In-Person (SIPS Hospital)',
+          preferredDate,
+          timeSlot,
+          city: city.trim() || 'Lucknow',
+          notes: notes.trim()
+        })
+      });
+
+      const result = await response.json().catch(() => null);
+      if (result && result.reference_id) {
+        assignedRefId = result.reference_id;
+      }
+    } catch {
+      // Local fallback
+    } finally {
+      setIsSubmitting(false);
+    }
+
+    addLead({
       name: name.trim(),
       phone: validPhone,
       email: email.trim(),
       procedure: finalProcedure,
-      city: city.trim(),
+      city: city.trim() || 'Lucknow',
       preferredDate,
       timeSlot,
       consultationType,
       notes: notes.trim()
     });
 
-    setBookingReference(lead.id);
+    setBookingReference(assignedRefId);
     setStep(4);
   };
 
@@ -420,7 +454,7 @@ export const BookConsultationView: React.FC<BookConsultationViewProps> = ({
                 disabled={!canSubmit}
                 className={`py-3.5 px-7 rounded-xl bg-[#003366] hover:bg-[#002244] text-white font-bold text-sm shadow-sm transition-all cursor-pointer inline-flex items-center gap-2 ${!canSubmit ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
-                <span>Confirm & Request Appointment</span>
+                <span>{isSubmitting ? 'Registering Consultation...' : 'Confirm & Request Appointment'}</span>
                 <CheckCircle2 className="w-4 h-4 ml-1 text-[#00A3E0]" />
               </button>
             </div>
